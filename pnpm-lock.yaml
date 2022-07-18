@@ -10,6 +10,7 @@ specifiers:
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
   autoprefixer: ^10.4.7
+  clsx: ^1.2.1
   eslint: 8.18.0
   eslint-config-next: 12.2.1
   next: 12.2.1
@@ -29,6 +30,7 @@ dependencies:
   '@trpc/next': 9.26.0_nikqnq47vawbden5766seb2snu
   '@trpc/react': 9.26.0_djhsvrj72zaivkfbhig4lanpvq
   '@trpc/server': 9.26.0
+  clsx: 1.2.1
   next: 12.2.1_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -655,6 +657,11 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
