@@ -2,7 +2,10 @@ import Image from "next/image";
 import { FC, useState } from "react";
 import { clsx } from "clsx";
 
-const GalleryImage: FC<{ src: string; alt: string }> = ({ src, alt }) => {
+export const GalleryImage: FC<{ src: string; alt: string }> = ({
+  src,
+  alt,
+}) => {
   const [isLoading, setLoading] = useState(true);
 
   return (
@@ -36,7 +39,8 @@ const Gallery = () => {
       <GalleryImage src="/images/nexxel.webp" alt="nexxel's avatar" />
       <GalleryImage src="/images/nexxel.webp" alt="nexxel's avatar" />
       <GalleryImage src="/images/nexxel.webp" alt="nexxel's avatar" />
-      <GalleryImage src="/images/nexxel.webp" alt="nexxel's avatar" />
+
+      {}
     </div>
   );
 };

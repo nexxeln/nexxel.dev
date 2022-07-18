@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["bit.ly"],
+    domains: ["bit.ly", "external-content.duckduckgo.com"],
   },
   experimental: { images: { allowFutureImage: true } },
 };
