@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@prisma/client': ^4.0.0
+  '@tailwindcss/aspect-ratio': ^0.4.0
   '@trpc/client': ^9.26.0
   '@trpc/next': ^9.26.0
   '@trpc/react': ^9.26.0
@@ -39,6 +40,7 @@ dependencies:
   zod: 3.17.3
 
 devDependencies:
+  '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.6
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
@@ -277,6 +279,14 @@ packages:
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@tailwindcss/aspect-ratio/0.4.0_tailwindcss@3.1.6:
+    resolution: {integrity: sha512-WJu0I4PpqNPuutpaA9zDUq2JXR+lorZ7PbLcKNLmb6GL9/HLfC7w3CRsMhJF4BbYd/lkY6CfXOvkYpuGnZfkpQ==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.1.6
+    dev: true
 
   /@trpc/client/9.26.0_@trpc+server@9.26.0:
     resolution: {integrity: sha512-zkKXkqZIKseXqybBU8U4odcGCTtDBG/Gu04mfMJ8UyzpG12uzZ5xRkbuufRChgx1oA27/mi3aW/8h6mI34cxyA==}
