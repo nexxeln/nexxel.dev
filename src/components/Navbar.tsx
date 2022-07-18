@@ -14,9 +14,10 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
     <Link href={href === "/home" ? "/" : href}>
       <a
         className={clsx(
-          "text-lg mr-4",
-          isActive &&
-            "text-transparent bg-clip-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange"
+          "text-md md:text-lg mr-4 md:mr-6",
+          isActive
+            ? "text-t-purple font-semibold"
+            : "hover:text-t-pink transition-colors duration-300"
         )}
       >
         {text}
@@ -27,7 +28,7 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
 
 const Navbar = () => {
   const router = useRouter();
-  const links = ["home", "blog", "guestbook", "stats", "gallery", "shortener"];
+  const links = ["home", "blog", "guestbook", "stats", "gallery"];
 
   return (
     <nav className="flex items-center justify-between capitalize">
