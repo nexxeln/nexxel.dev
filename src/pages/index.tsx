@@ -4,7 +4,7 @@ import Image from "next/future/image";
 const Home: NextPage = () => {
   return (
     <>
-      <main className="flex flex-col items-center justify-center w-4/5 min-h-screen mx-auto md:w-2/5">
+      <main className="flex flex-col items-center">
         <Image
           src="/images/nexxel.webp"
           alt="nexxel's avatar"
