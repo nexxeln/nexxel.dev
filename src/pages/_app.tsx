@@ -4,9 +4,15 @@ import type { AppRouter } from "~/server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import "~/styles/globals.css";
+import Navbar from "~/components/Navbar";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Navbar />
+      <Component {...pageProps} />
+    </>
+  );
 };
 
 const getBaseUrl = () => {

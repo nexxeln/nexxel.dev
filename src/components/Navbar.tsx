@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NextRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import { FC } from "react";
 import { clsx } from "clsx";
 
@@ -24,3 +24,25 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
     </Link>
   );
 };
+
+const Navbar = () => {
+  const router = useRouter();
+  const links = [
+    "home",
+    "blog",
+    "guestbook",
+    "stats",
+    "photography",
+    "shortener",
+  ];
+
+  return (
+    <nav className="flex items-center justify-between capitalize">
+      {links.map((link, index) => (
+        <NavItem href={`/${link}`} text={link} router={router} key={index} />
+      ))}
+    </nav>
+  );
+};
+
+export default Navbar;
