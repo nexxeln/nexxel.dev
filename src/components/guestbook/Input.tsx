@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 const Input = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -21,10 +21,14 @@ const Input = () => {
 
     if (message.length > 100) {
       setLoading(false);
-      setError("Message must be less than 100 characters.");
+      setError("Your message must be less than 100 characters.");
       return;
     }
   };
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
 
   if (session) {
     return (
@@ -44,15 +48,15 @@ const Input = () => {
         )}
 
         <div className="pt-3" />
-        <form>
-          <p className="text-[#ff6961] text-sm">{error}</p>
+        <form onSubmit={handleSubmit}>
+          <p className="text-sm text-t-red">{error}</p>
           <input
             type="text"
             name="message"
             id="message"
             placeholder="Your message..."
             maxLength={100}
-            className="w-full px-4 py-2 mt-1 text-xl border-2 rounded-md bg-zinc-800 focus:outline-none focus:border-opacity-100 border-opacity-80 border-t-orange text-slate-200"
+            className="w-full px-4 py-2 mt-1 text-xl border-2 rounded-md bg-zinc-800 focus:outline-none focus:border-opacity-100 border-opacity-80 border-t-pink text-slate-200"
             onChange={(e) => setMessage(e.target.value)}
           />
 
@@ -60,11 +64,12 @@ const Input = () => {
             <input
               type="submit"
               value="Sign"
-              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
+              disabled={loading}
+              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-purple hover:bg-t-purple hover:bg-opacity-30 hover:text-white disabled:opacity-80"
             />
 
             <button
-              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
+              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-purple hover:bg-t-purple hover:bg-opacity-30 hover:text-white"
               onClick={() => signOut()}
             >
               Log Out

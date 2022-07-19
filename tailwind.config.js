@@ -8,6 +8,7 @@ module.exports = {
         "t-pink": "#f4cfdf",
         "t-purple": "#cabdff",
         "t-orange": "#ffbc99",
+        "t-red": "#ff6961",
       },
       animation: {
         "focus-in":
