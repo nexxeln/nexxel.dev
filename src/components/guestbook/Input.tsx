@@ -1,33 +1,93 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useState } from "react";
 
 const Input = () => {
   const { data: session } = useSession();
+
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    if (message.length === 0) {
+      setLoading(false);
+      setError("Your message is empty!");
+      return;
+    }
+
+    if (message.length > 100) {
+      setLoading(false);
+      setError("Message must be less than 100 characters.");
+      return;
+    }
+  };
 
   if (session) {
     return (
       <>
         {session.user?.image && (
-          // eslint-disable-next-line react/jsx-no-undef
-          <Image
-            src={session.user?.image}
-            alt="s"
-            width={38}
-            height={38}
-            style={{ borderRadius: "50%" }}
-          />
+          <div className="flex items-center gap-2">
+            <Image
+              src={session.user?.image}
+              alt="s"
+              width={36}
+              height={36}
+              style={{ borderRadius: "50%" }}
+            />
+
+            <p>- Signed in as {session.user.name}</p>
+          </div>
         )}
-        Hello, {session.user?.name}!<br />
-        <button onClick={() => signOut()}>Sign out</button>
+
+        <div className="pt-3" />
+        <form>
+          <p className="text-[#ff6961] text-sm">{error}</p>
+          <input
+            type="text"
+            name="message"
+            id="message"
+            placeholder="Your message..."
+            maxLength={100}
+            className="w-full px-4 py-2 mt-1 text-xl border-2 rounded-md bg-zinc-800 focus:outline-none focus:border-opacity-100 border-opacity-80 border-t-orange text-slate-200"
+            onChange={(e) => setMessage(e.target.value)}
+          />
+
+          <div className="flex gap-2">
+            <input
+              type="submit"
+              value="Sign"
+              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
+            />
+
+            <button
+              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
+              onClick={() => signOut()}
+            >
+              Log Out
+            </button>
+          </div>
+        </form>
       </>
     );
   }
 
   return (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn("discord")}>Sign in</button>
-    </>
+    <div className="flex items-center gap-4">
+      <button
+        className="flex-none px-3 py-2 text-sm transition-colors duration-300 border-2 rounded-md border-t-orange hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
+        onClick={() => signIn("discord")}
+      >
+        Log In
+      </button>
+      <p className="pt-1.5 text-sm text-slate-300 w-2/3">
+        Log in with Discord to comment. Your information is only used to display
+        your name to avoid impersonation.
+      </p>
+    </div>
   );
 };
 
