@@ -10,7 +10,7 @@ const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
         <Navbar />
       </div>
 
-      <main id="main" className="pt-32">
+      <main id="main" className="">
         {children}
       </main>
     </div>

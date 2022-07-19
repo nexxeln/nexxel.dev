@@ -1,9 +1,11 @@
 import React from "react";
 
 const Guestbook = () => {
-  return <div>Guestbook</div>;
+  return (
+    <div>
+      <h1 className="text-3xl">Guestbook</h1>
+    </div>
+  );
 };
 
 export default Guestbook;
-
-// supabase? or a postgres on railway + next-auth
