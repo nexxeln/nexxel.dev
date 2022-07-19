@@ -1,3 +1,5 @@
+import Input from "~/components/guestbook/Input";
+
 const Guestbook = () => {
   return (
     <div>
@@ -6,6 +8,8 @@ const Guestbook = () => {
         Leave a comment below to sign my Guestbook. It could literally be
         anything - a joke, a quote or even a cool fact. Surprise me!
       </p>
+
+      <Input />
     </div>
   );
 };
