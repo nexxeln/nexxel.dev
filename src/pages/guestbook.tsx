@@ -9,6 +9,8 @@ const Guestbook = () => {
         anything - a joke, a quote or even a cool fact. Surprise me!
       </p>
 
+      <div className="pt-8" />
+
       <Input />
     </div>
   );
