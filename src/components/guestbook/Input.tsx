@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
+import { trpc } from "~/utils/trpc";
 
 const LogOutButton = () => {
   return (
@@ -23,6 +24,8 @@ const Input = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const guestbook = trpc.useMutation("guestbook.postMessage");
+
   const handleSubmit = () => {
     setLoading(true);
 
@@ -37,6 +40,14 @@ const Input = () => {
       setError("Your message must be less than 100 characters.");
       return;
     }
+
+    guestbook.mutate({
+      name: session?.user?.name as string,
+      message,
+    });
+
+    setLoading(false);
+    setMessage("");
   };
 
   if (status === "loading") {
@@ -67,6 +78,7 @@ const Input = () => {
           type="text"
           name="message"
           id="message"
+          value={message}
           placeholder="Your message..."
           className="w-full px-4 py-2 mt-1 text-xl border-2 rounded-md bg-zinc-800 focus:outline-none focus:border-opacity-100 border-opacity-80 border-t-pink text-slate-200"
           onChange={(e) => setMessage(e.target.value)}
