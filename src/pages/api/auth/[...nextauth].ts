@@ -6,7 +6,7 @@ import { prisma } from "~/server/db/client";
 
 const scopes = ["identify"].join(" ");
 
-export default NextAuth({
+export const authOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     DiscordProvider({
@@ -15,4 +15,6 @@ export default NextAuth({
       authorization: { params: { scope: scopes } },
     }),
   ],
-});
+};
+
+export default NextAuth(authOptions);
