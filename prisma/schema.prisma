@@ -54,3 +54,10 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Guestbook {
+    id        String   @id @default(cuid())
+    name      String
+    message   String   @db.String(100)
+    createdAt DateTime @default(now())
+}
