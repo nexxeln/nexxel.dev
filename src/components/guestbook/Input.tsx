@@ -3,6 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 import { trpc } from "~/utils/trpc";
+import Signatures from "./Signatures";
 
 const LogOutButton = () => {
   return (
@@ -107,23 +108,30 @@ const Input = () => {
             {message.length}/100
           </p>
         </div>
+
+        <div className="pt-10" />
+        <Signatures />
       </>
     );
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <button
-        className="flex-none px-3 py-2 text-sm transition-colors duration-300 border-2 rounded-md border-t-orange hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
-        onClick={() => signIn("discord")}
-      >
-        Log In
-      </button>
-      <p className="pt-1.5 text-sm text-slate-300 w-2/3">
-        Log in with Discord to comment. Your information is only used to display
-        your name to avoid impersonation.
-      </p>
-    </div>
+    <>
+      <div className="flex items-center gap-4">
+        <button
+          className="flex-none px-3 py-2 text-sm transition-colors duration-300 border-2 rounded-md border-t-orange hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
+          onClick={() => signIn("discord")}
+        >
+          Log In
+        </button>
+        <p className="pt-1.5 text-sm text-slate-300 w-2/3">
+          Log in with Discord to comment. Your information is only used to
+          display your name to avoid impersonation.
+        </p>
+      </div>
+
+      <Signatures />
+    </>
   );
 };
 
