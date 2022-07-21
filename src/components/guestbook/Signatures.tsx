@@ -1,9 +1,18 @@
 import { FC } from "react";
+import { trpc } from "~/utils/trpc";
 
 const Signatures = () => {
+  const { data, isLoading } = trpc.useQuery(["guestbook.getAll"]);
+
+  if (isLoading) {
+    return <div>Fetching all the messages...</div>;
+  }
+
   return (
     <div className="flex flex-col gap-6">
-      <Signature name="nexxel" message="lnice website very cool good job" />
+      {data?.map((sig, index) => (
+        <Signature key={index} name={sig.name} message={sig.message} />
+      ))}
     </div>
   );
 };

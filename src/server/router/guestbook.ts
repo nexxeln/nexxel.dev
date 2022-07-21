@@ -11,6 +11,23 @@ export const guestbookRouter = createRouter()
     }
     return next();
   })
+  .query("getAll", {
+    async resolve({ ctx }) {
+      try {
+        return await ctx.prisma.guestbook.findMany({
+          select: {
+            name: true,
+            message: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  })
   .mutation("postMessage", {
     input: z.object({
       name: z.string(),
