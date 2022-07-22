@@ -39,7 +39,7 @@ const Guestbook = () => {
   const ctx = trpc.useContext();
   const { data: messages } = trpc.useQuery(["guestbook.getAll"]);
   const guestbook = trpc.useMutation("guestbook.postMessage", {
-    onMutate: (data) => {
+    onMutate: () => {
       ctx.cancelQuery(["guestbook.getAll"]);
 
       let optimisticUpdate = ctx.getQueryData(["guestbook.getAll"]);

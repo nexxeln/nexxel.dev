@@ -3,14 +3,6 @@ import { z } from "zod";
 import { createRouter } from "./context";
 
 export const guestbookRouter = createRouter()
-  .middleware(async ({ ctx, next }) => {
-    // Any queries or mutations after this middleware will
-    // raise an error unless there is a current session
-    if (!ctx.session) {
-      throw new TRPCError({ code: "UNAUTHORIZED" });
-    }
-    return next();
-  })
   .query("getAll", {
     async resolve({ ctx }) {
       try {
@@ -24,9 +16,17 @@ export const guestbookRouter = createRouter()
           },
         });
       } catch (error) {
-        console.log(error);
+        console.log("error", error);
       }
     },
+  })
+  .middleware(async ({ ctx, next }) => {
+    // Any queries or mutations after this middleware will
+    // raise an error unless there is a current session
+    if (!ctx.session) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+    return next();
   })
   .mutation("postMessage", {
     input: z.object({
