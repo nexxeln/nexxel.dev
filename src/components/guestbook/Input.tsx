@@ -1,9 +1,20 @@
 import clsx from "clsx";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { trpc } from "~/utils/trpc";
-import Signatures from "./Signatures";
+
+const Signature: FC<{ name: string; message: string }> = ({
+  name,
+  message,
+}) => {
+  return (
+    <div className="flex flex-col">
+      <h3 className="text-xl">{message}</h3>
+      <p className="text-t-pink">- {name}</p>
+    </div>
+  );
+};
 
 const LogOutButton = () => {
   return (
@@ -25,7 +36,21 @@ const Input = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const guestbook = trpc.useMutation("guestbook.postMessage");
+  const ctx = trpc.useContext();
+  const { data: messages } = trpc.useQuery(["guestbook.getAll"]);
+  const guestbook = trpc.useMutation("guestbook.postMessage", {
+    onMutate: (data) => {
+      ctx.cancelQuery(["guestbook.getAll"]);
+
+      let optimisticUpdate = ctx.getQueryData(["guestbook.getAll"]);
+      if (optimisticUpdate) {
+        ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
+      }
+    },
+    onSettled: () => {
+      ctx.invalidateQueries(["guestbook.getAll"]);
+    },
+  });
 
   const handleSubmit = () => {
     setLoading(true);
@@ -47,8 +72,9 @@ const Input = () => {
       message,
     });
 
-    setLoading(false);
     setMessage("");
+    setLoading(false);
+    console.log("refetched");
   };
 
   if (status === "loading") {
@@ -110,7 +136,14 @@ const Input = () => {
         </div>
 
         <div className="pt-10" />
-        <Signatures />
+
+        <div className="flex flex-col gap-6">
+          {messages?.map((msg, index) => {
+            return (
+              <Signature key={index} name={msg.name} message={msg.message} />
+            );
+          })}
+        </div>
       </>
     );
   }
@@ -130,7 +163,15 @@ const Input = () => {
         </p>
       </div>
 
-      <Signatures />
+      <div className="pt-10" />
+
+      <div className="flex flex-col gap-6">
+        {messages?.map((msg, index) => {
+          return (
+            <Signature key={index} name={msg.name} message={msg.message} />
+          );
+        })}
+      </div>
     </>
   );
 };

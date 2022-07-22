@@ -1,9 +1,6 @@
 import { FC } from "react";
-import { trpc } from "~/utils/trpc";
 
-const Signatures = () => {
-  const { data, isLoading } = trpc.useQuery(["guestbook.getAll"]);
-
+const Signatures = ({ isLoading, data }) => {
   if (isLoading) {
     return <div>Fetching all the messages...</div>;
   }
