@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.3",
-    "@prisma/client": "^4.0.0",
+    "@prisma/client": "^4.1.0",
     "@trpc/client": "^9.26.0",
     "@trpc/next": "^9.26.0",
     "@trpc/react": "^9.26.0",
@@ -34,7 +34,7 @@
     "eslint": "8.18.0",
     "eslint-config-next": "12.2.1",
     "postcss": "^8.4.14",
-    "prisma": "^4.0.0",
+    "prisma": "^4.1.0",
     "tailwindcss": "^3.1.6",
     "typescript": "4.7.4"
   }
