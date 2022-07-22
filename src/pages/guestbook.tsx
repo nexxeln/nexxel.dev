@@ -1,6 +1,6 @@
-import Input from "~/components/guestbook/Input";
+import Guestbook from "~/components/Guestbook";
 
-const Guestbook = () => {
+const GuestbookPage = () => {
   return (
     <div>
       <h1 className="text-3xl pt-14 text-t-pink">Guestbook</h1>
@@ -11,9 +11,9 @@ const Guestbook = () => {
 
       <div className="pt-8" />
 
-      <Input />
+      <Guestbook />
     </div>
   );
 };
 
-export default Guestbook;
+export default GuestbookPage;

@@ -29,7 +29,7 @@ const LogOutButton = () => {
   );
 };
 
-const Input = () => {
+const Guestbook = () => {
   const { data: session, status } = useSession();
 
   const [message, setMessage] = useState("");
@@ -176,4 +176,4 @@ const Input = () => {
   );
 };
 
-export default Input;
+export default Guestbook;
