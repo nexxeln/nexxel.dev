@@ -150,7 +150,7 @@ const Guestbook = () => {
 
   return (
     <>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 p-4 border-2 rounded-md bg-[#202020] border-t-pink border-opacity-60">
         <button
           className="flex-none px-3 py-2 text-sm transition-colors duration-300 border-2 rounded-md border-t-orange hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
           onClick={() => signIn("discord")}
