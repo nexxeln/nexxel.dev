@@ -2,7 +2,7 @@
 import superjson from "superjson";
 
 import { createRouter } from "./context";
-import { guestbookRouter } from "./guestbook";
+import { guestbookRouter } from "./subrouters/guestbook";
 
 export const appRouter = createRouter()
   .transformer(superjson)
