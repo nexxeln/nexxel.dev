@@ -1,7 +1,13 @@
-const Stats = () => {
-  return <div>Stats</div>;
+import Stats from "~/components/Stats";
+
+const StatsPage = () => {
+  return (
+    <div>
+      <Stats />
+    </div>
+  );
 };
 
-export default Stats;
+export default StatsPage;
 
 // gh followers, spotify, blog views?, number animations
