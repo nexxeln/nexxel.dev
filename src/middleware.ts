@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const slug = req.nextUrl.pathname.split("/r/").pop();
-  console.log(slug);
 
   const fetchSlug = await fetch(`${req.nextUrl.origin}/api/get-link/${slug}`);
 
