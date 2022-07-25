@@ -8,17 +8,20 @@ specifiers:
   '@trpc/next': ^9.26.0
   '@trpc/react': ^9.26.0
   '@trpc/server': ^9.26.0
+  '@types/debounce': ^1.2.1
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
   autoprefixer: ^10.4.7
   clsx: ^1.2.1
+  debounce: ^1.2.1
   eslint: 8.18.0
   eslint-config-next: 12.2.1
   next: 12.2.1
   next-auth: ^4.10.0
   postcss: ^8.4.14
   prisma: ^4.1.0
+  random-word-slugs: ^0.1.6
   react: 18.2.0
   react-dom: 18.2.0
   react-query: ^3.39.2
@@ -35,8 +38,10 @@ dependencies:
   '@trpc/react': 9.26.0_djhsvrj72zaivkfbhig4lanpvq
   '@trpc/server': 9.26.0
   clsx: 1.2.1
+  debounce: 1.2.1
   next: 12.2.1_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.10.0_biqbaboplfbrettd7655fr4n2y
+  random-word-slugs: 0.1.6
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
@@ -45,6 +50,7 @@ dependencies:
 
 devDependencies:
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.6
+  '@types/debounce': 1.2.1
   '@types/node': 18.0.0
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
@@ -357,6 +363,10 @@ packages:
   /@trpc/server/9.26.0:
     resolution: {integrity: sha512-aQgGkcAln9leq/Ab5X5AOWci0BNiy4oGcEqXCWs5Q7sZ1gd5Y3OzQV5tnY6fPsWSRjuvkb45Syq2AkFpX0q0/w==}
     dev: false
+
+  /@types/debounce/1.2.1:
+    resolution: {integrity: sha512-epMsEE85fi4lfmJUH/89/iV/LI+F5CvNIvmgs5g5jYFPfhO2S/ae8WSsLOKWdwtoaZw9Q2IhJ4tQ5tFCcS/4HA==}
+    dev: true
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
@@ -744,6 +754,10 @@ packages:
   /damerau-levenshtein/1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
     dev: true
+
+  /debounce/1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -2050,6 +2064,10 @@ packages:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
     dev: true
+
+  /random-word-slugs/0.1.6:
+    resolution: {integrity: sha512-EVPGKyhXTdnBlMCrqBvby3nf9Jz+W/rVuP2nOi68aDZa6VJ2OXvz+VDCwl8jULBLZ1Ht8wscRA+/SogeI9NYGw==}
+    dev: false
 
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
