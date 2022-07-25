@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
@@ -60,4 +57,13 @@ model Guestbook {
     name      String
     message   String   @db.String(100)
     createdAt DateTime @default(now())
+}
+
+model ShortLink {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now())
+    url       String   @db.String(3000)
+    slug      String   @unique
+
+    @@index([slug])
 }
