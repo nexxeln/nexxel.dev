@@ -1,13 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  if (
-    req.nextUrl.pathname.startsWith("/api/") ||
-    req.nextUrl.pathname === "/"
-  ) {
-    return;
-  }
-  const slug = req.nextUrl.pathname.split("/").pop();
+  const slug = req.nextUrl.pathname.split("/r/").pop();
+  console.log(slug);
 
   const fetchSlug = await fetch(`${req.nextUrl.origin}/api/get-link/${slug}`);
 
@@ -21,3 +16,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(data.url);
   }
 }
+
+export const config = {
+  matcher: ["/r/:path*"],
+};
