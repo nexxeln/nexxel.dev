@@ -2,6 +2,7 @@ import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import { FC } from "react";
 import { clsx } from "clsx";
+import { PAGES } from "~/utils/constants";
 
 const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
   href,
@@ -28,7 +29,7 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
 
 const Navbar = () => {
   const router = useRouter();
-  const links = ["home", "blog", "guestbook", "shortener", "gallery"];
+  const links = PAGES;
 
   return (
     <nav className="flex items-center justify-between capitalize">
