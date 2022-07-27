@@ -37,7 +37,7 @@ const CreateLink = ({ origin }: { origin: string }) => {
           <button
             className="px-4 py-2 ml-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
             onClick={() => {
-              navigator.clipboard.writeText(`${url}/${form.slug}`);
+              navigator.clipboard.writeText(`https://${url}/${form.slug}`);
             }}
           >
             Copy
