@@ -14,7 +14,6 @@ const GuestbookPage = () => {
       <div className="pt-8" />
 
       <Guestbook />
-      <div className="pb-8" />
     </div>
   );
 };

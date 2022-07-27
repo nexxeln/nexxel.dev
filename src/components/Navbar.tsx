@@ -28,12 +28,17 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
 
 const Navbar = () => {
   const router = useRouter();
-  const links = ["home", "blog", "guestbook", "shortener", "gallery"];
+  const links = ["home", "blog", "guestbook", "shortener", "FAQ"];
 
   return (
     <nav className="flex items-center justify-between capitalize">
       {links.map((link, index) => (
-        <NavItem href={`/${link}`} text={link} router={router} key={index} />
+        <NavItem
+          href={`/${link === "FAQ" ? "faq" : link}`}
+          text={link}
+          router={router}
+          key={index}
+        />
       ))}
     </nav>
   );

@@ -8,7 +8,8 @@ const ShortenerPage = () => {
         Shortener
       </h1>
       <p className="pt-1 text-slate-200">
-        You can now use my domain to shorten your links!
+        You can now use my domain to shorten your links! Choose your slug or get
+        a random one if you&apos;re feeling adventurous!
       </p>
 
       <div className="pt-8" />
