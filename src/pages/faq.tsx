@@ -88,11 +88,10 @@ const FAQPage = () => {
 
         <CustomQna question="Did you build create-t3-app?">
           <p>
-            If you don&apos;t know,{" "}
+            I started it, the community built it. If you don&apos;t know,{" "}
             <Link to="https://create.t3.gg" text="create-t3-app" /> is the
             quickest way to start a web app with the{" "}
-            <Link to="https://init.tips" text="T3 Stack" />. I started it, the
-            community built it.
+            <Link to="https://init.tips" text="T3 Stack" />.
           </p>
         </CustomQna>
 
