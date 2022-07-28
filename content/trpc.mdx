@@ -1,6 +1,7 @@
-[tRPC](https://trpc.io) is a tool that provides type-safety between your front and back-ends, hence it makes it *really* easy to build scalable and robust backends quickly for your Next.js and Node apps. In this article we will be looking at what tRPC is, and how to set it up and use it with Next.js.
+[tRPC](https://trpc.io) is a tool that provides type-safety between your front and back-ends, hence it makes it _really_ easy to build scalable and robust backends quickly for your Next.js and Node apps. In this article we will be looking at what tRPC is, and how to set it up and use it with Next.js.
 
 ## What is tRPC?
+
 tRPC is a very light library which lets you build fully typesafe APIs without the need of schemas or code generation. It allows sharing of types between the client and server and just imports the types and not the actual server code, so none of the server code is exposed in the frontend. With end-to-end type-safety, you're able to catch errors between your frontend and backend at compile and build time.
 
 Currently, the dominant way of making typesafe APIs is using [GraphQL](https://graphql.org/) (it's awesome). Since GraphQL is a query language for APIs, it doesn't take full advantage of TypeScript, it comes with excess boilerplate code and requires a lot of initial setup.
@@ -8,9 +9,10 @@ Currently, the dominant way of making typesafe APIs is using [GraphQL](https://g
 If you're already using TypeScript everywhere, you can share types directly between the client and the server without the need of any code generation.
 
 ## Installing tRPC in Next.js
+
 Lets first create a Next.js project with TypeScript.
 
-```bash
+```bash:terminal
 npx create-next-app next-with-trpc --ts
 ```
 
@@ -22,14 +24,14 @@ Let's now use the recommended folder structure by tRPC. Open the project in your
 │   ├── pages
 │   │   ├── _app.tsx
 │   │   ├── api
-│   │   │   
+│   │   │
 │   │   └── [..]
 └── [..]
 ```
 
 Once this is done, let's install tRPC.
 
-```
+```bash:terminal
 npm i @trpc/client @trpc/server @trpc/react @trpc/next zod react-query
 ```
 
@@ -37,8 +39,7 @@ tRPC is a built on top of [react-query](https://react-query.tanstack.com/), whic
 
 Also make sure that in your `tsconfig.json`, strict mode is enabled.
 
-```json
-// tsconfig.json
+```json:tsconfig.json
 {
   // ...
   "compilerOptions": {
@@ -58,9 +59,7 @@ Our tRPC server will be deployed as a [Next.js API route](https://nextjs.org/doc
 
 Let's first create a directory inside `src` called `server`. In here, we need to first create a context. Create a file called `context.ts` and add the following code to it.
 
-```ts
-// src/server/context.ts
-
+```ts:src/server/context.ts
 import { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { inferAsyncReturnType } from "@trpc/server";
 
@@ -83,9 +82,7 @@ This will be available as `ctx` in all our resolvers which we'll write in a bit.
 
 Now let's create a file called `createRouter.ts` in the `server` directory. We'll be setting up a simple router. Copy the following code to it.
 
-```ts
-// src/server/createRouter.ts
-
+```ts:src/server/createRouter.ts
 import * as trpc from "@trpc/server";
 
 import type { MyContextType } from "./context";
@@ -99,9 +96,7 @@ export function createRouter() {
 
 Let's create a new directory inside `src/server` called `routers`. Make a file called `app.ts` inside it. This will be the root route.
 
-```ts
-// src/server/routers/app.ts
-
+```ts:src/server/routers/app.ts
 import { createRouter } from "../createRouter";
 
 export const appRouter = createRouter();
@@ -111,9 +106,7 @@ export type AppRouter = typeof appRouter;
 
 Now let's create a router that takes a name as input and returns it to the client. Add a file called `name.ts`.
 
-```ts
-// src/server/routers/name.ts
-
+```ts:src/server/routers/name.ts
 import { z } from "zod";
 
 import { createRouter } from "../createRouter";
@@ -130,14 +123,11 @@ export const nameRouter = createRouter().query("getName", {
 });
 ```
 
-Just like GraphQL, tRPC uses queries and mutations. A `query` is used for fetching data and `mutations` are used to create, update, and delete data. Here we are creating a query to get a name. The name of our query is `getName`. Here, `input` takes the user input which is validated using zod. When this endpoint is requested, the `resolve` function is called and it returns the *hello world* greeting. because why not. 
-
+Just like GraphQL, tRPC uses queries and mutations. A `query` is used for fetching data and `mutations` are used to create, update, and delete data. Here we are creating a query to get a name. The name of our query is `getName`. Here, `input` takes the user input which is validated using zod. When this endpoint is requested, the `resolve` function is called and it returns the _hello world_ greeting. because why not.
 
 Now let's merge this route in our root route. Come back to `app.ts` and add the following code.
 
-```ts
-// src/server/routers/app.ts
-
+```ts:src/server/routers/app.ts
 import { createRouter } from "../createRouter";
 import { nameRouter } from "./name";
 
@@ -156,26 +146,24 @@ Let's create a `trpc` directory inside `src/pages/api`. Inside it create a file 
 .
 ├── src
 │   ├── pages
-│   │   ├── _app.tsx 
+│   │   ├── _app.tsx
 │   │   ├── api
 │   │   │   └── trpc
-│   │   │       └── [trpc].ts 
+│   │   │       └── [trpc].ts
 │   │   └── [..]
 │   ├── server
 │   │   ├── routers
-│   │   │   ├── app.ts   
-│   │   │   ├── name.ts  
+│   │   │   ├── app.ts
+│   │   │   ├── name.ts
 │   │   │   └── [..]
-│   │   ├── context.ts      
-│   │   └── createRouter.ts 
+│   │   ├── context.ts
+│   │   └── createRouter.ts
 └── [..]
 ```
 
 Here we will implement our tRPC router. As I had said before, our server will be deployed as a Next.js API route.
 
-```ts
-// src/pages/api/trpc/[trpc].ts
-
+```ts:src/pages/api/trpc/[trpc].ts
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 
 import { appRouter } from "../../../server/routers/app";
@@ -203,9 +191,7 @@ With that we're pretty much done with the backend. Let's now work on our fronten
 
 Let's now connect our backend with our frontend. Go to `src/pages/_app.tsx`. Here we are going to configure tRPC and React Query. Copy the following code.
 
-```tsx
-// src/pages/_app.ts
-
+```tsx:src/pages/_app.tsx
 import { AppType } from "next/dist/shared/lib/utils";
 import { withTRPC } from "@trpc/next";
 
@@ -244,28 +230,26 @@ Next, create a `utils` directory inside `src`. Inside `utils`, create a file cal
 .
 ├── src
 │   ├── pages
-│   │   ├── _app.tsx 
+│   │   ├── _app.tsx
 │   │   ├── api
 │   │   │   └── trpc
-│   │   │       └── [trpc].ts 
+│   │   │       └── [trpc].ts
 │   │   └── [..]
 │   ├── server
 │   │   ├── routers
-│   │   │   ├── app.ts   
-│   │   │   ├── name.ts  
+│   │   │   ├── app.ts
+│   │   │   ├── name.ts
 │   │   │   └── [..]
-│   │   ├── context.ts      
-│   │   └── createRouter.ts 
+│   │   ├── context.ts
+│   │   └── createRouter.ts
 |   └── utils
 │       └── trpc.ts
 └── [..]
 ```
 
-Here we're going to create a hook to use tRPC on the client. 
+Here we're going to create a hook to use tRPC on the client.
 
-```ts
-// src/utils/trpc.ts
-
+```ts:src/utils/trpc.ts
 import { createReactQueryHooks } from "@trpc/react";
 import { inferProcedureOutput } from "@trpc/server";
 
@@ -282,9 +266,7 @@ This hook is strongly typed using our API type signature. This is what enables t
 
 Let's now actually use our query that we defined earlier. Go to the index page and instead of copy pasting this code block, type it yourself to experience the **magic** of tRPC. The autocomplete is just crazy.
 
-```ts
-// src/pages/index.tsx
-
+```tsx:src/pages/index.tsx
 import { trpc } from "../utils/trpc";
 
 export default function Name() {
