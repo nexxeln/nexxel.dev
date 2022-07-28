@@ -17,7 +17,8 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "layer/*": ["./contentlayer/*"]
     }
   },
   "include": [
