@@ -3,6 +3,7 @@ import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
 import { GetStaticProps } from "next";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -24,6 +25,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const PostLayout = ({ post }: { post: Post }) => {
+  const MDXContent = useMDXComponent(post.body.code);
   return (
     <>
       <Head>
@@ -43,10 +45,7 @@ const PostLayout = ({ post }: { post: Post }) => {
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
         </div>
-        <div
-          className="cl-post-body"
-          dangerouslySetInnerHTML={{ __html: post.body.raw }}
-        />
+        <MDXContent />
       </article>
     </>
   );
