@@ -17,7 +17,8 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": [
@@ -25,7 +26,8 @@
     "next-auth.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"
+    "**/*.js",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }
