@@ -41,15 +41,16 @@ const Header1: FC<{ id: string; children: ReactNode }> = ({ id, children }) => {
 
 const Header3: FC<{ id: string; children: ReactNode }> = ({ id, children }) => {
   return (
-    <a
-      href={`#${id}`}
-      className="flex items-center mt-4 mb-5 text-2xl group w-fit header no-outline"
-    >
-      <h3 className="opacity-0 group-hover:opacity-100">#</h3>
-      <h3 id={id} className="ml-2 text-3xl">
-        {children}
-      </h3>
-    </a>
+    <h3>
+      <a
+        href={`#${id}`}
+        className="flex items-center mt-4 mb-5 text-2xl group w-fit header no-outline"
+      >
+        <span id={id} className="ml-2 text-3xl">
+          {children}
+        </span>
+      </a>
+    </h3>
   );
 };
 
