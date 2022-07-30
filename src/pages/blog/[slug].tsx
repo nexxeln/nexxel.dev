@@ -35,7 +35,7 @@ const PostLayout = ({ post }: { post: Post }) => {
       <article className="max-w-2xl py-16 mx-auto">
         <div className="mb-6 text-center">
           <Link href="/">
-            <a className="text-sm font-bold text-center text-blue-700 uppercase">
+            <a className="text-sm font-bold text-center text-indigo-400 uppercase">
               Home
             </a>
           </Link>
@@ -47,7 +47,7 @@ const PostLayout = ({ post }: { post: Post }) => {
           </time>
         </div>
 
-        <main className="prose prose-lg prose-indigo px-2 prose-invert">
+        <main className="prose prose-lg prose-indigo prose-a:text-indigo-400  px-2 prose-invert">
           <MDXContent components={Components} />
         </main>
       </article>
