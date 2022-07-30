@@ -100,7 +100,9 @@ const CodeBlock: FC<{
           {copied ? <BsCheck2 /> : <FiClipboard />}
         </button>
       )}
-      <pre>{children}</pre>
+      <pre>
+        <code>{children}</code>
+      </pre>
     </div>
   );
 };
