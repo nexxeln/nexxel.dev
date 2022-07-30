@@ -1,43 +1,46 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        "t-pink": "#f4cfdf",
-        "t-purple": "#cabdff",
-        "t-orange": "#ffbc99",
-        "t-red": "#ff6961",
+        't-pink': '#f4cfdf',
+        't-purple': '#cabdff',
+        't-orange': '#ffbc99',
+        't-red': '#ff6961',
       },
       animation: {
-        "focus-in":
-          "focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both",
-        "gradient-text": "gradient-text 5s ease infinite",
+        'focus-in':
+          'focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both',
+        'gradient-text': 'gradient-text 5s ease infinite',
       },
       keyframes: {
-        "focus-in": {
-          "0%": {
-            filter: "blur(12px)",
-            opacity: "0",
+        'focus-in': {
+          '0%': {
+            filter: 'blur(12px)',
+            opacity: '0',
           },
           to: {
-            filter: "blur(0)",
-            opacity: "1",
+            filter: 'blur(0)',
+            opacity: '1',
           },
         },
-        "gradient-text": {
-          "0%, 100%": {
-            "background-size": "200% 200%",
-            "background-position": "left center",
+        'gradient-text': {
+          '0%, 100%': {
+            'background-size': '200% 200%',
+            'background-position': 'left center',
           },
-          "50%": {
-            "background-size": "200% 200%",
-            "background-position": "right center",
+          '50%': {
+            'background-size': '200% 200%',
+            'background-position': 'right center',
           },
         },
       },
     },
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+  ],
 };
