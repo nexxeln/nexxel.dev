@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Link from "next/link";
-import { format, parseISO } from "date-fns";
-import { allPosts, Post } from "contentlayer/generated";
-import { GetStaticProps } from "next";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import Components from "~/components/blog/MDX";
+import { allPosts, Post } from 'contentlayer/generated';
+import { format, parseISO } from 'date-fns';
+import { GetStaticProps } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import Head from 'next/head';
+import Link from 'next/link';
+import Components from '~/components/blog/MDX';
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -35,7 +35,7 @@ const PostLayout = ({ post }: { post: Post }) => {
       <article className="max-w-2xl py-16 mx-auto">
         <div className="mb-6 text-center">
           <Link href="/">
-            <a className="text-sm font-bold text-center text-blue-700 uppercase">
+            <a className="text-sm font-bold text-center text-indigo-400 uppercase">
               Home
             </a>
           </Link>
@@ -43,10 +43,13 @@ const PostLayout = ({ post }: { post: Post }) => {
         <div className="mb-6 text-center">
           <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
           <time dateTime={post.date} className="text-sm text-slate-600">
-            {format(parseISO(post.date), "LLLL d, yyyy")}
+            {format(parseISO(post.date), 'LLLL d, yyyy')}
           </time>
         </div>
-        <MDXContent components={{ ...Components }} />
+
+        <main className="prose prose-lg prose-indigo prose-a:text-indigo-400  px-2 prose-invert">
+          <MDXContent components={Components} />
+        </main>
       </article>
     </>
   );

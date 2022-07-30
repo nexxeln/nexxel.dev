@@ -24,7 +24,7 @@ First let's look at the stack that we're going to be using:
 Alright let's start coding!
 First, navigate to your projects directory and bootstrap a Remix project using
 
-```bash:terminal
+```shell:terminal
 npx create-remix@latest
 ```
 
@@ -100,7 +100,7 @@ Let's understand how routing works in Remix. Routing in Remix is file based, and
 So make a sub directory inside the `app/routes` directory called `blog`. This will be our route module for the `/blog`. Inside the blog directory make a MDX file, let's call it `first-blog.mdx`.
 Inside it lets render a heading.
 
-```mdx:app/routes/blog/first-blog.mdx
+```markdown:app/routes/blog/first-blog.mdx
 # First Blog post
 ```
 
@@ -108,7 +108,7 @@ Now if you navigate to `http://localhost:3000/blog/first-blog`, you should see t
 
 Now let's add some attributes to our markdown. We can add attributes like this:
 
-```mdx:app/routes/blog/first-blog.mdx
+```markdown:app/routes/blog/first-blog.mdx
 ---
 title: "title of the blog"
 date: 2022-04-13
@@ -120,7 +120,7 @@ meta:
 
 Let's try to access these attributes by rendering the title. We can do this like this:
 
-```mdx:app/routes/blog/first-blog.mdx
+```markdown:app/routes/blog/first-blog.mdx
 # {attributes.title}
 
 {attributes.date.toDateString()}

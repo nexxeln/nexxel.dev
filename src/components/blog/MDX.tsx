@@ -1,25 +1,26 @@
-import NextLink from "next/link";
-import NextImage, { ImageProps } from "next/image";
-import { FC, ReactNode, useRef, useState } from "react";
-import { FiClipboard } from "react-icons/fi";
-import { BsCheck2 } from "react-icons/bs";
+import NextLink from 'next/link';
+import NextImage, { ImageProps } from 'next/image';
+import { FC, ReactNode, useRef, useState } from 'react';
+import { FiClipboard } from 'react-icons/fi';
+import { BsCheck2 } from 'react-icons/bs';
 
 const Link: FC<{ href: string; children: ReactNode }> = ({
   href,
   children,
+  ...props
 }) => {
-  const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
+  const isInternal = href && (href.startsWith('/') || href.startsWith('#'));
 
   if (isInternal) {
     return (
-      <NextLink href={href}>
-        <a>{children}</a>
+      <NextLink href={href} {...props}>
+        {children}
       </NextLink>
     );
   }
 
   return (
-    <a href={href} target="_blank" rel="noreferrer">
+    <a href={href} target="_blank" rel="noreferrer" {...props}>
       {children}
     </a>
   );
@@ -27,15 +28,10 @@ const Link: FC<{ href: string; children: ReactNode }> = ({
 
 const Header1: FC<{ id: string; children: ReactNode }> = ({ id, children }) => {
   return (
-    <a
-      href={`#${id}`}
-      className="flex items-center my-12 group w-fit header no-outline"
-    >
-      <h1 className="text-3xl opacity-0 group-hover:opacity-100">#</h1>
-      <h1 id={id} className="ml-2 text-4xl">
-        {children}
-      </h1>
-    </a>
+    <h1 id={id} className="ml-2 text-4xl">
+      <span className="text-3xl opacity-0 group-hover:opacity-100">#</span>
+      {children}
+    </h1>
   );
 };
 
@@ -61,7 +57,7 @@ const Image: FC<{ alt: string; props: ImageProps }> = ({ alt, props }) => {
 const CodeBlock: FC<{
   className: string | undefined;
   children: ReactNode;
-}> = ({ className, children }): JSX.Element => {
+}> = ({ children }): JSX.Element => {
   const textInput = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -96,24 +92,20 @@ const CodeBlock: FC<{
           type="button"
           className={`absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33] ${
             copied
-              ? "focus:border-green-500 border-green-400 text-green-400"
-              : "border-gray-400 text-gray-400"
+              ? 'focus:border-green-500 border-green-400 text-green-400'
+              : 'border-gray-400 text-gray-400'
           }`}
           onClick={onCopy}
         >
           {copied ? <BsCheck2 /> : <FiClipboard />}
         </button>
       )}
-
       <pre>{children}</pre>
     </div>
   );
 };
 
 const Components = {
-  a: Link,
-  h1: Header1,
-  h3: Header3,
   pre: CodeBlock,
   Image,
 };
