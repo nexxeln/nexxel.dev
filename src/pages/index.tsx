@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
 import Image from "next/future/image";
+import Wrapper from "~/components/Wrapper";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <Wrapper>
       <main className="flex flex-col items-center pt-32">
         <Image
           src="/images/nexxel.webp"
@@ -22,7 +23,7 @@ const Home: NextPage = () => {
           like to build cool stuff
         </p>
       </main>
-    </>
+    </Wrapper>
   );
 };
 

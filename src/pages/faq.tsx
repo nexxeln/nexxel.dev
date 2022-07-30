@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import Wrapper from "~/components/Wrapper";
 
 const Qna: FC<{ question: string; answer: string }> = ({
   question,
@@ -6,7 +7,7 @@ const Qna: FC<{ question: string; answer: string }> = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-t-pink font-bold bold-text text-xl">{question}</p>
+      <p className="text-xl font-bold text-t-pink bold-text">{question}</p>
       <p>{answer}</p>
     </div>
   );
@@ -21,7 +22,7 @@ const CustomQna = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-t-pink font-bold bold-text text-xl">{question}</p>
+      <p className="text-xl font-bold text-t-pink bold-text">{question}</p>
       {children}
     </div>
   );
@@ -33,7 +34,7 @@ const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
       href={to}
       target="_blank"
       rel="noreferrer"
-      className="text-t-purple opacity-90 transition-opacity duration-300 hover:opacity-100"
+      className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100"
     >
       {text}
     </a>
@@ -42,7 +43,7 @@ const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
 
 const FAQPage = () => {
   return (
-    <>
+    <Wrapper>
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">FAQ</h1>
       <p className="pt-1 text-slate-200">
         These are some questions that are asked to me pretty frequently, so I
@@ -122,7 +123,7 @@ const FAQPage = () => {
           </p>
         </CustomQna>
       </div>
-    </>
+    </Wrapper>
   );
 };
 

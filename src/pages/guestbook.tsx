@@ -1,8 +1,9 @@
 import Guestbook from "~/components/Guestbook";
+import Wrapper from "~/components/Wrapper";
 
 const GuestbookPage = () => {
   return (
-    <div>
+    <Wrapper>
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         Guestbook
       </h1>
@@ -14,7 +15,7 @@ const GuestbookPage = () => {
       <div className="pt-8" />
 
       <Guestbook />
-    </div>
+    </Wrapper>
   );
 };
 
