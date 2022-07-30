@@ -42,7 +42,6 @@ const source = makeSource({
       [
         rehypeAutolinkHeadings,
         [
-          ,
           {
             properties: {
               className: ['anchor'],

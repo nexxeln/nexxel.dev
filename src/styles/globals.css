@@ -41,16 +41,16 @@ body {
     @apply invisible no-underline;
   }
 
-  .prose .anchor:after {
-    @apply text-indigo-400;
+  .prose .icon-link:after {
+    @apply text-indigo-400 pr-2;
     content: '#';
   }
 
-  .prose *:hover > .anchor:after {
+  .prose *:hover > .icon-link:after {
     @apply opacity-100 text-gray-700;
   }
 
-  .prose *:hover > .anchor {
+  .prose *:hover > .icon-link {
     @apply visible no-underline;
   }
 

@@ -21,22 +21,17 @@ const highlight = () => {
 
   function visitor(node: any, _index: any, parentNode: any) {
     if (parentNode.tagName === 'pre' && node.tagName === 'code') {
-      try {
-        // syntax highlight
-        let lang = node.properties.className
-          ? node.properties.className[0].split('-')[1]
-          : 'md';
+      const first = node.properties.className;
+      // syntax highlight
+      let lang = first[0]?.split('-')[1] || 'md';
 
-        if (lang.includes(':')) {
-          lang = lang.split(':')[0];
-        }
-
-        let result = refractor.highlight(toString(node), lang);
-
-        node.children = result.children;
-      } catch (error) {
-        console.error(error)
+      if (lang.includes(':')) {
+        lang = lang.split(':')[0];
       }
+
+      let result = refractor.highlight(toString(node), lang);
+
+      node = Object.assign(node, result);
     }
   }
 };
