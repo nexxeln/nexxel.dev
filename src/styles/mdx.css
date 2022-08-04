@@ -5,24 +5,6 @@
   font-style: normal;
 }
 
-code,
-pre {
-  @apply w-full overflow-auto;
-  font-family: "JetBrains Mono";
-  text-align: left;
-  word-spacing: normal;
-  word-break: normal;
-  border-radius: 0;
-  line-height: 1.5;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
 pre .highlight-static-word {
   @apply !bg-indigo-500 bg-opacity-50  transition;
 }
@@ -198,11 +180,13 @@ pre[data-show-numbers="true"] .highlight-line:before {
 }
 
 div.rehype-code-title + pre {
-  @apply px-3 pt-1 py-1.5 md:text-lg md:py-2.5 border rounded-t-none bg-[#1C1C1C]  border-gray-800;
+  font-family: "JetBrains Mono";
+  @apply text-sm px-3 pt-1 py-1.5 md:text-lg md:py-2.5 border rounded-t-none bg-[#1C1C1C]  border-gray-800;
 }
 
 div.rehype-code-title {
-  @apply px-3 pt-1 border rounded-t-lg bg-[#1C1C1C]  text-gray-300 border-gray-800;
+  font-family: "JetBrains Mono";
+  @apply text-sm px-3 pt-1 border rounded-t-lg bg-[#1C1C1C]  text-gray-300 border-gray-800;
 }
 
 .prose :where(pre):not(:where([class~="not-prose"] *)) {

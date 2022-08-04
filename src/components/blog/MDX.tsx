@@ -100,7 +100,10 @@ const CodeBlock: FC<{
           {copied ? <BsCheck2 /> : <FiClipboard />}
         </button>
       )}
-      <pre style={{ fontFamily: "JetBrains Mono" }} className="overflow-auto">
+      <pre
+        style={{ fontFamily: "JetBrains Mono" }}
+        className="overflow-auto rounded-b-md"
+      >
         <code>{children}</code>
       </pre>
     </div>
