@@ -1,7 +1,14 @@
-code[class*='language-'],
-pre[class*='language-'] {
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMonoRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+code,
+pre {
   @apply w-full overflow-auto;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: "JetBrains Mono";
   text-align: left;
   word-spacing: normal;
   word-break: normal;
@@ -42,11 +49,11 @@ pre .highlight-word.on {
   @apply transition bg-opacity-0 text-primary-400;
 } */
 
-.highlight-line[data-highlighted='true'] {
+.highlight-line[data-highlighted="true"] {
   @apply block px-1.5 transition bg-teal-400 border-l-4 border-teal-400 bg-opacity-10;
 }
 
-.highlight-line[data-highlighted='false'] {
+.highlight-line[data-highlighted="false"] {
   @apply ml-2.5;
 }
 
@@ -54,43 +61,43 @@ pre .highlight-word.on {
   @apply relative;
 }
 
-pre[class*='language-']::-moz-selection,
-pre[class*='language-'] ::-moz-selection,
-code[class*='language-']::-moz-selection,
-code[class*='language-'] ::-moz-selection {
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
   text-shadow: none;
   background: rgba(29, 59, 83, 0.99);
 }
 
-pre[class*='language-']::selection,
-pre[class*='language-'] ::selection,
-code[class*='language-']::selection,
-code[class*='language-'] ::selection {
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
   text-shadow: none;
   background: rgba(29, 59, 83, 0.99);
 }
 
 @media print {
-  code[class*='language-'],
-  pre[class*='language-'] {
+  code[class*="language-"],
+  pre[class*="language-"] {
     text-shadow: none;
   }
 }
 
 /* Code blocks */
-pre[class*='language-'] {
+pre[class*="language-"] {
   padding: 0;
   overflow: auto;
   overflow-y: visible;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   color: white;
   background: #011627;
 }
 
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em;
   white-space: normal;
 }
@@ -182,10 +189,10 @@ pre[class*='language-'] {
   font-style: italic;
 }
 
-pre[data-show-numbers='true'] .highlight-line:before {
+pre[data-show-numbers="true"] .highlight-line:before {
   @apply relative pr-3 text-gray-600;
   content: attr(data-line);
-  position: 'absolute';
+  position: "absolute";
   left: 0;
   top: 0;
 }
@@ -198,6 +205,6 @@ div.rehype-code-title {
   @apply px-3 pt-1 border rounded-t-lg bg-[#1C1C1C]  text-gray-300 border-gray-800;
 }
 
-.prose :where(pre):not(:where([class~='not-prose'] *)) {
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
   padding: 0.5em !important;
 }

@@ -5,7 +5,6 @@ import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
 
 import type { AppRouter } from "~/server/router";
-import Wrapper from "~/components/Wrapper";
 import "~/styles/globals.css";
 
 const MyApp = ({

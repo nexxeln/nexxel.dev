@@ -1,15 +1,15 @@
-import NextLink from 'next/link';
-import NextImage, { ImageProps } from 'next/image';
-import { FC, ReactNode, useRef, useState } from 'react';
-import { FiClipboard } from 'react-icons/fi';
-import { BsCheck2 } from 'react-icons/bs';
+import NextLink from "next/link";
+import NextImage, { ImageProps } from "next/image";
+import { FC, ReactNode, useRef, useState } from "react";
+import { FiClipboard } from "react-icons/fi";
+import { BsCheck2 } from "react-icons/bs";
 
 const Link: FC<{ href: string; children: ReactNode }> = ({
   href,
   children,
   ...props
 }) => {
-  const isInternal = href && (href.startsWith('/') || href.startsWith('#'));
+  const isInternal = href && (href.startsWith("/") || href.startsWith("#"));
 
   if (isInternal) {
     return (
@@ -92,15 +92,15 @@ const CodeBlock: FC<{
           type="button"
           className={`absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33] ${
             copied
-              ? 'focus:border-green-500 border-green-400 text-green-400'
-              : 'border-gray-400 text-gray-400'
+              ? "focus:border-green-500 border-green-400 text-green-400"
+              : "border-gray-400 text-gray-400"
           }`}
           onClick={onCopy}
         >
           {copied ? <BsCheck2 /> : <FiClipboard />}
         </button>
       )}
-      <pre>
+      <pre style={{ fontFamily: "JetBrains Mono" }} className="overflow-auto">
         <code>{children}</code>
       </pre>
     </div>
