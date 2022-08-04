@@ -43,123 +43,117 @@ pre .highlight-word.on {
   @apply relative;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: rgba(29, 59, 83, 0.99);
-}
+/**
+ * Nord Theme Originally by Arctic Ice Studio
+ * https://nordtheme.com
+ *
+ * Ported for PrismJS by Zane Hitchcoxc (@zwhitchcox) and Gabriel Ramos (@gabrieluizramos)
+ */
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: rgba(29, 59, 83, 0.99);
-}
-
-@media print {
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none;
-  }
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  background: none;
+  font-family: "Fira Code", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
 /* Code blocks */
 pre[class*="language-"] {
-  padding: 0;
+  padding: 1em;
+  margin: 0.5em 0;
   overflow: auto;
-  overflow-y: visible;
+  border-radius: 0.3em;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  color: white;
-  background: #011627;
+  background: #2e3440;
 }
 
+/* Inline code */
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
+  border-radius: 0.3em;
   white-space: normal;
 }
 
 .token.comment,
 .token.prolog,
+.token.doctype,
 .token.cdata {
-  color: rgb(99, 119, 119);
-  font-style: italic;
+  color: #636f88;
 }
 
 .token.punctuation {
-  color: rgb(199, 146, 234);
+  color: #81a1c1;
 }
 
 .namespace {
-  color: rgb(178, 204, 214);
+  opacity: 0.7;
 }
 
-.token.deleted {
-  color: rgba(239, 83, 80, 0.56);
-  font-style: italic;
-}
-
-.token.symbol,
-.token.property {
-  color: rgb(128, 203, 196);
-}
-
+.token.property,
 .token.tag,
-.token.operator,
-.token.keyword {
-  color: rgb(127, 219, 202);
-}
-
-.token.boolean {
-  color: rgb(255, 88, 116);
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #81a1c1;
 }
 
 .token.number {
-  color: rgb(247, 140, 108);
+  color: #b48ead;
 }
 
-.token.constant,
-.token.function,
-.token.builtin,
-.token.char {
-  color: rgb(130, 170, 255);
+.token.boolean {
+  color: #81a1c1;
 }
 
 .token.selector,
-.token.doctype {
-  color: rgb(199, 146, 234);
-  font-style: italic;
-}
-
 .token.attr-name,
-.token.inserted {
-  color: rgb(173, 219, 103);
-  font-style: italic;
-}
-
 .token.string,
-.token.url,
-.token.entity,
-.language-css .token.string,
-.style .token.string {
-  color: rgb(173, 219, 103);
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #a3be8c;
 }
 
-.token.class-name,
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #81a1c1;
+}
+
 .token.atrule,
-.token.attr-value {
-  color: rgb(255, 203, 139);
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #88c0d0;
+}
+
+.token.keyword {
+  color: #81a1c1;
 }
 
 .token.regex,
-.token.important,
-.token.variable {
-  color: rgb(214, 222, 235);
+.token.important {
+  color: #ebcb8b;
 }
 
 .token.important,
@@ -169,6 +163,10 @@ pre[class*="language-"] {
 
 .token.italic {
   font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
 }
 
 pre[data-show-numbers="true"] .highlight-line:before {
@@ -181,12 +179,12 @@ pre[data-show-numbers="true"] .highlight-line:before {
 
 div.rehype-code-title + pre {
   font-family: "JetBrains Mono";
-  @apply text-sm px-3 pt-1 py-1.5 md:text-lg md:py-2.5 border rounded-t-none bg-[#1C1C1C]  border-gray-800;
+  @apply text-sm px-3 pt-1 py-1.5 md:text-lg md:py-2.5 border rounded-t-none bg-[#1C1C1C]  border-t-pink border-opacity-30;
 }
 
 div.rehype-code-title {
   font-family: "JetBrains Mono";
-  @apply text-sm px-3 pt-1 border rounded-t-lg bg-[#1C1C1C]  text-gray-300 border-gray-800;
+  @apply text-sm px-3 pt-1 border-t border-r border-l rounded-t-lg bg-[#1C1C1C]  text-gray-300 border-r-t-pink border-l-t-pink border-t-t-pink border-opacity-30;
 }
 
 .prose :where(pre):not(:where([class~="not-prose"] *)) {
