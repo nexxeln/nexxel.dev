@@ -42,12 +42,12 @@ body {
   }
 
   .prose .icon-link:after {
-    @apply pr-2 text-indigo-400;
+    @apply pr-2 opacity-80 text-t-purple;
     content: "#";
   }
 
   .prose *:hover > .icon-link:after {
-    @apply text-gray-700 opacity-100;
+    @apply transition-opacity opacity-100;
   }
 
   .prose *:hover > .icon-link {
@@ -75,4 +75,18 @@ body {
   .prose .anchor {
     text-decoration: none;
   }
+
+  .prose :not(pre) > code {
+    @apply p-1 text-sm font-normal border rounded bg-zinc-900 border-zinc-800 text-neutral-300;
+    font-family: "JetBrains Mono";
+  }
+
+  .prose :not(pre) > code::after,
+  .prose :not(pre) > code::before {
+    content: none;
+  }
+  /* 
+  .prose :not(pre) > code::before {
+    content: none;
+  } */
 }

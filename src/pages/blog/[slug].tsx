@@ -48,7 +48,7 @@ const PostLayout = ({ post }: { post: Post }) => {
           </time>
         </div>
 
-        <main className="px-2 prose prose-lg prose-indigo prose-a:text-indigo-400 prose-invert">
+        <main className="px-2 prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
           <MDXContent components={Components} />
         </main>
       </article>
