@@ -33,6 +33,7 @@ specifiers:
   react-dom: 18.2.0
   react-icons: ^4.4.0
   react-query: ^3.39.2
+  reading-time: ^1.5.0
   refractor: ^4.7.0
   rehype-autolink-headings: ^6.1.1
   rehype-code-titles: ^1.1.0
@@ -67,6 +68,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.4.0_react@18.2.0
   react-query: 3.39.2_biqbaboplfbrettd7655fr4n2y
+  reading-time: 1.5.0
   rehype-autolink-headings: 6.1.1
   rehype-code-titles: 1.1.0
   rehype-prism: 2.1.3_unified@10.1.2
@@ -3965,6 +3967,10 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+
+  /reading-time/1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
+    dev: false
 
   /refractor/4.7.0:
     resolution: {integrity: sha512-X3JUDE7nq1csWs7Etg5v7hW10RzF4lYesEn/KDbllocj0itZrs3paO2ZEgYUXrlgXzY3IN+eDRByyIvzcfF9Tg==}

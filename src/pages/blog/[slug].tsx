@@ -3,9 +3,12 @@ import { format, parseISO } from "date-fns";
 import { GetStaticProps } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Head from "next/head";
-import Link from "next/link";
+
 import BlogWrapper from "~/components/blog/BlogWrapper";
 import Components from "~/components/blog/MDX";
+import { BiTimeFive } from "react-icons/bi";
+import { FiEdit2 } from "react-icons/fi";
+import readingTime from "reading-time";
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -33,22 +36,26 @@ const PostLayout = ({ post }: { post: Post }) => {
       <Head>
         <title>{post.title}</title>
       </Head>
-      <article>
-        <div className="mb-6 text-center">
-          <Link href="/">
-            <a className="text-sm font-bold text-center text-indigo-400 uppercase">
-              Home
-            </a>
-          </Link>
-        </div>
-        <div className="mb-6 text-center">
-          <h1 className="mb-1 text-3xl font-bold">{post.title}</h1>
-          <time dateTime={post.date} className="text-sm text-slate-600">
-            {format(parseISO(post.date), "LLLL d, yyyy")}
-          </time>
+      <article className="px-2 pt-16">
+        <h1 className="text-4xl font-bold text-center bold-text">
+          {post.title}
+        </h1>
+        <div className="pt-4 text-center">
+          <div className="flex items-center gap-2">
+            <FiEdit2 />
+            <time dateTime={post.date} className="text-slate-200">
+              {format(parseISO(post.date), "LLLL d, yyyy")}
+            </time>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <BiTimeFive /> {readingTime(post.body.code).text}
+          </div>
         </div>
 
-        <main className="px-2 prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
+        <div className="pt-12" />
+
+        <main className="prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
           <MDXContent components={Components} />
         </main>
       </article>
