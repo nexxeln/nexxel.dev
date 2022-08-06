@@ -1,36 +1,41 @@
-import { defineDocumentType, makeSource } from 'contentlayer/source-files';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeCodeTitles from 'rehype-code-titles';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
-import { highlight, meta } from './src/utils/rehype';
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+import { highlight, meta } from "./src/utils/rehype";
 
 export const Post = defineDocumentType(() => ({
-  name: 'Post',
-  contentType: 'mdx',
+  name: "Post",
+  contentType: "mdx",
   filePathPattern: `**/*.mdx`,
   fields: {
     title: {
-      type: 'string',
-      description: 'The title of the post',
+      type: "string",
+      description: "The title of the post",
+      required: true,
+    },
+    description: {
+      type: "string",
+      description: "The description of the post",
       required: true,
     },
     date: {
-      type: 'date',
-      description: 'The date of the post',
+      type: "date",
+      description: "The date of the post",
       required: true,
     },
   },
   computedFields: {
     url: {
-      type: 'string',
+      type: "string",
       resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
   },
 }));
 
 const source = makeSource({
-  contentDirPath: 'content',
+  contentDirPath: "content",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -44,7 +49,7 @@ const source = makeSource({
         [
           {
             properties: {
-              className: ['anchor'],
+              className: ["anchor"],
             },
           },
         ],

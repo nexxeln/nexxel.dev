@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
+import Wrapper from "~/components/Wrapper";
+import readingTime from "reading-time";
 
 export async function getStaticProps() {
   const posts = allPosts.sort((a, b) => {
@@ -12,31 +14,40 @@ export async function getStaticProps() {
 
 function PostCard(post: Post) {
   return (
-    <div className="mb-6">
-      <time dateTime={post.date} className="block text-sm text-slate-600">
-        {format(parseISO(post.date), "LLLL d, yyyy")}
-      </time>
-      <h2 className="text-lg">
-        <Link href={post.url}>
-          <a className="text-blue-700 hover:text-blue-900">{post.title}</a>
-        </Link>
-      </h2>
-    </div>
+    <Link href={post.url}>
+      <div className="p-4 mb-6 rounded-lg cursor-pointer hover:bg-zinc-800">
+        <h2 className="text-lg">
+          <a className="text-2xl text-t-pink">{post.title}</a>
+        </h2>
+        <p className="pt-4 text-slate-200">{post.description}</p>
+
+        <div className="flex items-center gap-2 pt-4 text-sm text-slate-300">
+          <time dateTime={post.date}>
+            {format(parseISO(post.date), "LLLL d, yyyy")}
+          </time>
+          <span>•</span>
+          <span>{readingTime(post.body.code).text}</span>
+        </div>
+      </div>
+    </Link>
   );
 }
 
-export default function Home({ posts }: { posts: Post[] }) {
+const Blog = ({ posts }: { posts: Post[] }) => {
   return (
-    <div className="max-w-2xl py-16 mx-auto text-center">
-      <Head>
-        <title>Contentlayer Blog Example</title>
-      </Head>
-
-      <h1 className="mb-8 text-3xl font-bold">Contentlayer Blog Example</h1>
-
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
-      ))}
-    </div>
+    <Wrapper>
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">Blog</h1>
+      <p className="pt-1 text-slate-200">
+        Here I write about coding and tech I like. You can expect articles on
+        new tech I explore and web development.
+      </p>
+      <div className="max-w-2xl py-16 mx-auto">
+        {posts.map((post, idx) => (
+          <PostCard key={idx} {...post} />
+        ))}
+      </div>
+    </Wrapper>
   );
-}
+};
+
+export default Blog;
