@@ -5,23 +5,23 @@ import { allPosts, Post } from "contentlayer/generated";
 import Wrapper from "~/components/Wrapper";
 import readingTime from "reading-time";
 
-export async function getStaticProps() {
+export const getStaticProps = () => {
   const posts = allPosts.sort((a, b) => {
     return compareDesc(new Date(a.date), new Date(b.date));
   });
   return { props: { posts } };
-}
+};
 
-function PostCard(post: Post) {
+const PostCard = (post: Post) => {
   return (
     <Link href={post.url}>
-      <div className="p-4 mb-6 rounded-lg cursor-pointer hover:bg-zinc-800">
+      <div className="p-4 mb-6 transition-all duration-300 rounded-lg cursor-pointer hover:bg-zinc-800">
         <h2 className="text-lg">
           <a className="text-2xl text-t-pink">{post.title}</a>
         </h2>
         <p className="pt-4 text-slate-200">{post.description}</p>
 
-        <div className="flex items-center gap-2 pt-4 text-sm text-slate-300">
+        <div className="flex items-center gap-2 pt-4 text-sm text-">
           <time dateTime={post.date}>
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
@@ -31,7 +31,7 @@ function PostCard(post: Post) {
       </div>
     </Link>
   );
-}
+};
 
 const Blog = ({ posts }: { posts: Post[] }) => {
   return (
