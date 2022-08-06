@@ -9,6 +9,7 @@ import Components from "~/components/blog/MDX";
 import { BiTimeFive } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
 import readingTime from "reading-time";
+import Wrapper from "~/components/Wrapper";
 
 export async function getStaticPaths() {
   const paths = allPosts.map((post) => post.url);
@@ -32,15 +33,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const PostLayout = ({ post }: { post: Post }) => {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <BlogWrapper>
+    <Wrapper>
       <Head>
         <title>{post.title}</title>
       </Head>
       <article className="px-2 pt-16">
-        <h1 className="text-4xl font-bold text-center bold-text">
-          {post.title}
-        </h1>
-        <div className="pt-4 text-center">
+        <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
+        <div className="pt-4">
           <div className="flex items-center gap-2">
             <FiEdit2 />
             <time dateTime={post.date} className="text-slate-200">
@@ -59,7 +58,7 @@ const PostLayout = ({ post }: { post: Post }) => {
           <MDXContent components={Components} />
         </main>
       </article>
-    </BlogWrapper>
+    </Wrapper>
   );
 };
 
