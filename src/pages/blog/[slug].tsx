@@ -4,7 +4,6 @@ import { GetStaticProps } from "next";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Head from "next/head";
 
-import BlogWrapper from "~/components/blog/BlogWrapper";
 import Components from "~/components/blog/MDX";
 import { BiTimeFive } from "react-icons/bi";
 import { FiEdit2 } from "react-icons/fi";
