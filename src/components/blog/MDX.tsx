@@ -3,6 +3,7 @@ import NextImage, { ImageProps } from "next/image";
 import { FC, ReactNode, useRef, useState } from "react";
 import { FiClipboard } from "react-icons/fi";
 import { BsCheck2 } from "react-icons/bs";
+import clsx from "clsx";
 
 const Link: FC<{ href: string; children: ReactNode }> = ({
   href,
@@ -66,11 +67,12 @@ const CodeBlock: FC<{
         <button
           aria-label="Copy code"
           type="button"
-          className={`absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33] ${
+          className={clsx(
+            "absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33]",
             copied
               ? "focus:border-t-orange border-t-orange text-t-orange"
-              : "border-gray-400 text-gray-400"
-          }`}
+              : "border-slate-300 text-slate-300"
+          )}
           onClick={onCopy}
         >
           {copied ? <BsCheck2 /> : <FiClipboard />}
