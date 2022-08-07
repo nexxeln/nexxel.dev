@@ -17,7 +17,10 @@ const Wrapper: FC<{
         <title>{title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={description} name="description" />
-        <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
+        <meta
+          property="og:url"
+          content={`https://nexxel.dev${router.asPath}`}
+        />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Shoubhit Dash" />
         <meta name="theme-color" content="#fabec0" />
