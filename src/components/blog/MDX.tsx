@@ -71,7 +71,7 @@ const CodeBlock: FC<{
             "absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33]",
             copied
               ? "focus:border-t-orange border-t-orange text-t-orange"
-              : "border-slate-300 text-slate-300"
+              : "border-gray-400 text-gray-400"
           )}
           onClick={onCopy}
         >
