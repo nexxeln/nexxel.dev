@@ -106,8 +106,8 @@ const FAQPage = () => {
         <CustomQna question="What VSCode theme do you use?">
           <p>
             <Link
-              to="https://marketplace.visualstudio.com/items?itemName=Luaa.carbon-theme"
-              text="Carbon Theme"
+              to="https://marketplace.visualstudio.com/items?itemName=wheredoesyourmindgo.gruvbox-concoctis"
+              text="Gruvbox Concoctis"
             />
             .
           </p>
