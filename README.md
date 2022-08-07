@@ -26,7 +26,7 @@
 
 ## Running Locally
 
-This application requires Node.js.
+This application requires Node.js to run.
 
 ```bash
 git clone https://github.com/nexxeln/nexxel.dev.git
@@ -41,3 +41,10 @@ Create a `.env` file similar to [`.env.example`](https://github.com/nexxeln/nexx
 ## Cloning / Forking
 
 This application is licensed under the [Apache-2.0](https://github.com/nexxeln/nexxel.dev/blob/main/LICENSE) license. If you're copying this website just let me know.
+
+## Credits
+
+- [Sid](https://github.com/sidwebworks) for helping with setting up the blog and listening to my CSS troubles.
+- [Theo Browne](https://t3.gg/) for gifting the nice [nxl.sh](https://nxl.sh) domain.
+- [Lee Robinson](https://leerob.io/) for inspiration and the README.
+- [Harsh Singh](https://github.com/harshhhdev) for helping with some of the MDX components.
