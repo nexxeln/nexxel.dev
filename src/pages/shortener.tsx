@@ -19,7 +19,7 @@ const ShortenerPage = () => {
 
         <div className="pt-8" />
 
-        <Shortener origin={"new.nexxel.dev"} />
+        <Shortener origin={"nexxel.dev"} />
       </div>
     </Wrapper>
   );
