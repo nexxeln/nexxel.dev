@@ -43,7 +43,10 @@ const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
 
 const FAQPage = () => {
   return (
-    <Wrapper>
+    <Wrapper
+      title="nexxel • faq"
+      description="Questions frequently asked to me"
+    >
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">FAQ</h1>
       <p className="pt-1 text-slate-200">
         These are some questions that are asked to me pretty frequently, so I

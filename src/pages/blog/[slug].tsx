@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 const PostLayout = ({ post }: { post: Post }) => {
   const MDXContent = useMDXComponent(post.body.code);
   return (
-    <Wrapper>
+    <Wrapper title={post.title} description={post.description}>
       <Head>
         <title>{post.title}</title>
       </Head>

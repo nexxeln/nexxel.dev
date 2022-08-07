@@ -4,7 +4,10 @@ import Wrapper from "~/components/Wrapper";
 
 const ShortenerPage = () => {
   return (
-    <Wrapper>
+    <Wrapper
+      title="nexxel • shortener"
+      description="Use my domain to shorten your links"
+    >
       <div className="items-start">
         <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
           Shortener

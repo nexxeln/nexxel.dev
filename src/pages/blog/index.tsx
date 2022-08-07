@@ -34,11 +34,14 @@ const PostCard = (post: Post) => {
 
 const Blog = ({ posts }: { posts: Post[] }) => {
   return (
-    <Wrapper>
+    <Wrapper
+      title="nexxel • blog"
+      description="Writings on programming and tech"
+    >
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">Blog</h1>
       <p className="pt-1 text-slate-200">
-        Here I write about coding and tech I like. You can expect articles on
-        new tech I explore and web development.
+        Here I write about proramming and tech I like. You can expect writings
+        on new tech I explore and web development.
       </p>
       <div className="max-w-2xl pt-16 mx-auto">
         {posts.map((post, idx) => (
