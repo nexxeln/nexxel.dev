@@ -4,9 +4,9 @@ import Navbar from "./Navbar";
 
 const Wrapper: FC<{ children: ReactNode }> = ({ children }) => {
   return (
-    <div className="flex flex-col items-center h-screen mx-6 md:mx-auto md:w-4/5 lg:w-2/5">
+    <div className="items-center h-screen mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5">
       <div className="pt-10" />
-      <div className="px-5">
+      <div className="md:px-5">
         <Navbar />
       </div>
 
