@@ -32,7 +32,7 @@ const Wrapper: FC<{
 
       <div className="items-center h-screen mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5">
         <div className="pt-10" />
-        <div className="md:px-5">
+        <div className="px-2 md:px-5">
           <Navbar />
         </div>
 
