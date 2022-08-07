@@ -4,6 +4,7 @@ import jsx from "refractor/lang/jsx.js";
 import md from "refractor/lang/markdown.js";
 import shell from "refractor/lang/shell-session.js";
 import tsx from "refractor/lang/tsx.js";
+import go from "refractor/lang/go";
 import { visit } from "unist-util-visit";
 
 import { refractor } from "refractor";
@@ -13,6 +14,7 @@ refractor.register(md);
 refractor.register(css);
 refractor.register(jsx);
 refractor.register(shell);
+refractor.register(go);
 
 const highlight = () => {
   return (tree: any) => {
@@ -20,19 +22,21 @@ const highlight = () => {
   };
 
   function visitor(node: any, _index: any, parentNode: any) {
-    if (parentNode.tagName === "pre" && node.tagName === "code") {
-      const first = node.properties.className;
-      // syntax highlight
-      let lang = first[0]?.split("-")[1] || "md";
-
-      if (lang.includes(":")) {
-        lang = lang.split(":")[0];
-      }
-
-      let result = refractor.highlight(toString(node), lang);
-
-      node = Object.assign(node, result);
+    if (parentNode.tagName !== "pre" && node.tagName !== "code") {
+      return;
     }
+
+    const first = node.properties.className;
+    // syntax highlight
+    let lang = first[0]?.split("-")[1] || "md";
+
+    if (lang.includes(":")) {
+      lang = lang.split(":")[0];
+    }
+
+    let result = refractor.highlight(toString(node), lang);
+
+    node = Object.assign(node, result);
   }
 };
 
