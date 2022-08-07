@@ -87,6 +87,7 @@ const CodeBlock: FC<{
 };
 
 const Components = {
+  a: Link,
   pre: CodeBlock,
   Image,
 };
