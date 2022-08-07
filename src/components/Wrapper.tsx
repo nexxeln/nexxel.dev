@@ -20,6 +20,7 @@ const Wrapper: FC<{
         <meta property="og:url" content={`https://leerob.io${router.asPath}`} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Shoubhit Dash" />
+        <meta name="theme-color" content="#f4cfdf" />
         <meta property="og:description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:image" content="/images/banner.png" />
