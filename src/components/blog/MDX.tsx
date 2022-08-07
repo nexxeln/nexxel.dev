@@ -26,30 +26,6 @@ const Link: FC<{ href: string; children: ReactNode }> = ({
   );
 };
 
-const Header1: FC<{ id: string; children: ReactNode }> = ({ id, children }) => {
-  return (
-    <h1 id={id} className="ml-2 text-4xl">
-      <span className="text-3xl opacity-0 group-hover:opacity-100">#</span>
-      {children}
-    </h1>
-  );
-};
-
-const Header3: FC<{ id: string; children: ReactNode }> = ({ id, children }) => {
-  return (
-    <h3>
-      <a
-        href={`#${id}`}
-        className="flex items-center mt-4 mb-5 text-2xl group w-fit header no-outline"
-      >
-        <span id={id} className="ml-2 text-3xl">
-          {children}
-        </span>
-      </a>
-    </h3>
-  );
-};
-
 const Image: FC<{ alt: string; props: ImageProps }> = ({ alt, props }) => {
   return <NextImage alt={alt} layout="fill" {...props} priority />;
 };
