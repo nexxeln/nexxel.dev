@@ -40,7 +40,7 @@ const Blog = ({ posts }: { posts: Post[] }) => {
         Here I write about coding and tech I like. You can expect articles on
         new tech I explore and web development.
       </p>
-      <div className="max-w-2xl py-16 mx-auto">
+      <div className="max-w-2xl pt-16 mx-auto">
         {posts.map((post, idx) => (
           <PostCard key={idx} {...post} />
         ))}
