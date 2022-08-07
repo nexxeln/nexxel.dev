@@ -68,7 +68,7 @@ const CodeBlock: FC<{
           type="button"
           className={`absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33] ${
             copied
-              ? "focus:border-green-500 border-green-400 text-green-400"
+              ? "focus:border-t-orange border-t-orange text-t-orange"
               : "border-gray-400 text-gray-400"
           }`}
           onClick={onCopy}
