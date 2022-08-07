@@ -44,8 +44,8 @@ const Blog = ({ posts }: { posts: Post[] }) => {
         on new tech I explore and web development.
       </p>
       <div className="max-w-2xl pt-16 mx-auto">
-        {posts.map((post, idx) => (
-          <PostCard key={idx} {...post} />
+        {posts.map((post) => (
+          <PostCard key={post._id} {...post} />
         ))}
       </div>
     </Wrapper>
