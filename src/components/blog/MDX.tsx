@@ -15,7 +15,7 @@ const Link: FC<{ href: string; children: ReactNode }> = ({
   if (isInternal) {
     return (
       <NextLink href={href} {...props}>
-        {children}
+        <a>{children}</a>
       </NextLink>
     );
   }
