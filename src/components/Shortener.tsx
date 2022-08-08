@@ -135,7 +135,7 @@ const CreateLink = ({ origin }: { origin: string }) => {
         type="submit"
         value={createShortLink.status === "loading" ? "Creating" : "Create"}
         className={clsx(
-          "px-6 py-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white",
+          "px-6 py-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white umami--click--create-shortlink",
           createShortLink.status === "loading" ? "opacity-50" : ""
         )}
         disabled={checkSlug.isFetched && checkSlug.data!.used}
