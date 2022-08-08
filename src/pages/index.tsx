@@ -5,7 +5,7 @@ import Wrapper from "~/components/Wrapper";
 const Home: NextPage = () => {
   return (
     <Wrapper title="nexxel • home" description="17 yo self-taught developer">
-      <div className="flex flex-col items-center pt-32">
+      <div className="flex flex-col items-center h-screen pt-32">
         <Image
           src="/images/nexxel.webp"
           alt="nexxel's avatar"
