@@ -32,8 +32,12 @@ const HomePage: NextPage<{ pinnedRepos: PinnedRepo[] }> = ({ pinnedRepos }) => {
   return (
     <Wrapper title="nexxel • home" description="17 yo self-taught developer">
       <Hero />
+
       <div className="flex flex-col items-center justify-center">
-        <h1 className="self-start pb-6 text-4xl">Things I&apos;ve built</h1>
+        <h1 className="self-start pb-6 text-4xl font-bold bold-text">
+          Things I&apos;ve built
+        </h1>
+
         <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
           {pinnedRepos.map((project) => (
             <ProjectCard
