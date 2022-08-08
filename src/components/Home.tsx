@@ -46,23 +46,25 @@ const ProjectCard: FC<{
 }> = ({ url, repo, stars, forks, description, language, languageColor }) => {
   return (
     <a href={url} target="_blank" rel="noreferrer">
-      <div className="flex flex-col p-4 transition-colors duration-300 border-2 rounded-lg h-44 border-t-pink hover:bg-zinc-800 place-content-evenly">
+      <div className="flex flex-col p-4 transition-colors duration-300 border-2 rounded-lg h-40 border-t-pink hover:bg-zinc-800 bg-[#1c1c1c] place-content-evenly ">
         <div className="flex flex-col gap-1">
           <p className="text-xl text-t-pink">{repo}</p>
           <p className="text-sm">{description}</p>
         </div>
 
-        <div className="flex flex-col pt-4 text-sm">
-          <span className="flex items-center gap-1.5">
-            <FiStar /> {stars}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <BiGitRepoForked /> {forks}
-          </span>
+        <div className="flex flex-col pt-4 text-sm gap-0.5">
           <span className="flex items-center gap-1.5">
             <span style={{ color: languageColor }}>⬤</span>
             {language}
           </span>
+          <div className="flex gap-3">
+            <span className="flex items-center gap-1.5">
+              <FiStar /> {stars}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <BiGitRepoForked /> {forks}
+            </span>
+          </div>
         </div>
       </div>
     </a>
@@ -99,7 +101,7 @@ const Home = () => {
     <>
       <Hero />
       <div className="flex flex-col items-center justify-center">
-        <h1 className="self-start pb-6 text-4xl">Things I&apos;ve built:</h1>
+        <h1 className="self-start pb-6 text-4xl">Things I&apos;ve built</h1>
         <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
           {isError ? (
             <p className="flex items-center gap-1 text-xl text-t-red">
