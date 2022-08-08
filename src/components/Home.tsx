@@ -1,6 +1,6 @@
 import Image from "next/future/image";
 import { FC } from "react";
-import { FiStar } from "react-icons/fi";
+import { FiGithub, FiMail, FiStar } from "react-icons/fi";
 import { BiGitRepoForked } from "react-icons/bi";
 
 const ProjectCard: FC<{
@@ -59,6 +59,25 @@ const Hero = () => {
         Hi, I&apos;m Shoubhit. I&apos;m a 17 y/o self-taught developer and I
         like to build cool stuff
       </p>
+
+      <div className="flex items-center pt-4 text-xl">
+        <a
+          href="https://github.com/nexxeln/"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
+        >
+          <FiGithub />
+        </a>
+        <a
+          href="mailto:shoubhit2005@gmail.com"
+          target="_blank"
+          rel="noreferrer"
+          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
+        >
+          <FiMail />
+        </a>
+      </div>
     </div>
   );
 };
