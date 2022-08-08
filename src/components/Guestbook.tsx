@@ -10,7 +10,7 @@ const Signature: FC<{ name: string; message: string }> = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <h3 className="text-xl">{message}</h3>
+      <p className="text-xl">{message}</p>
       <p className="text-t-pink">- {name}</p>
     </div>
   );
