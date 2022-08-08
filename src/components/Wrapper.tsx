@@ -27,7 +27,7 @@ const BackToTop = () => {
               behavior: "smooth",
             });
           }}
-          className="fixed flex items-center justify-center p-5 text-xl transition-transform duration-200 border-2 rounded-full cursor-pointer hover:scale-110 bg-zinc-800 border-t-pink animate-fade-in-up text-t-pink bottom-8 right-20"
+          className="fixed flex items-center justify-center p-5 text-xl transition-transform duration-200 border-2 rounded-full cursor-pointer hover:scale-110 bg-zinc-800 border-t-pink animate-fade-in-up text-t-pink bottom-8 right-8"
         >
           <FiArrowUp size={24} />
         </div>
