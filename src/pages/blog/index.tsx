@@ -14,20 +14,20 @@ export const getStaticProps = () => {
 const PostCard = (post: Post) => {
   return (
     <Link href={post.url}>
-      <div className="p-4 mb-6 transition-all duration-300 rounded-lg cursor-pointer hover:bg-zinc-800">
-        <h2 className="text-lg">
-          <a className="text-2xl text-t-pink">{post.title}</a>
-        </h2>
-        <p className="pt-4 text-slate-200">{post.description}</p>
+      <a>
+        <div className="p-4 mb-6 transition-all duration-300 rounded-lg cursor-pointer hover:bg-zinc-800">
+          <h3 className="text-2xl text-t-pink">{post.title}</h3>
+          <p className="pt-4 text-slate-200">{post.description}</p>
 
-        <div className="flex items-center gap-2 pt-4 text-sm text-">
-          <time dateTime={post.date}>
-            {format(parseISO(post.date), "LLLL d, yyyy")}
-          </time>
-          <span>•</span>
-          <span>{readingTime(post.body.code).text}</span>
+          <div className="flex items-center gap-2 pt-4 text-sm text-">
+            <time dateTime={post.date}>
+              {format(parseISO(post.date), "LLLL d, yyyy")}
+            </time>
+            <span>•</span>
+            <span>{readingTime(post.body.code).text}</span>
+          </div>
         </div>
-      </div>
+      </a>
     </Link>
   );
 };
