@@ -31,7 +31,7 @@ const Navbar = () => {
   const links = ["home", "blog", "guestbook", "shortener", "FAQ"];
 
   return (
-    <nav className="flex items-center justify-between capitalize">
+    <nav className="flex items-center justify-between max-w-sm mx-auto capitalize">
       {links.map((link, index) => (
         <NavItem
           href={`/${link === "FAQ" ? "faq" : link}`}
