@@ -12,18 +12,9 @@ module.exports = {
       },
       animation: {
         "gradient-text": "gradient-text 5s ease infinite",
+        "fade-in-up": "fade-in-up 0.5s ease-out",
       },
       keyframes: {
-        "focus-in": {
-          "0%": {
-            filter: "blur(12px)",
-            opacity: "0",
-          },
-          to: {
-            filter: "blur(0)",
-            opacity: "1",
-          },
-        },
         "gradient-text": {
           "0%, 100%": {
             "background-size": "200% 200%",
@@ -32,6 +23,16 @@ module.exports = {
           "50%": {
             "background-size": "200% 200%",
             "background-position": "right center",
+          },
+        },
+        "fade-in-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
           },
         },
       },

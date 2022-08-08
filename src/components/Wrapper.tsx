@@ -1,8 +1,40 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useEffect, useState } from "react";
+import { FiArrowUp } from "react-icons/fi";
 
 import Navbar from "./Navbar";
+
+const BackToTop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      setIsVisible(window.pageYOffset > 200);
+    };
+
+    addEventListener("scroll", toggleVisibility);
+    return () => removeEventListener("scroll", toggleVisibility);
+  });
+
+  return (
+    <>
+      {isVisible && (
+        <div
+          onClick={() => {
+            scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }}
+          className="fixed flex items-center justify-center p-5 text-xl transition-transform duration-200 border-2 rounded-full cursor-pointer hover:scale-110 bg-zinc-800 border-t-pink animate-fade-in-up text-t-pink bottom-8 right-20"
+        >
+          <FiArrowUp size={24} />
+        </div>
+      )}
+    </>
+  );
+};
 
 const Wrapper: FC<{
   title: string;
@@ -42,6 +74,7 @@ const Wrapper: FC<{
         <main id="main" className="">
           {children}
           <div className="pb-8" />
+          <BackToTop />
         </main>
       </div>
     </>
