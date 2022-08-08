@@ -13,6 +13,7 @@ module.exports = {
       animation: {
         "gradient-text": "gradient-text 5s ease infinite",
         "fade-in-up": "fade-in-up 0.5s ease-out",
+        // "fade-in-up-2": "fade-in-up 2s ease-out"
       },
       keyframes: {
         "gradient-text": {
