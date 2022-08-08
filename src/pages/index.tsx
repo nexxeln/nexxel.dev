@@ -11,6 +11,7 @@ const Home: NextPage = () => {
           alt="nexxel's avatar"
           width={165}
           height={165}
+          priority
           className="rounded-full animate-focus-in"
         />
 
