@@ -1,4 +1,66 @@
 import Image from "next/future/image";
+import { FC } from "react";
+import { FiStar } from "react-icons/fi";
+import { BiGitRepoForked } from "react-icons/bi";
+import { useQuery } from "react-query";
+
+type PinnedRepo = {
+  owner: string;
+  repo: string;
+  description: string;
+  language: string;
+  languageColor: string;
+  stars: string;
+  forks: string;
+};
+
+const useGithubPinnedRepos = (user: string) => {
+  const response = useQuery<PinnedRepo[], Error>("pinnedRepos", () => {
+    return fetch(`https://gh-pinned-repos.egoist.sh/?username=${user}`).then(
+      (res) => res.json()
+    );
+  });
+
+  return {
+    ...response,
+    data: response.data?.map((repo) => {
+      const data: PinnedRepo & { url: string } = {
+        ...repo,
+        url: `https://github.com/${repo.owner}/${repo.repo}`,
+      };
+
+      return data;
+    }),
+  };
+};
+
+const ProjectCard: FC<{
+  url: string;
+  repo: string;
+  description: string;
+  stars: string;
+  forks: string;
+}> = ({ url, repo, stars, forks, description }) => {
+  return (
+    <a href={url} target="_blank" rel="noreferrer">
+      <div className="flex flex-col p-4 transition-colors duration-300 border-2 rounded-lg h-44 border-t-pink hover:bg-zinc-800 place-content-evenly">
+        <div className="flex flex-col gap-1">
+          <p className="text-xl text-t-pink">{repo}</p>
+          <p className="text-sm">{description}</p>
+        </div>
+
+        <div className="flex flex-col">
+          <span className="flex items-center gap-1">
+            <FiStar /> {stars}
+          </span>
+          <span className="flex items-center gap-1">
+            <BiGitRepoForked /> {forks}
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+};
 
 const Hero = () => {
   return (
@@ -25,7 +87,27 @@ const Hero = () => {
 };
 
 const Home = () => {
-  return <Hero />;
+  const { data: projects } = useGithubPinnedRepos("nexxeln");
+  return (
+    <>
+      <Hero />
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="self-start pb-6 text-3xl">Things I&apos;ve built:</h1>
+        <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
+          {projects?.map((project) => (
+            <ProjectCard
+              key={project.repo}
+              repo={project.repo}
+              forks={project.forks}
+              url={project.url}
+              stars={project.stars}
+              description={project.description}
+            />
+          ))}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Home;
