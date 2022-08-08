@@ -1,5 +1,6 @@
 // src/pages/_app.tsx
 import { AppProps } from "next/app";
+import Head from "next/head"
 import { withTRPC } from "@trpc/next";
 import superjson from "superjson";
 import { SessionProvider } from "next-auth/react";
@@ -13,6 +14,14 @@ const MyApp = ({
 }: AppProps) => {
   return (
     <>
+      <Head>
+        <script 
+          async 
+          defer 
+          data-website-id="e75c2880-663f-4d11-9f53-6a4ed27b9000" 
+          src="https://umami.nxl.sh/umami.js">
+        </script>
+      </Head>
       <SessionProvider session={session}>
         <Component {...pageProps} />
       </SessionProvider>
