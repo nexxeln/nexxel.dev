@@ -2,38 +2,6 @@ import Image from "next/future/image";
 import { FC } from "react";
 import { FiStar } from "react-icons/fi";
 import { BiGitRepoForked } from "react-icons/bi";
-import { IoIosWarning } from "react-icons/io";
-import { useQuery } from "react-query";
-
-type PinnedRepo = {
-  owner: string;
-  repo: string;
-  description: string;
-  language: string;
-  languageColor: string;
-  stars: string;
-  forks: string;
-};
-
-const useGithubPinnedRepos = (user: string) => {
-  const response = useQuery<PinnedRepo[], Error>("pinnedRepos", () => {
-    return fetch(`https://gh-pinned-repos.egoist.sh/?username=${user}`).then(
-      (res) => res.json()
-    );
-  });
-
-  return {
-    ...response,
-    data: response.data?.map((repo) => {
-      const data: PinnedRepo & { url: string } = {
-        ...repo,
-        url: `https://github.com/${repo.owner}/${repo.repo}`,
-      };
-
-      return data;
-    }),
-  };
-};
 
 const ProjectCard: FC<{
   url: string;
@@ -95,36 +63,4 @@ const Hero = () => {
   );
 };
 
-const Home = () => {
-  const { data: projects, isError } = useGithubPinnedRepos("nexxeln");
-  return (
-    <>
-      <Hero />
-      <div className="flex flex-col items-center justify-center">
-        <h1 className="self-start pb-6 text-4xl">Things I&apos;ve built</h1>
-        <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
-          {isError ? (
-            <p className="flex items-center gap-1 text-xl text-t-red">
-              <IoIosWarning /> Error fetching repos
-            </p>
-          ) : (
-            projects?.map((project) => (
-              <ProjectCard
-                key={project.repo}
-                repo={project.repo}
-                forks={project.forks}
-                url={project.url}
-                stars={project.stars}
-                description={project.description}
-                language={project.language}
-                languageColor={project.languageColor}
-              />
-            ))
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Home;
+export { Hero, ProjectCard };
