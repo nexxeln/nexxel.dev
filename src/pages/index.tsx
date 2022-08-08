@@ -12,7 +12,7 @@ const Home: NextPage = () => {
           width={165}
           height={165}
           priority
-          className="rounded-full animate-focus-in"
+          className="rounded-full"
         />
 
         <h1 className="pt-2 text-5xl font-bold text-center text-transparent bold-text bg-clip-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange animate-gradient-text">
