@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.3",
@@ -37,6 +38,7 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^12.2.4",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
     "@types/debounce": "^1.2.1",
