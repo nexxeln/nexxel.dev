@@ -3,7 +3,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <footer>
-      <p className="px-4 py-24 md:text-base">
+      <p className="px-4 pt-24 pb-6 md:text-base">
         This website is open source on{" "}
         <a
           href="https://github.com/nexxeln/nexxel.dev"
