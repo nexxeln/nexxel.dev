@@ -1,6 +1,10 @@
+import { allPosts, Post } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
 import type { GetStaticProps, NextPage } from "next";
+import Link from "next/link";
+import { FiArrowRight } from "react-icons/fi";
 
-import { Hero, ProjectCard } from "~/components/Home";
+import { FeaturedPost, Hero, ProjectCard } from "~/components/Home";
 import Wrapper from "~/components/Wrapper";
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -10,9 +14,16 @@ export const getStaticProps: GetStaticProps = async () => {
     return await response.json();
   });
 
+  const latestPosts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    })
+    .slice(0, 4);
+
   return {
     props: {
       pinnedRepos,
+      latestPosts,
     },
     revalidate: 3600,
   };
@@ -28,15 +39,19 @@ type PinnedRepo = {
   forks: string;
 };
 
-const HomePage: NextPage<{ pinnedRepos: PinnedRepo[] }> = ({ pinnedRepos }) => {
+const HomePage: NextPage<{
+  pinnedRepos: PinnedRepo[];
+  latestPosts: Post[];
+}> = ({ pinnedRepos, latestPosts }) => {
+  console.log(latestPosts);
   return (
     <Wrapper title="nexxel • home" description="17 yo self-taught developer">
       <Hero />
 
       <div className="flex flex-col items-center justify-center">
-        <h1 className="self-start pb-6 text-4xl font-bold bold-text">
+        <h3 className="self-start pb-6 text-4xl font-bold bold-text">
           Things I&apos;ve built
-        </h1>
+        </h3>
 
         <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
           {pinnedRepos.map((project) => (
@@ -52,6 +67,26 @@ const HomePage: NextPage<{ pinnedRepos: PinnedRepo[] }> = ({ pinnedRepos }) => {
             />
           ))}
         </div>
+      </div>
+
+      <div className="pt-32" />
+      <div className="flex flex-col">
+        <h3 className="pb-6 text-4xl font-bold bold-text">From the blog</h3>
+
+        <div className="flex flex-col gap-1">
+          {latestPosts.map((post) => (
+            <FeaturedPost key={post._id} {...post} />
+          ))}
+        </div>
+
+        <Link href="/blog">
+          <a>
+            <p className="flex items-center gap-1 pt-4 pl-4 text-lg transition-opacity duration-300 opacity-75 hover:opacity-100 text-t-purple">
+              Go to the blog
+              <FiArrowRight size={20} />
+            </p>
+          </a>
+        </Link>
       </div>
     </Wrapper>
   );

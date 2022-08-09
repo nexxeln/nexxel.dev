@@ -2,6 +2,9 @@ import Image from "next/future/image";
 import { FC } from "react";
 import { FiGithub, FiMail, FiStar } from "react-icons/fi";
 import { BiGitRepoForked } from "react-icons/bi";
+import { Post } from "contentlayer/generated";
+import Link from "next/link";
+import readingTime from "reading-time";
 
 const ProjectCard: FC<{
   url: string;
@@ -36,6 +39,16 @@ const ProjectCard: FC<{
         </div>
       </div>
     </a>
+  );
+};
+
+const FeaturedPost = (post: Post) => {
+  return (
+    <Link href={post.url}>
+      <a className="flex px-4 py-4 transition-colors duration-200 rounded-lg hover:bg-zinc-800">
+        <p className="text-xl text-t-pink line-clamp-1">{post.title}</p>
+      </a>
+    </Link>
   );
 };
 
@@ -82,4 +95,4 @@ const Hero = () => {
   );
 };
 
-export { Hero, ProjectCard };
+export { Hero, ProjectCard, FeaturedPost };

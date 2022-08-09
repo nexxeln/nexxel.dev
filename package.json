@@ -37,7 +37,7 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
     "@types/debounce": "^1.2.1",
     "@types/node": "18.0.0",
