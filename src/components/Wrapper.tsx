@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { FiArrowUp } from "react-icons/fi";
+import Footer from "./Footer";
 
 import Navbar from "./Navbar";
 
@@ -76,6 +77,8 @@ const Wrapper: FC<{
           <div className="pb-8" />
           <BackToTop />
         </main>
+
+        <Footer />
       </div>
     </>
   );
