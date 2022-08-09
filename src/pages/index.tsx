@@ -43,7 +43,6 @@ const HomePage: NextPage<{
   pinnedRepos: PinnedRepo[];
   latestPosts: Post[];
 }> = ({ pinnedRepos, latestPosts }) => {
-  console.log(latestPosts);
   return (
     <Wrapper title="nexxel • home" description="17 yo self-taught developer">
       <Hero />
