@@ -102,7 +102,8 @@ const FAQPage = () => {
         <CustomQna question="What code editor do you use?">
           <p>
             <Link to="https://code.visualstudio.com" text="VSCode" /> and the
-            occasional <Link to="https://neovim.io/" text="NeoVim" />.
+            occasional <Link to="https://neovim.io/" text="NeoVim" />. Trying
+            to switch to <Link to="https://neovim.io" text="NeoVim" /> full time. 
           </p>
         </CustomQna>
 
