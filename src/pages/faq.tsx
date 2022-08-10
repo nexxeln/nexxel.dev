@@ -81,6 +81,17 @@ const FAQPage = () => {
           </p>
         </CustomQna>
 
+        <CustomQna question="What are you working on right now?">
+          <p>
+            Nothing big at the moment. Mostly studying and maintaining{" "}
+            <Link
+              to="https://github.com/t3-oss/create-t3-app"
+              text="create-t3-app"
+            />
+            .
+          </p>
+        </CustomQna>
+
         <CustomQna question="What is your favourite web framework?">
           <p>
             <Link to="https://remix.run" text="Remix" /> has got to be my
