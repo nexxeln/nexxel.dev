@@ -81,7 +81,7 @@ const FAQPage = () => {
           </p>
         </CustomQna>
 
-        <CustomQna question="What are you working on right now?">
+        <CustomQna question="What are you working on nowadays?">
           <p>
             Nothing big at the moment. Mostly studying and maintaining{" "}
             <Link
