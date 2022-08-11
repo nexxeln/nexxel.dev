@@ -25,6 +25,11 @@ export const Post = defineDocumentType(() => ({
       description: "The date of the post",
       required: true,
     },
+    draft: {
+      type: "boolean",
+      description: "Is the post a draft?",
+      required: true,
+    },
   },
   computedFields: {
     url: {
