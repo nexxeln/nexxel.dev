@@ -486,7 +486,7 @@ const Home = () => {
 
 Here we have a form and we're using `useMutation()` to post the data to the database. But you'll notice one problem here. When we click on the submit button, it does post the message to the database, but the user doesn't get any immediate feedback. Only on refreshing the page, the user can see the new message.
 
-For this we can use optimistic UI updates! `react-query` makes this trivial to do.
+For this we can use optimistic UI updates! `react-query` makes this trivial to do. We just need to add some stuff to our `useMutation()` hook.
 
 ```ts:src/pages/index.tsx
 const ctx = trpc.useContext();
