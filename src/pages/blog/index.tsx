@@ -5,9 +5,11 @@ import Wrapper from "~/components/Wrapper";
 import readingTime from "reading-time";
 
 export const getStaticProps = () => {
-  const posts = allPosts.sort((a, b) => {
-    return compareDesc(new Date(a.date), new Date(b.date));
-  });
+  const posts = allPosts
+    .filter((post: Post) => !post.draft)
+    .sort((a, b) => {
+      return compareDesc(new Date(a.date), new Date(b.date));
+    });
   return { props: { posts } };
 };
 

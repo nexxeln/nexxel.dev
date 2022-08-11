@@ -22,14 +22,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = allPosts.find(
     (post) => post._raw.flattenedPath === params!.slug
   );
+
+  if (post?.draft) {
+    return {
+      props: {
+        post,
+        draft: true,
+      },
+    };
+  }
   return {
     props: {
       post,
+      draft: false,
     },
   };
 };
 
-const PostLayout = ({ post }: { post: Post }) => {
+const PostLayout = ({ post, draft }: { post: Post; draft: boolean }) => {
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <Wrapper title={post.title} description={post.description}>
@@ -37,6 +47,12 @@ const PostLayout = ({ post }: { post: Post }) => {
         <title>{post.title}</title>
       </Head>
       <article className="px-2 pt-16">
+        {draft && (
+          <div className="p-4 mb-4 rounded-md bg-t-orange text-neutral-900">
+            hey! this post is hidden 👀 please don&apos;t share this link thank
+            you
+          </div>
+        )}
         <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
         <div className="pt-4">
           <div className="flex items-center gap-2">

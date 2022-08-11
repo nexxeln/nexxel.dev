@@ -15,6 +15,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   const latestPosts = allPosts
+    .filter((post: Post) => !post.draft)
     .sort((a, b) => {
       return compareDesc(new Date(a.date), new Date(b.date));
     })
