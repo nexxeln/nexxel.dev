@@ -118,13 +118,15 @@ const FAQPage = () => {
           </p>
         </CustomQna>
 
-        <CustomQna question="What VSCode theme do you use?">
+        <CustomQna question="What theme do you use?">
           <p>
+            I use the <Link to="https://rosepinetheme.com/" text="rose-pine" />{" "}
+            theme for{" "}
             <Link
-              to="https://marketplace.visualstudio.com/items?itemName=wheredoesyourmindgo.gruvbox-concoctis"
-              text="Gruvbox Concoctis"
-            />
-            .
+              to="https://marketplace.visualstudio.com/items?itemName=mvllow.rose-pine"
+              text="VSCode"
+            />{" "}
+            and <Link to="https://github.com/rose-pine/neovim" text="Neovim" />.
           </p>
         </CustomQna>
 
