@@ -56,7 +56,7 @@ Go to the [Discord Developers Portal](https://discord.com/developers/) and creat
 
 ![New Application on Discord](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_Wn1HquVPUC.png)
 
-Now go the `OAuth2/General` and add all of callback URLs to `Redirects`. For localhost the callback URL is `http://localhost:3000/api/auth/callback/discord`. I also added the production URL ahead of time.
+Go to `OAuth2/General` and add all of callback URLs to `Redirects`. For localhost the callback URL is `http://localhost:3000/api/auth/callback/discord`. I also added the production URL ahead of time.
 
 ![Add redirects](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_zLSplMIqPu.png)
 
@@ -66,11 +66,11 @@ Copy the client ID and secret and paste that into `.env`.
 
 Set the `NEXTAUTH_SECRET` as some random string too. Now we have all of out environment variables configured.
 
-Let's also change the database to `postgres` and uncomment the `@db.Text` annotations in the `Account` model in `prisma/schema.prisma`. All the models you see in the schema are necessary for Next Auth to work.
+Let's also change the database to `postgresql` and uncomment the `@db.Text` annotations in the `Account` model in `prisma/schema.prisma`. All the models you see in the schema are necessary for Next Auth to work.
 
 ![Changes in prisma/schema.prisma](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_sxNCvVFVsH.png)
 
-Now let's push this schema to our Railway Postgres database. This command will push our schema to Railway and generate type definations for the Prisma client.
+Let's push this schema to our Railway Postgres database. This command will push our schema to Railway and generate type definations for the Prisma client.
 
 ```bash:terminal
 npx prisma db push
@@ -226,7 +226,7 @@ Working with prisma is an absolutely wonderful example. The autocomplete and typ
 
 ![Autocomplete](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_YMCqQ9tXC0.gif)
 
-Now we also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares). If you take a look at the `src/server/context.ts`, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected.
+We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares). If you take a look at the `src/server/context.ts`, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected.
 
 ```ts:src/server/router/guestbook.ts
 export const guestbookRouter = createRouter()
@@ -242,7 +242,7 @@ export const guestbookRouter = createRouter()
     // ...
 ```
 
-Now let's also write a query to get all messages in the guestbook, this one will be pretty simple too.
+Next, let's write a query to get all messages in the guestbook, this one will be pretty simple too.
 This doesn't need to be protected so we can put it above the middleware.
 
 ```ts:src/server/router/guestbook.ts
@@ -332,9 +332,9 @@ export default Home;
 
 I also made the heading bigger and added some padding between the elements.
 
-Let's use out tRPC query to get all the messages for the guestbook in the database. But we don't have any data right now. We can use [Prisma Studio](https://prisma.io/studio/) to some data manually.
+Let's use our tRPC query to get all the messages for the guestbook in the database. But we don't have any data right now. We can use [Prisma Studio](https://prisma.io/studio/) to some data manually.
 
-```
+```bash:terminal
 npx prisma studio
 ```
 
