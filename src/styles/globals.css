@@ -82,6 +82,7 @@ body {
   .prose :not(pre) > code {
     @apply p-1 text-sm font-normal border rounded bg-zinc-900 border-zinc-800 text-neutral-300;
     font-family: "JetBrains Mono";
+    white-space: nowrap;
   }
 
   .prose :not(pre) > code::after,
