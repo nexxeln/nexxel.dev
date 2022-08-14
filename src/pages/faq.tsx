@@ -120,21 +120,21 @@ const FAQPage = () => {
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use the <Link to="https://rosepinetheme.com/" text="rose-pine" />{" "}
-            theme for{" "}
-            <Link
-              to="https://marketplace.visualstudio.com/items?itemName=mvllow.rose-pine"
-              text="VSCode"
-            />{" "}
-            and <Link to="https://github.com/rose-pine/neovim" text="Neovim" />.
+            I use the <Link to="https://serendipitytheme.com/" text="Serendipity" />{" "}
+            theme for VSCode and{" "}
+            <Link to="https://github.com/svrana/neosolarized.nvim" text="neosolarized.nvim" />{" "}
+            for NeoVim.
           </p>
         </CustomQna>
 
         <CustomQna question="What font do you use for coding?">
           <p>
+            I am a big fan of{" "}
+            <Link to="https://jetbrains.com/lp/mono" text="JetBrains Mono" />{" "}
+            but currently I use{" "}
             <Link
-              to="https://www.jetbrains.com/lp/mono/"
-              text="JetBrains Mono"
+              to="https://github.com/source-foundry/Hack"
+              text="Hack"
             />
             .
           </p>
