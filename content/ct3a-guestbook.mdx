@@ -5,7 +5,7 @@ date: "2022-08-11"
 draft: false
 ---
 
-Hey there! Today we'll be building an application with the [T3 stack](https://init.tips/). We're going to building a Guestbook inspired by [Lee Robinson's Guestbook](https://leerob.io/guestbook/). Let's get right into it!
+Hey there! Today we'll be building an application with the [T3 stack](https://init.tips/). We're going to build a Guestbook inspired by [Lee Robinson's Guestbook](https://leerob.io/guestbook/). Let's get right into it!
 
 ### Getting Started
 
@@ -56,21 +56,21 @@ Go to the [Discord Developers Portal](https://discord.com/developers/) and creat
 
 ![New Application on Discord](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_Wn1HquVPUC.png)
 
-Go to `OAuth2/General` and add all of callback URLs to `Redirects`. For localhost the callback URL is `http://localhost:3000/api/auth/callback/discord`. I also added the production URL ahead of time.
+Go to `OAuth2/General` and add all of the callback URLs to `Redirects`. For localhost the callback URL is `http://localhost:3000/api/auth/callback/discord`. I also added the production URL ahead of time.
 
 ![Add redirects](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_zLSplMIqPu.png)
 
-Copy the client ID and secret and paste that into `.env`.
+Copy the client ID and secret and paste both of them into `.env`.
 
 ![Copy client ID and secret](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_49rNuyGZ3g.png)
 
-Set the `NEXTAUTH_SECRET` as some random string too. Now we have all of out environment variables configured.
+Set the `NEXTAUTH_SECRET` as some random string too. Now we have all of our environment variables configured.
 
 Let's also change the database to `postgresql` and uncomment the `@db.Text` annotations in the `Account` model in `prisma/schema.prisma`. All the models you see in the schema are necessary for Next Auth to work.
 
 ![Changes in prisma/schema.prisma](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_dGVMwLI9rH.png)
 
-Let's push this schema to our Railway Postgres database. This command will push our schema to Railway and generate type definations for the Prisma client.
+Let's push this schema to our Railway Postgres database. This command will push our schema to Railway and generate type definitions for the Prisma client.
 
 ```bash:terminal
 npx prisma db push
@@ -82,7 +82,7 @@ Now run the dev server.
 npm run dev
 ```
 
-Go to the `src/pages/index.tsx` and delete all the code, let's just render a heading.
+Go to the `src/pages/index.tsx` file and delete all the code, let's just render a heading.
 
 ```tsx:src/pages/index.tsx
 const Home = () => {
@@ -98,7 +98,7 @@ export default Home;
 
 ![Render a heading](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_5idaJbVWcd.png)
 
-I can't look at light theme, so lets apply some global styles in `src/styles/globals.css` to make this app dark theme.
+I can't look at light themes, so lets apply some global styles in `src/styles/globals.css` to make this app dark theme.
 
 ```css:src/styles/globals.css
 @tailwind base;
@@ -126,7 +126,9 @@ const Home = () => {
     <main>
       <h1>Guestbook</h1>
 
-      <button onClick={() => signIn("discord")}>Login with Discord</button>
+      <button onClick={() => signIn("discord")}>
+        Login with Discord
+      </button>
     </main>
   );
 };
@@ -151,15 +153,17 @@ const Home = () => {
       <h1>Guestbook</h1>
       {session ? (
         <div>
-          <p>
-            hi {session.user?.name}
-          </p>
+          <p>hi {session.user?.name}</p>
 
-          <button onClick={() => signOut()}>Logout</button>
+          <button onClick={() => signOut()}>
+            Logout
+          </button>
         </div>
       ) : (
         <div>
-          <button onClick={() => signIn("discord")}>Login with Discord</button>
+          <button onClick={() => signIn("discord")}>
+            Login with Discord
+          </button>
         </div>
       )}
     </main>
@@ -177,7 +181,7 @@ Great! We now have auth working. Next Auth really makes it stupidly simple.
 
 Let's work on the backend now. We'll be using [tRPC](https://trpc.io/) for our API layer and [Prisma](https://prisma.io/) for connecting and querying our database.
 
-We're going to have to modify our prisma schema and add a `Guestbook` model. Each message in the guestbook will have a name, and a message. Here's how the model will look like.
+We're going to have to modify our prisma schema and add a `Guestbook` model. Each message in the guestbook will have a name and a message. Here's how the model will look like.
 
 ```:prisma/schema.prisma
 model Guestbook {
@@ -188,13 +192,13 @@ model Guestbook {
 }
 ```
 
-Let's push this modified to our Railway Postgres database.
+Let's push this modified schema to our Railway Postgres database.
 
 ```bash:terminal
 npx prisma db push
 ```
 
-Now let's get to the fun part - its tRPC time. Go ahead and delete the `protected-example-router.ts` and `protected-router.ts` and `example.ts` in `src/server/router`. First we're going to define a mutation to post messages to our database.
+Now let's get to the fun part - it's tRPC time. Go ahead and delete the `protected-example-router.ts` and `protected-router.ts` and `example.ts` files in `src/server/router`. First, we're going to define a mutation to post messages to our database.
 
 ```ts:src/server/router/guestbook.ts
 import { z } from "zod";
@@ -220,13 +224,13 @@ export const guestbookRouter = createRouter().mutation("postMessage", {
 });
 ```
 
-Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the input and has a resolve function that runs a simple prisma query to create a new row in the `Guestbook` table.
+Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the input and has a resolve function that runs a single prisma query to create a new row in the `Guestbook` table.
 
 Working with prisma is an absolutely wonderful example. The autocomplete and typesafety is amazing.
 
 ![Autocomplete](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_YMCqQ9tXC0.gif)
 
-We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares). If you take a look at the `src/server/context.ts`, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected.
+We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares). If you take a look at the `src/server/context.ts` file, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected.
 
 ```ts:src/server/router/guestbook.ts
 export const guestbookRouter = createRouter()
@@ -242,7 +246,7 @@ export const guestbookRouter = createRouter()
     // ...
 ```
 
-Next, let's write a query to get all messages in the guestbook, this one will be pretty simple too.
+Next, let's write a query to get all messages in the guestbook.
 This doesn't need to be protected so we can put it above the middleware.
 
 ```ts:src/server/router/guestbook.ts
@@ -268,7 +272,7 @@ export const guestbookRouter = createRouter()
     // ...
 ```
 
-Here getting just the name and message from all the rows from the `Guestbook` model and sorting it in descending order by the `createdAt` field.
+Here we are getting just the name and message from all the rows from the `Guestbook` model. The rows are sorted in descending order by the `createdAt` field.
 
 Now merge this router in the main `appRouter`.
 
@@ -285,7 +289,7 @@ export const appRouter = createRouter()
 export type AppRouter = typeof appRouter;
 ```
 
-And we're pretty much done here on the backend part. Let's work on the UI now.
+We're pretty much done on the backend part. Let's work on the UI next.
 
 ### Frontend
 
@@ -332,7 +336,7 @@ export default Home;
 
 I also made the heading bigger and added some padding between the elements.
 
-Let's use our tRPC query to get all the messages for the guestbook in the database. But we don't have any data right now. We can use [Prisma Studio](https://prisma.io/studio/) to some data manually.
+Let's use our tRPC query to get all the messages for the guestbook in the database. But we don't have any data right now. We can use [Prisma Studio](https://prisma.io/studio/) to add some data manually.
 
 ```bash:terminal
 npx prisma studio
@@ -342,7 +346,7 @@ It will automatically open on `http://localhost:5555`. Go to the `Guestbook` tab
 
 ![Using Prisma Studio](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_YqVtwL8NU0.gif)
 
-Now that we have data, we can use the query and display the data. For this we can use the tRPC react-query wrapper. Let's create a component for this in `src/pages/index.tsx`.
+Now that we have data, we can use the query and display the data. For this we can use the tRPC `react-query` wrapper. Let's create a component for this in `src/pages/index.tsx`.
 
 ```tsx:src/pages/index.tsx
 import { trpc } from "../utils/trpc";
@@ -504,8 +508,7 @@ const postMessage = trpc.useMutation("guestbook.postMessage", {
   },
 });
 ```
-
-The code is pretty much self-explanatory. You can read more about optimistic updates with `react-query` [here](https://react-query-v3.tanstack.com/guides/optimistic-updates).
+If you want to learn more about this code example, you can read about optimistic updates with [`react-query`](https://react-query-v3.tanstack.com/guides/optimistic-updates) here.
 
 We're pretty much done with the coding part! That was pretty simple wasn't it. The T3 stack makes it super easy and quick to build full stack web apps. Let's now deploy our guestbook.
 
