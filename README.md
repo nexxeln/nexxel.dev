@@ -1,4 +1,4 @@
-# nexxel.dev
+<h1 align="center">[nexxel.dev](https://nexxel.dev/)</h1>
 
 ## Stack
 
