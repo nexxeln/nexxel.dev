@@ -1,0 +1,24 @@
+---
+title: "My developer workflow using WSL, tmux and NeoVim"
+description: "I live on the terminal now. Learn about the tools I use set up a productive developer environment."
+date: "2022-08-15"
+draft: true
+---
+
+![Screenshot of my terminal](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_fpyOEGTmBd.png)
+
+Hi! Today I'm gonna talk about my daily developer workflow and all the tools I use to set up a productive enviroment for coding. I think having a nice looking terminal and some tools to save time are really helpful to keep you productive in daily coding sessions.
+
+### Operating System
+
+I use Windows and it's pretty much unusable for programming. Thankfully Microsoft understood that and made [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/) also known as `WSL` in short. It lets you run a Linux distribution inside of Windows.
+
+I use [Ubuntu](https://ubuntu.com/), it is the default distribution that is installed with `WSL`. Ubuntu is really simple to use and has a huge community so getting support is very easy. I highly recommend it for anyone who wants to start using Linux and get familiar with basic Linux commands.
+
+### Shell
+
+Ubuntu by default comes with the bash shell. Bash is great but I personally use find it harder to customize. That is why I use [Z shell](https://zsh.org/), more commonly known as `zsh`. To manage my `zsh` configuration, I use [Oh My Zsh](https://ohmyz.sh/), it has a huge community and makes it trivial to install and use plugins.
+
+I used to use [fish](https://fishshell.com/) shell which also a great shell. It has very sensible defaults and comes with a lot of cool features like autosuggestions, tab completions, etc. out of the box without the need to set up anything. The only problem with fish is that it is not `POSIX-compliant`. [POSIX](https://en.wikipedia.org/wiki/POSIX) is a set of standards that define how to develop programs for UNIX based operating systems. So in fish, things like bash scripts do not work. They have their own scripting language.
+
+`zsh` on the other hand is fully POSIX-compliant. This is why I switched to `zsh` and I'm quite happy with it so far!
