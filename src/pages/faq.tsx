@@ -112,18 +112,21 @@ const FAQPage = () => {
 
         <CustomQna question="What code editor do you use?">
           <p>
-            <Link to="https://code.visualstudio.com" text="VSCode" /> and the
-            occasional <Link to="https://neovim.io/" text="NeoVim" />. Trying to
-            switch to <Link to="https://neovim.io" text="NeoVim" /> full time.
+            I use <Link to="https://neovim.io/" text="NeoVim" />.
+          </p>
+        </CustomQna>
+
+
+        <CustomQna question="What terminal emulator do you use?">
+          <p>
+            I use <Link to="https://alacritty.org/" text="Alacritty" />. It&apos;s great.
           </p>
         </CustomQna>
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use the <Link to="https://serendipitytheme.com/" text="Serendipity" />{" "}
-            theme for VSCode and{" "}
-            <Link to="https://github.com/svrana/neosolarized.nvim" text="neosolarized.nvim" />{" "}
-            for NeoVim.
+            I use <Link to="https://github.com/svrana/neosolarized.nvim" text="neosolarized.nvim" />{" "}
+            for NeoVim and a custom theme based on <Link to="https://github.com/arcticicestudio/nord" text="Nord" /> and <Link to="https://github.com/antfu/vscode-theme-vitesse" text="Vitesse" /> created by <Link to="https://github.com/asrvd/" text="asrvd" /> for my terminal.
           </p>
         </CustomQna>
 
