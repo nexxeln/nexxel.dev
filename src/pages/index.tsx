@@ -74,9 +74,7 @@ const HomePage: NextPage<{
         <h3 className="pb-6 text-4xl font-bold bold-text">From the blog</h3>
 
         <div className="flex flex-col gap-1">
-          {latestPosts.map((post) => (
-            <FeaturedPost key={post._id} {...post} />
-          ))}
+          {latestPosts.map((post) => <FeaturedPost key={post._id} {...post} />)}
         </div>
 
         <Link href="/blog">
