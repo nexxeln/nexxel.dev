@@ -112,7 +112,7 @@ const FAQPage = () => {
 
         <CustomQna question="What code editor do you use?">
           <p>
-            I use <Link to="https://neovim.io/" text="NeoVim" />.
+            I use <Link to="https://neovim.io/" text="NeoVim" /> and the occasional <Link to="https://code.visualstudio.com/" text="VSCode" />.
           </p>
         </CustomQna>
 
