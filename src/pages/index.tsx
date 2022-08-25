@@ -7,7 +7,36 @@ import { FiArrowRight } from "react-icons/fi";
 import { FeaturedPost, Hero, ProjectCard } from "~/components/Home";
 import Wrapper from "~/components/Wrapper";
 
+type Repository = {
+  fork: boolean;
+  stargazers_count: number
+}
+
+type PinnedRepo = {
+  owner: string;
+  repo: string;
+  description: string;
+  language: string;
+  languageColor: string;
+  stars: string;
+  forks: string;
+};
+
 export const getStaticProps: GetStaticProps = async () => {
+  // credit: Lee Robinson https://github.com/leerob/leerob.io/blob/main/pages/api/github.ts
+
+  const starCount: number = await fetch(
+    "https://api.github.com/users/nexxeln/repos?per_page=100"
+  ).then(async (response) => {
+    const repos = await response.json() as Repository[]
+
+    const mine = repos.filter((repo) => !repo.fork)
+
+    return mine.reduce((accumulator, repo) => {
+      return accumulator + repo.stargazers_count
+    }, 0)
+  })
+
   const pinnedRepos = await fetch(
     "https://gh-pinned-repos.egoist.sh/?username=nexxeln"
   ).then(async (response) => {
@@ -23,6 +52,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      starCount,
       pinnedRepos,
       latestPosts,
     },
@@ -30,27 +60,12 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-type PinnedRepo = {
-  owner: string;
-  repo: string;
-  description: string;
-  language: string;
-  languageColor: string;
-  stars: string;
-  forks: string;
-};
-
-function parseNumber(num: string) {
-  if (num.includes("k")) {
-    return parseInt(num.split(".").join(""), 10) * 100;
-  }
-  return parseInt(num, 10);
-}
-
 const HomePage: NextPage<{
+  starCount: number;
   pinnedRepos: PinnedRepo[];
   latestPosts: Post[];
-}> = ({ pinnedRepos, latestPosts }) => {
+}> = ({ starCount, pinnedRepos, latestPosts }) => {
+  console.log(starCount)
   return (
     <Wrapper title="nexxel • home" description="17 yo self-taught developer">
       <Hero />
@@ -61,12 +76,14 @@ const HomePage: NextPage<{
         </h3>
 
         <p className="pb-6 text-slate-200">
-          These projects alone have earnt me {" "}
-          <b>
-            {pinnedRepos.reduce(
-              (acc, repo) => acc + parseNumber(repo.stars),
-              0
-            ).toLocaleString()}
+          Apart from <code
+            style={{ fontFamily: "JetBrains Mono", whiteSpace: "nowrap" }}
+            className="p-1 text-sm font-normal border rounded bg-zinc-900 border-zinc-800 text-neutral-300">
+            create-t3-app
+          </code>
+          , my projects have earnt me {" "}
+          <b className="font-bold bold-text">
+            {starCount}
           </b>
           {" "} stars! I have a bunch of other cool projects that you can see on my {" "}
           <a href="https://github.com/nexxeln" target="_blank" rel="noreferrer" className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100">
