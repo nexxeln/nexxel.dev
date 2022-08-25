@@ -125,7 +125,7 @@ const FAQPage = () => {
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use <Link to="https://github.com/B4mbus/oxocarbon-lua.nvim" text="oxocarbon-lua.nvim" /> for NeoVim, <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> for VSCode, and a custom theme based on <Link to="https://www.nordtheme.com/" text="Nord" /> and <Link to="https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse" text="Vitesse" /> created by <Link to="https://github.com/asrvd" text="asrvd" /> for my terminal.
+            I use <Link to="https://github.com/B4mbus/oxocarbon-lua.nvim" text="oxocarbon-lua.nvim" /> and <Link to="https://github.com/olivercederborg/poimandres.nvim" text="poimandres.nvim" />  depending on my mood for NeoVim, <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> exculisively for VSCode, and a custom theme based on <Link to="https://www.nordtheme.com/" text="Nord" /> and <Link to="https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse" text="Vitesse" /> created by <Link to="https://github.com/asrvd" text="asrvd" /> for my terminal.
           </p>
         </CustomQna>
 
