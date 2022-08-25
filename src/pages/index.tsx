@@ -81,7 +81,7 @@ const HomePage: NextPage<{
             className="p-1 text-sm font-normal border rounded bg-zinc-900 border-zinc-800 text-neutral-300">
             create-t3-app
           </code>
-          , my projects have earnt me {" "}
+          , my projects have earned me {" "}
           <b className="font-bold bold-text">
             {starCount}
           </b>
