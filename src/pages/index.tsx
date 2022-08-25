@@ -40,6 +40,13 @@ type PinnedRepo = {
   forks: string;
 };
 
+function parseNumber(num: string) {
+  if (num.includes("k")) {
+    return parseInt(num.split(".").join(""), 10) * 100;
+  }
+  return parseInt(num, 10);
+}
+
 const HomePage: NextPage<{
   pinnedRepos: PinnedRepo[];
   latestPosts: Post[];
@@ -49,9 +56,23 @@ const HomePage: NextPage<{
       <Hero />
 
       <div className="flex flex-col items-center justify-center">
-        <h3 className="self-start pb-6 text-4xl font-bold bold-text">
+        <h3 className="self-start pb-3 text-4xl font-bold bold-text">
           Things I&apos;ve built
         </h3>
+
+        <p className="pb-6 text-slate-200">
+          These projects alone have earnt me {" "}
+          <b>
+            {pinnedRepos.reduce(
+              (acc, repo) => acc + parseNumber(repo.stars),
+              0
+            ).toLocaleString()}
+          </b>
+          {" "} stars! I have a bunch of other cool projects that you can see on my {" "}
+          <a href="https://github.com/nexxeln" target="_blank" rel="noreferrer" className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100">
+            GitHub profile.
+          </a>
+        </p>
 
         <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
           {pinnedRepos.map((project) => (
