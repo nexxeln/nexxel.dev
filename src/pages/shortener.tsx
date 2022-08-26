@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Shortener from "~/components/Shortener";
 import Wrapper from "~/components/Wrapper";
 

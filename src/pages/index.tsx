@@ -71,20 +71,13 @@ const HomePage: NextPage<{
       <Hero />
 
       <div className="flex flex-col items-center justify-center">
-        <h3 className="self-start pb-3 text-4xl font-bold bold-text">
+        <h3 className="self-start pb-2 text-4xl font-bold bold-text">
           Things I&apos;ve built
         </h3>
 
-        <p className="pb-6 text-slate-200">
-          Apart from <code
-            style={{ fontFamily: "JetBrains Mono", whiteSpace: "nowrap" }}
-            className="p-1 text-sm font-normal border rounded bg-zinc-900 border-zinc-800 text-neutral-300">
-            create-t3-app
-          </code>
-          , my projects have earned me {" "}
-          <b className="font-bold bold-text">
-            {starCount}
-          </b>
+        <p className="pb-6 pl-0.5 text-slate-200">
+          Apart from create-t3-app, my projects have earned me {" "}
+          <span className="font-bold bold-text">{starCount}</span>
           {" "} stars! I have a bunch of other cool projects that you can see on my {" "}
           <a href="https://github.com/nexxeln" target="_blank" rel="noreferrer" className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100">
             GitHub profile.
