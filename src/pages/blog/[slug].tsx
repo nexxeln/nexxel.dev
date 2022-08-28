@@ -72,7 +72,6 @@ const PostLayout = ({ post, draft }: { post: Post; draft: boolean }) => {
         </div>
 
         <div className="pt-12" />
-
         <main className="prose prose-lg prose-indigo prose-a:text-indigo-400 prose-a:opacity-90 prose-a:transition-opacity hover:prose-a:opacity-100 prose-invert">
           <MDXContent components={Components} />
         </main>
