@@ -112,7 +112,7 @@ const FAQPage = () => {
 
         <CustomQna question="What code editor do you use?">
           <p>
-            I use <Link to="https://neovim.io/" text="NeoVim" /> and the occasional <Link to="https://code.visualstudio.com/" text="VSCode" />.
+            I use <Link to="https://neovim.io/" text="Neovim" /> and the occasional <Link to="https://code.visualstudio.com/" text="VSCode" />.
           </p>
         </CustomQna>
 
@@ -125,7 +125,7 @@ const FAQPage = () => {
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use <Link to="https://github.com/B4mbus/oxocarbon-lua.nvim" text="oxocarbon-lua.nvim" /> and <Link to="https://github.com/olivercederborg/poimandres.nvim" text="poimandres.nvim" />  depending on my mood for NeoVim, <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> exculisively for VSCode, and a custom theme based on <Link to="https://www.nordtheme.com/" text="Nord" /> and <Link to="https://marketplace.visualstudio.com/items?itemName=antfu.theme-vitesse" text="Vitesse" /> created by <Link to="https://github.com/asrvd" text="asrvd" /> for my terminal.
+            I use <Link to="https://github.com/tiagovla/tokyodark.nvim" text="tokyodark.nvim" /> for Neovim, <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> for VSCode, and a custom theme based on <Link to="https://github.com/eendroroy/alacritty-theme/blob/master/themes/taerminal.yaml" text="Taerminal" /> for my terminal.
           </p>
         </CustomQna>
 
