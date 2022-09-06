@@ -60,7 +60,7 @@ const FAQPage = () => {
 
         <CustomQna question="Why is your name nexxel?">
           <p>
-            Checkout <Link to="https://why.nexxel.dev" text="why.nexxel.dev" />
+            Checkout <Link to="https://why.nexxel.dev" text="why.nexxel.dev" />.
           </p>
         </CustomQna>
 
