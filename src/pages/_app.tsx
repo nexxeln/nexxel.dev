@@ -1,5 +1,4 @@
 // src/pages/_app.tsx
-import { AppProps } from "next/app";
 import Head from "next/head";
 import { withTRPC } from "@trpc/next";
 import superjson from "superjson";
@@ -11,7 +10,7 @@ import "~/styles/globals.css";
 const MyApp = ({
   Component,
   pageProps: { session, ...pageProps },
-}: AppProps) => {
+}: any) => {
   return (
     <>
       <Head>

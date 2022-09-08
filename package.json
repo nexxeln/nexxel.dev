@@ -22,7 +22,7 @@
     "date-fns": "^2.29.1",
     "debounce": "^1.2.1",
     "next": "12.3.0",
-    "next-auth": "^4.10.0",
+    "next-auth": "^4.10.3",
     "next-contentlayer": "^0.2.6",
     "random-word-slugs": "^0.1.6",
     "react": "18.2.0",
