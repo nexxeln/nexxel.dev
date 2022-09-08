@@ -9,7 +9,6 @@ const nextConfig = {
   images: {
     domains: ["cdn.discordapp.com"],
   },
-  experimental: { images: { allowFutureImage: true } },
 };
 
 module.exports = withBundleAnalyzer(withContentlayer(nextConfig));
