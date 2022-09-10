@@ -4,12 +4,21 @@ import Wrapper from "~/components/Wrapper";
 const pages = [
   {
     title: "About Me",
-    description: "More about me",
+    description: "More about me. How I got into coding, my other interests, etc.",
     to: "/about",
   },
   {
+    title: "Acknowledgements",
+    description: "People who have helped and inspired me through my journey.",
+    to: "/acknowledgements"
+  },
+  {
+    title: "Experiments",
+    description: "Random experiments with new and bleeding edge tech.",
+  },
+  {
     title: "Shortener",
-    description: "Very fast link shortener",
+    description: "Very fast link shortener using my domain.",
     to: "/shortener",
   },
 ]
@@ -29,11 +38,20 @@ const MorePage = () => {
 
       <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
         {pages.map((page) => {
-          return <PageCard
-            key={page.title}
-            title={page.title}
-            description={page.description}
-            to={page.to} />
+          if (page.to) {
+            return <PageCard
+              key={page.title}
+              title={page.title}
+              description={page.description}
+              to={page.to}
+            />;
+          } else {
+            return <PageCard
+              key={page.title}
+              title={page.title}
+              description={page.description}
+            />;
+          }
         })}
       </div>
 
