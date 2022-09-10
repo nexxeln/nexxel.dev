@@ -76,6 +76,7 @@ const Hero = () => {
       <div className="flex items-center pt-4 text-xl">
         <a
           href="https://github.com/nexxeln/"
+          title="GitHub"
           target="_blank"
           rel="noreferrer"
           className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
@@ -84,6 +85,7 @@ const Hero = () => {
         </a>
         <a
           href="mailto:shoubhit2005@gmail.com"
+          title="Email"
           target="_blank"
           rel="noreferrer"
           className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
