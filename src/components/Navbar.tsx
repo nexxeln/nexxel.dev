@@ -28,7 +28,7 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
 
 const Navbar = () => {
   const router = useRouter();
-  const links = ["home", "blog", "guestbook", "shortener", "FAQ"];
+  const links = ["home", "blog", "guestbook", "FAQ", "more"];
 
   return (
     <nav className="flex items-center justify-between max-w-sm mx-auto capitalize">
