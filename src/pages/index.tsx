@@ -9,8 +9,8 @@ import Wrapper from "~/components/Wrapper";
 
 type Repository = {
   fork: boolean;
-  stargazers_count: number
-}
+  stargazers_count: number;
+};
 
 type PinnedRepo = {
   owner: string;
@@ -28,14 +28,14 @@ export const getStaticProps: GetStaticProps = async () => {
   const starCount: number = await fetch(
     "https://api.github.com/users/nexxeln/repos?per_page=100"
   ).then(async (response) => {
-    const repos = await response.json() as Repository[]
+    const repos = (await response.json()) as Repository[];
 
-    const mine = repos.filter((repo) => !repo.fork)
+    const mine = repos.filter((repo) => !repo.fork);
 
     return mine.reduce((accumulator, repo) => {
-      return accumulator + repo.stargazers_count
-    }, 0)
-  })
+      return accumulator + repo.stargazers_count;
+    }, 0);
+  });
 
   const pinnedRepos = await fetch(
     "https://gh-pinned-repos.egoist.sh/?username=nexxeln"
@@ -75,10 +75,15 @@ const HomePage: NextPage<{
         </h3>
 
         <p className="pb-6 pl-0.5 text-slate-200">
-          Apart from create-t3-app, my projects have earned me {" "}
-          <span className="font-bold bold-text">{starCount}</span>
-          {" "} stars! I have a bunch of other cool projects that you can see on my {" "}
-          <a href="https://github.com/nexxeln" target="_blank" rel="noreferrer" className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100">
+          Apart from create-t3-app, my projects have earned me{" "}
+          <span className="font-bold bold-text">{starCount}</span> stars! I have
+          a bunch of other cool projects that you can see on my{" "}
+          <a
+            href="https://github.com/nexxeln"
+            target="_blank"
+            rel="noreferrer"
+            className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100"
+          >
             GitHub profile.
           </a>
         </p>
@@ -104,12 +109,14 @@ const HomePage: NextPage<{
         <h3 className="pb-6 text-4xl font-bold bold-text">From the blog</h3>
 
         <div className="flex flex-col gap-1">
-          {latestPosts.map((post) => <FeaturedPost key={post._id} {...post} />)}
+          {latestPosts.map((post) => (
+            <FeaturedPost key={post._id} {...post} />
+          ))}
         </div>
 
         <Link href="/blog">
           <a>
-            <p className="flex items-center gap-1 pt-4 pl-4 text-lg transition-opacity duration-300 opacity-75 hover:opacity-100 text-t-purple">
+            <p className="flex items-center gap-1 pt-4 pl-4 text-lg transition-opacity duration-300 hover:opacity-90 text-t-purple">
               Go to the blog
               <FiArrowRight size={20} />
             </p>
