@@ -1,3 +1,4 @@
+import Image from "next/future/image";
 import Wrapper from "~/components/Wrapper";
 
 const linkStyles =
@@ -98,7 +99,23 @@ const AboutPage = () => {
           >
             cardistry
           </a>{" "}
-          as well. I also like reading novels but I haven&apos;t read one for a
+          as well.
+          <br />
+          <br />I also like going on{" "}
+          <span className={boldStyles}>cycling trips</span> with friends.
+          Here&apos; a picture from when we went to see the sunrise in the
+          mountains.
+          <br />
+          <br />
+          <Image
+            src="/images/cycling.webp"
+            alt="A picture from a cycling trip with friends."
+            className="rounded-xl"
+            width={600}
+            height={300}
+          />
+          <br />
+          <br />I also like reading novels but I haven&apos;t read one for a
           long time now, simply because I have no time. My favourite author is{" "}
           <a
             href="https://en.wikipedia.org/wiki/John_Green"
@@ -145,7 +162,7 @@ const AboutPage = () => {
           >
             s.nxl.sh
           </a>
-          . I also like going on cycling trips with friends.
+          .
         </p>
       </div>
     </Wrapper>
