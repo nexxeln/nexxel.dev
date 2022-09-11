@@ -1,13 +1,17 @@
 import Link from "next/link";
 
-const PageCard: React.FC<{ title: string; description: string; to?: string; }> = ({ title, description, to }) => {
+const PageCard: React.FC<{
+  title: string;
+  description: string;
+  to?: string;
+}> = ({ title, description, to }) => {
   if (!to) {
     return (
       <div className="opacity-75 border-2 border-t-pink h-32 flex flex-col justify-between rounded-md p-4 bg-[#1c1c1c] focus:outline-none">
         <h3 className="text-2xl font-bold bold-text">{title}</h3>
         <p>{description}</p>
       </div>
-    )
+    );
   }
   return (
     <Link href={to}>
@@ -19,6 +23,6 @@ const PageCard: React.FC<{ title: string; description: string; to?: string; }> =
       </a>
     </Link>
   );
-}
+};
 
 export { PageCard };

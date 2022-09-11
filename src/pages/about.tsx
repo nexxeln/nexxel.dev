@@ -30,7 +30,7 @@ const boldStyles = "font-medium medium-text text-slate-100";
 
 const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
   return (
-    <Wrapper title="nexxel • about" description="Learn more about me.">
+    <Wrapper title="nexxel • about" description="Learn more about me">
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         About Me
       </h1>
