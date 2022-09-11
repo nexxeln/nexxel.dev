@@ -1,13 +1,34 @@
 import Image from "next/future/image";
-import Cyling from "../../public/images/cycling.webp"
+import Cyling from "../../public/images/cycling.webp";
 import Wrapper from "~/components/Wrapper";
+import { GetStaticProps, NextPage } from "next";
+
+type Track = {
+  artist: string;
+  url: string;
+  title: string;
+  img: string;
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const topTracks = await fetch("https://s.nxl.sh/tracks").then((response) => {
+    return response.json();
+  });
+
+  return {
+    props: {
+      topTrack: topTracks.tracks[0],
+    },
+    revalidate: 60 * 60 * 24,
+  };
+};
 
 const linkStyles =
   "font-medium medium-text text-t-pink hover:opacity-90 transition-opacity duration-300";
 
 const boldStyles = "font-medium medium-text text-slate-100";
 
-const AboutPage = () => {
+const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
   return (
     <Wrapper title="nexxel • about" description="Learn more about me.">
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
@@ -91,7 +112,7 @@ const AboutPage = () => {
           >
             mentalism
           </a>
-          &nbsp;(yes I can read your mind) and I dabble into some{" "}
+          &nbsp;(yes I can read your mind (kind of)) and I dabble into some{" "}
           <a
             href="https://www.youtube.com/watch?v=wx_dnEen2xQ"
             rel="noreferrer"
@@ -104,20 +125,19 @@ const AboutPage = () => {
           <br />
           <br />I also like going on{" "}
           <span className={boldStyles}>cycling trips</span> with friends.
-          Here&apos; a picture from when we went to see the sunrise in the
+          Here&apos;s a picture from when we went to see the sunrise in the
           mountains.
           <br />
           <br />
           <Image
             src={Cyling}
             alt="A picture from a cycling trip with friends."
-            className="block rounded-xl object-cover"
+            className="block object-cover rounded-xl"
             width={600}
             placeholder="blur"
             height={300}
           />
-          <br />
-          <br />I also like reading novels but I haven&apos;t read one for a
+          <br />I used to like reading novels but I haven&apos;t read one for a
           long time now, simply because I have no time. My favourite author is{" "}
           <a
             href="https://en.wikipedia.org/wiki/John_Green"
@@ -127,7 +147,10 @@ const AboutPage = () => {
           >
             John Green
           </a>
-          . I also really like listening to music,{" "}
+          .
+          <br />
+          <br />I listen to a lot of music and it has always been a big part of
+          my life.{" "}
           <a
             href="https://open.spotify.com/artist/6bmlMHgSheBauioMgKv2tn?si=RoqNOQkQTaSoSmNIARTkHA"
             rel="noreferrer"
@@ -138,12 +161,12 @@ const AboutPage = () => {
           </a>
           ,{" "}
           <a
-            href="https://open.spotify.com/artist/1ScHz7wPPxVTEKsc9g3Z0c?si=uUlwcUFpSjq1HbxRGtea3Q"
+            href="https://open.spotify.com/artist/5Jf6pl4SGgueZHZ4pC313c?si=zzNFVAZzSTKbwXIri_7aMw"
             rel="noreferrer"
             target="_blank"
             className={linkStyles}
           >
-            Rxseboy
+            heylog
           </a>
           , and{" "}
           <a
@@ -154,8 +177,18 @@ const AboutPage = () => {
           >
             44phantom
           </a>{" "}
-          are some of my favourite artists. You can see more of my Spotify stats
-          on{" "}
+          are some of my favourite artists. My most played song recently has
+          been{" "}
+          <a
+            href={topTrack.url}
+            rel="noreferrer"
+            target="_blank"
+            className={linkStyles}
+          >
+            {topTrack.title}
+          </a>{" "}
+          by <span className={boldStyles}>{topTrack.artist}</span>. You can see
+          more of my Spotify stats at{" "}
           <a
             href="https://s.nxl.sh/"
             rel="noreferrer"
