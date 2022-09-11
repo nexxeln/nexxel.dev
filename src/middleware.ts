@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(req: NextRequest) {
-  const slug = req.nextUrl.pathname.split("/r/").pop();
+  const { pathname, origin } = req.nextUrl;
 
-  const fetchSlug = await fetch(`${req.nextUrl.origin}/api/get-link/${slug}`);
+  if (pathname === "/gh" || pathname === "/github") {
+    return NextResponse.redirect("https://github.com/nexxeln");
+  }
+  const slug = pathname.split("/r/").pop();
+
+  const fetchSlug = await fetch(`${origin}/api/get-link/${slug}`);
 
   if (fetchSlug.status === 404) {
-    return NextResponse.redirect(req.nextUrl.origin);
+    return NextResponse.redirect(origin);
   }
 
   const data = await fetchSlug.json();
@@ -17,5 +22,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/r/:path*"],
+  matcher: ["/r/:path*", "/github", "/gh"],
 };

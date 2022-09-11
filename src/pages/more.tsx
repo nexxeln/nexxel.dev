@@ -9,9 +9,9 @@ const pages = [
     to: "/about",
   },
   {
-    title: "Acknowledgements",
-    description: "People who have helped and inspired me in my journey.",
-    to: "/acknowledgements",
+    title: "Spotify Stats",
+    description: "Top tracks, artists and currently playing song.",
+    to: "https://s.nxl.sh/",
   },
   {
     title: "Experiments",
@@ -19,7 +19,8 @@ const pages = [
   },
   {
     title: "Shortener",
-    description: "Very fast link shortener using my domain.",
+    description:
+      "Shorten links on my domain using this blazingly fast shortener.",
     to: "/shortener",
   },
 ];
