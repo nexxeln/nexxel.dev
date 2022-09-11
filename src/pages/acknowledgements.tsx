@@ -53,6 +53,17 @@ const AcknowledgementsPage = () => {
             Julius Marminge
           </a>
         </li>
+
+        <li>
+          <a
+            href="https://twitter.com/alistaiiiir"
+            target="_blank"
+            rel="noreferrer"
+            className={linkStyles}
+          >
+            Alistair Smith
+          </a>
+        </li>
       </ul>
     </Wrapper>
   );
