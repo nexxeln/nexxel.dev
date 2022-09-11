@@ -14,7 +14,7 @@ const AcknowledgementsPage = () => {
       </h1>
       <p className="pt-1 text-slate-200">
         This is a list of people who have helped and inspired me throughtout my
-        journey and I owe a lot to them.
+        journey.
       </p>
 
       <div className="pt-6" />
