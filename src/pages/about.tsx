@@ -1,4 +1,5 @@
 import Image from "next/future/image";
+import Cyling from "../../public/images/cycling.webp"
 import Wrapper from "~/components/Wrapper";
 
 const linkStyles =
@@ -108,10 +109,11 @@ const AboutPage = () => {
           <br />
           <br />
           <Image
-            src="/images/cycling.webp"
+            src={Cyling}
             alt="A picture from a cycling trip with friends."
-            className="rounded-xl"
+            className="block rounded-xl object-cover"
             width={600}
+            placeholder="blur"
             height={300}
           />
           <br />
