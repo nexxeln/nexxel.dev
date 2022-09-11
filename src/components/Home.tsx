@@ -4,7 +4,6 @@ import { FiGithub, FiMail, FiStar } from "react-icons/fi";
 import { BiGitRepoForked } from "react-icons/bi";
 import { Post } from "contentlayer/generated";
 import Link from "next/link";
-import readingTime from "reading-time";
 
 const ProjectCard: FC<{
   url: string;
@@ -19,7 +18,7 @@ const ProjectCard: FC<{
     <a href={url} target="_blank" rel="noreferrer">
       <div className="flex flex-col p-4 transition-transform duration-300 border-2 rounded-lg h-40 border-t-pink bg-[#1c1c1c] place-content-evenly transform hover:scale-[104%]">
         <div className="flex flex-col gap-1">
-          <p className="text-xl text-t-pink">{repo}</p>
+          <p className="text-xl font-medium text-t-pink medium-text">{repo}</p>
           <p className="text-sm">{description}</p>
         </div>
 
@@ -46,7 +45,9 @@ const FeaturedPost = (post: Post) => {
   return (
     <Link href={post.url}>
       <a className="flex px-4 py-4 transition-colors duration-200 rounded-lg hover:bg-zinc-800">
-        <p className="text-xl text-t-pink line-clamp-1">{post.title}</p>
+        <p className="text-xl font-medium text-t-pink line-clamp-1 medium-text">
+          {post.title}
+        </p>
       </a>
     </Link>
   );
@@ -76,6 +77,7 @@ const Hero = () => {
       <div className="flex items-center pt-4 text-xl">
         <a
           href="https://github.com/nexxeln/"
+          title="GitHub"
           target="_blank"
           rel="noreferrer"
           className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
@@ -84,6 +86,7 @@ const Hero = () => {
         </a>
         <a
           href="mailto:shoubhit2005@gmail.com"
+          title="Email"
           target="_blank"
           rel="noreferrer"
           className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"

@@ -78,7 +78,7 @@ const Wrapper: FC<{
           <BackToTop />
         </main>
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );
