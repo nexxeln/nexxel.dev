@@ -16,7 +16,6 @@ const pages = [
   {
     title: "Experiments",
     description: "Random experiments with new and cool tech.",
-    to: "/experiments"
   },
   {
     title: "Shortener",
