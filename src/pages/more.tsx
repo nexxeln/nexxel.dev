@@ -14,8 +14,9 @@ const pages = [
     to: "https://s.nxl.sh/",
   },
   {
-    title: "Experiments",
-    description: "Random experiments with new and cool tech.",
+    title: "Gallery",
+    description: "Some cool pictures that I've taken.",
+    to: "/gallery",
   },
   {
     title: "Shortener",
