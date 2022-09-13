@@ -1,11 +1,12 @@
+import NextImage from "next/future/image";
 import NextLink from "next/link";
-import NextImage, { ImageProps } from "next/image";
-import { FC, ReactNode, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FiClipboard } from "react-icons/fi";
 import { BsCheck2 } from "react-icons/bs";
 import clsx from "clsx";
+import { getPlaiceholder } from "plaiceholder";
 
-const Link: FC<{ href: string; children: ReactNode }> = ({
+const Link: React.FC<{ href: string; children: React.ReactNode }> = ({
   href,
   children,
   ...props
@@ -27,13 +28,9 @@ const Link: FC<{ href: string; children: ReactNode }> = ({
   );
 };
 
-const Image: FC<{ alt: string; props: ImageProps }> = ({ alt, props }) => {
-  return <NextImage alt={alt} layout="fill" {...props} priority />;
-};
-
-const CodeBlock: FC<{
+const CodeBlock: React.FC<{
   className: string | undefined;
-  children: ReactNode;
+  children: React.ReactNode;
 }> = ({ children }): JSX.Element => {
   const textInput = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -88,10 +85,17 @@ const CodeBlock: FC<{
   );
 };
 
+const Image: React.FC<{ src: string; alt: string }> = (props) => {
+
+  return (
+    <NextImage {...props} width={600} height={400} className="rounded-md aspect-w-3" />
+  )
+}
+
 const Components = {
   a: Link,
   pre: CodeBlock,
-  Image,
+  img: Image,
 };
 
 export default Components;
