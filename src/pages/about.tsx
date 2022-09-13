@@ -132,7 +132,7 @@ const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
           <Image
             src={Cyling}
             alt="A picture from a cycling trip with friends."
-            className="block object-cover rounded-xl"
+            className="aspect-w-1 rounded-md"
             width={600}
             placeholder="blur"
             height={300}
