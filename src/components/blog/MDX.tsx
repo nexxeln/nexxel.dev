@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { FiClipboard } from "react-icons/fi";
 import { BsCheck2 } from "react-icons/bs";
 import clsx from "clsx";
-import { getPlaiceholder } from "plaiceholder";
 
 const Link: React.FC<{ href: string; children: React.ReactNode }> = ({
   href,
