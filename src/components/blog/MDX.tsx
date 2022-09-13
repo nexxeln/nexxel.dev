@@ -87,7 +87,7 @@ const CodeBlock: React.FC<{
 const Image: React.FC<{ src: string; alt: string }> = (props) => {
 
   return (
-    <NextImage {...props} width={600} height={400} className="rounded-md aspect-w-3" />
+    <NextImage {...props} width={600} height={400} className="rounded-md" />
   )
 }
 
