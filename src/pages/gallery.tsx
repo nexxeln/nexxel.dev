@@ -19,8 +19,8 @@ const images = [
 const GuestbookPage = () => {
   return (
     <Wrapper
-      title="nexxel • guestbook"
-      description="Sign my guestbook and cement your name on my website"
+      title="nexxel • gallery"
+      description="Some cool picutres I've taken"
     >
       <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         Gallery
