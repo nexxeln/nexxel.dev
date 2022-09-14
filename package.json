@@ -17,6 +17,7 @@
     "@trpc/next": "^9.26.0",
     "@trpc/react": "^9.26.0",
     "@trpc/server": "^9.26.0",
+    "@vercel/og": "^0.0.12",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.6",
     "date-fns": "^2.29.1",
