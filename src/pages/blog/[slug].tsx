@@ -41,20 +41,25 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 const PostLayout = ({ post, draft }: { post: Post; draft: boolean }) => {
   const MDXContent = useMDXComponent(post.body.code);
+  const formattedDate = format(parseISO(post.date), "LLLL d, yyyy");
+  const readingTimeText = readingTime(post.body.code).text;
+
+  const imageLink = `https://www.nexxel.dev/api/og/?title=${post.title}&top=${formattedDate} • ${readingTimeText}`;
+
   return (
-    <Wrapper title={post.title} description={post.description}>
+    <Wrapper
+      title={post.title}
+      description={post.description}
+      image={imageLink}
+    >
       <Head>
         <title>{post.title}</title>
       </Head>
       <article className="px-2 pt-16">
         {draft && (
           <div className="p-4 mb-6 rounded-md bg-t-orange text-neutral-900">
-            <p>
-              hey! this post is hidden 👀
-            </p>
-            <p>
-              please don&apos;t share this link thank you
-            </p>
+            <p>hey! this post is hidden 👀</p>
+            <p>please don&apos;t share this link thank you</p>
           </div>
         )}
         <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
@@ -62,12 +67,12 @@ const PostLayout = ({ post, draft }: { post: Post; draft: boolean }) => {
           <div className="flex items-center gap-2">
             <FiEdit2 />
             <time dateTime={post.date} className="text-slate-200">
-              {format(parseISO(post.date), "LLLL d, yyyy")}
+              {formattedDate}
             </time>
           </div>
 
           <div className="flex items-center gap-2">
-            <BiTimeFive /> {readingTime(post.body.code).text}
+            <BiTimeFive /> {readingTimeText}
           </div>
         </div>
 

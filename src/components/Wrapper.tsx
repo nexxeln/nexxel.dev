@@ -41,8 +41,13 @@ const Wrapper: FC<{
   title: string;
   description: string;
   children: ReactNode;
-}> = ({ title, description, children }) => {
+  image?: string;
+}> = ({ title, description, children, image }) => {
   const router = useRouter();
+
+  if (!image) {
+    image = "/images/banner.png";
+  }
 
   return (
     <>
@@ -59,11 +64,11 @@ const Wrapper: FC<{
         <meta name="theme-color" content="#fabec0" />
         <meta property="og:description" content={description} />
         <meta property="og:title" content={title} />
-        <meta property="og:image" content="/images/banner.png" />
+        <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="/images/banner.png" />
+        <meta name="twitter:image" content={image} />
       </Head>
 
       <div className="items-center h-screen mx-4 md:flex md:flex-col md:mx-auto md:w-4/5 lg:w-2/5">
