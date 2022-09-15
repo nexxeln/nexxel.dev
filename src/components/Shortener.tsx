@@ -38,7 +38,7 @@ const CreateLink = ({ origin }: { origin: string }) => {
         <div className="flex items-center gap-2 p-4 border-2 rounded-md bg-zinc-800 border-t-pink">
           <h2 className="text-lg text-center md:text-2xl">{`${url}/${form.slug}`}</h2>
           <button
-            className="px-2 py-2 ml-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-t-purple hover:bg-t-purple hover:bg-opacity-30 text-t-purple "
+            className="px-2 py-2 ml-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-t-pink hover:bg-t-pink hover:bg-opacity-30 text-t-pink"
             onClick={() => {
               setCopied(true);
               navigator.clipboard.writeText(`https://${url}/${form.slug}`);
