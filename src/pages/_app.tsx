@@ -1,7 +1,5 @@
 // src/pages/_app.tsx
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { withTRPC } from "@trpc/next";
 import { SessionProvider } from "next-auth/react";
 import superjson from "superjson";
@@ -10,16 +8,6 @@ import type { AppRouter } from "~/server/router";
 import "~/styles/globals.css";
 
 const MyApp = ({ Component, pageProps: { session, ...pageProps } }: any) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
-    void new Audio("/sounds/click.mp3").play().catch(() => null);
-  }, [router.pathname]);
-
   return (
     <>
       <Head>
