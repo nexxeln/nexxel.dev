@@ -4,6 +4,8 @@ import { debounce } from "debounce";
 
 import { trpc } from "../utils/trpc";
 import clsx from "clsx";
+import { BsCheck2 } from "react-icons/bs";
+import { FiClipboard } from "react-icons/fi";
 
 type Form = {
   slug: string;
@@ -13,6 +15,7 @@ type Form = {
 const CreateLink = ({ origin }: { origin: string }) => {
   const url = origin + "/r";
   const [form, setForm] = useState<Form>({ slug: "", url: "" });
+  const [copied, setCopied] = useState(false);
 
   const checkSlug = trpc.useQuery(
     ["shortener.checkSlug", { slug: form.slug }],
@@ -35,12 +38,16 @@ const CreateLink = ({ origin }: { origin: string }) => {
         <div className="flex items-center gap-2 p-4 border-2 rounded-md bg-zinc-800 border-t-pink">
           <h2 className="text-lg text-center md:text-2xl">{`${url}/${form.slug}`}</h2>
           <button
-            className="px-4 py-2 ml-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-opacity-80 border-t-pink hover:bg-t-pink hover:bg-opacity-30 hover:text-white"
+            className="px-2 py-2 ml-2 transition-colors duration-300 border-2 rounded-md cursor-pointer border-t-purple hover:bg-t-purple hover:bg-opacity-30 text-t-purple "
             onClick={() => {
+              setCopied(true);
               navigator.clipboard.writeText(`https://${url}/${form.slug}`);
+              setTimeout(() => {
+                setCopied(false);
+              }, 3000);
             }}
           >
-            Copy
+            {copied ? <BsCheck2 /> : <FiClipboard />}
           </button>
         </div>
 
