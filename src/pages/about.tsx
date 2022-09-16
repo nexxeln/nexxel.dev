@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 const linkStyles =
   "font-medium medium-text text-t-pink hover:opacity-90 transition-opacity duration-300";
 
-const boldStyles = "font-medium medium-text text-slate-100";
+const boldStyles = "font-medium medium-text";
 
 const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
   return (
@@ -37,7 +37,7 @@ const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
 
       <div className="pt-6" />
 
-      <div className="text-lg text-slate-300">
+      <div className="text-lg">
         <p>
           Hi, I&apos;m <span className={boldStyles}>Shoubhit</span>, commonly
           known as{" "}
