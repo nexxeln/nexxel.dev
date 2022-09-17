@@ -190,3 +190,17 @@ div.rehype-code-title {
 .prose :where(pre):not(:where([class~="not-prose"] *)) {
   padding: 0.5em !important;
 }
+
+blockquote {
+  @apply py-0.5 rounded-md bg-t-orange;
+}
+
+blockquote p::before {
+  content: none !important;
+}
+
+blockquote p {
+  @apply text-neutral-900 text-lg;
+  font-style: normal;
+  border-left: none;
+}
