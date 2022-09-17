@@ -192,7 +192,7 @@ div.rehype-code-title {
 }
 
 blockquote {
-  @apply py-0.5 rounded-md bg-t-orange;
+  @apply py-0.5 rounded-md bg-t-orange border-none;
 }
 
 blockquote p::before {
