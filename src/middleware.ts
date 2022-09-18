@@ -17,6 +17,10 @@ export async function middleware(req: NextRequest) {
   const data = await fetchSlug.json();
 
   if (data?.url) {
+    if (data.url === `${origin}${pathname}` || data.url === `${origin}${pathname}/`) {
+      return NextResponse.redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }
+
     return NextResponse.redirect(data.url);
   }
 }
