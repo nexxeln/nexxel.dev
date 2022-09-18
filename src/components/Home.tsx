@@ -62,7 +62,7 @@ const Hero = () => {
         width={165}
         height={165}
         priority
-        className="rounded-full"
+        className="rounded-full pixelated"
       />
 
       <h1 className="pt-2 text-5xl font-bold text-center text-transparent bold-text bg-clip-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange animate-gradient-text">
