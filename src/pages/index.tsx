@@ -66,7 +66,7 @@ const HomePage: NextPage<{
   latestPosts: Post[];
 }> = ({ starCount, pinnedRepos, latestPosts }) => {
   return (
-    <Wrapper title="nexxel • home" description="17 yo self-taught developer">
+    <Wrapper title="nexxel" description="17 yo self-taught developer">
       <Hero />
 
       <div className="flex flex-col items-center justify-center">
