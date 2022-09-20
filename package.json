@@ -22,7 +22,7 @@
     "contentlayer": "^0.2.6",
     "date-fns": "^2.29.1",
     "debounce": "^1.2.1",
-    "next": "12.3.0",
+    "next": "12.3.1",
     "next-auth": "^4.10.3",
     "next-contentlayer": "^0.2.6",
     "random-word-slugs": "^0.1.6",
@@ -39,7 +39,7 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^12.3.0",
+    "@next/bundle-analyzer": "^12.3.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
@@ -49,7 +49,7 @@
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.7",
     "eslint": "8.18.0",
-    "eslint-config-next": "12.3.0",
+    "eslint-config-next": "12.3.1",
     "hast-util-to-string": "^2.0.0",
     "postcss": "^8.4.14",
     "prisma": "^4.3.1",
