@@ -33,6 +33,7 @@ body {
     sans-serif;
   scroll-behavior: smooth;
   color-scheme: dark;
+  text-redering: optimizelegibility;
   @apply antialiased bg-neutral-900 text-slate-100;
 }
 
