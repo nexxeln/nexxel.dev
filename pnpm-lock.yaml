@@ -45,6 +45,7 @@ specifiers:
   tailwindcss: ^3.1.6
   typescript: 4.7.4
   unist-util-visit: ^4.1.0
+  use-lanyard: ^1.2.0
   zod: ^3.17.3
 
 dependencies:
@@ -73,6 +74,7 @@ dependencies:
   rehype-slug: 5.0.1
   remark-gfm: 3.0.1
   superjson: 1.9.1
+  use-lanyard: 1.2.0_react@18.2.0
   zod: 3.17.3
 
 devDependencies:
@@ -4432,6 +4434,14 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  /swr/1.3.0_react@18.2.0:
+    resolution: {integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /tailwindcss/3.1.6:
     resolution: {integrity: sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==}
     engines: {node: '>=12.13.0'}
@@ -4643,6 +4653,16 @@ packages:
     dependencies:
       punycode: 2.1.1
     dev: true
+
+  /use-lanyard/1.2.0_react@18.2.0:
+    resolution: {integrity: sha512-cFGuRhQx1K7Mh3jAR+7GdNdQ/zRCp1FRg8b/ROPGXRKNptFdEXw1V1I3144WkDORXzkEQnJg6YSx1iq/7cLuCQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=17'
+    dependencies:
+      react: 18.2.0
+      swr: 1.3.0_react@18.2.0
+    dev: false
 
   /use-sync-external-store/1.2.0_react@18.2.0:
     resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}

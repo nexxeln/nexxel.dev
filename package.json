@@ -36,6 +36,7 @@
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
     "superjson": "^1.9.1",
+    "use-lanyard": "^1.2.0",
     "zod": "^3.17.3"
   },
   "devDependencies": {
