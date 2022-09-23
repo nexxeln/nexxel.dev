@@ -11,7 +11,6 @@ const nextConfig = {
       "cdn.discordapp.com",
       "us-east-1.tixte.net",
       "raw.githubusercontent.com",
-      "i.scdn.co",
     ],
   },
 };

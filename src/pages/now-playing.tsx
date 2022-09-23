@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Image from "next/future/image";
 import { useState, useRef, useEffect } from "react";
 import { useLanyardWs } from "use-lanyard";
@@ -55,7 +57,7 @@ const NowPlaying = () => {
     return (
       <div className="flex items-center justify-center">
         <div className="hover:bg-[#1c1c1c] rounded-md p-8 transition-all duration-300 w-fit">
-          <Image
+          <img
             src="/images/spotify.png"
             alt="Spotify's logo"
             width={100}

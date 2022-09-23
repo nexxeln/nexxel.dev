@@ -9,20 +9,24 @@ const pages = [
     to: "/about",
   },
   {
+    title: "Now Playing",
+    description: "Currently playing song on Spotify. Updated in real time!",
+    to: "/now-playing",
+  },
+  {
     title: "Spotify Stats",
     description: "Top tracks, artists and currently playing song.",
     to: "https://s.nxl.sh/",
   },
   {
+    title: "Shortener",
+    description: "Shorten links on my domain using this URL shortener.",
+    to: "/shortener",
+  },
+  {
     title: "Gallery",
     description: "Some cool pictures that I've taken.",
     to: "/gallery",
-  },
-  {
-    title: "Shortener",
-    description:
-      "Shorten links on my domain using this blazingly fast shortener.",
-    to: "/shortener",
   },
 ];
 
