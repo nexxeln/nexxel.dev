@@ -1,6 +1,7 @@
 import Image from "next/future/image";
 import { useState, useRef, useEffect } from "react";
 import { useLanyardWs } from "use-lanyard";
+import { PulseLoader } from "react-spinners";
 
 import Wrapper from "~/components/Wrapper";
 
@@ -42,7 +43,12 @@ const NowPlaying = () => {
     };
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data)
+    return (
+      <div className="flex items-center justify-center pt-24">
+        <PulseLoader color="#f4cfdf" />
+      </div>
+    );
 
   const spotify = data.spotify;
   if (!spotify)
@@ -90,9 +96,9 @@ const NowPlaying = () => {
             </p>
           </div>
 
-          <div className="h-2.5 rounded-xl w-[300px] bg-white/20">
+          <div className="h-2.5 rounded-xl w-[300px] bg-t-pink/20">
             <div
-              className="bg-green-500 h-2.5 rounded-xl transition-all ease-linear will-change-[width] duration-1000"
+              className="bg-t-pink h-2.5 rounded-xl transition-all ease-linear will-change-[width] duration-1000"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
