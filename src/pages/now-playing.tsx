@@ -57,7 +57,7 @@ const NowPlaying = () => {
     return (
       <div className="flex items-center justify-center">
         <div className="hover:bg-[#1c1c1c] rounded-md p-8 transition-all duration-300 w-fit">
-          <img
+          <Image
             src="/images/spotify.png"
             alt="Spotify's logo"
             width={100}
@@ -81,7 +81,7 @@ const NowPlaying = () => {
         rel="noreferrer"
       >
         <div className="flex flex-col items-center gap-4 hover:bg-[#1c1c1c] rounded-md p-8 transition-all duration-300 w-fit">
-          <Image
+          <img
             src={spotify.album_art_url}
             alt={spotify.song}
             width={250}
