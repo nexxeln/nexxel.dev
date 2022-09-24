@@ -125,8 +125,7 @@ const FAQPage = () => {
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use <Link to="https://github.com/tiagovla/tokyodark.nvim" text="tokyodark.nvim" /> for Neovim, <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> for VSCode, and a custom theme based on <Link to="https://github.com/eendroroy/alacritty-theme/blob/master/themes/taerminal.yaml" text="Taerminal" /> for my terminal.
-          </p>
+            I use <Link to="https://github.com/rebelot/kanagawa.nvim" text="Kanagawa" /> for Neovim and Alacritty, and <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> for VSCode.</p>
         </CustomQna>
 
         <CustomQna question="What font do you use for coding?">
