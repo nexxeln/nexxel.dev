@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { generateSlug } from "random-word-slugs";
 import { debounce } from "debounce";
-
-import { trpc } from "../utils/trpc";
 import clsx from "clsx";
 import { BsCheck2 } from "react-icons/bs";
 import { FiClipboard } from "react-icons/fi";
+
+import { trpc } from "../utils/trpc";
 
 type Form = {
   slug: string;
@@ -17,8 +17,10 @@ const CreateLink = ({ origin }: { origin: string }) => {
   const [form, setForm] = useState<Form>({ slug: "", url: "" });
   const [copied, setCopied] = useState(false);
 
-  const checkSlug = trpc.useQuery(
-    ["shortener.checkSlug", { slug: form.slug }],
+  const checkSlug = trpc.shortener.checkSlug.useQuery(
+    {
+      slug: form.slug,
+    },
     {
       refetchOnReconnect: false,
       refetchOnMount: false,
@@ -26,7 +28,7 @@ const CreateLink = ({ origin }: { origin: string }) => {
     }
   );
 
-  const createShortLink = trpc.useMutation("shortener.create");
+  const createShortLink = trpc.shortener.create.useMutation();
 
   if (createShortLink.status === "success") {
     return (
