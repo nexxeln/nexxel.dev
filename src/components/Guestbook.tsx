@@ -43,11 +43,9 @@ const Guestbook = () => {
     onMutate: () => {
       ctx.guestbook.getAll.cancel();
 
-      let optimisticUpdate = ctx.guestbook.getAll.getData();
-      if (optimisticUpdate) {
-        // ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
-        ctx.guestbook.getAll.setData(optimisticUpdate);
-      }
+      const optimisticUpdate = ctx.guestbook.getAll.getData();
+
+      ctx.guestbook.getAll.setData(optimisticUpdate);
     },
     onSettled: () => {
       ctx.guestbook.getAll.invalidate();
