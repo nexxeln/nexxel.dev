@@ -94,7 +94,7 @@ const NowPlaying = () => {
               {spotify.song}
             </p>
             <p className="sm:text-sm md:text-lg">
-              {spotify.artist.replace(";", ",")}
+              {spotify.artist.replaceAll(";", ",")}
             </p>
           </div>
 
