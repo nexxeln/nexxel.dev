@@ -204,3 +204,7 @@ blockquote p {
   font-style: normal;
   border-left: none;
 }
+
+#main > article > main > blockquote > p > a {
+  @apply text-[#363151];
+}

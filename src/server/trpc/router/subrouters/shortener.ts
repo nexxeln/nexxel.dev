@@ -1,10 +1,14 @@
 import { z } from "zod";
-import { createRouter } from "../context";
+import { t } from "../../trpc";
 
-export const shortenerRouter = createRouter()
-  .query("checkSlug", {
-    input: z.object({ slug: z.string() }),
-    async resolve({ ctx, input }) {
+export const shortenerRouter = t.router({
+  checkSlug: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
       const slugCount = await ctx.prisma.shortLink.count({
         where: {
           slug: input.slug,
@@ -12,14 +16,15 @@ export const shortenerRouter = createRouter()
       });
 
       return { used: slugCount > 0 };
-    },
-  })
-  .mutation("create", {
-    input: z.object({
-      slug: z.string(),
-      url: z.string(),
     }),
-    async resolve({ ctx, input }) {
+  create: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+        url: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
       try {
         await ctx.prisma.shortLink.create({
           data: {
@@ -30,5 +35,5 @@ export const shortenerRouter = createRouter()
       } catch (error) {
         console.log("error", error);
       }
-    },
-  });
+    }),
+});

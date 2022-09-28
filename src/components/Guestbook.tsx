@@ -36,19 +36,21 @@ const Guestbook = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const ctx = trpc.useContext();
-  const { data: messages } = trpc.useQuery(["guestbook.getAll"]);
-  const guestbook = trpc.useMutation("guestbook.postMessage", {
-    onMutate: () => {
-      ctx.cancelQuery(["guestbook.getAll"]);
+  const { data: messages } = trpc.guestbook.getAll.useQuery();
 
-      let optimisticUpdate = ctx.getQueryData(["guestbook.getAll"]);
+  const ctx = trpc.useContext();
+  const guestbook = trpc.guestbook.postMessage.useMutation({
+    onMutate: () => {
+      ctx.guestbook.getAll.cancel();
+
+      let optimisticUpdate = ctx.guestbook.getAll.getData();
       if (optimisticUpdate) {
-        ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
+        // ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
+        ctx.guestbook.getAll.setData(optimisticUpdate);
       }
     },
     onSettled: () => {
-      ctx.invalidateQueries(["guestbook.getAll"]);
+      ctx.guestbook.getAll.invalidate();
     },
   });
 
