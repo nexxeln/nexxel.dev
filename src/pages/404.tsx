@@ -4,7 +4,7 @@ import Wrapper from "~/components/Wrapper";
 const ShortenerPage = () => {
   return (
     <Wrapper title="nexxel • 404" description="Looks like you're lost">
-      <div className="justify-center pt-28">
+      <div className="pt-28 justify-center">
         <h2 className="text-4xl text-t-purple">404</h2>
         <p>
           Looks like you&apos;re lost. In the meantime read my{" "}
