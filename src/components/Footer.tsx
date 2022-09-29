@@ -9,7 +9,7 @@ const Footer = () => {
           href="https://github.com/nexxeln/nexxel.dev"
           target="_blank"
           rel="noreferrer"
-          className="transition-opacity duration-300 opacity-75 text-t-purple hover:opacity-100"
+          className="text-t-purple opacity-75 transition-opacity duration-300 hover:opacity-100"
         >
           GitHub
         </a>

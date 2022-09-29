@@ -56,7 +56,7 @@ const NowPlaying = () => {
   if (!spotify)
     return (
       <div className="flex items-center justify-center">
-        <div className="hover:bg-[#1c1c1c] rounded-md p-8 transition-all duration-300 w-fit">
+        <div className="w-fit rounded-md p-8 transition-all duration-300 hover:bg-[#1c1c1c]">
           <Image
             src="/images/spotify.png"
             alt="Spotify's logo"
@@ -80,7 +80,7 @@ const NowPlaying = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="flex flex-col items-center gap-4 hover:bg-[#1c1c1c] rounded-md p-8 transition-all duration-300 w-fit">
+        <div className="flex w-fit flex-col items-center gap-4 rounded-md p-8 transition-all duration-300 hover:bg-[#1c1c1c]">
           <img
             src={spotify.album_art_url}
             alt={spotify.song}
@@ -90,7 +90,7 @@ const NowPlaying = () => {
           />
 
           <div className="flex flex-col gap-y-2">
-            <p className="font-medium sm:text-lg md:text-xl medium-text">
+            <p className="medium-text font-medium sm:text-lg md:text-xl">
               {spotify.song}
             </p>
             <p className="sm:text-sm md:text-lg">
@@ -98,9 +98,9 @@ const NowPlaying = () => {
             </p>
           </div>
 
-          <div className="h-2.5 rounded-xl w-[300px] bg-t-pink/20">
+          <div className="h-2.5 w-[300px] rounded-xl bg-t-pink/20">
             <div
-              className="bg-t-pink h-2.5 rounded-xl transition-all ease-linear will-change-[width] duration-1000"
+              className="h-2.5 rounded-xl bg-t-pink transition-all duration-1000 ease-linear will-change-[width]"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -116,7 +116,7 @@ const NowPlayingPage = () => {
       title="nexxel • now playing"
       description="Currently playing song on Spotify"
     >
-      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
+      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">
         Now Playing
       </h1>
       <p className="pt-1 text-slate-200">
@@ -126,7 +126,7 @@ const NowPlayingPage = () => {
           href="https://github.com/Phineas/lanyard"
           target="_blank"
           rel="noreferrer"
-          className="font-medium transition-opacity duration-300 medium-text text-t-pink hover:opacity-90"
+          className="medium-text font-medium text-t-pink transition-opacity duration-300 hover:opacity-90"
         >
           Lanyard
         </a>

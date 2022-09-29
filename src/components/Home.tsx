@@ -16,13 +16,13 @@ const ProjectCard: FC<{
 }> = ({ url, repo, stars, forks, description, language, languageColor }) => {
   return (
     <a href={url} target="_blank" rel="noreferrer">
-      <div className="flex flex-col p-4 transition-transform duration-300 border-2 rounded-lg h-40 border-t-pink bg-[#1c1c1c] place-content-evenly transform hover:scale-[104%]">
+      <div className="flex h-40 transform flex-col place-content-evenly rounded-lg border-2 border-t-pink bg-[#1c1c1c] p-4 transition-transform duration-300 hover:scale-[104%]">
         <div className="flex flex-col gap-1">
-          <p className="text-xl font-medium medium-text">{repo}</p>
+          <p className="medium-text text-xl font-medium">{repo}</p>
           <p className="text-sm">{description}</p>
         </div>
 
-        <div className="flex flex-col pt-4 text-sm gap-0.5">
+        <div className="flex flex-col gap-0.5 pt-4 text-sm">
           <span className="flex items-center gap-1.5">
             <span style={{ color: languageColor }}>⬤</span>
             {language}
@@ -44,8 +44,8 @@ const ProjectCard: FC<{
 const FeaturedPost = (post: Post) => {
   return (
     <Link href={post.url}>
-      <a className="flex px-4 py-4 transition-colors duration-200 rounded-lg hover:bg-zinc-800">
-        <p className="text-xl font-medium text-t-pink line-clamp-1 medium-text">
+      <a className="flex rounded-lg px-4 py-4 transition-colors duration-200 hover:bg-zinc-800">
+        <p className="medium-text text-xl font-medium text-t-pink line-clamp-1">
           {post.title}
         </p>
       </a>
@@ -55,21 +55,21 @@ const FeaturedPost = (post: Post) => {
 
 const Hero = () => {
   return (
-    <div className="flex flex-col items-center h-screen pt-32">
+    <div className="flex h-screen flex-col items-center pt-32">
       <Image
         src="/images/nexxel.webp"
         alt="nexxel's avatar"
         width={165}
         height={165}
         priority
-        className="rounded-full pixelated"
+        className="pixelated rounded-full"
       />
 
-      <h1 className="pt-2 text-5xl font-bold text-center text-transparent bold-text bg-clip-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange animate-gradient-text">
+      <h1 className="bold-text animate-gradient-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange bg-clip-text pt-2 text-center text-5xl font-bold text-transparent">
         nexxel
       </h1>
 
-      <p className="pt-1 text-xl text-center">
+      <p className="pt-1 text-center text-xl">
         Hi, I&apos;m Shoubhit. I&apos;m a 17 y/o self-taught developer and I
         like to build cool stuff
       </p>
@@ -80,7 +80,7 @@ const Hero = () => {
           title="GitHub"
           target="_blank"
           rel="noreferrer"
-          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
+          className="rounded-full p-3 transition-colors duration-300 hover:bg-zinc-800"
         >
           <FiGithub />
         </a>
@@ -89,7 +89,7 @@ const Hero = () => {
           title="Email"
           target="_blank"
           rel="noreferrer"
-          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
+          className="rounded-full p-3 transition-colors duration-300 hover:bg-zinc-800"
         >
           <FiMail />
         </a>

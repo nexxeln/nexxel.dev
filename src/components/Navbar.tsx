@@ -14,10 +14,10 @@ const NavItem: FC<{ href: string; text: string; router: NextRouter }> = ({
     <Link href={href === "/home" ? "/" : href}>
       <a
         className={clsx(
-          "text-md md:text-lg mr-4 md:mr-6",
+          "text-md mr-4 md:mr-6 md:text-lg",
           isActive
-            ? "font-medium medium-text text-t-pink"
-            : "hover:text-t-pink transition-colors duration-300"
+            ? "medium-text font-medium text-t-pink"
+            : "transition-colors duration-300 hover:text-t-pink"
         )}
       >
         {text}
@@ -31,7 +31,7 @@ const Navbar = () => {
   const links = ["home", "blog", "guestbook", "FAQ", "more"];
 
   return (
-    <nav className="flex items-center justify-between max-w-sm mx-auto capitalize">
+    <nav className="mx-auto flex max-w-sm items-center justify-between capitalize">
       {links.map((link, index) => (
         <NavItem
           href={`/${link === "FAQ" ? "faq" : link}`}

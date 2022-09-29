@@ -70,25 +70,25 @@ const HomePage: NextPage<{
       <Hero />
 
       <div className="flex flex-col items-center justify-center">
-        <h3 className="self-start pb-2 text-4xl font-bold bold-text">
+        <h3 className="bold-text self-start pb-2 text-4xl font-bold">
           Things I&apos;ve built
         </h3>
 
         <p className="pb-6 pl-0.5 text-slate-200">
           Apart from create-t3-app, my projects have earned me{" "}
-          <span className="font-bold bold-text">{starCount}</span> stars! I have
+          <span className="bold-text font-bold">{starCount}</span> stars! I have
           a bunch of other cool projects that you can see on my{" "}
           <a
             href="https://github.com/nexxeln"
             target="_blank"
             rel="noreferrer"
-            className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100"
+            className="text-t-purple opacity-90 transition-opacity duration-300 hover:opacity-100"
           >
             GitHub profile.
           </a>
         </p>
 
-        <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
+        <div className="grid auto-cols-max grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
           {pinnedRepos.map((project) => (
             <ProjectCard
               key={project.repo}
@@ -106,7 +106,7 @@ const HomePage: NextPage<{
 
       <div className="pt-32" />
       <div className="flex flex-col">
-        <h3 className="pb-6 text-4xl font-bold bold-text">From the blog</h3>
+        <h3 className="bold-text pb-6 text-4xl font-bold">From the blog</h3>
 
         <div className="flex flex-col gap-1">
           {latestPosts.map((post) => (
@@ -116,7 +116,7 @@ const HomePage: NextPage<{
 
         <Link href="/blog">
           <a>
-            <p className="flex items-center gap-1 pt-4 pl-4 text-lg transition-opacity duration-300 hover:opacity-90 text-t-purple">
+            <p className="flex items-center gap-1 pt-4 pl-4 text-lg text-t-purple transition-opacity duration-300 hover:opacity-90">
               Go to the blog
               <FiArrowRight size={20} />
             </p>

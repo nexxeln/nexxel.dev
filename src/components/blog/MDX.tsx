@@ -64,9 +64,9 @@ const CodeBlock: React.FC<{
           aria-label="Copy code"
           type="button"
           className={clsx(
-            "absolute flex justify-center items-center right-3 top-3 w-7 h-7 p-1 rounded border bg-[#282e33]",
+            "absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded border bg-[#282e33] p-1",
             copied
-              ? "focus:border-t-orange border-t-orange text-t-orange"
+              ? "border-t-orange text-t-orange focus:border-t-orange"
               : "border-gray-400 text-gray-400"
           )}
           onClick={onCopy}
@@ -85,11 +85,10 @@ const CodeBlock: React.FC<{
 };
 
 const Image: React.FC<{ src: string; alt: string }> = (props) => {
-
   return (
     <NextImage {...props} width={600} height={400} className="rounded-md" />
-  )
-}
+  );
+};
 
 const Components = {
   a: Link,

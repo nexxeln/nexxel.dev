@@ -17,11 +17,11 @@ const PostCard = (post: Post) => {
   return (
     <Link href={post.url}>
       <a>
-        <div className="p-4 mb-6 transition-all duration-300 rounded-lg cursor-pointer hover:bg-zinc-800">
+        <div className="mb-6 cursor-pointer rounded-lg p-4 transition-all duration-300 hover:bg-zinc-800">
           <h3 className="text-2xl text-t-pink">{post.title}</h3>
           <p className="pt-4 text-slate-200">{post.description}</p>
 
-          <div className="flex items-center gap-2 pt-4 text-sm text-">
+          <div className="text- flex items-center gap-2 pt-4 text-sm">
             <time dateTime={post.date}>
               {format(parseISO(post.date), "LLLL d, yyyy")}
             </time>
@@ -40,12 +40,12 @@ const Blog = ({ posts }: { posts: Post[] }) => {
       title="nexxel • blog"
       description="Writings on programming and tech"
     >
-      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">Blog</h1>
+      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">Blog</h1>
       <p className="pt-1 text-slate-200">
         Here I write about programming and tech I like. You can expect writings
         on new tech I explore and web development.
       </p>
-      <div className="max-w-2xl pt-16 mx-auto">
+      <div className="mx-auto max-w-2xl pt-16">
         {posts.map((post) => (
           <PostCard key={post._id} {...post} />
         ))}

@@ -7,7 +7,7 @@ const Qna: FC<{ question: string; answer: string }> = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-xl font-bold text-t-pink bold-text">{question}</p>
+      <p className="bold-text text-xl font-bold text-t-pink">{question}</p>
       <p>{answer}</p>
     </div>
   );
@@ -22,7 +22,7 @@ const CustomQna = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-xl font-bold text-t-pink bold-text">{question}</p>
+      <p className="bold-text text-xl font-bold text-t-pink">{question}</p>
       {children}
     </div>
   );
@@ -34,7 +34,7 @@ const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
       href={to}
       target="_blank"
       rel="noreferrer"
-      className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100"
+      className="text-t-purple opacity-90 transition-opacity duration-300 hover:opacity-100"
     >
       {text}
     </a>
@@ -47,7 +47,7 @@ const FAQPage = () => {
       title="nexxel • faq"
       description="Questions frequently asked to me"
     >
-      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">FAQ</h1>
+      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">FAQ</h1>
       <p className="pt-1 text-slate-200">
         These are some questions that are asked to me pretty frequently, so I
         compiled them all into one page!
@@ -112,20 +112,33 @@ const FAQPage = () => {
 
         <CustomQna question="What code editor do you use?">
           <p>
-            I use <Link to="https://neovim.io/" text="Neovim" /> and the occasional <Link to="https://code.visualstudio.com/" text="VSCode" />.
+            I use <Link to="https://neovim.io/" text="Neovim" /> and the
+            occasional{" "}
+            <Link to="https://code.visualstudio.com/" text="VSCode" />.
           </p>
         </CustomQna>
 
-
         <CustomQna question="What terminal emulator do you use?">
           <p>
-            I use <Link to="https://alacritty.org/" text="Alacritty" />. It&apos;s great.
+            I use <Link to="https://alacritty.org/" text="Alacritty" />.
+            It&apos;s great.
           </p>
         </CustomQna>
 
         <CustomQna question="What theme do you use?">
           <p>
-            I use <Link to="https://github.com/rebelot/kanagawa.nvim" text="Kanagawa" /> for Neovim and Alacritty, and <Link to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs" text="poimandres" /> for VSCode.</p>
+            I use{" "}
+            <Link
+              to="https://github.com/rebelot/kanagawa.nvim"
+              text="Kanagawa"
+            />{" "}
+            for Neovim and Alacritty, and{" "}
+            <Link
+              to="https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs"
+              text="poimandres"
+            />{" "}
+            for VSCode.
+          </p>
         </CustomQna>
 
         <CustomQna question="What font do you use for coding?">
@@ -133,11 +146,7 @@ const FAQPage = () => {
             I am a big fan of{" "}
             <Link to="https://jetbrains.com/lp/mono" text="JetBrains Mono" />{" "}
             but currently I use{" "}
-            <Link
-              to="https://github.com/source-foundry/Hack"
-              text="Hack"
-            />
-            .
+            <Link to="https://github.com/source-foundry/Hack" text="Hack" />.
           </p>
         </CustomQna>
       </div>
