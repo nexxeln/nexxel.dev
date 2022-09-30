@@ -16,7 +16,7 @@ const ProjectCard: FC<{
 }> = ({ url, repo, stars, forks, description, language, languageColor }) => {
   return (
     <a href={url} target="_blank" rel="noreferrer">
-      <div className="flex h-40 transform flex-col place-content-evenly rounded-lg border-2 border-t-pink bg-[#1c1c1c] p-4 transition-transform duration-300 hover:scale-[104%]">
+      <div className="flex h-40 transform flex-col place-content-evenly rounded-lg border-2 border-t-pink bg-[#1c1c1c] p-4">
         <div className="flex flex-col gap-1">
           <p className="medium-text text-xl font-medium">{repo}</p>
           <p className="text-sm">{description}</p>

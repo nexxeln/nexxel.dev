@@ -2,6 +2,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
 import { FeaturedPost, Hero, ProjectCard } from "~/components/Home";
@@ -90,16 +91,27 @@ const HomePage: NextPage<{
 
         <div className="grid auto-cols-max grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
           {pinnedRepos.map((project) => (
-            <ProjectCard
+            <motion.div
+              whileHover={{
+                position: "relative",
+                zIndex: 1,
+                scale: 1.065,
+                transition: {
+                  duration: 0.2,
+                },
+              }}
               key={project.repo}
-              repo={project.repo}
-              forks={project.forks}
-              url={`https://github.com/${project.owner}/${project.repo}`}
-              stars={project.stars}
-              description={project.description}
-              language={project.language}
-              languageColor={project.languageColor}
-            />
+            >
+              <ProjectCard
+                repo={project.repo}
+                forks={project.forks}
+                url={`https://github.com/${project.owner}/${project.repo}`}
+                stars={project.stars}
+                description={project.description}
+                language={project.language}
+                languageColor={project.languageColor}
+              />
+            </motion.div>
           ))}
         </div>
       </div>
