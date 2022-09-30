@@ -39,6 +39,7 @@ const Blog = ({ posts }: { posts: Post[] }) => {
     <Wrapper
       title="nexxel • blog"
       description="Writings on programming and tech"
+      noAnim
     >
       <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">Blog</h1>
       <p className="pt-1 text-slate-200">
