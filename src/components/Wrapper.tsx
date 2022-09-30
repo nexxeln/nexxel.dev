@@ -80,22 +80,26 @@ const Wrapper: FC<{
         <AnimatePresence mode="wait">
           <motion.div
             key={router.route}
-            initial="pageInitial"
-            animate="pageAnimate"
-            exit="pageExit"
+            initial="initial"
+            animate="animate"
+            exit="exit"
             variants={{
-              pageInitial: {
+              initial: {
                 opacity: 0,
               },
-              pageAnimate: {
+              animate: {
                 opacity: 1,
+                transition: {
+                  duration: 0.7,
+                  ease: [0.6, -0.05, 0.01, 0.99],
+                },
               },
-              pageExit: {
+              exit: {
                 opacity: 0,
               },
             }}
           >
-            <main id="main" className="">
+            <main id="main">
               {children}
               <div className="pb-8" />
               <BackToTop />
