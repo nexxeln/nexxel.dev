@@ -79,6 +79,12 @@ const Wrapper: FC<{
         </div>
 
         {noAnim ? (
+          <main id="main">
+            {children}
+            <div className="pb-8" />
+            <BackToTop />
+          </main>
+        ) : (
           <AnimatePresence mode="wait">
             <motion.div
               key={router.route}
@@ -108,12 +114,6 @@ const Wrapper: FC<{
               </main>
             </motion.div>
           </AnimatePresence>
-        ) : (
-          <main id="main">
-            {children}
-            <div className="pb-8" />
-            <BackToTop />
-          </main>
         )}
 
         {/* <Footer /> */}
