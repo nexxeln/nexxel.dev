@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
 
 import Navbar from "./Navbar";
@@ -42,8 +41,7 @@ const Wrapper: FC<{
   description: string;
   children: ReactNode;
   image?: string;
-  noAnim?: boolean;
-}> = ({ title, description, children, image, noAnim }) => {
+}> = ({ title, description, children, image }) => {
   const router = useRouter();
 
   if (!image) {
@@ -78,43 +76,11 @@ const Wrapper: FC<{
           <Navbar />
         </div>
 
-        {noAnim ? (
-          <main id="main">
-            {children}
-            <div className="pb-8" />
-            <BackToTop />
-          </main>
-        ) : (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={router.route}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={{
-                initial: {
-                  opacity: 0,
-                },
-                animate: {
-                  opacity: 1,
-                  transition: {
-                    duration: 0.7,
-                    ease: [0.6, -0.05, 0.01, 0.99],
-                  },
-                },
-                exit: {
-                  opacity: 0,
-                },
-              }}
-            >
-              <main id="main">
-                {children}
-                <div className="pb-8" />
-                <BackToTop />
-              </main>
-            </motion.div>
-          </AnimatePresence>
-        )}
+        <main id="main">
+          {children}
+          <div className="pb-8" />
+          <BackToTop />
+        </main>
 
         {/* <Footer /> */}
       </div>
