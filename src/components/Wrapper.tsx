@@ -1,8 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC, ReactNode, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUp } from "react-icons/fi";
-import Footer from "./Footer";
 
 import Navbar from "./Navbar";
 
@@ -77,11 +77,31 @@ const Wrapper: FC<{
           <Navbar />
         </div>
 
-        <main id="main" className="">
-          {children}
-          <div className="pb-8" />
-          <BackToTop />
-        </main>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={router.route}
+            initial="pageInitial"
+            animate="pageAnimate"
+            exit="pageExit"
+            variants={{
+              pageInitial: {
+                opacity: 0,
+              },
+              pageAnimate: {
+                opacity: 1,
+              },
+              pageExit: {
+                opacity: 0,
+              },
+            }}
+          >
+            <main id="main" className="">
+              {children}
+              <div className="pb-8" />
+              <BackToTop />
+            </main>
+          </motion.div>
+        </AnimatePresence>
 
         {/* <Footer /> */}
       </div>
