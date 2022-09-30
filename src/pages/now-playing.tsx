@@ -62,6 +62,7 @@ const NowPlaying = () => {
             alt="Spotify's logo"
             width={100}
             height={100}
+            priority
             className="mx-auto"
           />
           <p className="pt-4 text-2xl">Not playing Spotify currently</p>
