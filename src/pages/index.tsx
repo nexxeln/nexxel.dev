@@ -2,6 +2,7 @@ import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import type { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { FiArrowRight } from "react-icons/fi";
 
 import { FeaturedPost, Hero, ProjectCard } from "~/components/Home";
@@ -89,17 +90,35 @@ const HomePage: NextPage<{
         </p>
 
         <div className="grid auto-cols-max grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
-          {pinnedRepos.map((project) => (
-            <ProjectCard
+          {pinnedRepos.map((project, index) => (
+            <motion.div
+              initial={{
+                opacity: 0,
+                translateY: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                translateY: 0,
+              }}
+              transition={{
+                duration: 0.2,
+                delay: index * 0.08,
+              }}
+              viewport={{
+                once: true,
+              }}
               key={project.repo}
-              repo={project.repo}
-              forks={project.forks}
-              url={`https://github.com/${project.owner}/${project.repo}`}
-              stars={project.stars}
-              description={project.description}
-              language={project.language}
-              languageColor={project.languageColor}
-            />
+            >
+              <ProjectCard
+                repo={project.repo}
+                forks={project.forks}
+                url={`https://github.com/${project.owner}/${project.repo}`}
+                stars={project.stars}
+                description={project.description}
+                language={project.language}
+                languageColor={project.languageColor}
+              />
+            </motion.div>
           ))}
         </div>
       </div>
@@ -109,8 +128,27 @@ const HomePage: NextPage<{
         <h3 className="bold-text pb-6 text-4xl font-bold">From the blog</h3>
 
         <div className="flex flex-col gap-1">
-          {latestPosts.map((post) => (
-            <FeaturedPost key={post._id} {...post} />
+          {latestPosts.map((post, index) => (
+            <motion.div
+              initial={{
+                opacity: 0,
+                translateY: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                translateY: 0,
+              }}
+              transition={{
+                duration: 0.2,
+                delay: index * 0.08,
+              }}
+              viewport={{
+                once: true,
+              }}
+              key={post._id}
+            >
+              <FeaturedPost {...post} />
+            </motion.div>
           ))}
         </div>
 
