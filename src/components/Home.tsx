@@ -64,7 +64,7 @@ const FeaturedPost = (post: Post) => {
 
 const Hero = () => {
   return (
-    <div className="flex h-screen flex-col items-center pt-32">
+    <div className="flex h-[83vh]  flex-col items-center pt-32">
       <Image
         src="/images/nexxel.webp"
         alt="nexxel's avatar"
