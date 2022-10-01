@@ -139,7 +139,7 @@ const HomePage: NextPage<{
                 translateY: 0,
               }}
               transition={{
-                duration: 0.17,
+                duration: 0.2,
                 delay: index * 0.08,
               }}
               viewport={{
