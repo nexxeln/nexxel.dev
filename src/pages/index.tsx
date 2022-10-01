@@ -90,15 +90,22 @@ const HomePage: NextPage<{
         </p>
 
         <div className="grid auto-cols-max grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
-          {pinnedRepos.map((project) => (
+          {pinnedRepos.map((project, index) => (
             <motion.div
-              whileHover={{
-                position: "relative",
-                zIndex: 1,
-                scale: 1.065,
-                transition: {
-                  duration: 0.2,
-                },
+              initial={{
+                opacity: 0,
+                translateY: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                translateY: 0,
+              }}
+              transition={{
+                duration: 0.2,
+                delay: index * 0.08,
+              }}
+              viewport={{
+                once: true,
               }}
               key={project.repo}
             >
@@ -121,8 +128,27 @@ const HomePage: NextPage<{
         <h3 className="bold-text pb-6 text-4xl font-bold">From the blog</h3>
 
         <div className="flex flex-col gap-1">
-          {latestPosts.map((post) => (
-            <FeaturedPost key={post._id} {...post} />
+          {latestPosts.map((post, index) => (
+            <motion.div
+              initial={{
+                opacity: 0,
+                translateY: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                translateY: 0,
+              }}
+              transition={{
+                duration: 0.17,
+                delay: index * 0.08,
+              }}
+              viewport={{
+                once: true,
+              }}
+              key={post._id}
+            >
+              <FeaturedPost {...post} />
+            </motion.div>
           ))}
         </div>
 
