@@ -26,16 +26,21 @@ type PinnedRepo = {
 export const getStaticProps: GetStaticProps = async () => {
   // credit: Lee Robinson https://github.com/leerob/leerob.io/blob/main/pages/api/github.ts
 
-  const starCount: number = await fetch(
+  const githubStats: { totalRepos: number; stars: number } = await fetch(
     "https://api.github.com/users/nexxeln/repos?per_page=100"
   ).then(async (response) => {
     const repos = (await response.json()) as Repository[];
 
     const mine = repos.filter((repo) => !repo.fork);
 
-    return mine.reduce((accumulator, repo) => {
+    const stars = mine.reduce((accumulator, repo) => {
       return accumulator + repo.stargazers_count;
     }, 0);
+
+    return {
+      totalRepos: mine.length,
+      stars,
+    };
   });
 
   const pinnedRepos = await fetch(
@@ -53,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      starCount,
+      githubStats,
       pinnedRepos,
       latestPosts,
     },
@@ -62,10 +67,10 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const HomePage: NextPage<{
-  starCount: number;
+  githubStats: { totalRepos: number; stars: number };
   pinnedRepos: PinnedRepo[];
   latestPosts: Post[];
-}> = ({ starCount, pinnedRepos, latestPosts }) => {
+}> = ({ githubStats, pinnedRepos, latestPosts }) => {
   return (
     <Wrapper title="nexxel" description="17 yo self-taught developer">
       <Hero />
@@ -76,9 +81,11 @@ const HomePage: NextPage<{
         </h3>
 
         <p className="pb-6 pl-0.5 text-slate-200">
-          Apart from create-t3-app, my projects have earned me{" "}
-          <span className="bold-text font-bold">{starCount}</span> stars! I have
-          a bunch of other cool projects that you can see on my{" "}
+          Apart from create-t3-app, I have{" "}
+          <span className="bold-text font-bold">{githubStats.totalRepos}</span>{" "}
+          public repositories which have earned me{" "}
+          <span className="bold-text font-bold">{githubStats.stars}</span>{" "}
+          stars! I have a bunch of other cool projects that you can see on my{" "}
           <a
             href="https://github.com/nexxeln"
             target="_blank"
