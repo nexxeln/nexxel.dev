@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const PageCard: React.FC<{
@@ -13,14 +14,23 @@ const PageCard: React.FC<{
       </div>
     );
   }
+
   if (to.startsWith("/")) {
     return (
       <Link href={to}>
         <a>
-          <div className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 hover:border-opacity-80 hover:bg-[#1d1d1d] focus:outline-none">
+          <motion.div
+            whileHover={{
+              scale: 1.065,
+              transition: {
+                duration: 0.2,
+              },
+            }}
+            className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 focus:outline-none"
+          >
             <h3 className="bold-text text-2xl font-bold">{title}</h3>
             <p>{description}</p>
-          </div>
+          </motion.div>
         </a>
       </Link>
     );
@@ -28,10 +38,18 @@ const PageCard: React.FC<{
     return (
       <Link href={to}>
         <a href={to} target="_blank" rel="noreferrer">
-          <div className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 hover:border-opacity-80 hover:bg-[#1d1d1d] focus:outline-none">
+          <motion.div
+            whileHover={{
+              scale: 1.065,
+              transition: {
+                duration: 0.2,
+              },
+            }}
+            className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 focus:outline-none"
+          >
             <h3 className="bold-text text-2xl font-bold">{title}</h3>
             <p>{description}</p>
-          </div>
+          </motion.div>
         </a>
       </Link>
     );
