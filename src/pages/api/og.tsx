@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from "@vercel/og";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -5,16 +6,14 @@ export const config = {
   runtime: "experimental-edge",
 };
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, _res: NextApiResponse) => {
   const GTWalsheim = await fetch(
     "https://www.nexxel.dev/fonts/GTWalsheimBold.woff"
-  );
-  const GTWalsheimArrayBuffer = await GTWalsheim.arrayBuffer();
+  ).then(async (res) => res.arrayBuffer());
 
   const JetBrainsMono = await fetch(
     "https://www.nexxel.dev/fonts/JetBrainsMonoRegular.ttf"
-  );
-  const JetBrainsMonoArrayBuffer = await JetBrainsMono.arrayBuffer();
+  ).then((res) => res.arrayBuffer());
 
   const { searchParams } = new URL(req.url!);
   const title = searchParams.get("title");
@@ -52,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           style={{
             display: "flex",
             flexDirection: "column",
-            alignItems: "start",
+            alignItems: "flex-start",
             justifyContent: "space-between",
             width: "1200px",
             height: "630px",
@@ -106,13 +105,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       fonts: [
         {
           name: "GT Walsheim Bold",
-          data: GTWalsheimArrayBuffer,
+          data: GTWalsheim,
           weight: 700,
           style: "normal",
         },
         {
           name: "JetBrains Mono",
-          data: JetBrainsMonoArrayBuffer,
+          data: JetBrainsMono,
           weight: 500,
           style: "normal",
         },
