@@ -6,7 +6,10 @@ import { trpc } from "~/utils/trpc";
 import { z } from "zod";
 
 const inputSchema = z.object({
-  message: z.string().min(1).max(100),
+  message: z
+    .string()
+    .min(1, { message: "Your message is empty!" })
+    .max(100, { message: "Your message must be less than 100 characters." }),
 });
 
 const Signature: FC<{ name: string; message: string }> = ({
@@ -63,7 +66,7 @@ const Guestbook = () => {
     const input = inputSchema.safeParse({ message });
 
     if (!input.success) {
-      setError(input.error.message);
+      setError(input.error.issues[0]?.message as string);
       setLoading(false);
       return;
     }
