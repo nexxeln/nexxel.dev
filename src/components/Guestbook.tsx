@@ -3,6 +3,11 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { FC, useState } from "react";
 import { trpc } from "~/utils/trpc";
+import { z } from "zod";
+
+const inputSchema = z.object({
+  message: z.string().min(1).max(100),
+});
 
 const Signature: FC<{ name: string; message: string }> = ({
   name,
@@ -55,15 +60,11 @@ const Guestbook = () => {
   const handleSubmit = () => {
     setLoading(true);
 
-    if (message.length === 0) {
-      setLoading(false);
-      setError("Your message is empty!");
-      return;
-    }
+    const input = inputSchema.safeParse({ message });
 
-    if (message.length > 100) {
+    if (!input.success) {
+      setError(input.error.message);
       setLoading(false);
-      setError("Your message must be less than 100 characters.");
       return;
     }
 
