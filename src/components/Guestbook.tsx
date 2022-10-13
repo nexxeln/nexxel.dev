@@ -8,6 +8,9 @@ import { z } from "zod";
 const inputSchema = z.object({
   message: z
     .string()
+    // .regex(new RegExp("/As*z/"), {
+    //   message: "Your message contains only whitespaces.",
+    // })
     .min(1, { message: "Your message is empty!" })
     .max(100, { message: "Your message must be less than 100 characters." }),
 });
@@ -63,12 +66,14 @@ const Guestbook = () => {
   const handleSubmit = () => {
     setLoading(true);
 
-    const input = inputSchema.safeParse({ message });
+    const input = inputSchema.safeParse({ message: message.trim() });
 
     if (!input.success) {
       setError(input.error.issues[0]?.message as string);
       setLoading(false);
       return;
+    } else if (input.success) {
+      setError("");
     }
 
     guestbook.mutate({
