@@ -19,7 +19,7 @@
     "@trpc/next": "10.0.0-proxy-beta.2",
     "@trpc/react": "10.0.0-proxy-beta.2",
     "@trpc/server": "10.0.0-proxy-beta.2",
-    "@vercel/og": "^0.0.15",
+    "@vercel/og": "^0.0.17",
     "clsx": "^1.2.1",
     "contentlayer": "^0.2.6",
     "date-fns": "^2.29.1",

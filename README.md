@@ -49,3 +49,4 @@ This application is licensed under the [Apache-2.0](https://github.com/nexxeln/n
 - [Theo Browne](https://t3.gg/) for gifting the nice [nxl.sh](https://nxl.sh) domain.
 - [Lee Robinson](https://leerob.io/) for inspiration and the README.
 - [Harsh Singh](https://github.com/harshhhdev/) for helping with some of the MDX components.
+- [Ashish](https://github.com/asrvd/) for refactoring the guestbook component.
