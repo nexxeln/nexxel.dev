@@ -45,8 +45,8 @@ This application is licensed under the [Apache-2.0](https://github.com/nexxeln/n
 ## Credits
 
 - [Sid](https://github.com/sidwebworks/) for helping with setting up the blog and listening to my CSS troubles.
+- [Ashish](https://github.com/asrvd/) for refactoring the guestbook component.
 - [Mateusz Aliyev](https://github.com/mateuszaliyev/) for giving very valuable feedback.
 - [Theo Browne](https://t3.gg/) for gifting the nice [nxl.sh](https://nxl.sh) domain.
 - [Lee Robinson](https://leerob.io/) for inspiration and the README.
 - [Harsh Singh](https://github.com/harshhhdev/) for helping with some of the MDX components.
-- [Ashish](https://github.com/asrvd/) for refactoring the guestbook component.
