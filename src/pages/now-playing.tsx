@@ -56,7 +56,7 @@ const NowPlaying = () => {
   if (!spotify)
     return (
       <div className="flex items-center justify-center">
-        <div className="w-fit rounded-md p-8 transition-all duration-300 hover:bg-[#1c1c1c]">
+        <div className="w-fit p-8 transition-all duration-300">
           <Image
             src="/images/spotify.png"
             alt="Spotify's logo"
