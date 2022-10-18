@@ -36,7 +36,7 @@ pnpm i
 pnpm dev
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/nexxeln/nexxel.dev/blob/main/.env-example).
+Create a `.env` file similar to [`.env.example`](https://github.com/nexxeln/nexxel.dev/blob/main/.env.example).
 
 ## Cloning / Forking
 
