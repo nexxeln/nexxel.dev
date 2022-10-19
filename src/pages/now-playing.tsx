@@ -56,7 +56,7 @@ const NowPlaying = () => {
   if (!spotify)
     return (
       <div className="flex items-center justify-center">
-        <div className="w-fit p-8 transition-all duration-300">
+        <div className="p-8 transition-all duration-300 w-fit">
           <Image
             src="/images/spotify.png"
             alt="Spotify's logo"
@@ -81,7 +81,7 @@ const NowPlaying = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <div className="flex w-fit flex-col items-center gap-4 rounded-md p-8 transition-all duration-300 hover:bg-[#1c1c1c]">
+        <div className="flex flex-col items-center gap-4 p-8 transition-all duration-300 rounded-md w-fit hover:bg-neutral-800">
           <img
             src={spotify.album_art_url}
             alt={spotify.song}
@@ -91,7 +91,7 @@ const NowPlaying = () => {
           />
 
           <div className="flex flex-col gap-y-2">
-            <p className="medium-text font-medium sm:text-lg md:text-xl">
+            <p className="font-medium medium-text sm:text-lg md:text-xl">
               {spotify.song}
             </p>
             <p className="sm:text-sm md:text-lg">
@@ -117,7 +117,7 @@ const NowPlayingPage = () => {
       title="nexxel • now playing"
       description="Currently playing song on Spotify"
     >
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         Now Playing
       </h1>
       <p className="pt-1 text-slate-200">
@@ -127,7 +127,7 @@ const NowPlayingPage = () => {
           href="https://github.com/Phineas/lanyard"
           target="_blank"
           rel="noreferrer"
-          className="medium-text font-medium text-t-pink transition-opacity duration-300 hover:opacity-90"
+          className="font-medium transition-opacity duration-300 medium-text text-t-pink hover:opacity-90"
         >
           Lanyard
         </a>

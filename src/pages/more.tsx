@@ -9,6 +9,11 @@ const pages = [
     to: "/about",
   },
   {
+    title: "Sponsors",
+    description: "People who sponsor me and support my open source work.",
+    to: "/sponsors",
+  },
+  {
     title: "Now Playing",
     description: "Currently playing song on Spotify. Updated in real time!",
     to: "/now-playing",
@@ -33,7 +38,7 @@ const pages = [
 const MorePage = () => {
   return (
     <Wrapper title="nexxel • more" description="More things in my website">
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">More</h1>
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">More</h1>
       <p className="pt-1 text-slate-200">
         This page was a result of me not wanting to overpopulate the navbar.
         Mostly random things which might interest you.
@@ -41,7 +46,7 @@ const MorePage = () => {
 
       <div className="pt-10" />
 
-      <div className="grid auto-cols-max grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-3">
+      <div className="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3">
         {pages.map((page) => {
           if (page.to) {
             return (
