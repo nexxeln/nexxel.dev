@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "sponsors": "sponsorkit",
     "postinstall": "prisma generate",
     "analyze": "ANALYZE=true next build",
     "format": "prettier --write --plugin-search-dir=. \"**/*.{ts,tsx,md,mdx,json,js,mjs,cjs}\" --ignore-path .gitignore"
@@ -38,6 +39,7 @@
     "rehype-code-titles": "^1.1.0",
     "rehype-slug": "^5.0.1",
     "remark-gfm": "^3.0.1",
+    "sponsorkit": "^0.5.6",
     "superjson": "^1.9.1",
     "use-lanyard": "^1.2.0",
     "zod": "^3.17.3"
