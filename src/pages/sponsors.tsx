@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import * as Sponsors from "../../.sponsorkit/sponsors.json";
 import fs from "fs/promises";
 
 import Wrapper from "~/components/Wrapper";
