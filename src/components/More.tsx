@@ -9,7 +9,7 @@ const PageCard: React.FC<{
   if (!to) {
     return (
       <div className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 opacity-75 focus:outline-none">
-        <h3 className="bold-text text-2xl font-bold">{title}</h3>
+        <h3 className="text-2xl font-bold bold-text">{title}</h3>
         <p>{description}</p>
       </div>
     );
@@ -28,7 +28,7 @@ const PageCard: React.FC<{
             }}
             className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 focus:outline-none"
           >
-            <h3 className="bold-text text-2xl font-bold">{title}</h3>
+            <h3 className="text-2xl font-bold bold-text">{title}</h3>
             <p>{description}</p>
           </motion.div>
         </a>
@@ -47,7 +47,7 @@ const PageCard: React.FC<{
             }}
             className="flex h-32 flex-col justify-between rounded-md border-2 border-t-pink bg-[#1c1c1c] p-4 transition-colors duration-300 focus:outline-none"
           >
-            <h3 className="bold-text text-2xl font-bold">{title}</h3>
+            <h3 className="text-2xl font-bold bold-text">{title}</h3>
             <p>{description}</p>
           </motion.div>
         </a>

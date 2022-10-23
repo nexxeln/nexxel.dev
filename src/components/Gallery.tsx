@@ -6,7 +6,7 @@ const BlurImage: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-neutral-800 xl:aspect-w-7 xl:aspect-h-8">
+    <div className="w-full overflow-hidden rounded-lg aspect-w-1 aspect-h-1 bg-neutral-800 xl:aspect-w-7 xl:aspect-h-8">
       <Image
         src={src}
         alt={alt}

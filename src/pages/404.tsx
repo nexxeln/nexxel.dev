@@ -9,7 +9,7 @@ const ShortenerPage = () => {
         <p>
           Looks like you&apos;re lost. In the meantime read my{" "}
           <Link href="/blog">
-            <a className="text-t-purple opacity-75 transition-opacity duration-300 hover:opacity-100">
+            <a className="transition-opacity duration-300 opacity-75 text-t-purple hover:opacity-100">
               blog
             </a>
           </Link>{" "}

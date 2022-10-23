@@ -7,7 +7,7 @@ const GuestbookPage = () => {
       title="nexxel • guestbook"
       description="Sign my guestbook and cement your name on my website"
     >
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         Guestbook
       </h1>
       <p className="pt-1 text-slate-200">

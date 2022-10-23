@@ -44,7 +44,7 @@ const Sponsor: React.FC<{ name: string; login: string; avatar: string }> = ({
 }) => {
   return (
     <a href={`https://github.com/${login}`} target="_blank" rel="noreferrer">
-      <div className="rounded-md p-4 transition-all duration-300 hover:bg-neutral-800">
+      <div className="p-4 transition-all duration-300 rounded-md hover:bg-neutral-800">
         <img src={avatar} alt={`${name}'s avatar`} />
         <p className="pt-1 text-center">{name}</p>
       </div>
@@ -58,7 +58,7 @@ const SponsorsPage: NextPage<{ sponsors: Sponsor[] }> = ({ sponsors }) => {
       title="nexxel • sponsors"
       description="People who sponsor me and support my open source work."
     >
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         Sponsors
       </h1>
       <p className="pt-1 text-slate-200">
@@ -68,7 +68,7 @@ const SponsorsPage: NextPage<{ sponsors: Sponsor[] }> = ({ sponsors }) => {
           href="https://github.com/sponsors/nexxeln"
           target="_blank"
           rel="noreferrer"
-          className="medium-text font-medium text-t-pink transition-opacity duration-300 hover:opacity-90"
+          className="font-medium transition-opacity duration-300 medium-text text-t-pink hover:opacity-90"
         >
           sponsor me on GitHub
         </a>
@@ -78,7 +78,7 @@ const SponsorsPage: NextPage<{ sponsors: Sponsor[] }> = ({ sponsors }) => {
       <div className="pt-8" />
 
       <div className="flex items-center justify-center">
-        <div className="grid auto-cols-max grid-cols-2 sm:grid-cols-3 sm:gap-8">
+        <div className="grid grid-cols-2 auto-cols-max sm:grid-cols-3 sm:gap-8">
           {sponsors.map((sponsor) => {
             return (
               <Sponsor

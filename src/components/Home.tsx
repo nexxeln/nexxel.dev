@@ -27,7 +27,7 @@ const ProjectCard: FC<{
         className="flex h-40 transform flex-col place-content-evenly rounded-lg border-2 border-t-pink bg-[#1c1c1c] p-4"
       >
         <div className="flex flex-col gap-1">
-          <p className="medium-text text-xl font-medium">{repo}</p>
+          <p className="text-xl font-medium medium-text">{repo}</p>
           <p className="text-sm">{description}</p>
         </div>
 
@@ -53,8 +53,8 @@ const ProjectCard: FC<{
 const FeaturedPost = (post: Post) => {
   return (
     <Link href={post.url}>
-      <a className="flex rounded-lg px-4 py-4 transition-colors duration-200 hover:bg-zinc-800">
-        <p className="medium-text text-xl font-medium text-t-pink line-clamp-1">
+      <a className="flex px-4 py-4 transition-colors duration-200 rounded-lg hover:bg-zinc-800">
+        <p className="text-xl font-medium medium-text text-t-pink line-clamp-1">
           {post.title}
         </p>
       </a>
@@ -64,21 +64,21 @@ const FeaturedPost = (post: Post) => {
 
 const Hero = () => {
   return (
-    <div className="flex h-screen flex-col items-center pt-32">
+    <div className="flex flex-col items-center h-screen pt-32">
       <Image
         src="/images/nexxel.webp"
         alt="nexxel's avatar"
         width={165}
         height={165}
         priority
-        className="pixelated rounded-full"
+        className="rounded-full pixelated"
       />
 
-      <h1 className="bold-text animate-gradient-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange bg-clip-text pt-2 text-center text-5xl font-bold text-transparent">
+      <h1 className="pt-2 text-5xl font-bold text-center text-transparent bold-text animate-gradient-text bg-gradient-to-r from-t-pink via-t-purple to-t-orange bg-clip-text">
         nexxel
       </h1>
 
-      <p className="pt-1 text-center text-xl">
+      <p className="pt-1 text-xl text-center">
         Hi, I&apos;m Shoubhit. I&apos;m a 17 y/o self-taught developer and I
         like to build cool stuff
       </p>
@@ -89,7 +89,7 @@ const Hero = () => {
           title="GitHub"
           target="_blank"
           rel="noreferrer"
-          className="rounded-full p-3 transition-colors duration-300 hover:bg-zinc-800"
+          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
         >
           <FiGithub />
         </a>
@@ -98,7 +98,7 @@ const Hero = () => {
           title="Email"
           target="_blank"
           rel="noreferrer"
-          className="rounded-full p-3 transition-colors duration-300 hover:bg-zinc-800"
+          className="p-3 transition-colors duration-300 rounded-full hover:bg-zinc-800"
         >
           <FiMail />
         </a>

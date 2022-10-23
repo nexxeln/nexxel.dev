@@ -30,7 +30,7 @@ const Signature: FC<{ name: string; message: string }> = ({
 const LogOutButton = () => {
   return (
     <button
-      className="mt-2 cursor-pointer rounded-md border-2 border-t-purple border-opacity-80 px-3 py-2 text-sm transition-colors duration-300 hover:bg-t-purple hover:bg-opacity-30 hover:text-white"
+      className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-t-purple border-opacity-80 hover:bg-t-purple hover:bg-opacity-30 hover:text-white"
       onClick={() => {
         signOut();
       }}
@@ -116,7 +116,7 @@ const Guestbook = () => {
           id="message"
           value={message}
           placeholder="Your message..."
-          className="mt-1 w-full rounded-md border-2 border-t-pink border-opacity-80 bg-zinc-800 px-4 py-2 text-xl text-slate-200 focus:border-opacity-100 focus:outline-none"
+          className="w-full px-4 py-2 mt-1 text-xl border-2 rounded-md border-t-pink border-opacity-80 bg-zinc-800 text-slate-200 focus:border-opacity-100 focus:outline-none"
           onChange={(e) => setMessage(e.target.value)}
         />
 
@@ -125,7 +125,7 @@ const Guestbook = () => {
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 cursor-pointer rounded-md border-2 border-t-purple border-opacity-80 px-3 py-2 text-sm transition-colors duration-300 hover:bg-t-purple hover:bg-opacity-30 hover:text-white disabled:opacity-80"
+              className="px-3 py-2 mt-2 text-sm transition-colors duration-300 border-2 rounded-md cursor-pointer border-t-purple border-opacity-80 hover:bg-t-purple hover:bg-opacity-30 hover:text-white disabled:opacity-80"
               onClick={() => handleSubmit()}
             >
               Sign
@@ -161,7 +161,7 @@ const Guestbook = () => {
     <>
       <div className="flex items-center gap-4 rounded-md border-2 border-t-pink border-opacity-60 bg-[#202020] p-4">
         <button
-          className="flex-none rounded-md border-2 border-t-orange px-3 py-2 text-sm transition-colors duration-300 hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
+          className="flex-none px-3 py-2 text-sm transition-colors duration-300 border-2 rounded-md border-t-orange hover:bg-t-orange hover:bg-opacity-30 hover:text-white"
           onClick={() => signIn("discord")}
         >
           Log In

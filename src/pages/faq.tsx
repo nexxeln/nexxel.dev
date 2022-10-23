@@ -7,7 +7,7 @@ const Qna: FC<{ question: string; answer: string }> = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="bold-text text-xl font-bold text-t-pink">{question}</p>
+      <p className="text-xl font-bold bold-text text-t-pink">{question}</p>
       <p>{answer}</p>
     </div>
   );
@@ -22,7 +22,7 @@ const CustomQna = ({
 }) => {
   return (
     <div className="flex flex-col gap-1">
-      <p className="bold-text text-xl font-bold text-t-pink">{question}</p>
+      <p className="text-xl font-bold bold-text text-t-pink">{question}</p>
       {children}
     </div>
   );
@@ -34,7 +34,7 @@ const Link: FC<{ to: string; text: string }> = ({ to, text }) => {
       href={to}
       target="_blank"
       rel="noreferrer"
-      className="text-t-purple opacity-90 transition-opacity duration-300 hover:opacity-100"
+      className="transition-opacity duration-300 text-t-purple opacity-90 hover:opacity-100"
     >
       {text}
     </a>
@@ -47,7 +47,7 @@ const FAQPage = () => {
       title="nexxel • faq"
       description="Questions frequently asked to me"
     >
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">FAQ</h1>
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">FAQ</h1>
       <p className="pt-1 text-slate-200">
         These are some questions that are asked to me pretty frequently, so I
         compiled them all into one page!

@@ -34,7 +34,7 @@ body {
   scroll-behavior: smooth;
   color-scheme: dark;
   text-rendering: optimizelegibility;
-  @apply bg-neutral-900 text-slate-100 antialiased;
+  @apply antialiased bg-neutral-900 text-slate-100;
 }
 
 .pixelated {
@@ -57,7 +57,7 @@ body {
 
 @layer components {
   .prose .anchor {
-    @apply visible relative;
+    @apply relative visible;
     padding-right: 0.3em;
     cursor: pointer;
   }
@@ -71,7 +71,7 @@ body {
   }
 
   .prose *:hover > .icon-link:after {
-    @apply opacity-100 transition-opacity;
+    @apply transition-opacity opacity-100;
   }
 
   .prose *:hover > .icon-link {
@@ -101,7 +101,7 @@ body {
   }
 
   .prose :not(pre) > code {
-    @apply rounded border border-zinc-800 bg-zinc-900 p-1 text-sm font-normal text-neutral-300;
+    @apply p-1 text-sm font-normal border rounded border-zinc-800 bg-zinc-900 text-neutral-300;
     font-family: "JetBrains Mono";
     white-space: nowrap;
   }

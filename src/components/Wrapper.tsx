@@ -27,7 +27,7 @@ const BackToTop = () => {
               behavior: "smooth",
             });
           }}
-          className="fixed bottom-8 right-8 flex animate-fade-in-up cursor-pointer items-center justify-center rounded-full border-2 border-t-pink bg-zinc-800 p-4 text-xl text-t-pink transition-transform duration-200 hover:scale-110"
+          className="fixed flex items-center justify-center p-4 text-xl transition-transform duration-200 border-2 rounded-full cursor-pointer bottom-8 right-8 animate-fade-in-up border-t-pink bg-zinc-800 text-t-pink hover:scale-110"
         >
           <FiArrowUp size={24} />
         </div>
@@ -70,7 +70,7 @@ const Wrapper: FC<{
         <meta name="twitter:image" content={image} />
       </Head>
 
-      <div className="mx-4 h-screen items-center md:mx-auto md:flex md:w-4/5 md:flex-col lg:w-2/5">
+      <div className="items-center h-screen mx-4 md:mx-auto md:flex md:w-4/5 md:flex-col lg:w-2/5">
         <div className="pt-10" />
         <div className="px-2 md:px-5">
           <Navbar />

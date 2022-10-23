@@ -57,12 +57,12 @@ const PostLayout = ({ post, draft }: { post: Post; draft: boolean }) => {
       </Head>
       <article className="px-2 pt-16">
         {draft && (
-          <div className="mb-6 rounded-md bg-t-orange p-4 text-neutral-900">
+          <div className="p-4 mb-6 rounded-md bg-t-orange text-neutral-900">
             <p>hey! this post is hidden 👀</p>
             <p>please don&apos;t share this link thank you</p>
           </div>
         )}
-        <h1 className="bold-text text-4xl font-bold">{post.title}</h1>
+        <h1 className="text-4xl font-bold bold-text">{post.title}</h1>
         <div className="pt-4">
           <div className="flex items-center gap-2">
             <FiEdit2 />

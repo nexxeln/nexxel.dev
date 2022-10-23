@@ -31,7 +31,7 @@ const boldStyles = "font-medium medium-text";
 const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
   return (
     <Wrapper title="nexxel • about" description="Learn more about me">
-      <h1 className="bold-text pt-14 text-3xl font-bold text-t-purple">
+      <h1 className="text-3xl font-bold bold-text pt-14 text-t-purple">
         About Me
       </h1>
 
@@ -132,7 +132,7 @@ const AboutPage: NextPage<{ topTrack: Track }> = ({ topTrack }) => {
           <Image
             src={Cyling}
             alt="A picture from a cycling trip with friends."
-            className="aspect-w-1 rounded-md"
+            className="rounded-md aspect-w-1"
             width={600}
             placeholder="blur"
             height={300}
