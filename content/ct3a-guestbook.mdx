@@ -198,7 +198,7 @@ Let's push this modified schema to our Railway Postgres database.
 npx prisma db push
 ```
 
-Now let's get to the fun part - it's tRPC time. Go ahead and delete the `protected-example-router.ts` and `protected-router.ts` and `example.ts` files in `src/server/router`. First, we're going to define a mutation to post messages to our database.
+Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example.ts` file in `src/server/trpc/router`. First, we're going to define a mutation to post messages to our database.
 
 ```ts:src/server/router/guestbook.ts
 import { z } from "zod";
