@@ -227,7 +227,7 @@ export const guestbookRouter = router({
 })
 ```
 
-Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the input and has a resolve function that runs a single prisma query to create a new row in the `Guestbook` table.
+Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the input and has an async function that runs a single prisma query to create a new row in the `Guestbook` table.
 
 Working with prisma is an absolutely wonderful example. The autocomplete and typesafety is amazing.
 
