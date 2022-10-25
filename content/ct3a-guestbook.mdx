@@ -200,7 +200,7 @@ npx prisma db push
 
 Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example.ts` file in `src/server/trpc/router`. First, we're going to define a mutation to post messages to our database.
 
-```ts:src/server/router/guestbook.ts
+```ts:src/server/trpc/router/guestbook.ts
 import { z } from "zod";
 import { createRouter } from "./context";
 
