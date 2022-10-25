@@ -284,27 +284,27 @@ export const guestbookRouter = router({
 Next, let's write a query to get all messages in the guestbook.
 This doesn't need to be protected so we can put it above the middleware.
 
-```ts:src/server/router/guestbook.ts
-export const guestbookRouter = createRouter()
-  .query("getAll", {
-    async resolve({ ctx }) {
-      try {
-        return await ctx.prisma.guestbook.findMany({
-          select: {
-            name: true,
-            message: true,
-          },
-          orderBy: {
-            createdAt: "desc",
-          },
-        });
-      } catch (error) {
-        console.log("error", error);
-      }
-    },
-  })
-  .middleware(async ({ ctx, next }) => {
-    // ...
+```ts:src/server/trpc/router/guestbook.ts
+import { router, protectedProcedure, publicProcedure } from "../trpc";
+import { z } from "zod";
+
+export const guestbookRouter = router({
+  getAll: publicProcedure.query(async ({ ctx }) => {
+    try {
+      return await ctx.prisma.guestbook.findMany({
+        select: {
+          name: true,
+          message: true,
+        },
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    } catch (error) {
+      console.log("error", error);
+    }
+  }),
+  //...
 ```
 
 Here we are getting just the name and message from all the rows from the `Guestbook` model. The rows are sorted in descending order by the `createdAt` field.
