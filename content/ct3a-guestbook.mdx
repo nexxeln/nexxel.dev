@@ -311,14 +311,15 @@ Here we are getting just the name and message from all the rows from the `Guestb
 
 Now merge this router in the main `appRouter`.
 
-```ts:src/server/router/index.ts
-import superjson from "superjson";
-import { createRouter } from "./context";
-import { guestbookRouter } from "./guestbook";
+```ts:src/server/trpc/router/_app.ts
+import { router } from "../trpc";
+import { authRouter } from "./auth.ts"
+import { guestbookRouter } from "./guestbook.ts"
 
-export const appRouter = createRouter()
-  .transformer(superjson)
-  .merge("guestbook.", guestbookRouter);
+export const appRouter = router({
+  auth: authRouter,
+  guestbook: guestbookRouter,
+});
 
 // export type definition of API
 export type AppRouter = typeof appRouter;
