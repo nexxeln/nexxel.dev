@@ -202,26 +202,29 @@ Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example
 
 ```ts:src/server/trpc/router/guestbook.ts
 import { z } from "zod";
-import { createRouter } from "./context";
+import { router, publicProcedure } from "../trpc";
 
-export const guestbookRouter = createRouter().mutation("postMessage", {
-  input: z.object({
-    name: z.string(),
-    message: z.string(),
-  }),
-  async resolve({ ctx, input }) {
-    try {
-      await ctx.prisma.guestbook.create({
-        data: {
-          name: input.name,
-          message: input.message,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  },
-});
+export const guestbookRouter = router({
+  postMessage: publicProcedure
+    .input(
+      z.object({
+        name: z.string(),
+        message: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      try {
+        await ctx.prisma.guestbook.create({
+          data: {
+            name: input.name,
+            message: input.message,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }),
+})
 ```
 
 Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the input and has a resolve function that runs a single prisma query to create a new row in the `Guestbook` table.
