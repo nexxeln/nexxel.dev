@@ -388,7 +388,10 @@ Now that we have data, we can use the query and display the data. For this we ca
 import { trpc } from "../utils/trpc";
 
 const Messages = () => {
-  const { data: messages, isLoading } = trpc.useQuery(["guestbook.getAll"]);
+  const { 
+    data: messages, 
+    isLoading 
+  } = trpc.guestbook.getAll.useQuery();
 
   if (isLoading) return <div>Fetching messages...</div>;
 
