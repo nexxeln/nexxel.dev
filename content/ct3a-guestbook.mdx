@@ -538,17 +538,17 @@ For this we can use optimistic UI updates! `react-query` makes this trivial to d
 
 ```ts:src/pages/index.tsx
 const ctx = trpc.useContext();
-const postMessage = trpc.useMutation("guestbook.postMessage", {
+const postMessage = trpc.guestbook.postMessage.useMutation({
   onMutate: () => {
-    ctx.cancelQuery(["guestbook.getAll"]);
+    ctx.guestbook.getAll.cancel();
+    const optimisticUpdate = ctx.guestbook.getAll.getData();
 
-    let optimisticUpdate = ctx.getQueryData(["guestbook.getAll"]);
     if (optimisticUpdate) {
-      ctx.setQueryData(["guestbook.getAll"], optimisticUpdate);
+      ctx.guestbook.getAll.setData(optimisticUpdate);
     }
-  },
+  },    
   onSettled: () => {
-    ctx.invalidateQueries(["guestbook.getAll"]);
+      ctx.guestbook.getAll.invalidate();
   },
 });
 ```
