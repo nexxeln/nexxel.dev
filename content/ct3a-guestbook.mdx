@@ -456,10 +456,14 @@ Let's now create a form and use our tRPC mutation there.
 const Home = () => {
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
-  const postMessage = trpc.useMutation("guestbook.postMessage");
+  const postMessage = trpc.guestbook.postMessage.useMutation();
 
   if (status === "loading") {
-    return <main className="flex flex-col items-center pt-4">Loading...</main>;
+    return (
+      <main className="flex flex-col items-center pt-4">
+        Loading...
+      </main>
+    );
   }
 
   return (
@@ -494,6 +498,7 @@ const Home = () => {
                   type="text"
                   value={message}
                   placeholder="Your message..."
+                  minLength={2}
                   maxLength={100}
                   onChange={(event) => setMessage(event.target.value)}
                   className="px-4 py-2 rounded-md border-2 border-zinc-800 bg-neutral-900 focus:outline-none"
