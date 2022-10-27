@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
 
   const pinnedRepos = await fetch(
-    "https://gh-pinned-repos.egoist.sh/?username=nexxeln"
+    "https://gh-pinned.nxl.sh/api/user/nexxeln"
   ).then(async (response) => {
     return await response.json();
   });
