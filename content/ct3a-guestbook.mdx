@@ -341,11 +341,9 @@ Now merge this router in the main `appRouter`.
 
 ```ts:src/server/trpc/router/_app.ts
 import { router } from "../trpc";
-import { authRouter } from "./auth.ts"
 import { guestbookRouter } from "./guestbook.ts"
 
 export const appRouter = router({
-  auth: authRouter,
   guestbook: guestbookRouter,
 });
 
