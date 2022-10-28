@@ -538,18 +538,18 @@ Here we have a form and we're using `useMutation()` to post the data to the data
 For this we can use optimistic UI updates! `react-query` makes this trivial to do. We just need to add some stuff to our `useMutation()` hook.
 
 ```ts:src/pages/index.tsx
-const ctx = trpc.useContext();
+const utils = trpc.useContext();
 const postMessage = trpc.guestbook.postMessage.useMutation({
   onMutate: () => {
-    ctx.guestbook.getAll.cancel();
-    const optimisticUpdate = ctx.guestbook.getAll.getData();
+    utils.guestbook.getAll.cancel();
+    const optimisticUpdate = utils.guestbook.getAll.getData();
 
     if (optimisticUpdate) {
-      ctx.guestbook.getAll.setData(optimisticUpdate);
+      utils.guestbook.getAll.setData(optimisticUpdate);
     }
   },    
   onSettled: () => {
-      ctx.guestbook.getAll.invalidate();
+      utils.guestbook.getAll.invalidate();
   },
 });
 ```
