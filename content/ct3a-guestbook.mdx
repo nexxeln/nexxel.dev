@@ -233,7 +233,38 @@ Working with prisma is an absolutely wonderful example. The autocomplete and typ
 
 We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares).
 
-If you take a look at the `src/server/common/get-server-auth-session.ts` file, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected using a `protectedProcedure`.
+If you take a look at the `src/server/common/get-server-auth-session.ts` file, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server.
+
+```ts:src/server/common/get-server-auth-session.ts
+import type { GetServerSidePropsContext } from "next";
+import { unstable_getServerSession } from "next-auth";
+import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextauth]";
+
+export const getServerAuthSession = async (ctx: {
+  req: GetServerSidePropsContext["req"];
+  res: GetServerSidePropsContext["res"];
+}) => {
+  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+};
+```
+
+We're passing that session into our tRPC context.
+
+```ts:src/server/trpc/context.ts
+export const createContext = async (opts: CreateNextContextOptions) => {
+  const { req, res } = opts;
+
+  const session = await getServerAuthSession({ req, res });
+  
+  return await createContextInner({
+    session,
+  });
+};
+  
+export type Context = inferAsyncReturnType<typeof createContext>;
+```
+
+Then, we can use this session to make our mutation protected using a `protectedProcedure`.
 
 ```ts:src/server/trpc/trpc.ts
 const isAuthed = t.middleware(({ ctx, next }) => {
@@ -250,7 +281,7 @@ const isAuthed = t.middleware(({ ctx, next }) => {
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
-Now, replace `publicProcedure` with `protectedProcedure` to make our mutation protected.
+Now, replace `publicProcedure` with `protectedProcedure` to make our mutation protected from unauthenticated users.
 
 ```ts:src/server/trpc/router/guestbook.ts
 import { z } from "zod";
@@ -279,8 +310,7 @@ export const guestbookRouter = router({
 })
 ```
 
-Next, let's write a query to get all messages in the guestbook.
-This doesn't need to be protected so we can put it above the middleware.
+Next, let's write a query to get all messages in the guestbook. We want all guests to see the messages so we'll use the `publicProcedure` for this.
 
 ```ts:src/server/trpc/router/guestbook.ts
 import { router, protectedProcedure, publicProcedure } from "../trpc";
