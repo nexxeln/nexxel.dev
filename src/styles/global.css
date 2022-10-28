@@ -1,67 +1,102 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Bold"), local("Satoshi-Bold"),
+    url("/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Medium"), local("Satoshi-Medium"),
+    url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Regular"), local("Satoshi-Regular"),
+    url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-	font-family: Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+  @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100;
+  word-wrap: break-word;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	color: #222;
+
+h1 {
+  @apply font-black;
 }
+
+h2 {
+  @apply font-bold;
+}
+
+h3 {
+  @apply font-medium;
+}
+
 a {
-	color: #3273dc;
+  @apply text-pink-600 hover:underline;
 }
+
 nav a {
-	margin-right: 10px;
+  margin-right: 10px;
 }
+
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
+
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
+
 content {
-	line-height: 1.6;
+  line-height: 1.6;
 }
+
 table {
-	width: 100%;
+  width: 100%;
 }
+
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
+
 code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
+  @apply bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
 }
+
 pre {
-	padding: 1rem;
+  @apply rounded-xl border border-pink-200;
+  padding: 1rem;
 }
+
 pre > code {
-	all: unset;
+  all: unset;
 }
+
 blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+  @apply rounded-xl bg-pink-600 p-4;
 }
