@@ -444,80 +444,65 @@ Now render this component in the `Home` component.
 </main>
 ```
 
-Let's now create a form and use our tRPC mutation there.
+Let's now create a form component in `src/pages/index.tsx` and use our tRPC mutation there.
 
 ```tsx:src/pages/index.tsx
-const Home = () => {
-  const { data: session, status } = useSession();
+const Form = () => {
   const [message, setMessage] = useState("");
   const postMessage = trpc.guestbook.postMessage.useMutation();
 
-  if (status === "loading") {
-    return (
-      <main className="flex flex-col items-center pt-4">
-        Loading...
-      </main>
-    );
-  }
-
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-3xl pt-4">Guestbook</h1>
-      <p>
-        Tutorial for <code>create-t3-app</code>
-      </p>
+    <form
+      className="flex gap-2"
+      onSubmit={(event) => {
+        event.preventDefault();
 
-      <div className="pt-10">
-        <div>
-          {session ? (
-            <p>hi {session.user?.name}</p>
+        postMessage.mutate({
+          name: session.user?.name as string,
+          message,
+        });
 
-            <button onClick={() => signOut()}>Logout</button>
-
-            <div className="pt-6">
-              <form
-                className="flex gap-2"
-                onSubmit={(event) => {
-                  event.preventDefault();
-
-                  postMessage.mutate({
-                    name: session.user?.name as string,
-                    message,
-                  });
-
-                  setMessage("");
-                }}
-              >
-                <input
-                  type="text"
-                  value={message}
-                  placeholder="Your message..."
-                  minLength={2}
-                  maxLength={100}
-                  onChange={(event) => setMessage(event.target.value)}
-                  className="px-4 py-2 rounded-md border-2 border-zinc-800 bg-neutral-900 focus:outline-none"
-                />
-                <button
-                  type="submit"
-                  className="p-2 rounded-md border-2 border-zinc-800 focus:outline-none"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
-          ) : (
-            <button onClick={() => signIn("discord")}>
-              Login with Discord
-            </button>
-          )}
-        </div>
-        <div className="pt-10">
-          <Messages />
-        </div>
-      </div>
-    </main>
+        setMessage("");
+      }}
+    >
+      <input
+        type="text"
+        value={message}
+        placeholder="Your message..."
+        minLength={2}
+        maxLength={100}
+        onChange={(event) => setMessage(event.target.value)}
+        className="px-4 py-2 rounded-md border-2 border-zinc-800 bg-neutral-900 focus:outline-none"
+      />
+      <button
+        type="submit"
+        className="p-2 rounded-md border-2 border-zinc-800 focus:outline-none"
+      >
+        Submit
+      </button>
+    </form>
   );
-};
+}
+```
+
+We can now render the `Form` in the `Home` component and add some padding.
+
+```tsx:src/pages/index.tsx
+<div>
+  {session ? (
+    <p>hi {session.user?.name}</p>
+
+    <button onClick={() => signOut()}>Logout</button>
+
+    <div className="pt-6">
+      <Form />
+    </div>
+  ) : (
+    <button onClick={() => signIn("discord")}>
+      Login with Discord
+    </button>
+  )}
+</div>
 ```
 
 Here we have a form and we're using `useMutation()` to post the data to the database. But you'll notice one problem here. When we click on the submit button, it does post the message to the database, but the user doesn't get any immediate feedback. Only on refreshing the page, the user can see the new message.
