@@ -1,52 +1,64 @@
-<h1 align="center">nexxel.dev</h1>
+# Astro Starter Kit: Blog
 
-## Stack
-
-- **Bootstrapping**: [create-t3-app](https://create.t3.gg/)
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Server**: [tRPC](https://trpc.io/)
-- **Database**: [CockroachDB](https://www.cockroachlabs.com/)
-- **ORM**: [Prisma](https://prisma.io/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Authentication**: [NextAuth.js](https://next-auth.js.org/)
-- **Content**: [Contentlayer](https://contentlayer.dev/)
-- **Deployment**: [Vercel](https://vercel.com/)
-
-## Overview
-
-- `content/*` - MDX files for the content of my blog.
-- `prisma/*` - My Prisma schema, which uses a CockroachDB database.
-- `public/*` - Static assets including fonts and images.
-- `src/components/blog/*` - React components being used for the blog.
-- `src/components/*` - React components being used for the other stuff.
-- `src/pages/*` - All the static pages of the website.
-- `src/server/*` - The backend, which is a tRPC server.
-- `src/styles/*` - Global CSS files. Most of the styles are inline styles with Tailwind CSS though.
-- `src/utils/*` - Utility functions.
-
-## Running Locally
-
-This application requires Node.js to run.
-
-```bash
-git clone https://github.com/nexxeln/nexxel.dev.git
-cd nexxel.dev
-npm i -g pnpm
-pnpm i
-pnpm dev
+```
+npm create astro@latest -- --template blog
 ```
 
-Create a `.env` file similar to [`.env.example`](https://github.com/nexxeln/nexxel.dev/blob/main/.env.example).
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
 
-## Cloning / Forking
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-This application is licensed under the [Apache-2.0](https://github.com/nexxeln/nexxel.dev/blob/main/LICENSE) license. If you're copying this website just let me know.
 
-## Credits
+![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
 
-- [Sid](https://github.com/sidwebworks/) for helping with setting up the blog and listening to my CSS troubles.
-- [Ashish](https://github.com/asrvd/) for refactoring the guestbook component.
-- [Mateusz Aliyev](https://github.com/mateuszaliyev/) for giving very valuable feedback.
-- [Theo Browne](https://t3.gg/) for gifting the nice [nxl.sh](https://nxl.sh) domain.
-- [Lee Robinson](https://leerob.io/) for inspiration and the README.
-- [Harsh Singh](https://github.com/harshhhdev/) for helping with some of the MDX components.
+Features:
+
+- ✅ Minimal styling (make it your own!)
+- ✅ 100/100 Lighthouse performance
+- ✅ SEO-friendly with canonical URLs and OpenGraph data
+- ✅ Sitemap support
+- ✅ RSS Feed support
+- ✅ Markdown & MDX support
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```
+├── public/
+├── src/
+│   ├── components/
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── README.md
+├── package.json
+└── tsconfig.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:3000`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Credit
+
+This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
