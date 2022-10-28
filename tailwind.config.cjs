@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         satoshi: ["Satoshi", ...defaultTheme.fontFamily.sans],
+        hack: ["Hack", ...defaultTheme.fontFamily.mono],
       },
     },
   },

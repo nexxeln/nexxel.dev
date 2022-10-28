@@ -37,6 +37,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Hack";
+  src: url("fonts/hack-regular-subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100;
   word-wrap: break-word;
@@ -85,15 +92,16 @@ img {
 }
 
 code {
-  @apply bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
+  @apply font-hack bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
 }
 
 pre {
-  @apply rounded-xl border border-pink-200;
+  @apply font-hack rounded-xl border border-pink-200;
   padding: 1rem;
 }
 
 pre > code {
+  @apply font-hack;
   all: unset;
 }
 
