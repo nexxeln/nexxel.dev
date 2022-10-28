@@ -57,12 +57,13 @@ h2 {
   @apply font-bold;
 }
 
-h3 {
+h3,
+b {
   @apply font-medium;
 }
 
 a {
-  @apply text-pink-600 hover:underline;
+  @apply text-pink-500 hover:underline;
 }
 
 nav a {
@@ -92,7 +93,7 @@ img {
 }
 
 code {
-  @apply font-hack bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
+  @apply font-hack text-sm bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
 }
 
 pre {
