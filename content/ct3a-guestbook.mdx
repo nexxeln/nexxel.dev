@@ -151,21 +151,19 @@ const Home = () => {
   return (
     <main>
       <h1>Guestbook</h1>
-      {session ? (
-        <div>
+      <div>
+        {session ? (
           <p>hi {session.user?.name}</p>
 
           <button onClick={() => signOut()}>
             Logout
           </button>
-        </div>
-      ) : (
-        <div>
+        ) : (
           <button onClick={() => signIn("discord")}>
             Login with Discord
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </main>
   );
 };
@@ -338,7 +336,11 @@ const Home = () => {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return <main className="flex flex-col items-center pt-4">Loading...</main>;
+    return (
+      <main className="flex flex-col items-center pt-4">
+        Loading...
+      </main>
+    );
   }
 
   return (
@@ -349,19 +351,17 @@ const Home = () => {
       </p>
 
       <div className="pt-10">
-        {session ? (
-          <div>
-            <p>hi {session.user?.name}</p>
+        <div>
+          {session ? (
+              <p>hi {session.user?.name}</p>
 
-            <button onClick={() => signOut()}>Logout</button>
-          </div>
-        ) : (
-          <div>
-            <button onClick={() => signIn("discord")}>
-              Login with Discord
-            </button>
-          </div>
-        )}
+              <button onClick={() => signOut()}>Logout</button>
+          ) : (
+              <button onClick={() => signIn("discord")}>
+                Login with Discord
+              </button>
+          )}
+        </div>
       </div>
     </main>
   );
@@ -419,35 +419,29 @@ Of course here too we have wonderful typesafety and autocomplete.
 Now render this component in the `Home` component.
 
 ```tsx:src/pages/index.tsx
- <main className="flex flex-col items-center">
-    <h1 className="text-3xl pt-4">Guestbook</h1>
-    <p>
-      Tutorial for <code>create-t3-app</code>
-    </p>
+<main className="flex flex-col items-center">
+  <h1 className="text-3xl pt-4">Guestbook</h1>
+  <p>
+    Tutorial for <code>create-t3-app</code>
+  </p>
 
-    <div className="pt-10">
+  <div className="pt-10">
+    <div>
       {session ? (
-        <div>
-          <p>hi {session.user?.name}</p>
+        <p>hi {session.user?.name}</p>
 
-          <button onClick={() => signOut()}>Logout</button>
-
-          <div className="pt-10">
-            <Messages />
-          </div>
-        </div>
+        <button onClick={() => signOut()}>Logout</button>
       ) : (
-        <div>
-          <button onClick={() => signIn("discord")}>
-            Login with Discord
-          </button>
-
-          <div className="pt-10" />
-          <Messages />
-        </div>
+        <button onClick={() => signIn("discord")}>
+          Login with Discord
+        </button>
       )}
+      <div className="pt-10">
+        <Messages />
+      </div>
     </div>
-  </main>
+  </div>
+</main>
 ```
 
 Let's now create a form and use our tRPC mutation there.
@@ -474,8 +468,8 @@ const Home = () => {
       </p>
 
       <div className="pt-10">
-        {session ? (
-          <div>
+        <div>
+          {session ? (
             <p>hi {session.user?.name}</p>
 
             <button onClick={() => signOut()}>Logout</button>
@@ -511,21 +505,15 @@ const Home = () => {
                 </button>
               </form>
             </div>
-
-            <div className="pt-10">
-              <Messages />
-            </div>
-          </div>
-        ) : (
-          <div>
+          ) : (
             <button onClick={() => signIn("discord")}>
               Login with Discord
             </button>
-
-            <div className="pt-10" />
-            <Messages />
-          </div>
-        )}
+          )}
+        </div>
+        <div className="pt-10">
+          <Messages />
+        </div>
       </div>
     </main>
   );
