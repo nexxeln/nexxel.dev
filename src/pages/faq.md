@@ -1,9 +1,7 @@
 ---
 layout: "../layouts/FaqLayout.astro"
 title: "nexxel • faq"
-description: "Lorem ipsum dolor sit amet"
-updatedDate: "August 08 2022"
-heroImage: "/placeholder-about.jpg"
+description: "Questions frequently asked to me"
 ---
 
 ### Are you actually 17?!

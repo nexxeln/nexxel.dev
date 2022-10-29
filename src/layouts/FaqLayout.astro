@@ -7,14 +7,11 @@ export interface Props {
   content: {
     title: string;
     description: string;
-    pubDate?: string;
-    updatedDate?: string;
-    heroImage?: string;
   };
 }
 
 const {
-  content: { title, description, pubDate, updatedDate, heroImage },
+  content: { title, description },
 } = Astro.props;
 ---
 
