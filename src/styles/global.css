@@ -45,7 +45,7 @@
 }
 
 body {
-  @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100;
+  @apply font-satoshi m-auto pt-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100;
   word-wrap: break-word;
 }
 

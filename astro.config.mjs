@@ -6,12 +6,15 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://www.nexxel.dev",
   markdown: {
     shikiConfig: {
-      theme: "min-dark",
-    },
+      theme: "min-dark"
+    }
   },
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [mdx(), sitemap(), tailwind(), image()]
 });
