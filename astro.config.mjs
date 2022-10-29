@@ -9,6 +9,9 @@ import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 
 // https://astro.build/config
+import react from "@astrojs/react";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://www.nexxel.dev",
   markdown: {
@@ -16,5 +19,5 @@ export default defineConfig({
       theme: "min-dark"
     }
   },
-  integrations: [mdx(), sitemap(), tailwind(), image()]
+  integrations: [mdx(), sitemap(), tailwind(), image(), react()]
 });

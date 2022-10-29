@@ -1,6 +1,7 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../config";
+import { EmailSelect } from "./EmailSelect";
 ---
 
 <header>
@@ -14,14 +15,14 @@ import { SITE_TITLE } from "../config";
     />
     {SITE_TITLE}
   </h2>
-  <nav>
+  <nav class="flex">
     <HeaderLink href="/">Home</HeaderLink>
     <HeaderLink href="/blog">Blog</HeaderLink>
     <HeaderLink href="/faq">FAQ</HeaderLink>
-    <!-- add email like igorbedesqui.com -->
     <HeaderLink href="https://github.com/nexxeln" target="_blank"
       >GitHub</HeaderLink
     >
+    <EmailSelect client:visible />
   </nav>
 </header>
 <style>
