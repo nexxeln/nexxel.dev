@@ -3,31 +3,26 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../config";
 ---
 
-<header class="mb-24">
-  <div class="backdrop-blur-2xl top-0 fixed w-[720px] px-6 py-3 rounded-b-2xl">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <img
-          src="/images/nexxel.webp"
-          alt="nexxel's avatar"
-          width={50}
-          height={50}
-          class="rounded-full"
-        />
-        <h2 class="text-xl">
-          {SITE_TITLE}
-        </h2>
-      </div>
-      <nav>
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/faq">FAQ</HeaderLink>
-        <HeaderLink href="https://github.com/nexxeln" target="_blank"
-          >GitHub</HeaderLink
-        >
-      </nav>
-    </div>
-  </div>
+<header>
+  <h2 class="text-xl pb-1 flex items-center gap-3">
+    <img
+      src="/images/nexxel.webp"
+      alt="nexxel's avatar"
+      width={50}
+      height={50}
+      class="rounded-full"
+    />
+    {SITE_TITLE}
+  </h2>
+  <nav>
+    <HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
+    <HeaderLink href="/faq">FAQ</HeaderLink>
+    <!-- add email like igorbedesqui.com -->
+    <HeaderLink href="https://github.com/nexxeln" target="_blank"
+      >GitHub</HeaderLink
+    >
+  </nav>
 </header>
 <style>
   header {
