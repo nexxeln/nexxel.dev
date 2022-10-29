@@ -50,20 +50,27 @@ body {
 }
 
 h1 {
-  @apply font-black;
+  @apply font-black text-4xl;
 }
 
 h2 {
-  @apply font-bold;
+  @apply font-bold text-2xl;
 }
 
-h3,
+h3 {
+  @apply font-medium text-xl;
+}
+
+p {
+  @apply text-neutral-200;
+}
+
 b {
-  @apply font-medium;
+  @apply font-medium text-neutral-100;
 }
 
 a {
-  @apply text-pink-500 hover:underline;
+  @apply text-pink-300 hover:underline;
 }
 
 nav a {
