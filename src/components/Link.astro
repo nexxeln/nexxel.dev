@@ -3,7 +3,7 @@ export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   href: string;
 }
 
-const { href, ...props } = Astro.props;
+const { href,  ...props } = Astro.props;
 ---
 
 {
@@ -12,8 +12,6 @@ const { href, ...props } = Astro.props;
       <slot />
     </a>
   ) : (
-    <a href={href} target="_blank" {...props}>
-      <slot />
-    </a>
+    <a href={href} target="_blank" {...props}><slot /></a>
   )
 }

@@ -105,8 +105,7 @@ code {
 }
 
 pre {
-  @apply font-hack rounded-xl border border-pink-200;
-  padding: 1rem;
+  @apply font-hack rounded-xl border border-neutral-700 p-4 my-8 text-sm scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-neutral-500 scrollbar-thumb-rounded-xl scrollbar-track-rounded-xl overflow-y-scroll;
 }
 
 pre > code {
