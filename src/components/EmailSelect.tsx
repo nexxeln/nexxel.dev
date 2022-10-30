@@ -23,7 +23,7 @@ export const EmailSelect = () => {
           <Menu.Item>
             {({ active }) => (
               <div
-                className={`block px-4 py-2 text-sm cursor-pointer rounded-t-xl w-full ${
+                className={`block px-4 py-2 text-sm cursor-pointer rounded-t-xl w-full border-b border-neutral-600 ${
                   active ? "bg-neutral-700" : ""
                 }`}
                 onClick={() =>
@@ -38,7 +38,7 @@ export const EmailSelect = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className={`w-4 h-4 ${active ? "rotate-[24deg]" : ""}`}
                   >
                     <path
                       strokeLinecap="round"
@@ -67,7 +67,7 @@ export const EmailSelect = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="w-4 h-4"
+                    className={`w-4 h-4 ${active ? "rotate-[24deg]" : ""}`}
                   >
                     <path
                       strokeLinecap="round"
