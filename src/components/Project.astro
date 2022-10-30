@@ -1,0 +1,48 @@
+---
+export interface Props {
+  name: string;
+  owner: string;
+  description: string;
+  stars: number;
+  language: string;
+}
+
+const { name, owner, description, stars, language } = Astro.props;
+---
+
+<a
+  href={`https://github.com/${owner}/${name}`}
+  target="_blank"
+  class="hover:no-underline"
+>
+  <div
+    class="h-36 flex flex-col justify-between gap-y-2 border border-neutral-700 bg-neutral-800 hover:scale-105 ease-out transition-transform p-4 rounded-xl"
+  >
+    <div class="flex flex-col gap-y-2">
+      <span class="text-xl font-medium">{name}</span>
+      <p class="text-sm">{description}</p>
+    </div>
+    <div class="flex items-center gap-x-2 text-sm text-neutral-100">
+      <div class="flex gap-x-1 items-center">
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="#fbbf24"
+            class="w-5 h-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </span>
+        <span>{stars}</span>
+      </div>
+
+      <span>•</span>
+
+      <div class="text-sm">{language}</div>
+    </div>
+  </div>
+</a>
