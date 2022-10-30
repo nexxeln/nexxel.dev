@@ -74,6 +74,6 @@ I use [Kanagawa](https://github.com/rebelot/kanagawa.nvim) for Neovim and Alacri
 
 ### What font do you use for coding?
 
-I use [Hack](https://github.com/source-foundry/Hack) (also being used in this website) for my terminal and [Operator Mono](https://www.typography.com/blog/introducing-operator) for coding.
+I use [Hack](https://github.com/source-foundry/Hack) (also being used in this website) for my terminal and [Dank Mono](https://dank.sh) for coding.
 
 <br />
