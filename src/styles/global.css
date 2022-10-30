@@ -113,7 +113,7 @@ pre > code {
 }
 
 blockquote {
-  @apply rounded-xl bg-pink-600 p-4;
+  @apply rounded-xl bg-neutral-800 border border-neutral-700 p-4;
 }
 
 ul {
