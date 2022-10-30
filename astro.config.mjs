@@ -8,7 +8,7 @@ export default defineConfig({
   site: "https://www.nexxel.dev",
   markdown: {
     shikiConfig: {
-      theme: "min-dark",
+      theme: "vitesse-dark",
     },
   },
   integrations: [mdx(), sitemap(), tailwind(), react()],
