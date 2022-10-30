@@ -70,7 +70,7 @@ b {
 }
 
 a {
-  @apply text-pink-300 hover:underline;
+  @apply text-pink-300 hover:underline underline-offset-[3px];
 }
 
 nav a {
