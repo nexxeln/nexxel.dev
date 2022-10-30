@@ -96,12 +96,11 @@ table {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  @apply max-w-full h-auto my-8 rounded-xl border border-neutral-700;
 }
 
 code {
-  @apply font-hack text-sm bg-neutral-800 px-1 py-0.5 rounded border-neutral-500;
+  @apply font-hack text-sm bg-neutral-800 p-0.5 rounded border border-neutral-700;
 }
 
 pre {
@@ -115,4 +114,16 @@ pre > code {
 
 blockquote {
   @apply rounded-xl bg-pink-600 p-4;
+}
+
+ul {
+  @apply ml-5;
+}
+
+ul > li {
+  @apply list-disc;
+}
+
+ul > li::marker {
+  @apply text-neutral-500;
 }
