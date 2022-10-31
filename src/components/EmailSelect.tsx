@@ -5,7 +5,7 @@ export const EmailSelect = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="text-pink-300/80 hover:text-pink-300">
+        <Menu.Button className="text-t-green/80 hover:text-t-green">
           Email
         </Menu.Button>
       </div>
@@ -19,12 +19,12 @@ export const EmailSelect = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0  z-10 mt-2 w-56 origin-top-right rounded-xl border border-neutral-700 bg-neutral-800 shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-neutral-700">
+        <Menu.Items className="absolute right-0  z-10 mt-2 w-56 origin-top-right rounded-xl border border-neutral-700 bg-t-black shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-neutral-700">
           <Menu.Item>
             {({ active }) => (
               <div
-                className={`block px-4 py-2 text-sm cursor-pointer rounded-t-xl w-full border-b border-neutral-600 ${
-                  active ? "bg-neutral-700" : ""
+                className={`block px-4 py-2 text-sm cursor-pointer rounded-t-xl w-full border-b border-neutral-700 ${
+                  active ? "bg-neutral-800" : ""
                 }`}
                 onClick={() =>
                   navigator.clipboard.writeText("shoubhit2005@gmail.com")
@@ -54,8 +54,8 @@ export const EmailSelect = () => {
           <Menu.Item>
             {({ active }) => (
               <a
-                className={`block px-4 py-2 text-sm rounded-b-xl text-pink-300/80 hover:text-pink-300 hover:no-underline w-full ${
-                  active ? "bg-neutral-700" : ""
+                className={`block px-4 py-2 text-sm rounded-b-xl hover:no-underline w-full ${
+                  active ? "bg-neutral-800" : ""
                 }`}
                 href="mailto:shoubhit2005@gmail.com"
               >

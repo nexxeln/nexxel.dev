@@ -71,7 +71,7 @@ b {
 }
 
 a {
-  @apply text-pink-300 hover:underline underline-offset-[3px];
+  @apply text-t-green hover:underline underline-offset-[3px];
 }
 
 nav a {
@@ -96,15 +96,15 @@ table {
 }
 
 img {
-  @apply max-w-full h-auto my-8 rounded-xl border border-neutral-700;
+  @apply max-w-full h-auto my-8 rounded-xl border border-neutral-800;
 }
 
 code {
-  @apply font-hack text-sm bg-neutral-800 p-0.5 rounded border border-neutral-700;
+  @apply font-hack text-sm bg-t-black p-0.5 rounded border border-neutral-800;
 }
 
 pre {
-  @apply font-hack rounded-xl border border-neutral-700 p-4 my-8 text-sm scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-neutral-500 scrollbar-thumb-rounded-xl scrollbar-track-rounded-xl overflow-y-scroll;
+  @apply font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-600 scrollbar-thumb-rounded-xl scrollbar-track-rounded-xl overflow-y-scroll;
 }
 
 pre > code {
@@ -113,7 +113,7 @@ pre > code {
 }
 
 blockquote {
-  @apply rounded-xl bg-[#121212] border border-neutral-700 p-4;
+  @apply rounded-xl bg-t-black border border-neutral-700 p-4;
 }
 
 ul {
