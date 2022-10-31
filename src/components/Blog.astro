@@ -1,0 +1,36 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  date: string;
+  readingTime: string;
+  url: string;
+}
+
+const { title, description, date, readingTime, url } = Astro.props;
+---
+
+<a
+  href={url}
+  class="flex flex-col gap-y-3 hover:no-underline p-4 mb-8 hover:bg-neutral-800 transition-colors rounded-xl"
+>
+  <h3 class="text-t-green text-2xl">{title}</h3>
+
+  <p>{description}</p>
+
+  <div class="flex items-center gap-x-2 text-neutral-200 text-sm">
+    <time datetime={date}>
+      {
+        new Date(date).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
+    </time>
+
+    <span>•</span>
+
+    <span>{readingTime}</span>
+  </div>
+</a>
