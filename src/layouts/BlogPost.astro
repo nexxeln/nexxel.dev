@@ -9,18 +9,21 @@ export interface Props {
     description: string;
     date: string;
     readingTime: string;
-    og?: string;
   };
 }
 
 const {
-  content: { title, description, date, readingTime, og },
+  content: { title, description, date, readingTime },
 } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={`https://og.nxl.sh/api/og/?title=${title}&top=${date} • ${readingTime} `}
+    />
   </head>
 
   <body>
