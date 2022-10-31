@@ -13,7 +13,6 @@
   "dependencies": {
     "@astrojs/mdx": "^0.11.5",
     "@astrojs/react": "^1.2.2",
-    "@astrojs/rss": "^1.0.3",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.1.1",
     "@headlessui/react": "^1.7.3",
