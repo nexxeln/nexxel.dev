@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/mdx': ^0.11.5
   '@astrojs/react': ^1.2.2
-  '@astrojs/rss': ^1.0.3
   '@astrojs/sitemap': ^1.0.0
   '@astrojs/tailwind': ^2.1.1
   '@headlessui/react': ^1.7.3
@@ -21,7 +20,6 @@ specifiers:
 dependencies:
   '@astrojs/mdx': 0.11.5
   '@astrojs/react': 1.2.2_nsgh7lqw2e2kb5wanadocemtdi
-  '@astrojs/rss': 1.0.3
   '@astrojs/sitemap': 1.0.0
   '@astrojs/tailwind': 2.1.1_tailwindcss@3.2.1
   '@headlessui/react': 1.7.3_biqbaboplfbrettd7655fr4n2y
@@ -168,12 +166,6 @@ packages:
       react-dom: 18.2.0_react@18.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@astrojs/rss/1.0.3:
-    resolution: {integrity: sha512-SkAUMnp/LpryOR5B69rlF69AjKE3YlIPRmWad5WoRVeAH1CEEvSh8sC8/qhtG9haPFYa9JoX6zp5V5MkUOop3A==}
-    dependencies:
-      fast-xml-parser: 4.0.11
     dev: false
 
   /@astrojs/sitemap/1.0.0:
@@ -1839,13 +1831,6 @@ packages:
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.5
-
-  /fast-xml-parser/4.0.11:
-    resolution: {integrity: sha512-4aUg3aNRR/WjQAcpceODG1C3x3lFANXRo8+1biqfieHmg9pyMt7qB4lQV/Ta6sJCTbA5vfD8fnA8S54JATiFUA==}
-    hasBin: true
-    dependencies:
-      strnum: 1.0.5
-    dev: false
 
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
@@ -3771,10 +3756,6 @@ packages:
   /strip-final-newline/3.0.0:
     resolution: {integrity: sha512-dOESqjYr96iWYylGObzd39EuNTa5VJxyvVAEm5Jnh7KGo75V43Hk1odPQkNDyXNmUR6k+gEiDVXnjB8HJ3crXw==}
     engines: {node: '>=12'}
-    dev: false
-
-  /strnum/1.0.5:
-    resolution: {integrity: sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==}
     dev: false
 
   /style-to-object/0.3.0:
