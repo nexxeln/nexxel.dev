@@ -39,7 +39,7 @@
 
 @font-face {
   font-family: "Hack";
-  src: url("fonts/hack-regular-subset.woff2") format("woff2");
+  src: url("/fonts/hack-regular-subset.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
