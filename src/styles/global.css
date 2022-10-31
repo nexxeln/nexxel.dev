@@ -100,7 +100,7 @@ img {
 }
 
 code {
-  @apply font-hack text-sm bg-t-black p-0.5 rounded border border-neutral-800;
+  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800;
 }
 
 pre {
