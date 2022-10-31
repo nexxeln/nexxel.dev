@@ -237,7 +237,9 @@ npx prisma db push
 
 Now let's get to the fun part - it's tRPC time. Go ahead and delete the `protected-example-router.ts` and `protected-router.ts` and `example.ts` files in `src/server/router`. First, we're going to define a mutation to post messages to our database.
 
-```ts:src/server/router/guestbook.ts
+```ts
+// src/server/router/guestbook.ts
+
 import { z } from "zod";
 import { createRouter } from "./context";
 
@@ -271,7 +273,9 @@ Working with Prisma is an absolutely wonderful example. The autocomplete and typ
 
 We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares). If you take a look at the `src/server/context.ts` file, we're using [`unstable_getServerSession`] from Next Auth that gives us access to the session on the server. We're passing that into our tRPC context. We can use this session to make our mutation protected.
 
-```ts:src/server/router/guestbook.ts
+```ts
+// src/server/router/guestbook.ts
+
 export const guestbookRouter = createRouter()
   .middleware(async ({ ctx, next }) => {
     // Any queries or mutations after this middleware will
@@ -288,7 +292,9 @@ export const guestbookRouter = createRouter()
 Next, let's write a query to get all messages in the guestbook.
 This doesn't need to be protected so we can put it above the middleware.
 
-```ts:src/server/router/guestbook.ts
+```ts
+// src/server/router/guestbook.ts
+
 export const guestbookRouter = createRouter()
   .query("getAll", {
     async resolve({ ctx }) {
@@ -317,7 +323,9 @@ Here we are getting just the name and message from all the rows from the `Guestb
 
 Now merge this router in the main `appRouter`.
 
-```ts:src/server/router/index.ts
+```ts
+// src/server/router/index.ts
+
 import superjson from "superjson";
 import { createRouter } from "./context";
 import { guestbookRouter } from "./guestbook";
@@ -428,41 +436,43 @@ Of course here too we have wonderful typesafety and autocomplete.
 
 Now render this component in the `Home` component.
 
-```tsx:src/pages/index.tsx
- <main className="flex flex-col items-center">
-    <h1 className="text-3xl pt-4">Guestbook</h1>
-    <p>
-      Tutorial for <code>create-t3-app</code>
-    </p>
+```tsx
+// src/pages/index.tsx
 
-    <div className="pt-10">
-      {session ? (
-        <div>
-          <p>hi {session.user?.name}</p>
+<main className="flex flex-col items-center">
+  <h1 className="text-3xl pt-4">Guestbook</h1>
+  <p>
+    Tutorial for <code>create-t3-app</code>
+  </p>
 
-          <button onClick={() => signOut()}>Logout</button>
+  <div className="pt-10">
+    {session ? (
+      <div>
+        <p>hi {session.user?.name}</p>
 
-          <div className="pt-10">
-            <Messages />
-          </div>
-        </div>
-      ) : (
-        <div>
-          <button onClick={() => signIn("discord")}>
-            Login with Discord
-          </button>
+        <button onClick={() => signOut()}>Logout</button>
 
-          <div className="pt-10" />
+        <div className="pt-10">
           <Messages />
         </div>
-      )}
-    </div>
-  </main>
+      </div>
+    ) : (
+      <div>
+        <button onClick={() => signIn("discord")}>Login with Discord</button>
+
+        <div className="pt-10" />
+        <Messages />
+      </div>
+    )}
+  </div>
+</main>
 ```
 
 Let's now create a form and use our tRPC mutation there.
 
-```tsx:src/pages/index.tsx
+```tsx
+// src/pages/index.tsx
+
 const Home = () => {
   const { data: session, status } = useSession();
   const [message, setMessage] = useState("");
@@ -543,7 +553,9 @@ Here we have a form and we're using `useMutation()` to post the data to the data
 
 For this we can use optimistic UI updates! `react-query` makes this trivial to do. We just need to add some stuff to our `useMutation()` hook.
 
-```ts:src/pages/index.tsx
+```ts
+// src/pages/index.tsx
+
 const ctx = trpc.useContext();
 const postMessage = trpc.useMutation("guestbook.postMessage", {
   onMutate: () => {
