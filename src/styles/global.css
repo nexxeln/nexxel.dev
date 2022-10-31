@@ -44,9 +44,14 @@
   font-style: normal;
 }
 
+html {
+  color-scheme: dark;
+}
+
 body {
   @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100 antialiased;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
   word-wrap: break-word;
 }
 
