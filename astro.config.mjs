@@ -6,6 +6,10 @@ import react from "@astrojs/react";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { remarkReadingTime } from "./src/utils/reading-time.mjs";
 
+// https://astro.build/config
+import prefetch from "@astrojs/prefetch";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://www.nexxel.dev",
   markdown: {
@@ -13,8 +17,8 @@ export default defineConfig({
     rehypePlugins: [rehypeAutolinkHeadings],
     remarkPlugins: [remarkReadingTime],
     shikiConfig: {
-      theme: "vitesse-dark",
-    },
+      theme: "vitesse-dark"
+    }
   },
-  integrations: [mdx(), sitemap(), tailwind(), react()],
+  integrations: [mdx(), sitemap(), tailwind(), react(), prefetch()]
 });
