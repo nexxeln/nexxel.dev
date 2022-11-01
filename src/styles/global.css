@@ -53,6 +53,7 @@ body {
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
+  width: 100%;
 }
 
 h1 {
@@ -68,7 +69,7 @@ h3 {
 }
 
 p {
-  @apply text-neutral-200;
+  @apply text-neutral-300;
 }
 
 b {
@@ -81,6 +82,10 @@ a {
 
 nav a {
   margin-right: 10px;
+}
+
+article a {
+  @apply text-neutral-100 font-medium;
 }
 
 textarea {
@@ -105,7 +110,7 @@ img {
 }
 
 code {
-  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800;
+  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800 text-neutral-200;
 }
 
 pre {
