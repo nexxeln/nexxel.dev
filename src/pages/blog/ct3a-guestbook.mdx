@@ -110,6 +110,7 @@ Go to the `src/pages/index.tsx` file and delete all the code, let's just render 
 
 ```tsx
 // src/pages/index.tsx
+
 const Home = () => {
   return (
     <main>
@@ -117,6 +118,7 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;
 ```
 
@@ -125,10 +127,12 @@ export default Home;
 I can't look at light themes, so lets apply some global styles in `src/styles/globals.css` to make this app dark theme.
 
 ```css
-// src/styles/globals.css
+/* src/styles/globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   @apply bg-neutral-900 text-neutral-100;
 }
@@ -148,7 +152,9 @@ Now let's create a button to let users login with Discord. We can use the [`sign
 
 ```tsx
 // src/pages/index.tsx
+
 import { signIn } from "next-auth/react";
+
 const Home = () => {
   return (
     <main>
@@ -157,6 +163,7 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;
 ```
 
@@ -164,12 +171,16 @@ We can use the [`useSession()` hook](https://next-auth.js.org/getting-started/cl
 
 ```tsx
 // src/pages/index.tsx
+
 import { signIn, signOut, useSession } from "next-auth/react";
+
 const Home = () => {
   const { data: session, status } = useSession();
+
   if (status === "loading") {
     return <main>Loading...</main>;
   }
+
   return (
     <main>
       <h1>Guestbook</h1>
@@ -188,6 +199,7 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;
 ```
 
@@ -226,8 +238,10 @@ Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example
 
 ```ts
 // src/server/trpc/router/guestbook.ts
+
 import { z } from "zod";
 import { router, publicProcedure } from "../trpc";
+
 export const guestbookRouter = router({
   postMessage: publicProcedure
     .input(
@@ -267,9 +281,11 @@ If you take a look at the `src/server/common/get-server-auth-session.ts` file, w
 
 ```ts
 // src/server/common/get-server-auth-session.ts
+
 import type { GetServerSidePropsContext } from "next";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextauth]";
+
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
@@ -282,13 +298,16 @@ We're passing that session into our tRPC context.
 
 ```ts
 // src/server/trpc/context.ts
+
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
   const session = await getServerAuthSession({ req, res });
+
   return await createContextInner({
     session,
   });
 };
+
 export type Context = inferAsyncReturnType<typeof createContext>;
 ```
 
@@ -296,16 +315,19 @@ Then, we can use this session to make our mutation protected using a `protectedP
 
 ```ts
 // src/server/trpc/trpc.ts
+
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
+
   return next({
     ctx: {
       session: { ...ctx.session, user: ctx.session.user },
     },
   });
 });
+
 export const protectedProcedure = t.procedure.use(isAuthed);
 ```
 
@@ -315,6 +337,7 @@ Now, replace `publicProcedure` with `protectedProcedure` to make our mutation pr
 // src/server/trpc/router/guestbook.ts
 import { z } from "zod";
 import { router, protectedProcedure } from "../trpc";
+
 export const guestbookRouter = router({
   postMessage: protectedProcedure
     .input(
@@ -342,8 +365,10 @@ Next, let's write a query to get all messages in the guestbook. We want all gues
 
 ```ts
 // src/server/trpc/router/guestbook.ts
+
 import { router, protectedProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
+
 export const guestbookRouter = router({
   getAll: publicProcedure.query(async ({ ctx }) => {
     try {
@@ -366,17 +391,19 @@ export const guestbookRouter = router({
 Here we are getting just the name and message from all the rows from the `Guestbook` model. The rows are sorted in descending order by the `createdAt` field.
 
 <br />
-Now merge this router in the main `appRouter`.
-```ts
-// src/server/trpc/router/_app.ts
+Now merge this router in the main `appRouter`. ```ts // src/server/trpc/router/_app.ts
+
 import { router } from "../trpc";
 import { guestbookRouter } from "./guestbook.ts";
+
 export const appRouter = router({
   guestbook: guestbookRouter,
 });
+
 // export type definition of API
 export type AppRouter = typeof appRouter;
-```
+
+````
 
 We're pretty much done on the backend part. Let's work on the UI next.
 
@@ -390,9 +417,12 @@ Let's first center everything.
 
 ```tsx
 // src/pages/index.tsx
+
 import { signIn, signOut, useSession } from "next-auth/react";
+
 const Home = () => {
   const { data: session, status } = useSession();
+
   if (status === "loading") {
     return (
       <main className="flex flex-col items-center pt-4">
@@ -400,6 +430,7 @@ const Home = () => {
       </main>
     );
   }
+
   return (
     <main className="flex flex-col items-center">
       <h1 className="text-3xl pt-4">Guestbook</h1>
@@ -421,8 +452,9 @@ const Home = () => {
     </main>
   );
 };
+
 export default Home;
-```
+````
 
 I also made the heading bigger and added some padding between the elements.
 
@@ -442,10 +474,14 @@ Now that we have data, we can use the query and display the data. For this we ca
 
 ```tsx
 // src/pages/index.tsx
+
 import { trpc } from "../utils/trpc";
+
 const Messages = () => {
   const { data: messages, isLoading } = trpc.guestbook.getAll.useQuery();
+
   if (isLoading) return <div>Fetching messages...</div>;
+
   return (
     <div className="flex flex-col gap-4">
       {messages?.map((msg, index) => {
@@ -473,6 +509,7 @@ Now render this component in the `Home` component.
 
 ```tsx
 // src/pages/index.tsx
+
 <main className="flex flex-col items-center">
   <h1 className="text-3xl pt-4">Guestbook</h1>
   <p>
@@ -500,9 +537,11 @@ Let's now create a form component in `src/pages/index.tsx` and use our tRPC muta
 
 ```tsx
 // src/pages/index.tsx
+
 const Form = () => {
   const [message, setMessage] = useState("");
   const postMessage = trpc.guestbook.postMessage.useMutation();
+
   return (
     <form
       className="flex gap-2"
@@ -539,6 +578,7 @@ We can now render the `Form` in the `Home` component and add some padding.
 
 ```tsx
 // src/pages/index.tsx
+
 <div>
   {session ? (
     <p>hi {session.user?.name}</p>
@@ -565,11 +605,13 @@ For this we can use optimistic UI updates! `react-query` makes this trivial to d
 
 ```ts
 // src/pages/index.tsx
+
 const utils = trpc.useContext();
 const postMessage = trpc.guestbook.postMessage.useMutation({
   onMutate: () => {
     utils.guestbook.getAll.cancel();
     const optimisticUpdate = utils.guestbook.getAll.getData();
+
     if (optimisticUpdate) {
       utils.guestbook.getAll.setData(optimisticUpdate);
     }
@@ -580,7 +622,7 @@ const postMessage = trpc.guestbook.postMessage.useMutation({
 });
 ```
 
-If you want to learn more about this code example, you can read about optimistic updates with [`react-query`](https://react-query-v3.tanstack.com/guides/optimistic-updates) here.
+If you want to learn more about this code example, you can read about optimistic updates with `react-query` [here](https://react-query-v3.tanstack.com/guides/optimistic-updates).
 
 <br />
 
