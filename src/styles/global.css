@@ -77,7 +77,7 @@ b {
 }
 
 a {
-  @apply text-t-green hover:underline underline-offset-[3px];
+  @apply text-t-green hover:underline underline-offset-2;
 }
 
 nav a {
