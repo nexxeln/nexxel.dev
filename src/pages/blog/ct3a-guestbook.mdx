@@ -302,7 +302,6 @@ We're passing that session into our tRPC context.
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
   const session = await getServerAuthSession({ req, res });
-
   return await createContextInner({
     session,
   });
@@ -335,6 +334,7 @@ Now, replace `publicProcedure` with `protectedProcedure` to make our mutation pr
 
 ```ts
 // src/server/trpc/router/guestbook.ts
+
 import { z } from "zod";
 import { router, protectedProcedure } from "../trpc";
 
@@ -366,8 +366,8 @@ Next, let's write a query to get all messages in the guestbook. We want all gues
 ```ts
 // src/server/trpc/router/guestbook.ts
 
-import { router, protectedProcedure, publicProcedure } from "../trpc";
 import { z } from "zod";
+import { router, protectedProcedure, publicProcedure } from "../trpc";
 
 export const guestbookRouter = router({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -391,7 +391,10 @@ export const guestbookRouter = router({
 Here we are getting just the name and message from all the rows from the `Guestbook` model. The rows are sorted in descending order by the `createdAt` field.
 
 <br />
-Now merge this router in the main `appRouter`. ```ts // src/server/trpc/router/_app.ts
+Now merge this router in the main `appRouter`.
+
+```ts
+// src/server/trpc/router/_app.ts
 
 import { router } from "../trpc";
 import { guestbookRouter } from "./guestbook.ts";
@@ -402,8 +405,7 @@ export const appRouter = router({
 
 // export type definition of API
 export type AppRouter = typeof appRouter;
-
-````
+```
 
 We're pretty much done on the backend part. Let's work on the UI next.
 
@@ -452,9 +454,8 @@ const Home = () => {
     </main>
   );
 };
-
 export default Home;
-````
+```
 
 I also made the heading bigger and added some padding between the elements.
 
@@ -509,7 +510,6 @@ Now render this component in the `Home` component.
 
 ```tsx
 // src/pages/index.tsx
-
 <main className="flex flex-col items-center">
   <h1 className="text-3xl pt-4">Guestbook</h1>
   <p>
