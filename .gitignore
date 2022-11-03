@@ -1,46 +1,21 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# build output
+dist/
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules/
 
-# testing
-/coverage
-
-# database
-/prisma/db.sqlite
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# local env files
+# editor
+.vscode/
+
+# environment variables
 .env
-.env*.local
+.env.production
 
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-
-
-# Contentlayer
-.contentlayer
-
-# Sponsorkit cache
-.sponsorkit/.cache.json
+# macOS-specific files
+.DS_Store

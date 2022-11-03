@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Black.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Bold"), local("Satoshi-Bold"),
+    url("/fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Medium"), local("Satoshi-Medium"),
+    url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Satoshi Regular"), local("Satoshi-Regular"),
+    url("/fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+} */
+
+@font-face {
+  font-family: "Hack";
+  src: url("/fonts/hack-regular-subset.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter ExtraBold"), local("Inter-ExtraBold"),
+    url("/fonts/Inter-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter Bold"), local("Inter-Bold"),
+    url("/fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: local("Inter Medium"), local("Inter-Medium"),
+    url("/fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter Regular"), local("Inter-Regular"),
+    url("/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  @apply font-inter m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+h1 {
+  @apply font-black text-4xl text-neutral-100;
+}
+
+h2 {
+  @apply font-extrabold text-2xl text-neutral-100;
+}
+
+h3 {
+  @apply font-bold text-xl text-neutral-100;
+}
+
+.faq h3 {
+  @apply pb-1;
+}
+
+p {
+  @apply text-neutral-300;
+}
+
+b {
+  @apply font-medium text-neutral-100;
+}
+
+a {
+  @apply text-t-green hover:underline underline-offset-2;
+}
+
+article a {
+  @apply text-neutral-100 font-medium underline underline-offset-2;
+}
+
+textarea {
+  width: 100%;
+  font-size: 16px;
+}
+
+input {
+  font-size: 16px;
+}
+
+content {
+  line-height: 1.6;
+}
+
+table {
+  width: 100%;
+}
+
+img {
+  @apply max-w-full h-auto my-8 rounded-xl border border-neutral-800;
+}
+
+code {
+  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800 text-neutral-100;
+}
+
+pre {
+  @apply font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-600 scrollbar-thumb-rounded-xl scrollbar-track-rounded-xl overflow-y-scroll;
+}
+
+pre > code {
+  @apply font-hack;
+  all: unset;
+}
+
+blockquote {
+  @apply rounded-xl bg-t-black border border-neutral-700 p-4;
+}
+
+ul {
+  @apply ml-5;
+}
+
+ul > li {
+  @apply list-disc;
+}
+
+ul > li::marker {
+  @apply text-neutral-500;
+}

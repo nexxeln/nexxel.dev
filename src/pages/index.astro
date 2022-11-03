@@ -1,0 +1,77 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Project from "../components/Project.astro";
+
+type Repository = {
+  fork: boolean;
+  stargazers_count: number;
+};
+
+type PinnedRepo = {
+  owner: string;
+  repo: string;
+  description: string;
+  language: string;
+  languageColor: string;
+  stars: number;
+  forks: string;
+};
+
+const pinnedRepos = await fetch(
+  "https://gh-pinned.nxl.sh/api/user/nexxeln"
+).then(async (response) => {
+  return (await response.json()) as PinnedRepo[];
+});
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={`${SITE_TITLE} home`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main class="text-lg text-neutral-200">
+      <h1 class="text-4xl pb-2">Hi, I'm nexxel</h1>
+      <p>
+        I'm a 17 y/o self-taught developer and I like to build cool stuff. I'm
+        interested in <b>web development</b>,
+        <b>serverless</b> tech and I live on the <b>terminal</b>.
+      </p>
+      <br />
+      <p>
+        I'm currently in 12th grade, busy studying for final exams. In my free
+        time I like to write <a href="/blog">blogs</a> and practice <a
+          href="https://en.wikipedia.org/wiki/Cardistry"
+          target="_blank">cardistry</a
+        >. I also like listening to music and going on cycling trips with
+        friends.
+      </p>
+      <br />
+      <br />
+      <h2 class="text-3xl pb-4">Things I've Built</h2>
+
+      <section
+        class="grid grid-cols-1 gap-4 auto-cols-max sm:grid-cols-2 sm:gap-3"
+      >
+        {
+          pinnedRepos.map((repo) => {
+            return (
+              <Project
+                name={repo.repo}
+                owner={repo.owner}
+                description={repo.description}
+                stars={repo.stars}
+                language={repo.language}
+              />
+            );
+          })
+        }
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
