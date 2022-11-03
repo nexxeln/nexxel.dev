@@ -1,3 +1,6 @@
 {
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "[ansible]": {
+    "gitlens.codeLens.scopes": ["document"]
+  }
 }
