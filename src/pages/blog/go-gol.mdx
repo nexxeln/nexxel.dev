@@ -15,6 +15,8 @@ I recently started learning Go and I absolutely love it. I think implementing Co
 
 ## Walk-through
 
+<br />
+
 So first let's initialize a Go project:
 
 ```bash
@@ -139,6 +141,8 @@ func main() {
 
 So we start off by setting up the grid and randomly populating it with cells using `rand.Float32()`. Next we use `ebiten.Run` to run the program with the name "Game of Life". If `ebiten.Run` returns an error we're just going to log it to the terminal. This is reminiscent of pattern matching in Rust.
 
+<br />
+
 Well that's pretty much it! Now just open up the terminal and run the program:
 
 ```bash
@@ -146,5 +150,7 @@ go run ./main.go
 ```
 
 All the code can be found [here](https://github.com/nexxeln/go-gol).
+
+<br />
 
 This was my first blog ever, so please tell me if I did something wrong. If you read till here you're very cool. Okay bye!

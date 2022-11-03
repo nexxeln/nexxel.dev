@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
+/* @font-face {
   font-family: "Satoshi";
   src: url("/fonts/Satoshi-Black.woff2") format("woff2");
   font-weight: 800;
@@ -35,7 +35,7 @@
   font-weight: normal;
   font-style: normal;
   font-display: fallback;
-}
+} */
 
 @font-face {
   font-family: "Hack";
@@ -55,6 +55,15 @@
 
 @font-face {
   font-family: "Inter";
+  src: local("Inter ExtraBold"), local("Inter-ExtraBold"),
+    url("/fonts/Inter-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Inter";
   src: local("Inter Bold"), local("Inter-Bold"),
     url("/fonts/Inter-Bold.woff2") format("woff2");
   font-weight: 700;
@@ -63,7 +72,7 @@
 }
 
 @font-face {
-  font-family: "Inter";
+  font-family: "Satoshi";
   src: local("Inter Medium"), local("Inter-Medium"),
     url("/fonts/Satoshi-Medium.woff2") format("woff2");
   font-weight: 500;
@@ -85,7 +94,7 @@ html {
 }
 
 body {
-  @apply font-inter m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-100 antialiased;
+  @apply font-inter m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
@@ -93,15 +102,19 @@ body {
 }
 
 h1 {
-  @apply font-black text-4xl;
+  @apply font-black text-4xl text-neutral-100;
 }
 
 h2 {
-  @apply font-bold text-2xl;
+  @apply font-extrabold text-2xl text-neutral-100;
 }
 
 h3 {
-  @apply font-medium text-xl;
+  @apply font-bold text-xl text-neutral-100;
+}
+
+.faq h3 {
+  @apply pb-1;
 }
 
 p {
@@ -116,12 +129,8 @@ a {
   @apply text-t-green hover:underline underline-offset-2;
 }
 
-nav a {
-  margin-right: 10px;
-}
-
 article a {
-  @apply text-neutral-100 font-medium;
+  @apply text-neutral-100 font-medium underline underline-offset-2;
 }
 
 textarea {
@@ -146,7 +155,7 @@ img {
 }
 
 code {
-  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800 text-neutral-200;
+  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800 text-neutral-100;
 }
 
 pre {
