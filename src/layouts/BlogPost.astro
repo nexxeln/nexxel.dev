@@ -7,13 +7,13 @@ export interface Props {
   content: {
     title: string;
     description: string;
-    date: string;
+    pubDate: string;
     readingTime: string;
   };
 }
 
 const {
-  content: { title, description, date, readingTime },
+  content: { title, description, pubDate, readingTime },
 } = Astro.props;
 ---
 
@@ -22,7 +22,7 @@ const {
     <BaseHead
       title={title}
       description={description}
-      image={`https://og.nxl.sh/api/og/?title=${title}&top=${date} • ${readingTime} `}
+      image={`https://og.nxl.sh/api/og/?title=${title}&top=${pubDate} • ${readingTime} `}
     />
   </head>
 
@@ -49,7 +49,7 @@ const {
               ></path>
             </svg>
 
-            <time class="text-base">{date}</time>
+            <time class="text-base">{pubDate}</time>
           </div>
 
           <div class="flex gap-x-2 items-center">
