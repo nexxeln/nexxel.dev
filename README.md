@@ -7,8 +7,10 @@ A boring personal website inspired by the [Vitesse Theme](https://github.com/ant
 - [Astro](https://astro.build)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Vercel](https://vercel.com)
+- [cron-job](https://cron-job.org)
 
 ### Running Locally
+
 This application requires Node.js to run.
 
 ```sh
