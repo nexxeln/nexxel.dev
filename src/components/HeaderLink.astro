@@ -10,7 +10,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 <a
   href={href}
   rel="prefetch"
-  class={`text-t-green/80 hover:text-t-green hover:no-underline ${
+  class={`text-t-green hover:bg-neutral-800 rounded-md px-2 py-1 hover:no-underline ${
     isActive ? "font-bold underline underline-offset-[3px] text-t-green" : ""
   }`}
   {...props}
