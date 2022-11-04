@@ -5,7 +5,7 @@ export const EmailSelect = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="text-t-green hover:bg-neutral-800 rounded-md px-2 py-1 hover:no-underline ">
+        <Menu.Button className="text-t-green hover:underline underline-offset-[3px]">
           Email
         </Menu.Button>
       </div>
