@@ -11,3 +11,4 @@ jobs:
       uses: wei/curl@master
       with:
         args: -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
+    - run: ls
