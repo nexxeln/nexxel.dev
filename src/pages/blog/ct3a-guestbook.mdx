@@ -186,10 +186,12 @@ const Home = () => {
       <h1>Guestbook</h1>
       <div>
         {session ? (
-          <p>hi {session.user?.name}</p>
-          <button onClick={() => signOut()}>
-            Logout
-          </button>
+          <>
+            <p>hi {session.user?.name}</p>
+            <button onClick={() => signOut()}>
+              Logout
+            </button>
+          <>
         ) : (
           <button onClick={() => signIn("discord")}>
             Login with Discord
