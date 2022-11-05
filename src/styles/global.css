@@ -2,41 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Black.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: local("Satoshi Bold"), local("Satoshi-Bold"),
-    url("/fonts/Satoshi-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: local("Satoshi Medium"), local("Satoshi-Medium"),
-    url("/fonts/Satoshi-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: fallback;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: local("Satoshi Regular"), local("Satoshi-Regular"),
-    url("/fonts/Satoshi-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: fallback;
-} */
-
 @font-face {
   font-family: "Hack";
   src: url("/fonts/hack-regular-subset.woff2") format("woff2");
@@ -72,9 +37,9 @@
 }
 
 @font-face {
-  font-family: "Satoshi";
+  font-family: "Inter";
   src: local("Inter Medium"), local("Inter-Medium"),
-    url("/fonts/Satoshi-Medium.woff2") format("woff2");
+    url("/fonts/Inter-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;

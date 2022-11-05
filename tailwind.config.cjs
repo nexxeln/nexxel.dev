@@ -11,7 +11,6 @@ module.exports = {
       },
       fontFamily: {
         inter: ["Inter", ...defaultTheme.fontFamily.sans],
-        satoshi: ["Satoshi", ...defaultTheme.fontFamily.sans],
         hack: ["Hack", ...defaultTheme.fontFamily.mono],
       },
     },
