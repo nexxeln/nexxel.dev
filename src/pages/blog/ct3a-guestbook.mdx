@@ -428,11 +428,7 @@ const Home = () => {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
-    return (
-      <main className="flex flex-col items-center pt-4">
-        Loading...
-      </main>
-    );
+    return <main className="flex flex-col items-center pt-4">Loading...</main>;
   }
 
   return (
@@ -444,12 +440,14 @@ const Home = () => {
       <div className="pt-10">
         <div>
           {session ? (
+            <>
               <p>hi {session.user?.name}</p>
               <button onClick={() => signOut()}>Logout</button>
+            </>
           ) : (
-              <button onClick={() => signIn("discord")}>
-                Login with Discord
-              </button>
+            <button onClick={() => signIn("discord")}>
+              Login with Discord
+            </button>
           )}
         </div>
       </div>
@@ -520,12 +518,12 @@ Now render this component in the `Home` component.
   <div className="pt-10">
     <div>
       {session ? (
-        <p>hi {session.user?.name}</p>
-        <button onClick={() => signOut()}>Logout</button>
+        <>
+          <p>hi {session.user?.name}</p>
+          <button onClick={() => signOut()}>Logout</button>
+        </>
       ) : (
-        <button onClick={() => signIn("discord")}>
-          Login with Discord
-        </button>
+        <button onClick={() => signIn("discord")}>Login with Discord</button>
       )}
       <div className="pt-10">
         <Messages />
@@ -583,16 +581,17 @@ We can now render the `Form` in the `Home` component and add some padding.
 
 <div>
   {session ? (
-    <p>hi {session.user?.name}</p>
-    <button onClick={() => signOut()}>Logout</button>
-    <div className="pt-6">
-      <Form />
-    </div>
+    <>
+      <p>hi {session.user?.name}</p>
+      <button onClick={() => signOut()}>Logout</button>
+      <div className="pt-6">
+        <Form />
+      </div>
+    </>
   ) : (
-    <button onClick={() => signIn("discord")}>
-      Login with Discord
-    </button>
+    <button onClick={() => signIn("discord")}>Login with Discord</button>
   )}
+
   <div className="pt-10">
     <Messages />
   </div>
