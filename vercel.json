@@ -9,5 +9,23 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/nexxeln"
+    },
+    {
+      "source": "/gh",
+      "destination": "https://github.com/nexxeln"
+    },
+    {
+      "source": "/github/:slug*",
+      "destination": "https://github.com/nexxeln/:slug*"
+    },
+    {
+      "source": "/gh/:slug*",
+      "destination": "https://github.com/nexxeln/:slug*"
+    }
   ]
 }
