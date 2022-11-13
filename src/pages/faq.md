@@ -42,14 +42,13 @@ Nothing big at the moment. Mostly studying and maintaining [create-t3-app](https
 
 ### What is your favourite web framework?
 
-[Remix](https://remix.run) has got to be my favourite framework, It isn't perfect, but I still enjoy writing code with Remix. I'm also loving [Astro](https://astro.build) at the moment.
+[Remix](https://remix.run) has got to be my favourite framework, It isn't perfect, but I still enjoy writing code with Remix. I'm also loving [Astro](https://astro.build) at the moment. [Solid Start](https://start.solidjs.com) is promising.
 
 <br />
 
 ### Did you build create-t3-app?
 
 I started it, the community built it. If you don't know, [create-t3-app](https://github.com/t3-oss/create-t3-app) is the quickest way to start a web app with the full stack typesafety.
-
 <br />
 
 ### What code editor do you use?
@@ -64,13 +63,11 @@ I use [Alacritty](https://alacritty.org). It's great.
 
 <br />
 
-
 ### What theme do you use?
 
 I use [Kanagawa](https://github.com/rebelot/kanagawa.nvim) for Neovim and Alacritty, and [poimandres](https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs) for VSCode.
 
 <br />
-
 
 ### What font do you use for coding?
 
