@@ -304,8 +304,16 @@ You will notice that we didn't have to write any types ourselves for this. Every
 
 <br />
 
+### Limitations
+
+<br />
+
+This way of doing things can break when using [`@map`](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#map) because the casing is different in the types. It also doesn't support [`Prisma.Decimal`](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields#working-with-decimal) because you have to use the special Prisma object to use it. [Mark Lawlor](https://github.com/marklawlor) has some insane TypeScript code to work around this problem but it's still very "hacky". You can see his gist [here](https://gist.github.com/marklawlor/b1c26eefba43539c6611a508e67ee02f).
+
+<br />
+
 ## Conclusion
 
 <br />
 
-Hopefully that all made sense. I think it is pretty cool. I haven't seen anyone do this so I thought I had a moral obligation to write a blog about it. That's it really. Thanks for reading!
+Hopefully that all made sense. I think it is pretty cool. That's it really. Thanks for reading!
