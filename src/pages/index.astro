@@ -33,7 +33,10 @@ const pinnedRepos = await fetch(
     <script>
       import flamethrower from "flamethrower-router";
 
-      export const router = flamethrower();
+      export const router = flamethrower({
+        pageTransitions: true,
+        prefetch: "visible",
+      });
     </script>
     <main class="text-lg text-neutral-200">
       <h1 class="text-4xl pb-2">Hi, I'm nexxel</h1>
