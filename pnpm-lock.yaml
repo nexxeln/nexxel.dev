@@ -11,6 +11,7 @@ specifiers:
   '@types/react': ^18.0.21
   '@types/react-dom': ^18.0.6
   astro: ^1.6.0
+  flamethrower-router: 0.0.0-meme.12
   mdast-util-to-string: ^3.1.0
   react: ^18.0.0
   react-dom: ^18.0.0
@@ -30,6 +31,7 @@ dependencies:
   '@types/react': 18.0.24
   '@types/react-dom': 18.0.8
   astro: 1.6.2
+  flamethrower-router: 0.0.0-meme.12
   mdast-util-to-string: 3.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1901,6 +1903,10 @@ packages:
     dependencies:
       micromatch: 4.0.5
       pkg-dir: 4.2.0
+    dev: false
+
+  /flamethrower-router/0.0.0-meme.12:
+    resolution: {integrity: sha512-PWcNrjzItwk61RTk/SbbKJNcAgl6qCXH8xkZjGjUGV/dgKAnURci+k+Yk8emubUQWTdAd1kSqujy0VRjoeEgxg==}
     dev: false
 
   /format/0.2.2:
