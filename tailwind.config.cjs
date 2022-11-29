@@ -10,7 +10,7 @@ module.exports = {
         "t-black": "#121212",
       },
       fontFamily: {
-        inter: ["Inter", ...defaultTheme.fontFamily.sans],
+        satoshi: ["Satoshi-Variable", ...defaultTheme.fontFamily.sans],
         hack: ["Hack", ...defaultTheme.fontFamily.mono],
       },
     },
