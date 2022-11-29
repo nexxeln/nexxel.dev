@@ -11,6 +11,17 @@
 }
 
 @font-face {
+  font-family: "Satoshi-Variable Fallback";
+  src: local("Arial");
+  font-weight: 300 900;
+  font-style: normal;
+  ascent-override: 92.36%;
+  descent-override: 21.95%;
+  line-gap-override: 9.14%;
+  size-adjust: 109.35%;
+}
+
+@font-face {
   font-family: "Hack";
   src: url("/fonts/hack-regular-subset.woff2") format("woff2");
   font-weight: 400;
