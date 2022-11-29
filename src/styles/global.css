@@ -116,7 +116,7 @@ ul {
 }
 
 ul > li {
-  @apply list-disc;
+  @apply list-disc text-lg;
 }
 
 ul > li::marker {
