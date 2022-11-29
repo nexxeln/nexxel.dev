@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: "Satoshi-Variable Fallback";
-  src: local("Arial");
+  src: local(sans-serif);
   font-weight: 300 900;
   font-style: normal;
   ascent-override: 92.36%;
