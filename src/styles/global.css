@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Satoshi-Variable";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Hack";
   src: url("/fonts/hack-regular-subset.woff2") format("woff2");
   font-weight: 400;
@@ -59,10 +67,11 @@ html {
 }
 
 body {
-  @apply font-inter m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
+  @apply m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
+  font-family: "Satoshi-Variable";
   width: 100%;
 }
 
@@ -83,7 +92,7 @@ h3 {
 }
 
 p {
-  @apply text-neutral-300;
+  @apply text-neutral-300 text-lg;
 }
 
 b {
