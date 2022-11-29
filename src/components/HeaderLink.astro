@@ -11,7 +11,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   href={href}
   rel="prefetch"
   class={`text-t-green underline-offset-[3px] ${
-    isActive ? "font-bold underline" : ""
+    isActive ? "font-bold underline" : "font-medium"
   }`}
   {...props}
 >

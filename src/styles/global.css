@@ -3,53 +3,17 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: "Satoshi-Variable";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Hack";
   src: url("/fonts/hack-regular-subset.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("/fonts/Inter-Black.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter ExtraBold"), local("Inter-ExtraBold"),
-    url("/fonts/Inter-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter Bold"), local("Inter-Bold"),
-    url("/fonts/Inter-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter Medium"), local("Inter-Medium"),
-    url("/fonts/Inter-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: local("Inter Regular"), local("Inter-Regular"),
-    url("/fonts/Inter-Regular.woff2") format("woff2");
-  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
@@ -59,7 +23,7 @@ html {
 }
 
 body {
-  @apply font-inter m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
+  @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
@@ -83,7 +47,7 @@ h3 {
 }
 
 p {
-  @apply text-neutral-300;
+  @apply text-neutral-300 text-lg;
 }
 
 b {
