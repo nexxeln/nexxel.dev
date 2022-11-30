@@ -12,7 +12,7 @@ type Result = {
   score: number;
 };
 
-export const SearchBar = ({ posts }: { posts: Post[] }) => {
+export const BlogPosts = ({ posts }: { posts: Post[] }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Result[] | null>(null);
@@ -74,7 +74,7 @@ export const SearchBar = ({ posts }: { posts: Post[] }) => {
         autoComplete="off"
         ref={inputRef}
         onChange={(event) => setQuery(event.target.value)}
-        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-t-green mb-4"
+        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-t-green mb-6"
       />
 
       {query.length > 0 ? (
@@ -92,7 +92,23 @@ export const SearchBar = ({ posts }: { posts: Post[] }) => {
               />
             ))
         ) : (
-          <span className="text-xl p-1">No posts found</span>
+          <>
+            <span className="text-xl p-4 text-neutral-300">
+              No posts found. Maybe try one of these instead?
+            </span>
+
+            <div className="pb-6" />
+            {posts.slice(0, 3).map((post) => (
+              <Blog
+                key={`${post.url}`}
+                url={post.url}
+                title={post.frontmatter.title}
+                description={post.frontmatter.description}
+                date={post.frontmatter.pubDate}
+                readingTime={post.frontmatter.readingTime}
+              />
+            ))}
+          </>
         )
       ) : (
         posts.map((post) => (

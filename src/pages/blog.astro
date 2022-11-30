@@ -2,10 +2,9 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { Blog } from "../components/Blog";
 import { SITE_TITLE } from "../config";
 import type { Post } from "../types";
-import { SearchBar } from "../components/Search";
+import { BlogPosts } from "../components/BlogPosts";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
@@ -28,7 +27,7 @@ const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
     <main>
       <h1 class="pb-6">Blog</h1>
 
-      <SearchBar posts={posts} client:load />
+      <BlogPosts posts={posts} client:load />
     </main>
     <Footer />
   </body>
