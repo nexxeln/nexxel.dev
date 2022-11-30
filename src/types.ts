@@ -1,4 +1,4 @@
-export type Frontmatter = {
+export interface Post {
   url: string;
   frontmatter: {
     title: string;
@@ -6,4 +6,4 @@ export type Frontmatter = {
     pubDate: string;
     readingTime: string;
   };
-};
+}

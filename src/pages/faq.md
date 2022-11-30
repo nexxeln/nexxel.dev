@@ -1,7 +1,8 @@
 ---
-layout: "../layouts/FaqLayout.astro"
+layout: "../layouts/Layout.astro"
 title: "nexxel • faq"
 description: "Questions frequently asked to me"
+heading: "FAQ"
 ---
 
 ### Are you actually 17?!

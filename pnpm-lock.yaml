@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   astro: ^1.6.0
   flamethrower-router: 0.0.0-meme.12
+  fuse.js: ^6.6.2
   mdast-util-to-string: ^3.1.0
   react: ^18.0.0
   react-dom: ^18.0.0
@@ -32,6 +33,7 @@ dependencies:
   '@types/react-dom': 18.0.8
   astro: 1.6.2
   flamethrower-router: 0.0.0-meme.12
+  fuse.js: 6.6.2
   mdast-util-to-string: 3.1.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1934,6 +1936,11 @@ packages:
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
