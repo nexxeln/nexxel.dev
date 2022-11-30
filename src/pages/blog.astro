@@ -4,9 +4,10 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Blog from "../components/Blog.astro";
 import { SITE_TITLE } from "../config";
+import type { Frontmatter } from "../types";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+const posts = (await Astro.glob<Frontmatter>("./blog/*.{md,mdx}")).sort(
   (a, b) =>
     new Date(b.frontmatter.pubDate).valueOf() -
     new Date(a.frontmatter.pubDate).valueOf()
