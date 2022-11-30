@@ -26,6 +26,14 @@ const pinnedRepos = await fetch(
 <html lang="en">
   <head>
     <BaseHead title={`${SITE_TITLE} home`} description={SITE_DESCRIPTION} />
+    <link
+      rel="preload"
+      href="/fonts/Satoshi-Variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
