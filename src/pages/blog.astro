@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { Blog } from "../components/Blog";
 import { SITE_TITLE } from "../config";
 import type { Post } from "../types";
+import { SearchBar } from "../components/Search";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
@@ -26,19 +27,8 @@ const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
     <Header />
     <main>
       <h1 class="pb-6">Blog</h1>
-      <section>
-        {
-          posts.map((post) => (
-            <Blog
-              title={post.frontmatter.title}
-              description={post.frontmatter.description}
-              readingTime={post.frontmatter.readingTime}
-              date={post.frontmatter.pubDate}
-              url={post.url}
-            />
-          ))
-        }
-      </section>
+
+      <SearchBar posts={posts} client:load />
     </main>
     <Footer />
   </body>

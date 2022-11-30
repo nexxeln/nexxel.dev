@@ -32,7 +32,6 @@ export const SearchBar = ({ posts }: { posts: Post[] }) => {
     ],
     includeMatches: true,
     includeScore: true,
-    minMatchCharLength: 2,
     threshold: 0.3,
   });
 
@@ -51,7 +50,7 @@ export const SearchBar = ({ posts }: { posts: Post[] }) => {
 
   useEffect(() => {
     // @ts-ignore idk why this is happening
-    setResults(query.length > 1 ? fuse.search(query) : []);
+    setResults(query.length > 0 ? fuse.search(query) : []);
 
     if (query.length > 0) {
       const searchParams = new URLSearchParams(window.location.search);
@@ -73,31 +72,40 @@ export const SearchBar = ({ posts }: { posts: Post[] }) => {
         placeholder="Search posts"
         value={query}
         autoComplete="off"
-        autoFocus
         ref={inputRef}
         onChange={(event) => setQuery(event.target.value)}
+        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-t-green mb-4"
       />
 
-      {query.length > 1 && (
-        <div>
-          Found {results?.length}
-          {results?.length && results?.length === 1 ? " result" : " results"}
-        </div>
+      {query.length > 0 ? (
+        results && results.length > 0 ? (
+          results
+            .sort((a, b) => b.score - a.score)
+            .map((result) => (
+              <Blog
+                key={`${result.refIndex}-${result.item.url}`}
+                url={result.item.url}
+                title={result.item.frontmatter.title}
+                description={result.item.frontmatter.description}
+                date={result.item.frontmatter.pubDate}
+                readingTime={result.item.frontmatter.readingTime}
+              />
+            ))
+        ) : (
+          <span className="text-xl p-1">No posts found</span>
+        )
+      ) : (
+        posts.map((post) => (
+          <Blog
+            key={post.url}
+            url={post.url}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            readingTime={post.frontmatter.readingTime}
+          />
+        ))
       )}
-
-      {results &&
-        results
-          .sort((a, b) => b.score - a.score)
-          .map((result) => (
-            <Blog
-              key={`${result.refIndex}-${result.item.url}`}
-              url={result.item.url}
-              title={result.item.frontmatter.title}
-              description={result.item.frontmatter.description}
-              date={result.item.frontmatter.pubDate}
-              readingTime={result.item.frontmatter.readingTime}
-            />
-          ))}
     </>
   );
 };
