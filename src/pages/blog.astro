@@ -1,9 +1,9 @@
 ---
+import type { Post } from "../types";
+import { SITE_TITLE } from "../config";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from "../config";
-import type { Post } from "../types";
 import { BlogPosts } from "../components/BlogPosts";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
