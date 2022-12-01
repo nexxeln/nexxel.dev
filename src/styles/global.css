@@ -36,11 +36,12 @@ html {
 }
 
 body {
-  @apply font-satoshi m-auto p-5 max-w-[65ch] text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
+  @apply font-sans m-auto p-5 max-w-65ch text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
   width: 100%;
+  /* font-family: "Satoshi", "Satoshi-Variable Fallback",system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif */
 }
 
 h1 {
@@ -68,7 +69,7 @@ b {
 }
 
 a {
-  @apply text-t-green hover:underline underline-offset-2;
+  @apply text-vitesseGreen hover:underline underline-offset-2;
 }
 
 article a {
@@ -97,11 +98,11 @@ img {
 }
 
 code {
-  @apply font-hack text-sm bg-t-black p-[2.4px] rounded border border-neutral-800 text-neutral-100;
+  @apply font-hack text-sm bg-themeBlack p-2.5px rounded border border-neutral-800 text-neutral-100;
 }
 
 pre {
-  @apply font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-600 scrollbar-thumb-rounded-xl scrollbar-track-rounded-xl overflow-y-scroll;
+  @apply font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar scrollbar-w-8px scrollbar-h-8px scrollbar-thumb-color-neutral-700 scrollbar-track-color-neutral-600 scrollbar-rounded  overflow-y-auto;
 }
 
 pre > code {
@@ -110,7 +111,7 @@ pre > code {
 }
 
 blockquote {
-  @apply rounded-xl bg-t-black border border-neutral-700 p-4;
+  @apply rounded-xl bg-themeBlack border border-neutral-700 p-4;
 }
 
 ul {
