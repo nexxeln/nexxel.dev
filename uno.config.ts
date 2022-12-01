@@ -7,16 +7,7 @@ import {
 import { presetScrollbar } from "unocss-preset-scrollbar";
 
 export default defineConfig({
-  presets: [
-    presetUno(),
-    presetWebFonts({
-      provider: "fontshare",
-      fonts: {
-        sans: "Satoshi",
-      },
-    }),
-    presetScrollbar(),
-  ],
+  presets: [presetUno(), presetScrollbar()],
   transformers: [transformerDirectives()],
   theme: {
     fontFamily: {
