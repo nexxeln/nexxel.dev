@@ -1,11 +1,11 @@
 import { Menu, Transition } from "@headlessui/react";
-import { type ReactNode, Fragment } from "react";
+import { Fragment } from "react";
 
 export const EmailSelect = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="text-t-green hover:underline font-medium underline-offset-[3px]">
+        <Menu.Button className="text-vitesseGreen hover:underline font-medium underline-offset-3px">
           Email
         </Menu.Button>
       </div>
@@ -19,7 +19,7 @@ export const EmailSelect = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0  z-10 mt-2 w-56 origin-top-right rounded-xl border border-neutral-700 bg-t-black shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-neutral-700">
+        <Menu.Items className="absolute right-0  z-10 mt-2 w-56 origin-top-right rounded-xl border border-neutral-700 bg-themeBlack shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-neutral-700">
           <Menu.Item>
             {({ active }) => (
               <div
@@ -38,7 +38,7 @@ export const EmailSelect = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`w-4 h-4 ${active ? "rotate-[24deg]" : ""}`}
+                    className={`w-4 h-4 ${active ? "rotate-24deg" : ""}`}
                   >
                     <path
                       strokeLinecap="round"
@@ -67,7 +67,7 @@ export const EmailSelect = () => {
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className={`w-4 h-4 ${active ? "-rotate-[24deg]" : ""}`}
+                    className={`w-4 h-4 ${active ? "-rotate-24deg" : ""}`}
                   >
                     <path
                       strokeLinecap="round"

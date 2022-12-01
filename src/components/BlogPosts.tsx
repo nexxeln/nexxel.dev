@@ -74,7 +74,7 @@ export const BlogPosts = ({ posts }: { posts: Post[] }) => {
         autoComplete="off"
         ref={inputRef}
         onChange={(event) => setQuery(event.target.value)}
-        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-t-green mb-6"
+        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-vitesseGreen mb-6"
       />
 
       {query.length > 0 ? (
