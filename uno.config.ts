@@ -1,14 +1,14 @@
 import {
   defineConfig,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
+  transformerVariantGroup,
 } from "unocss";
 import { presetScrollbar } from "unocss-preset-scrollbar";
 
 export default defineConfig({
   presets: [presetUno(), presetScrollbar()],
-  transformers: [transformerDirectives()],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     fontFamily: {
       hack: "Hack",

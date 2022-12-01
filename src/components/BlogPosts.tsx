@@ -74,7 +74,7 @@ export const BlogPosts = ({ posts }: { posts: Post[] }) => {
         autoComplete="off"
         ref={inputRef}
         onChange={(event) => setQuery(event.target.value)}
-        className="w-full px-4 py-2 text-lg placeholder:text-neutral-400  text-neutral-200 bg-neutral-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-vitesseGreen mb-6"
+        className="w-full px-4 py-2 text-(neutral-200 lg) placeholder:text-neutral-400  bg-neutral-800 rounded-xl focus:(outline-none ring-2 ring-vitesseGreen) mb-6"
       />
 
       {query.length > 0 ? (
@@ -93,7 +93,7 @@ export const BlogPosts = ({ posts }: { posts: Post[] }) => {
             ))
         ) : (
           <>
-            <span className="text-xl p-4 text-neutral-300">
+            <span className="text-(xl neutral-300) p-4">
               No posts found. Maybe try one of these instead?
             </span>
 

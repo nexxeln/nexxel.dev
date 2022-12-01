@@ -32,7 +32,7 @@ html {
 }
 
 body {
-  --at-apply: "font-sans m-auto p-5 max-w-65ch text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased";
+  --at-apply: "font-sans m-auto p-5 max-w-65ch text-(left neutral-300) bg-neutral-900 break-words leading-6 antialiased";
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
@@ -43,15 +43,15 @@ body {
 }
 
 h1 {
-  --at-apply: "font-black text-4xl text-neutral-100";
+  --at-apply: "font-black text-(4xl neutral-100)";
 }
 
 h2 {
-  --at-apply: "font-extrabold text-2xl text-neutral-100";
+  --at-apply: "font-extrabold text-(2xl neutral-100)";
 }
 
 h3 {
-  --at-apply: "font-bold text-xl text-neutral-100";
+  --at-apply: "font-bold text-(xl neutral-100)";
 }
 
 .faq h3 {
@@ -59,7 +59,7 @@ h3 {
 }
 
 p {
-  --at-apply: "text-neutral-300 text-lg";
+  --at-apply: "text-(neutral-300 lg)";
 }
 
 b {
@@ -75,20 +75,15 @@ article a {
 }
 
 textarea {
-  width: 100%;
-  font-size: 16px;
+  --at-apply: "w-full text-16px";
 }
 
 input {
-  font-size: 16px;
+  --at-apply: "text-16px";
 }
 
 content {
   line-height: 1.6;
-}
-
-table {
-  width: 100%;
 }
 
 img {
@@ -96,7 +91,7 @@ img {
 }
 
 code {
-  --at-apply: "font-hack text-sm bg-themeBlack p-2.5px rounded border border-neutral-800 text-neutral-100";
+  --at-apply: "font-hack text-(sm neutral-100) bg-themeBlack p-2.5px rounded border border-neutral-800";
 }
 
 pre {
