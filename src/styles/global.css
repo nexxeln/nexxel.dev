@@ -1,8 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
+/* @font-face {
   font-family: "Satoshi-Variable";
   src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
   font-weight: 300 900;
@@ -19,7 +15,7 @@
   descent-override: 21.95%;
   line-gap-override: 9.14%;
   size-adjust: 109.35%;
-}
+} */
 
 @font-face {
   font-family: "Hack";
@@ -36,7 +32,7 @@ html {
 }
 
 body {
-  @apply font-sans m-auto p-5 max-w-65ch text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased;
+  --at-apply: "font-sans m-auto p-5 max-w-65ch text-left bg-neutral-900 break-words leading-6 text-neutral-300 antialiased";
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
   word-wrap: break-word;
@@ -45,35 +41,35 @@ body {
 }
 
 h1 {
-  @apply font-black text-4xl text-neutral-100;
+  --at-apply: "font-black text-4xl text-neutral-100";
 }
 
 h2 {
-  @apply font-extrabold text-2xl text-neutral-100;
+  --at-apply: "font-extrabold text-2xl text-neutral-100";
 }
 
 h3 {
-  @apply font-bold text-xl text-neutral-100;
+  --at-apply: "font-bold text-xl text-neutral-100";
 }
 
 .faq h3 {
-  @apply pb-1;
+  --at-apply: "pb-1";
 }
 
 p {
-  @apply text-neutral-300 text-lg;
+  --at-apply: "text-neutral-300 text-lg";
 }
 
 b {
-  @apply font-medium text-neutral-100;
+  --at-apply: "font-medium text-neutral-100";
 }
 
 a {
-  @apply text-vitesseGreen hover:underline underline-offset-2;
+  --at-apply: "text-vitesseGreen hover:underline underline-offset-2";
 }
 
 article a {
-  @apply text-neutral-100 font-medium underline underline-offset-2;
+  --at-apply: "text-neutral-100 font-medium underline underline-offset-2";
 }
 
 textarea {
@@ -94,34 +90,34 @@ table {
 }
 
 img {
-  @apply max-w-full h-auto my-8 rounded-xl border border-neutral-800;
+  --at-apply: "max-w-full h-auto my-8 rounded-xl border border-neutral-800";
 }
 
 code {
-  @apply font-hack text-sm bg-themeBlack p-2.5px rounded border border-neutral-800 text-neutral-100;
+  --at-apply: "font-hack text-sm bg-themeBlack p-2.5px rounded border border-neutral-800 text-neutral-100";
 }
 
 pre {
-  @apply font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar scrollbar-w-8px scrollbar-h-8px scrollbar-thumb-color-neutral-700 scrollbar-track-color-neutral-600 scrollbar-rounded  overflow-y-auto;
+  --at-apply: "font-hack rounded-xl border border-neutral-800 p-4 my-8 text-sm scrollbar scrollbar-w-8px scrollbar-h-8px scrollbar-thumb-color-neutral-700 scrollbar-track-color-neutral-600 scrollbar-rounded  overflow-y-auto";
 }
 
 pre > code {
-  @apply font-hack;
+  --at-apply: "font-hack";
   all: unset;
 }
 
 blockquote {
-  @apply rounded-xl bg-themeBlack border border-neutral-700 p-4;
+  --at-apply: "rounded-xl bg-themeBlack border border-neutral-700 p-4";
 }
 
 ul {
-  @apply ml-5;
+  --at-apply: "ml-5";
 }
 
 ul > li {
-  @apply list-disc text-lg;
+  --at-apply: "list-disc text-lg";
 }
 
 ul > li::marker {
-  @apply text-neutral-500;
+  --at-apply: "text-neutral-500";
 }
