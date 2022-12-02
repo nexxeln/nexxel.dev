@@ -15,23 +15,19 @@ type Result = {
 export const BlogPosts = ({ posts }: { posts: Post[] }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Result[] | null>(null);
+  const [results, setResults] = useState<Fuse.FuseResult<Post>[] | null>(null);
 
   const fuse = new Fuse(posts, {
     keys: [
       {
         name: "title",
         getFn: (post) => post.frontmatter.title,
-        weight: 2,
       },
       {
         name: "description",
         getFn: (post) => post.frontmatter.description,
-        weight: 1,
       },
     ],
-    includeMatches: true,
-    includeScore: true,
     threshold: 0.3,
   });
 
@@ -49,8 +45,7 @@ export const BlogPosts = ({ posts }: { posts: Post[] }) => {
   }, []);
 
   useEffect(() => {
-    // @ts-ignore idk why this is happening
-    setResults(query.length > 0 ? fuse.search(query) : []);
+    setResults(query.length > 0 ? fuse.search(query) : null);
 
     if (query.length > 0) {
       const searchParams = new URLSearchParams(window.location.search);
@@ -77,20 +72,18 @@ export const BlogPosts = ({ posts }: { posts: Post[] }) => {
         className="w-full px-4 py-2 text-(neutral-200 lg) placeholder:text-neutral-400  bg-neutral-800 rounded-xl focus:(outline-none ring-2 ring-vitesseGreen) mb-6"
       />
 
-      {query.length > 0 ? (
-        results && results.length > 0 ? (
-          results
-            .sort((a, b) => b.score - a.score)
-            .map((result) => (
-              <Blog
-                key={`${result.refIndex}-${result.item.url}`}
-                url={result.item.url}
-                title={result.item.frontmatter.title}
-                description={result.item.frontmatter.description}
-                date={result.item.frontmatter.pubDate}
-                readingTime={result.item.frontmatter.readingTime}
-              />
-            ))
+      {results ? (
+        results.length > 0 ? (
+          results.map((result) => (
+            <Blog
+              key={`${result.refIndex}-${result.item.url}`}
+              url={result.item.url}
+              title={result.item.frontmatter.title}
+              description={result.item.frontmatter.description}
+              date={result.item.frontmatter.pubDate}
+              readingTime={result.item.frontmatter.readingTime}
+            />
+          ))
         ) : (
           <>
             <span className="text-(xl neutral-300) p-4">
