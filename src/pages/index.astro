@@ -26,26 +26,10 @@ const pinnedRepos = await fetch(
 <html lang="en">
   <head>
     <BaseHead title={`${SITE_TITLE} home`} description={SITE_DESCRIPTION} />
-    <link
-      rel="preload"
-      href="/fonts/Satoshi-Variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   </head>
 
   <body>
     <Header title={SITE_TITLE} />
-    <script>
-      import flamethrower from "flamethrower-router";
-
-      export const router = flamethrower({
-        pageTransitions: true,
-        prefetch: "visible",
-      });
-    </script>
     <main class="text-lg text-neutral-200">
       <h1 class="text-4xl pb-2">Hi, I'm nexxel</h1>
       <p>

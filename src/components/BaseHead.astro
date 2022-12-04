@@ -40,3 +40,23 @@ const {
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
+
+<!-- Link Tags -->
+<link
+  rel="preload"
+  href="/fonts/Satoshi-Variable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+<!-- Client Side Routing -->
+<script>
+  import flamethrower from "flamethrower-router";
+
+  export const router = flamethrower({
+    pageTransitions: true,
+    prefetch: "visible",
+  });
+</script>
