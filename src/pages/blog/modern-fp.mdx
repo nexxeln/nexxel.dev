@@ -1,0 +1,256 @@
+---
+layout: "../../layouts/BlogPost.astro"
+title: "Functional Programming and Its Influence on Modern Languages"
+description: "Functional languages have had a huge impact on modern languages. In this post, we'll look at how functional programming has influenced modern language design."
+pubDate: "December 09, 2022"
+draft: true
+---
+
+## What is Functional Programming?
+
+<br />
+
+Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing state and mutable data. This means that in functional programming, functions are first-class citizens, which means that they can be treated like any other value in the language and can be passed as arguments to other functions or returned as the result of a function.
+
+<br />
+
+In short funcional programming:
+
+- defines computations as the evaluation of mathematical functions
+- avoids mutable state and side effects
+
+<br />
+
+### Why Functional Programming?
+
+<br />
+
+Mutability might be easy to reason about in simple programs, but it becomes increasingly difficult as the program grows in complexity. It can be difficult to predict how an object will behave when it is mutated in mupltiple parts of the code. As a result the code becomes harder to understand, maintain, refactor and debug.
+
+<br />
+
+Functional programming solves this by embracing immutability.
+
+- Because pure functions have no side effects and immutable data can't be changed, functional code is often easier to reason about and debug. This can lead to more maintainable and reliable code.
+
+- Because functional code is composed of small, independent units, it can be easier to reuse and rearrange code. This can make functional code more adaptable to changing requirements.
+
+<br />
+
+That said, functional programming is not a silver bullet and may not always be the best choice for a particular problem. It is important to consider the trade-offs and choose the programming paradigm that is most appropriate for the task at hand.
+
+<br />
+
+> That was a quick overview of functional programming. Now let's look at how functional languages are influencing modern language design.
+
+<br />
+
+## Immutable Data Structures
+
+<br />
+
+As the name suggests, these are data structures that cannot be modified after they are created. Many functional languages, such as Haskell and ML, use immutable data structures by default.
+
+<br />
+
+Immutable data structures have been since introduced in many languages. `ImmutableSet` is an immmutable version of the `Set` collection type in Java. It was introduced in Java 9.
+
+<br />
+
+In more mordern languages, immutability has also been embraced.
+
+- Rust has a strong emphasis on immutability and by default, all variables are immutable.
+
+- Elixir is a functional language that supports immutability by default, and the vast majority of data in Elixir is immutable.
+
+- OCaml supports both mutable and immutable data structures, and encourages the use of immutable data structures whenever possible.
+
+<br />
+
+Many other languages like Scala, F# also have immutability by default.
+
+<br />
+
+## Higher-Order Functions
+
+<br />
+
+A higher-order function is a function that either takes one or more functions as arguments, or returns a function as a result. Most modern languages have many higher-order functions built-in, such as `map`, `filter`, `reduce`, etc. Higher-order functions are a useful abstraction because they allow writing code that is more flexible and reusable. For example, instead of writing a separate function for each operation you want to perform on a list of numbers, you could write a single higher-order function that takes the operation you want to perform as an argument and applies it to each element in the list. This makes code easier to read and understand, and can make it easier to add new functionality without making changes to existing code.
+
+<br />
+
+Almost all modern languages that have higher-order functions. Python, JavaScript, C#, OCaml. Even Java introduced higher-order functions in Java 8 in 2014. But they were firt introduced in Lisp back in 1958 which pioneered many ideas that are in this post.
+
+<br />
+
+## Generics
+
+<br />
+
+Generics are a way to write code that is independent of the type of data it operates on. For example in TypeScript:
+
+```ts
+// generic function called that swaps the values of any type in a list
+function swap<T>(pair: [T, T]): [T, T] {
+  return [pair[1], pair[0]];
+}
+
+const stringPair = ["Hello", "World"];
+const swappedStringPair = swap(stringPair); // returns ['World', 'Hello']
+
+const numberPair = [42, 3.14];
+const swappedNumberPair = swap(numberPair); // returns [3.14, 42]
+
+const booleanPair = [true, false];
+const swappedBooleanPair = swap(booleanPair); // returns [false, true]
+```
+
+Generics were first seen in the programming language Ada. Ada is a high-level, statically-typed programming language designed for real-time and embedded systems, and it was one of the first languages to support generics. Ada has had generics since it was first designed in 1977-1980.
+
+<br />
+
+Later, generics were introduced in functional languages like Haskell, languages of
+the ML family, C++ and even got added to Java 5 in 2004.
+
+<br />
+
+Modern languages such as TypeScript, Rust, Nim, have great support for generics. Even Go recently added generics in March 2022.
+
+<br />
+
+## List Comprehensions
+
+<br />
+
+List Comprehensions are a way to generate a list by applying an expression to each element in a sequence. It can be used to write concise, and declarative code. They certainly existed in the 1960s-1970s but Haskell was the first "popular" language to implement them. Here's a simple example in Haskell:
+
+```haskell
+numbers = [1, 2, 3, 4, 5]
+
+-- square each number in the list
+squares = [x ^ 2 | x <- numbers]
+
+-- square each even number in the list
+evenSquares = [x ^ 2 | x <- numbers, x `mod` 2 == 0]
+```
+
+This code defines a list of numbers and then creates a new list of squares using a list comprehension. The list comprehension `[x^2 | x <- numbers]` means "for each `x` in `numbers`, create a new list element `x ^ 2`". You can also add conditions to the list comprehension. For example, `` [x^2 | x <- numbers, x `mod` 2 == 0] ``means "for each`x`in`numbers`, create a new list element `x ^ 2`if`x` is even".
+
+<br />
+
+List comprehensions are a powerful tool that can be used to write concise, declarative code. They are supported in many functional languages, including OCaml, Elixir, F#, and Scala. They were also added to Python 2.0.
+
+<br />
+
+## Pattern Matching
+
+<br />
+
+Pattern matching is the process of checking a value against a pattern. It is often used to deconstruct data structures and extract values or perform operations based on their structure.
+Here's an example in OCaml:
+
+```ocaml
+(* variant type for a binary tree *)
+type tree =
+  | Leaf of int
+  | Node of tree * tree
+
+(* recursive function that sums the values of all leaf nodes in a tree *)
+let rec sum_tree = function
+  | Leaf n -> n
+  | Node (l, r) -> sum_tree l + sum_tree r
+```
+
+In this example, the `tree` type is defined as a variant type, with two possible constructors: `Leaf` and `Node`. The `sum_tree` function is a recursive function that uses pattern matching to deconstruct a `tree` value and perform different actions based on its structure.
+
+<br />
+
+For example, if the value of `tree` is a Leaf, the function returns the value of the leaf. If it's a `Node`, the function recursively calls `sum_tree` on the left and right children of the node and adds the results together.
+
+<br />
+
+This might be a bit confusing at first but once you get used to it, your code will concise, more expressive and easier to read and understand. By breaking down the data into its constituent parts and explicitly matching the various patterns that can occur, you can write code that is more declarative and easier to follow by eliminating the need for explicit branching and looping. Once you experience the power of pattern matching, you'll never want to go back and will miss it when it's not available.
+
+<br />
+
+It's hard to pinpoint when pattern matching was first introduced but it was definitely in the 1960s. It was implemented in languages like Prolog, Lisp and ML. Later, pattern matching was added to functiona languages including Haskell, Erlang, OCaml and F#.
+
+<br />
+
+In recent years, pattern matching has been implemented in modern languages like Rust. It even got added to Python 3.10.
+
+<br />
+
+## Algebraic Data Types
+
+<br />
+
+Algebraic data types (ADTs) are composite data types that are built up from simpler data types using a set of constructors. Here's a simple example in OCaml:
+
+```ocaml
+(* ADT for a binary tree *)
+type tree =
+  | Leaf
+  | Node of int * tree * tree
+
+let binary_tree = Node(1, Node(2, Leaf, Leaf), Node(3, Leaf, Leaf))
+```
+
+The `tree` type is defined as a sum type, which means that the value of type `tree` can either be a `Leaf` or `Node`. This ADT has two constructors: `Leaf` and `Node`. The `Leaf` constructor takes no arguments and represents a leaf node, i.e. a node with no subtrees. The `Node` constructor takes three arguments: an integer value, and two subtrees.
+
+<br />
+
+Now that we have defined the `tree` ADT, we can use it to create a binary tree. The `binary_tree` variable is a `tree` value that represents the following binary tree:
+
+```
+    1
+   / \
+  2   3
+ / \ / \
+```
+
+You can use [pattern matching](#pattern-matching) to deconstruct the `tree` value and perform different actions based on its structure. For example, you can write a function that sums the values of all leaf nodes in a tree:
+
+```ocaml
+(* recursive function that sums the values of all leaf nodes in a tree *)
+let rec sum_tree binary_tree =
+  match binary_tree with
+  | Leaf -> 0
+  | Node(v, l, r) -> v + sum_tree l + sum_tree r
+```
+
+This function recursively sums the values in the tree by pattern matching on the tree and adding the value of the current node to the sum of the values in the left and right children.
+
+<br />
+
+Miranda, a functional programming language, was the first language to fully incorporate ADTs. It was influential in the development of Haskell and ML, which also support ADTs. ADTs are supported in modern languages including Rust, Elixir and OCaml.
+
+<br />
+
+## Conclusion
+
+<br />
+
+Those were only some of the features I like and find useful that modern languages have
+adopted from functional languages. This definitely doesn't mean that functional programming is suited for all cases. Object-oriented programming enabled us to build a lot of the software we use today. But I think functional programming has a lot to offer and I hope that more languages will adopt some of these features.
+
+<br />
+
+Multi-paradigm languages are on the rise. We're starting to see blends of functional and imperative programming languages. Rust and Nim are good examples of these. I think this is a good thing because it allows us to take advantage of the best features of both paradigms and choose the right tool for the job. That's all for now. Thanks for reading!
+
+<br />
+
+## References
+
+<br />
+
+- [Functional Programming - Wikipedia](https://en.wikipedia.org/wiki/Functional_programming)
+- [Lisp - Wikipedia](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>)
+- [ML - Wikipedia](<https://en.wikipedia.org/wiki/ML_(programming_language)>)
+- [Haskell - Wikipedia](<https://en.wikipedia.org/wiki/Haskell_(programming_language)>)
+- [Elixir - Wikipedia](<https://en.wikipedia.org/wiki/Elixir_(programming_language)>)
+- [Higher-order function - Wikipedia](https://en.wikipedia.org/wiki/Higher-order_function)
+- [Generics - Wikipedia](https://en.wikipedia.org/wiki/Generic_programming)
+- [Pattern matching - Wikipedia](https://en.wikipedia.org/wiki/Pattern_matching)
+- [Alebraic data type - Wikipedia](https://en.wikipedia.org/wiki/Algebraic_data_type)
+- [OCaml Programming: Correct + Efficient + Beautiful](https://cs3110.github.io/textbook/)
