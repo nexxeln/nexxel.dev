@@ -134,7 +134,7 @@ squares = [x ^ 2 | x <- numbers]
 evenSquares = [x ^ 2 | x <- numbers, x `mod` 2 == 0]
 ```
 
-This code defines a list of numbers and then creates a new list of squares using a list comprehension. The list comprehension `[x^2 | x <- numbers]` means "for each `x` in `numbers`, create a new list element `x ^ 2`". You can also add conditions to the list comprehension. For example, `` [x^2 | x <- numbers, x `mod` 2 == 0] ``means "for each`x`in`numbers`, create a new list element `x ^ 2`if`x` is even".
+This code defines a list of numbers and then creates a new list of squares using a list comprehension. The list comprehension `[x^2 | x <- numbers]` means "for each `x` in `numbers`, create a new list element `x ^ 2`". You can also add conditions to the list comprehension. For example, `` [x^2 | x <- numbers, x `mod` 2 == 0] ``means "for each `x` in `numbers`, create a new list element `x ^ 2` if `x` is even".
 
 <br />
 
