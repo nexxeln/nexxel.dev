@@ -5,5 +5,6 @@ export interface Post {
     description: string;
     pubDate: string;
     readingTime: string;
+    draft?: boolean;
   };
 }

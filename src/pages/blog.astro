@@ -7,11 +7,20 @@ import Footer from "../components/Footer.astro";
 import { BlogPosts } from "../components/BlogPosts";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
-);
+// const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}")).sort(
+//   (a, b) =>
+//     new Date(b.frontmatter.pubDate).valueOf() -
+//     new Date(a.frontmatter.pubDate).valueOf()
+// );
+
+// Use Astro.glob() to fetch all posts which are not drafts (frontmatter.draft), and then sort them by date.
+const posts = (await Astro.glob<Post>("./blog/*.{md,mdx}"))
+  .filter((post) => !post.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf()
+  );
 ---
 
 <!DOCTYPE html>
