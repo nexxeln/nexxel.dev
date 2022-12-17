@@ -108,11 +108,11 @@ blockquote {
 }
 
 ul {
-  --at-apply: "ml-5";
+  --at-apply: "ml-8";
 }
 
 ul > li {
-  --at-apply: "list-disc text-lg";
+  --at-apply: "list-disc text-lg pb-2";
 }
 
 ul > li::marker {
