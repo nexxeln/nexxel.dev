@@ -67,12 +67,12 @@ I use [Alacritty](https://alacritty.org). It's great.
 
 ### What theme do you use?
 
-I use [Kanagawa](https://github.com/rebelot/kanagawa.nvim) for Neovim and Alacritty, and [poimandres](https://marketplace.visualstudio.com/items?itemName=pmndrs.pmndrs) for VSCode.
+I use [Mellow](https://github.com/kvrohit/mellow.nvim) for Neovim and Alacritty, and [Serendipity](https://marketplace.visualstudio.com/items?itemName=wicked-labs.wvsc-serendipity) for VSCode.
 
 <br />
 
 ### What font do you use for coding?
 
-I use [Hack](https://github.com/source-foundry/Hack) (also being used in this website) for my terminal and [Dank Mono](https://dank.sh) for coding.
+I use [Hack](https://github.com/source-foundry/Hack) (also being used in this website for code blocks).
 
 <br />
