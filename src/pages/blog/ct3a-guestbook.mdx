@@ -20,7 +20,7 @@ Hey there! Today we'll be building an application with the [T3 stack](https://in
 Let's set up a starter project with `create-t3-app`!
 
 ```bash
-npx create-t3-app@latest
+npm create t3-app@latest
 ```
 
 We're going to utilize all parts of the stack.
@@ -55,14 +55,14 @@ There are a lot of folders but don't be overwhelmed. Here's a basic overview.
 - `public/*` - Static assets including fonts and images.
 - `src/env/*` - Validation for environment variables.
 - `src/pages/*` - All the pages of the website.
-- `src/server/*` - The backend, which is a tRPC server.
+- `src/server/*` - The backend, which includes a tRPC server, Prisma client, and auth utility.
 - `src/styles/*` - Global CSS files, but we're going to be using Tailwind CSS for most of our styles.
 - `src/types/*` - Next Auth type declarations.
 - `src/utils/*` - Utility functions.
 
 <br />
 
-Open the `.env` file and paste the connection string in `DATABASE_URL`.
+Duplicate the `.env.example` file and rename the new copy as `.env`. Open the `.env` file and paste the connection string in `DATABASE_URL`.
 
 <br />
 
@@ -86,7 +86,7 @@ Copy the client ID and secret and paste both of them into `.env`.
 
 ![Copy client ID and secret](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_49rNuyGZ3g.png)
 
-Set the `NEXTAUTH_SECRET` as some random string too. Now we have all of our environment variables configured.
+Uncomment `NEXTAUTH_SECRET` and set it as some random string too. Now we have all of our environment variables configured.
 
 <br />
 
@@ -159,7 +159,13 @@ const Home = () => {
   return (
     <main>
       <h1>Guestbook</h1>
-      <button onClick={() => signIn("discord")}>Login with Discord</button>
+      <button
+        onClick={() => {
+          signIn("discord").catch(console.log);
+        }}
+      >
+        Login with Discord
+       </button>
     </main>
   );
 };
@@ -188,14 +194,22 @@ const Home = () => {
         {session ? (
           <>
             <p>hi {session.user?.name}</p>
-            <button onClick={() => signOut()}>
+            <button
+              onClick={() => {
+                signOut().catch(console.log);
+              }}
+            >
               Logout
             </button>
           </>
         ) : (
-          <button onClick={() => signIn("discord")}>
+          <button
+            onClick={() => {
+              signIn("discord").catch(console.log);
+            }}
+          >
             Login with Discord
-          </button>
+           </button>
         )}
       </div>
     </main>
@@ -236,15 +250,17 @@ Let's push this modified schema to our Railway Postgres database.
 npx prisma db push
 ```
 
-Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example.ts` file in `src/server/trpc/router`. First, we're going to define a mutation to post messages to our database.
+Now let's get to the fun part - it's tRPC time. Go ahead and delete the `example.ts` file in `src/server/api/routers` folder. Then in the same folder, create a new file called `guestbook.ts`.
+
+First, we're going to define a mutation to post messages to our database.
 
 ```ts
-// src/server/trpc/router/guestbook.ts
+// src/server/api/routers/guestbook.ts
 
 import { z } from "zod";
-import { router, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const guestbookRouter = router({
+export const guestbookRouter = createTRPCRouter({
   postMessage: publicProcedure
     .input(
       z.object({
@@ -279,49 +295,46 @@ We also want this mutation to be protected. Here we can use [tRPC middlewares](h
 
 <br />
 
-If you take a look at the `src/server/common/get-server-auth-session.ts` file, we're using [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) from Next Auth that gives us access to the session on the server.
+If you take a look at the `src/server/auth.ts` file, we're using [`unstable_getServerSession`](https://next-auth.js.org/configuration/nextjs#unstable_getserversession) from Next Auth that gives us access to the session on the server.
 
 ```ts
-// src/server/common/get-server-auth-session.ts
+// src/server/auth.ts
 
-import type { GetServerSidePropsContext } from "next";
+import { type GetServerSidePropsContext } from "next";
 import { unstable_getServerSession } from "next-auth";
-import { authOptions as nextAuthOptions } from "../../pages/api/auth/[...nextauth]";
+import { authOptions } from "../pages/api/auth/[...nextauth]";
 
 export const getServerAuthSession = async (ctx: {
   req: GetServerSidePropsContext["req"];
   res: GetServerSidePropsContext["res"];
 }) => {
-  return await unstable_getServerSession(ctx.req, ctx.res, nextAuthOptions);
+  return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 };
 ```
 
 We're passing that session into our tRPC context.
 
 ```ts
-// src/server/trpc/context.ts
+// src/server/api/trpc.ts
 
-export const createContext = async (opts: CreateNextContextOptions) => {
+export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
   const session = await getServerAuthSession({ req, res });
-  return await createContextInner({
+  return createInnerTRPCContext({
     session,
   });
 };
-
-export type Context = inferAsyncReturnType<typeof createContext>;
 ```
 
 Then, we can use this session to make our mutation protected using a `protectedProcedure`.
 
 ```ts
-// src/server/trpc/trpc.ts
+// src/server/api/trpc.ts
 
-const isAuthed = t.middleware(({ ctx, next }) => {
+const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
-
   return next({
     ctx: {
       session: { ...ctx.session, user: ctx.session.user },
@@ -329,18 +342,18 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
-export const protectedProcedure = t.procedure.use(isAuthed);
+export const protectedProcedure = t.procedure.use(enforceUserIsAuthed);
 ```
 
 Now, replace `publicProcedure` with `protectedProcedure` to make our mutation protected from unauthenticated users.
 
 ```ts
-// src/server/trpc/router/guestbook.ts
+// src/server/api/routers/guestbook.ts
 
 import { z } from "zod";
-import { router, protectedProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure } from "../trpc";
 
-export const guestbookRouter = router({
+export const guestbookRouter = createTRPCRouter({
   postMessage: protectedProcedure
     .input(
       z.object({
@@ -366,12 +379,12 @@ export const guestbookRouter = router({
 Next, let's write a query to get all messages in the guestbook. We want all guests to see the messages so we'll use the `publicProcedure` for this.
 
 ```ts
-// src/server/trpc/router/guestbook.ts
+// src/server/api/routers/guestbook.ts
 
 import { z } from "zod";
-import { router, protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
-export const guestbookRouter = router({
+export const guestbookRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     try {
       return await ctx.prisma.guestbook.findMany({
@@ -396,12 +409,12 @@ Here we are getting just the name and message from all the rows from the `Guestb
 Now merge this router in the main `appRouter`.
 
 ```ts
-// src/server/trpc/router/_app.ts
+// src/server/api/root.ts
 
-import { router } from "../trpc";
-import { guestbookRouter } from "./guestbook.ts";
+import { createTRPCRouter } from "./trpc";
+import { guestbookRouter } from "./routers/guestbook";
 
-export const appRouter = router({
+export const appRouter = createTRPCRouter({
   guestbook: guestbookRouter,
 });
 
@@ -441,11 +454,25 @@ const Home = () => {
         <div>
           {session ? (
             <>
-              <p>hi {session.user?.name}</p>
-              <button onClick={() => signOut()}>Logout</button>
+              <p className="mb-4 text-center">hi {session.user?.name}</p>
+              <button
+                type="button"
+                className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+                onClick={() => {
+                  signOut().catch(console.log);
+                }}
+              >
+                Logout
+              </button>
             </>
           ) : (
-            <button onClick={() => signIn("discord")}>
+            <button
+              type="button"
+              className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+              onClick={() => {
+                signIn("discord").catch(console.log);
+              }}
+            >
               Login with Discord
             </button>
           )}
@@ -476,20 +503,20 @@ Now that we have data, we can use the query and display the data. For this we ca
 ```tsx
 // src/pages/index.tsx
 
-import { trpc } from "../utils/trpc";
+import { api } from "../utils/api";
 
-const Messages = () => {
-  const { data: messages, isLoading } = trpc.guestbook.getAll.useQuery();
+const GuestbookEntries = () => {
+  const { data: guestbookEntries, isLoading } = api.guestbook.getAll.useQuery();
 
   if (isLoading) return <div>Fetching messages...</div>;
 
   return (
     <div className="flex flex-col gap-4">
-      {messages?.map((msg, index) => {
+      {guestbookEntries?.map((entry, index) => {
         return (
           <div key={index}>
-            <p>{msg.message}</p>
-            <span>- {msg.name}</span>
+            <p>{entry.message}</p>
+            <span>- {entry.name}</span>
           </div>
         );
       })}
@@ -510,6 +537,7 @@ Now render this component in the `Home` component.
 
 ```tsx
 // src/pages/index.tsx
+
 <main className="flex flex-col items-center">
   <h1 className="text-3xl pt-4">Guestbook</h1>
   <p>
@@ -519,14 +547,30 @@ Now render this component in the `Home` component.
     <div>
       {session ? (
         <>
-          <p>hi {session.user?.name}</p>
-          <button onClick={() => signOut()}>Logout</button>
+          <p className="mb-4 text-center">hi {session.user?.name}</p>
+          <button
+            type="button"
+            className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+            onClick={() => {
+              signOut().catch(console.log);
+            }}
+          >
+            Logout
+          </button>
         </>
       ) : (
-        <button onClick={() => signIn("discord")}>Login with Discord</button>
+        <button
+          type="button"
+          className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+          onClick={() => {
+            signIn("discord").catch(console.log);
+          }}
+        >
+          Login with Discord
+        </button>
       )}
       <div className="pt-10">
-        <Messages />
+        <GuestbookEntries />
       </div>
     </div>
   </div>
@@ -540,7 +584,11 @@ Let's now create a form component in `src/pages/index.tsx` and use our tRPC muta
 
 const Form = () => {
   const [message, setMessage] = useState("");
-  const postMessage = trpc.guestbook.postMessage.useMutation();
+  const { data: session, status } = useSession();
+  
+  const postMessage = api.guestbook.postMessage.useMutation();
+  
+  if (status !== "authenticated") return null;
 
   return (
     <form
@@ -556,16 +604,16 @@ const Form = () => {
     >
       <input
         type="text"
-        value={message}
+        className="rounded-md border-2 border-zinc-800 bg-neutral-900 px-4 py-2 focus:outline-none"
         placeholder="Your message..."
         minLength={2}
         maxLength={100}
+        value={message}
         onChange={(event) => setMessage(event.target.value)}
-        className="px-4 py-2 rounded-md border-2 border-zinc-800 bg-neutral-900 focus:outline-none"
       />
       <button
         type="submit"
-        className="p-2 rounded-md border-2 border-zinc-800 focus:outline-none"
+        className="rounded-md border-2 border-zinc-800 p-2 focus:outline-none"
       >
         Submit
       </button>
@@ -582,18 +630,33 @@ We can now render the `Form` in the `Home` component and add some padding.
 <div>
   {session ? (
     <>
-      <p>hi {session.user?.name}</p>
-      <button onClick={() => signOut()}>Logout</button>
+      <p className="mb-4 text-center">hi {session.user?.name}</p>
+      <button
+        type="button"
+        className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+        onClick={() => {
+          signOut().catch(console.log);
+        }}
+      >
+        Logout
+      </button>
       <div className="pt-6">
         <Form />
       </div>
     </>
   ) : (
-    <button onClick={() => signIn("discord")}>Login with Discord</button>
+    <button
+      type="button"
+      className="mx-auto block rounded-md bg-neutral-800 py-3 px-6 text-center hover:bg-neutral-700"
+      onClick={() => {
+        signIn("discord").catch(console.log);
+      }}
+    >
+      Login with Discord
+    </button>
   )}
-
   <div className="pt-10">
-    <Messages />
+    <GuestbookEntries />
   </div>
 </div>
 ```
@@ -602,28 +665,30 @@ Here we have a form and we're using `useMutation()` to post the data to the data
 
 <br />
 
-For this we can use optimistic UI updates! `react-query` makes this trivial to do. We just need to add some stuff to our `useMutation()` hook.
+For this we can use optimistic UI updates! `react-query` makes this trivial to do. We just need to add some stuff to our `useMutation()` hook inside the `Form` component.
 
 ```ts
 // src/pages/index.tsx
 
-const utils = trpc.useContext();
-const postMessage = trpc.guestbook.postMessage.useMutation({
-  onMutate: () => {
-    utils.guestbook.getAll.cancel();
-    const optimisticUpdate = utils.guestbook.getAll.getData();
-
-    if (optimisticUpdate) {
-      utils.guestbook.getAll.setData(optimisticUpdate);
-    }
+const utils = api.useContext();
+const postMessage = api.guestbook.postMessage.useMutation({
+  onMutate: async (newEntry) => {
+    await utils.guestbook.getAll.cancel();
+    utils.guestbook.getAll.setData(undefined, (prevEntries) => {
+      if (prevEntries) {
+        return [newEntry, ...prevEntries];
+      } else {
+        return [newEntry];
+      }
+    });
   },
-  onSettled: () => {
-    utils.guestbook.getAll.invalidate();
+  onSettled: async () => {
+    await utils.guestbook.getAll.invalidate();
   },
 });
 ```
 
-If you want to learn more about this code example, you can read about optimistic updates with `react-query` [here](https://react-query-v3.tanstack.com/guides/optimistic-updates).
+If you want to learn more about this code example, you can read about optimistic updates with `@tanstack/react-query` [here](https://tanstack.com/query/v4/docs/react/guides/optimistic-updates).
 
 <br />
 
