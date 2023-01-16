@@ -7,7 +7,7 @@ A boring personal website inspired by the [Vitesse Theme](https://github.com/ant
 - [Astro](https://astro.build)
 - [UnoCSS](https://github.com/unocss/unocss)
 - [Vercel](https://vercel.com)
-- [cron-job](https://cron-job.org)
+- [cron-job.org](https://cron-job.org)
 
 ### Running Locally
 
