@@ -5,7 +5,7 @@ description: "Let's build a guestbook with all parts of the T3 stack - Next.js, 
 pubDate: "August 11, 2022"
 ---
 
-> Update: This blog post has been updated on Oct 28, 2022 to use [tRPC v10](https://trpc.io/docs/v10/).
+> Update: This blog post has been updated on Jan 16, 2023 to use the latest version of `create-t3-app`. 
 
 <br />
 
@@ -289,7 +289,7 @@ Here we have a tRPC mutation that uses [zod](https://zod.dev/) to validate the i
 
 Working with Prisma is an absolutely wonderful example. The autocomplete and typesafety is amazing.
 
-![Autocomplete](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_YMCqQ9tXC0.gif)
+<br />
 
 We also want this mutation to be protected. Here we can use [tRPC middlewares](https://trpc.io/docs/middlewares).
 
@@ -531,7 +531,8 @@ Here we're using `useQuery()` and mapping over the array it returns.
 
 Of course here too we have wonderful typesafety and autocomplete.
 
-![tRPC automcomplete](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/WindowsTerminal_hYsc9KcivD.gif)
+<br />
+
 
 Now render this component in the `Home` component.
 
