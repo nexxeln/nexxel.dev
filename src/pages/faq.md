@@ -43,7 +43,7 @@ Nothing big at the moment. Mostly studying and maintaining [create-t3-app](https
 
 ### What is your favourite web framework?
 
-[Remix](https://remix.run) has got to be my favourite framework, It isn't perfect, but I still enjoy writing code with Remix. I'm also loving [Astro](https://astro.build) at the moment. [Solid Start](https://start.solidjs.com) is promising.
+[Nuxt](https://nuxt.com) has got to be my favourite framework, I love all the magic and crazy features it has. I'm also loving [Astro](https://astro.build) at the moment. [Solid Start](https://start.solidjs.com) is promising.
 
 <br />
 
@@ -67,12 +67,12 @@ I use [Alacritty](https://alacritty.org). It's great.
 
 ### What theme do you use?
 
-I use [Mellow](https://github.com/kvrohit/mellow.nvim) for Neovim and Alacritty, and [Serendipity](https://marketplace.visualstudio.com/items?itemName=wicked-labs.wvsc-serendipity) for VSCode.
+I use [Catppuccin](https://catppuccin.com) for Neovim, [Mellow](https://github.com/kvrohit/mellow.nvim) for Alacritty and tmux, and [Serendipity](https://marketplace.visualstudio.com/items?itemName=wicked-labs.wvsc-serendipity) for VSCode.
 
 <br />
 
 ### What font do you use for coding?
 
-I use [Hack](https://github.com/source-foundry/Hack) (also being used in this website for code blocks).
+I use [Dank Mono](https://dank.sh) for coding. The monospace font being used in this website is [Hack](https://sourcefoundry.org/hack/).
 
 <br />
