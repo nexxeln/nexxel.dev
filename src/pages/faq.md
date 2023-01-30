@@ -31,13 +31,19 @@ Building stuff.
 
 ### What programming languages do you know?
 
-I'm most comfortable with [TypeScript](https://typescriptlang.org) and [Python](https://python.org). I also write some [Rust](https://rust-lang.org) and [Go](https://go.dev).
+I'm most comfortable with [TypeScript](https://typescriptlang.org) and [Python](https://python.org). I also write some [OCaml](https://ocaml.org) and [Rust](https://rust-lang.org).
 
 <br />
 
 ### What are you working on nowadays?
 
 Nothing big at the moment. Mostly studying and maintaining [create-t3-app](https://github.com/t3-oss/create-t3-app).
+
+<br />
+
+### What is your favourite programming language?
+
+[OCaml](https://ocaml.org) is definitely my favourite language. It combines an expressive syntax, powerful type inference and an efficient garbage collector, making it a great choice for general purpose programming. It also helps me approach programming problems in a more intuitive and streamlined way.
 
 <br />
 
