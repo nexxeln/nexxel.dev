@@ -20,7 +20,6 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "astro": "^1.9.1",
-    "flamethrower-router": "0.0.0-meme.12",
     "fuse.js": "^6.6.2",
     "mdast-util-to-string": "^3.1.0",
     "react": "^18.2.0",
