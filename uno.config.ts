@@ -3,8 +3,8 @@ import {
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
-} from "unocss";
-import { presetScrollbar } from "unocss-preset-scrollbar";
+} from "unocss"
+import { presetScrollbar } from "unocss-preset-scrollbar"
 
 export default defineConfig({
   presets: [presetUno(), presetScrollbar()],
@@ -18,4 +18,4 @@ export default defineConfig({
       themeBlack: "#121212",
     },
   },
-});
+})
