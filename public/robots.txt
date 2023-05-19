@@ -1,6 +1,0 @@
-# be nice robot!!
-
-User-agent: *
-Disallow:
-
-Sitemap: https://www.nexxel.dev/sitemap-index.xml
