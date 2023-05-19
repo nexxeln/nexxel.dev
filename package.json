@@ -17,6 +17,8 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.0",
     "@unocss/eslint-config": "^0.51.13",
-    "eslint": "^8.40.0"
+    "@unocss/reset": "^0.51.13",
+    "eslint": "^8.40.0",
+    "unocss": "^0.51.13"
   }
 }

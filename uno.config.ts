@@ -4,18 +4,8 @@ import {
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss"
-import { presetScrollbar } from "unocss-preset-scrollbar"
 
 export default defineConfig({
-  presets: [presetUno(), presetScrollbar()],
+  presets: [presetUno()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
-  theme: {
-    fontFamily: {
-      hack: "Hack",
-    },
-    colors: {
-      vitesseGreen: "#4d9375",
-      themeBlack: "#121212",
-    },
-  },
 })
