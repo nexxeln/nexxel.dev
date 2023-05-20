@@ -8,4 +8,9 @@ import {
 export default defineConfig({
   presets: [presetUno()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
+  theme: {
+    maxWidth: {
+      container: "43rem",
+    },
+  },
 })

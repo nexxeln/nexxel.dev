@@ -2,5 +2,9 @@
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
+  },
+  "[astro]": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
   }
 }
