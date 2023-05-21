@@ -15,11 +15,14 @@ export default defineConfig({
   })],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
+    colors: {
+      "neutral-850": "#1f1f1f",
+    },
     maxWidth: {
       container: "43rem",
     },
   },
   shortcuts: {
-    "text-imp": "text-neutral-900 dark:text-neutral-100",
+    "text-imp": "text-neutral-850 dark:text-neutral-100",
   },
 })
