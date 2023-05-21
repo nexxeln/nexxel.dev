@@ -3,8 +3,16 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "astro"
+  ],
   "[astro]": {
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": null
   }
 }

@@ -1,73 +1,74 @@
 ---
+import Link from "../components/Link.vue"
+
 type Props = {
-	title: string;
-	description: string;
-};
+  title: string
+  description: string
+}
 
 const { title, description } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
-		<title>{title}</title>
-	</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
 
-	<script is:inline>
-		const theme = (() => {
-			if (
-				typeof localStorage !== "undefined" &&
-				localStorage.getItem("theme")
-			) {
-				return localStorage.getItem("theme")
-			}
+  <script is:inline>
+  const theme = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme"))
+      return localStorage.getItem("theme")
 
-			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-				return "dark"
-			} else {
-				return "light"
-			}
-		})()
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+      return "dark"
+    else return "light"
+  })()
 
-		if (theme === "light") {
-			document.documentElement.classList.remove("dark")
-		} else {
-			document.documentElement.classList.add("dark")
-		}
+  if (theme === "light")
+    document.documentElement.classList.remove("dark")
+  else document.documentElement.classList.add("dark")
 
-		window.localStorage.setItem("theme", theme)
-	</script>
+  window.localStorage.setItem("theme", theme)
+  </script>
 
-	<body>
-		<div class="max-w-container mx-auto px-4">
-			<slot />
-		</div>
-	</body>
+  <body>
+    <div class="mx-auto max-w-container px-4">
 
-	<style is:global>
-		body,
-		html {
-			@apply overflow-x-hidden;
-		}
+      <header class="h-37.5px flex items-center justify-between -mt-2">
+        <slot name="header-content">
+          <Link href="/">← back</Link>
+        </slot>
+      </header>
 
-		html {
-			@apply antialiased touch-manipulation scroll-smooth text-base;
-			text-rendering: optimizeLegibility;
+      <slot />
+    </div>
+  </body>
 
-			&.dark {
-				color-scheme: dark;
-			}
-		}
+  <style is:global>
+    body,
+    html {
+      @apply overflow-x-hidden;
+    }
 
-		body {
-			@apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen;
-		}
+    html {
+      @apply antialiased touch-manipulation scroll-smooth text-base;
+      text-rendering: optimizeLegibility;
 
-		* {
-			@apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
-		}
-	</style>
+      &.dark {
+        color-scheme: dark;
+      }
+    }
+
+    body {
+      @apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen;
+    }
+
+    * {
+      @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+    }
+  </style>
 </html>

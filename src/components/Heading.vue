@@ -7,7 +7,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <component :is="props.level" class="my-6 font-[555] [&:is(h1)]:text-2xl [&:is(h2)]:text-xl [&:is(h3)]:text-lg">
+  <component v-bind="$attrs" :is="props.level" class="my-6 font-[555] [&:is(h1)]:text-2xl [&:is(h2)]:text-xl [&:is(h3)]:text-lg">
     <slot />
   </component>
 </template>

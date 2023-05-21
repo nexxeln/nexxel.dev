@@ -1,26 +1,28 @@
 ---
-import Base from "../layouts/Base.astro";
-import Paragraph from "../components/Paragraph.vue";
-import Heading from "../components/Heading.vue";
-import Link from "../components/Link.vue";
+import Base from "../layouts/Base.astro"
+import Paragraph from "../components/Paragraph.vue"
+import Prose from "../layouts/Prose.astro";
 ---
 
 <Base title="hi" description="bye">
-	<Heading level="h1">
-		nexxel
-	</Heading>
-	<Heading level="h2">
-		nexxel
-	</Heading>
-	<Heading level="h3">
-		nexxel
-	</Heading>
+  <h1 slot="header-content" class="text-neutral-600 dark:text-neutral-500">
+    nexxel
+  </h1>
 
-	<Paragraph>
-		Hello, world!
+   <main class="py-10">
+    <Prose>
+      <Paragraph>
+        <small class="text-neutral-600 dark:text-neutral-500"
+          >IPA as /ˈnɛks ɛl/— no meaning, i made it up</small
+        >
+        <br />
 
-		<Link href="https://nexxel.dev">
-			Hello, world!
-		</Link>
-	</Paragraph>	
+        Hi there, I'm Shoubhit aka nexxel. I'm 17 y/o and going to university soon. I like shuffling cards and building things. I enjoy language design, web development and I live on the terminal.
+      </Paragraph>
+
+      <Paragraph class="mt-6">
+        Right now I'm building an analytics service, going the to gym regularly and exploring the hills on cycling trips.
+      </Paragraph>
+    </Prose>
+  </main>
 </Base>

@@ -1,0 +1,20 @@
+<slot />
+
+<style>
+  .prose {
+    @apply max-w-container [&>:not(:last-child)]:mb-6;
+
+    & em {
+      @apply font-italic;
+    }
+
+    & strong,
+    & strong > em {
+      @apply font-semibold;
+    }
+
+    & hr {
+    @apply border-neutral-100 dark:border-neutral-800 border-b-2;
+    }
+  }
+</style>
