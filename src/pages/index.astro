@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro"
 import Paragraph from "../components/Paragraph.vue"
-import Prose from "../layouts/Prose.astro";
 ---
 
 <Base title="hi" description="bye">
@@ -9,8 +8,7 @@ import Prose from "../layouts/Prose.astro";
     nexxel
   </h1>
 
-   <main class="py-10">
-    <Prose>
+   <main class="prose py-10">
       <Paragraph>
         <small class="text-neutral-600 dark:text-neutral-500"
           >IPA as /ˈnɛks ɛl/ — no meaning, i made it up</small
@@ -23,6 +21,10 @@ import Prose from "../layouts/Prose.astro";
       <Paragraph class="mt-6">
         Right now I'm building an analytics service, going the to gym regularly and exploring the hills on cycling trips.
       </Paragraph>
-    </Prose>
+
+      <h2>Projects</h2>
   </main>
 </Base>
+
+<style>
+</style>

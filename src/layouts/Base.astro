@@ -47,28 +47,57 @@ const { title, description } = Astro.props;
       <slot />
     </div>
   </body>
-
-  <style is:global>
-    body,
-    html {
-      @apply overflow-x-hidden;
-    }
-
-    html {
-      @apply antialiased touch-manipulation scroll-smooth text-base;
-      text-rendering: optimizeLegibility;
-
-      &.dark {
-        color-scheme: dark;
-      }
-    }
-
-    body {
-      @apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
-    }
-
-    * {
-      @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
-    }
-  </style>
 </html>
+
+<style is:global>
+  body,
+  html {
+    @apply overflow-x-hidden;
+  }
+
+  html {
+    @apply antialiased touch-manipulation scroll-smooth text-base;
+    text-rendering: optimizeLegibility;
+
+    &.dark {
+      color-scheme: dark;
+    }
+  }
+
+  body {
+    @apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+  }
+
+  * {
+    @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+  }
+
+  .prose {
+    @apply max-w-container [&>:not(:last-child)]:mb-6;
+
+    & h1 {
+      @apply text-xl font-semibold;
+    }
+
+    & h2 {
+      @apply text-lg font-semibold;
+    }
+
+    & h3 {
+      @apply text-base font-semibold;
+    }
+
+    & em {
+      @apply font-italic;
+    }
+
+    & strong,
+    & strong > em {
+      @apply font-semibold;
+    }
+
+    & hr {
+    @apply border-neutral-100 dark:border-neutral-800 border-b-2;
+    }
+}
+</style>
