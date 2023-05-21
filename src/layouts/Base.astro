@@ -65,7 +65,7 @@ const { title, description } = Astro.props;
   }
 
   body {
-    @apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+    @apply font-sans text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
   }
 
   * {
@@ -76,15 +76,15 @@ const { title, description } = Astro.props;
     @apply max-w-container [&>:not(:last-child)]:mb-6;
 
     & h1 {
-      @apply text-xl font-semibold;
+      @apply text-(xl imp) font-semibold;
     }
 
     & h2 {
-      @apply text-lg font-semibold;
+      @apply text-(lg imp) font-semibold;
     }
 
     & h3 {
-      @apply text-base font-semibold;
+      @apply text-(base imp) font-semibold;
     }
 
     & em {

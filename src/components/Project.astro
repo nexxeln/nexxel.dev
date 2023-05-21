@@ -1,0 +1,16 @@
+---
+import type { Project } from "../lib/projects"
+import Link from "./Link.vue"
+
+type Props = Project
+
+const { repo: name, description, link } = Astro.props
+---
+
+  <div class="w-21.66666666666666666666666666666666666666666666666666666667ch">
+    <Link href={link}>
+      <span class="font-medium">{name}</span>
+    </Link>
+
+    <p class="pt-2">{description}</p>
+  </div>

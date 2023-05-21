@@ -1,6 +1,10 @@
 ---
 import Base from "../layouts/Base.astro"
 import Paragraph from "../components/Paragraph.vue"
+import Project from "../components/Project.astro"
+import { getProjects } from "../lib/projects"
+
+const projects = await getProjects(6)
 ---
 
 <Base title="hi" description="bye">
@@ -22,7 +26,12 @@ import Paragraph from "../components/Paragraph.vue"
         Right now I'm building an analytics service, going the to gym regularly and exploring the hills on cycling trips.
       </Paragraph>
 
-      <h2>Projects</h2>
+      <h2 class="mt-12">Projects</h2>
+
+      <!-- 3x2 grid in lg 2x3 in md and 1x3 in sm -->
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        {projects.map(project => <Project {...project} />)}
+      </div>
   </main>
 </Base>
 
