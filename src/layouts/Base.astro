@@ -11,7 +11,6 @@ const { title, description } = Astro.props;
 
 <html lang="en">
   <head>
-
     <link
       rel="preload"
       href="/fonts/Switzer-Variable.woff2"
@@ -67,14 +66,6 @@ const { title, description } = Astro.props;
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Switzer";
-  src: url("/fonts/Switzer-VariableItalic.woff2") format("woff2");
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: italic;
-}
-
   body,
   html {
     @apply overflow-x-hidden;
@@ -113,12 +104,7 @@ const { title, description } = Astro.props;
       @apply text-(base imp) font-semibold;
     }
 
-    & em {
-      @apply font-italic;
-    }
-
-    & strong,
-    & strong > em {
+    & strong {
       @apply font-medium text-imp;
     }
 
