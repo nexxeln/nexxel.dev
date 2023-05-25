@@ -28,7 +28,6 @@ const projects = await getProjects(6)
 
       <h2 class="mt-12">Projects</h2>
 
-      <!-- 3x2 grid in lg 2x3 in md and 1x3 in sm -->
       <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
         {projects.map(project => <Project {...project} />)}
       </div>
