@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format:content": "npx prettier --write ./src/content/blog"
   },
   "dependencies": {
     "@astrojs/vue": "^2.2.0",
