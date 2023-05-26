@@ -1,18 +1,12 @@
 import {
   defineConfig,
   presetUno,
-  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss"
 
 export default defineConfig({
-  presets: [presetUno(), presetWebFonts({
-    provider: "fontshare",
-    fonts: {
-      mono: "Jetbrains Mono",
-    },
-  })],
+  presets: [presetUno()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     colors: {
@@ -20,6 +14,7 @@ export default defineConfig({
     },
     fontFamily: {
       sans: "Switzer",
+      mono: "Hack",
     },
     maxWidth: {
       container: "43rem",
