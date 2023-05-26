@@ -4,6 +4,16 @@ description: "Edge computing is all the rage. Learn how to get typesafe access t
 date: "November 12, 2022"
 ---
 
+import Paragraph from "../../components/Paragraph.vue"
+import Link from "../../components/Link.vue"
+import Code from "../../components/Code.vue"
+
+export const components = {
+  a: Link,
+  code: Code,
+  p: Paragraph,
+}
+
 ## What is the Edge?
 
 Edge computing is the new hottest thing in the web dev ecosystem, and rightfully so. If you don't know what the edge computing is, it's a way to run your code as close to your users as possible through globally distributed edge servers. This results in really low latency and no cold starts. But to stay performant, they have a limited runtime and code size limitations (1 MB on [Workers](https://developers.cloudflare.com/workers/platform/limits/#worker-size)).

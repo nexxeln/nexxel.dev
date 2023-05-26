@@ -4,6 +4,16 @@ description: "I made a CLI in Rust to generate licenses for open source projects
 date: "March 25, 2022"
 ---
 
+import Paragraph from "../../components/Paragraph.vue"
+import Link from "../../components/Link.vue"
+import Code from "../../components/Code.vue"
+
+export const components = {
+  a: Link,
+  code: Code,
+  p: Paragraph,
+}
+
 I'm the type of person who is constantly working on open source projects. But whenever I create a new repository, I haven't yet decided what license I should put the code under. So, I always had to add it at the end when I have pushed all the code. But it was just too much work: go to GitHub, click `Create File`, type `LICENSE`, choose the license and then push it and finally pull the changes locally. So I decided to make a CLI License Generator, in Rust.
 
 This was a nice project to build since I hadn't written Rust code in a while, so it was a good refresher.

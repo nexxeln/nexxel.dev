@@ -4,6 +4,16 @@ description: "Nexdle is a wordle clone made with React, TypeScript, TailwindCSS,
 date: "March 21, 2022"
 ---
 
+import Paragraph from "../../components/Paragraph.vue"
+import Link from "../../components/Link.vue"
+import Code from "../../components/Code.vue"
+
+export const components = {
+  a: Link,
+  code: Code,
+  p: Paragraph,
+}
+
 Yes that's right, another wordle clone. You can play it [here](https://nexdle.nexxel.dev/).
 
 [nexdle](https://nexdle.nexxel.dev/) is a [wordle](https://www.nytimes.com/games/wordle/index.html) clone made with [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [TailwindCSS](https://tailwindcss.com/), [Vite](https://vitejs.dev/), [Zustand](https://github.com/pmndrs/zustand) and tested with [Vitest](https://vitest.dev/).

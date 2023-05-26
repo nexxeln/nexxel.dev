@@ -4,6 +4,16 @@ description: "Elevate your code by writing declarative, and easy-to-read code wi
 date: "December 29, 2022"
 ---
 
+import Paragraph from "../../components/Paragraph.vue"
+import Link from "../../components/Link.vue"
+import Code from "../../components/Code.vue"
+
+export const components = {
+  a: Link,
+  code: Code,
+  p: Paragraph,
+}
+
 Have you ever found yourself writing long, cumbersome if-else chains in your code, just to handle a few different cases? If so, you'll want to learn about pattern matching. In this post, we'll explore the basics of pattern matching and how it can help you write cleaner, more concise code. We'll also look at some examples of how pattern matching can be used to solve common problems in programming.
 
 ## What is Pattern Matching?
