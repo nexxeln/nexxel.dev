@@ -59,12 +59,12 @@ const { title, description } = Astro.props;
 
 <style is:global>
   @font-face {
-  font-family: "Switzer";
-  src: url("/fonts/Switzer-Variable.woff2") format("woff2");
-  font-weight: 300 900;
-  font-display: swap;
-  font-style: normal;
-}
+    font-family: "Switzer";
+    src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+    font-weight: 300 900;
+    font-display: swap;
+    font-style: normal;
+  }
 
   body,
   html {
@@ -82,7 +82,7 @@ const { title, description } = Astro.props;
 
   body {
     font-family: "Switzer";
-    @apply text-neutral-800 bg-white dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+    @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
   }
 
   * {
@@ -111,5 +111,13 @@ const { title, description } = Astro.props;
     & hr {
     @apply border-neutral-100 dark:border-neutral-800 border-b-2;
     }
-}
+
+    & ul {
+      @apply list-disc list-outside pl-4;
+    }
+
+    & ul > li {
+      @apply mb-3;
+    }
+  }
 </style>
