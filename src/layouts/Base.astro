@@ -60,8 +60,16 @@ const { title, description } = Astro.props;
 <style is:global>
   @font-face {
     font-family: "Switzer";
-    src: url("/fonts/Switzer-Variable.woff2") format("woff2");
+    src: url("/fonts/Switzer.woff2") format("woff2");
     font-weight: 300 900;
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Hack";
+    src: url("/fonts/Hack.woff2") format("woff2");
+    font-weight: 400;
     font-display: swap;
     font-style: normal;
   }
@@ -92,6 +100,10 @@ const { title, description } = Astro.props;
   .prose {
     @apply max-w-container [&>:not(:last-child)]:mb-6;
 
+    & p {
+     @apply my-6 line-height-7.2
+    }
+
     & h1 {
       @apply text-(xl imp) font-semibold;
     }
@@ -118,6 +130,10 @@ const { title, description } = Astro.props;
 
     & ul > li {
       @apply mb-3;
+    }
+
+    & img {
+      @apply mx-auto rounded my-6;
     }
   }
 </style>
