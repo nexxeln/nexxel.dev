@@ -1,12 +1,18 @@
 import {
   defineConfig,
   presetUno,
+  presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
 } from "unocss"
 
 export default defineConfig({
-  presets: [presetUno()],
+  presets: [presetUno(), presetWebFonts({
+    provider: "fontshare",
+    fonts: {
+      mono: "Jetbrains Mono",
+    },
+  })],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
     colors: {
