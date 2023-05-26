@@ -1,5 +1,5 @@
 <template>
-  <p class="py-4 line-height-7">
+  <p class="my-6 line-height-7.2">
     <slot />
   </p>
 </template>
