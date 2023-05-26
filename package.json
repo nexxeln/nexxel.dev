@@ -13,6 +13,7 @@
     "format:content": "npx prettier --write ./src/content/blog"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.19.4",
     "@astrojs/vue": "^2.2.0",
     "astro": "^2.5.0",
     "vue": "^3.2.30",
