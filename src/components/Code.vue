@@ -11,7 +11,7 @@
   }
 
   pre {
-    --at-apply: "[tab-size:2] overflow-x-auto rounded p-4 font-mono text-sm [&code]:(text-base after:content-none before:content-none)"
+    --at-apply: "[tab-size:2] overflow-x-auto rounded p-4 font-mono text-sm [&code]:(text-base after:content-none before:content-none) [letter-spacing:unset]"
   }
 
   pre code::before,
