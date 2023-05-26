@@ -1,6 +1,5 @@
 ---
 import Base from "../layouts/Base.astro"
-import Paragraph from "../components/Paragraph.vue"
 import Project from "../components/Project.astro"
 import { getProjects } from "../lib/projects"
 
@@ -13,18 +12,18 @@ const projects = await getProjects(6)
   </h1>
 
    <main class="prose py-10">
-      <Paragraph>
+      <p>
         <small class="text-neutral-600 dark:text-neutral-500"
           >IPA as /ˈnɛks ɛl/ — no meaning, i made it up</small
         >
         <br />
 
         Hi there, I'm <strong>Shoubhit</strong> aka <strong>nexxel</strong>. I'm 17 y/o and going to university soon. I like <strong>shuffling cards</strong> and <strong>building things</strong>. I enjoy <strong>language design</strong>, <strong>web development</strong> and I live on the <strong>terminal</strong>.
-      </Paragraph>
+      </p>
 
-      <Paragraph class="mt-6">
+      <p class="mt-6 max-w-prose overflow-x-hidden text-ellipsis line-height-7 [&:has(img)]:(mx-0 overflow-x-visible px-0) md:(max-w-screen min-w-prose) [&:has(a)]:(whitespace-nowrap)">
         Right now I'm building an <strong>analytics</strong> service, learning <strong>OCaml</strong>, writing <strong>blog</strong> posts and going to the <strong>gym</strong> regularly.
-      </Paragraph>
+      </p>
 
       <h2 class="mt-12">Projects</h2>
 
