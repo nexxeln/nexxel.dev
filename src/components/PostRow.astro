@@ -9,7 +9,7 @@ type Props = {
 const { post: { data: { title, date }, slug } } = Astro.props
 ---
 
-<article class="w-full flex justify-between">
+<article class="flex justify-between">
   <Link href={`/blog/${slug}`}>
     <span>{title}</span>
   </Link>
