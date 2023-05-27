@@ -1,9 +1,21 @@
 ---
+import { getCollection } from "astro:content"
+import PostPreview from "../../components/PostPreview.astro"
+import { sortPostsByDate } from "../../lib/date"
 import Base from "../../layouts/Base.astro"
+
+const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
+
 ---
 
 <Base title="blog" description="nexxel's blog lol">
   <main class="prose">
     <h1>Blog</h1>
+
+    <div class="my-8" />
+
+    <div class="flex flex-col gap-16">
+      {posts.map(post => <PostPreview {post} />)}
+    </div>
   </main>
 </Base>

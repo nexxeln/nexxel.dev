@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content"
+import { sortPostsByDate } from "../lib/date"
 import Link from "../components/Link.vue"
 import Base from "../layouts/Base.astro"
 import Project from "../components/Project.astro"
@@ -7,11 +8,7 @@ import PostRow from "../components/PostRow.astro"
 import { getProjects } from "../lib/projects"
 
 const projects = await getProjects(6)
-const posts = await getCollection("blog", ({ data }) => data.isDraft !== true)
-
-// recent 3 posts sorted by date
-const recentPosts = posts
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
   .slice(0, 4)
 ---
 
@@ -23,7 +20,7 @@ const recentPosts = posts
    <main class="prose">
       <p>
         <small class="text-neutral-600 dark:text-neutral-500"
-          >IPA as /ˈnɛks ɛl/ — no meaning, i made it up</small
+          >IPA &nbsp; /ˈnɛks ɛl/ — no meaning, i made it up</small
         >
         <br />
 
@@ -45,7 +42,7 @@ const recentPosts = posts
       <h2>Blog</h2>
 
       <div class="flex flex-col gap-5">
-        {recentPosts.map(post => <PostRow {post} />)}
+        {posts.map(post => <PostRow {post} />)}
 
         <span>
           <Link href="/blog">
