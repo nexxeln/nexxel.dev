@@ -4,7 +4,7 @@ import { getCollection } from "astro:content"
 import Base from "../../layouts/Base.astro"
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => data.isDraft !== true)
+  const posts = await getCollection("blog")
 
   return posts.map(post => ({
     params: { slug: post.slug },
