@@ -9,6 +9,13 @@ type Props = {
 const { title, description } = Astro.props
 
 const { pathname } = Astro.url
+
+let href = "hi"
+
+if (pathname === "/blog" || pathname === "/blog/")
+  href = "/"
+else href = "/blog"
+
 ---
 
 <html lang="en">
@@ -58,7 +65,7 @@ const { pathname } = Astro.url
 
       <header class="h-37.5px flex items-center justify-between -mt-2">
         <slot name="header-content">
-          <Link href={pathname === "/blog" ? "/" : "/blog"}>← back</Link>
+          <Link {href}>← back</Link>
         </slot>
       </header>
 
