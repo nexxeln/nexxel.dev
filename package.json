@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.0",
+    "@iconify-json/radix-icons": "^1.1.10",
+    "@iconify-json/tabler": "^1.1.77",
     "@typescript-eslint/parser": "^5.59.6",
     "@unocss/eslint-config": "^0.51.13",
     "@unocss/reset": "^0.51.13",

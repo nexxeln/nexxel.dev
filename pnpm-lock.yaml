@@ -30,6 +30,12 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: ^0.39.0
     version: 0.39.0(eslint@8.40.0)(typescript@5.0.4)
+  '@iconify-json/radix-icons':
+    specifier: ^1.1.10
+    version: 1.1.10
+  '@iconify-json/tabler':
+    specifier: ^1.1.77
+    version: 1.1.77
   '@typescript-eslint/parser':
     specifier: ^5.59.6
     version: 5.59.6(eslint@8.40.0)(typescript@5.0.4)
@@ -900,6 +906,18 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/radix-icons@1.1.10:
+    resolution: {integrity: sha512-7ivY9XvUe1CWsuR1qy/icK6tfl1+Xq3sh2AqQuGHNx49VCJyXQq+RRr6bqf3u36mPPzV+C8oRlfifNt8iWK2Ew==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/tabler@1.1.77:
+    resolution: {integrity: sha512-FC/X5ScOvx07bVqTj2pqMbQhdSv63ZWYk2wbYHzPrxOKjQPZCt9cqSc2wh+rex0GR3HsI/T10FNG/cHPhNZy5A==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify/types@2.0.0:

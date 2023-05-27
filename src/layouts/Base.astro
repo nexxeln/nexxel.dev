@@ -1,5 +1,6 @@
 ---
 import Link from "../components/Link.vue"
+import Footer from "../components/Footer.astro"
 
 type Props = {
   title: string
@@ -72,6 +73,9 @@ else href = "/"
       </header>
 
       <slot />
+
+      <div class="mt-24" />
+      <Footer />
     </div>
   </body>
 </html>
@@ -146,7 +150,7 @@ else href = "/"
     }
 
     & hr {
-    @apply border-neutral-100 dark:border-neutral-800 border-b-2;
+      @apply border-neutral-300 dark:border-neutral-600 border-b;
     }
 
     & ul {
