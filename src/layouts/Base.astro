@@ -1,6 +1,7 @@
 ---
 import Link from "../components/Link.vue"
 import Footer from "../components/Footer.astro"
+import Grain from "../components/grain/Grain.astro"
 
 type Props = {
   title: string
@@ -73,6 +74,8 @@ else href = "/"
       </header>
 
       <slot />
+
+      <Grain opacity={0.5} />
 
       <div class="mt-24" />
       <Footer />
