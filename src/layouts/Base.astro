@@ -14,7 +14,9 @@ let href = "hi"
 
 if (pathname === "/blog" || pathname === "/blog/")
   href = "/"
-else href = "/blog"
+else if (href.startsWith("/blog/"))
+  href = "/blog"
+else href = "/"
 
 ---
 
