@@ -8,6 +8,8 @@ export function formatDate(date: Date): string {
   })
 }
 
-export function sortPostsByDate(posts: CollectionEntry<"blog">[]): CollectionEntry<"blog">[] {
+export function sortPostsByDate(
+  posts: CollectionEntry<"blog">[],
+): CollectionEntry<"blog">[] {
   return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 }

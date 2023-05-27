@@ -22,7 +22,13 @@ export default defineConfig({
   vite: {
     plugins: [
       FontaineTransform.vite({
-        fallbacks: ["BlinkMacSystemFont", "Segoe UI", "Helvetica Neue", "Arial", "Noto Sans"],
+        fallbacks: [
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+        ],
         resolvePath: id => new URL(`./public${id}`, import.meta.url),
       }),
     ],

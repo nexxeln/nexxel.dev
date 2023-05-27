@@ -4,17 +4,17 @@ description: "The pipe operator is one of my favourite features in functional la
 date: "January 21, 2023"
 ---
 
-import Link from "../../components/Link.vue"
-import Code from "../../components/Code.vue"
-import { createHeading } from "../../components/Heading"
+import Link from "../../components/Link.vue";
+import Code from "../../components/Code.vue";
+import { createHeading } from "../../components/Heading";
 
-export const components = { 
+export const components = {
   a: Link,
   code: Code,
   h1: createHeading("h1"),
   h2: createHeading("h2"),
-  h3: createHeading("h3"),  
-}
+  h3: createHeading("h3"),
+};
 
 ## What is the pipe operator?
 
@@ -53,11 +53,11 @@ You can see how the pipe operator really helps in improving the readability of t
 After watching [Theo's video on the proposal for adding pipes in JavaScript](https://youtu.be/h1FvtIJ6ecE), I was inspired to implement the pipe operator as a function that composes functions together. Here is what I set out to achieve.
 
 ```ts
-const len = (s: string): number => s.length
-const double = (n: number): number => n * 2
-const square = (n: number): number => n ** 2
+const len = (s: string): number => s.length;
+const double = (n: number): number => n * 2;
+const square = (n: number): number => n ** 2;
 
-console.log(pipe("hi", len, double, square)) // 16
+console.log(pipe("hi", len, double, square)); // 16
 ```
 
 ### Initial implementation
@@ -66,7 +66,7 @@ This was my first iteration of the `pipe` function.
 
 ```ts
 const pipe = (value: any, ...fns: Function[]) =>
-  fns.reduce((acc, fn) => fn(acc), value)
+  fns.reduce((acc, fn) => fn(acc), value);
 ```
 
 Here's what this code is doing:
@@ -89,14 +89,14 @@ There are a few problems with this implementation. The first problem that I imme
 Obviously this is not good. Ideally this type should be inferred by the TypeScript compiler. I got some help from Reddit and a user there suggested this:
 
 ```ts
-type Fn = (...args: any[]) => any
+type Fn = (...args: any[]) => any;
 
 type LastReturnType<L extends Fn[]> = L extends [...any, infer Last extends Fn]
   ? ReturnType<Last>
-  : never
+  : never;
 
 const pipe = <Funcs extends Fn[]>(value: any, ...fns: Funcs) =>
-  fns.reduce((acc, fn) => fn(acc), value) as LastReturnType<Funcs>
+  fns.reduce((acc, fn) => fn(acc), value) as LastReturnType<Funcs>;
 ```
 
 This is definitely some crazy TypeScript. Let's break it down.
@@ -114,10 +114,10 @@ But there's still a problem. Let me demonstrate it with an example.
 
 ```ts
 // does not show an error
-const result = pipe("hi", double, len, square)
+const result = pipe("hi", double, len, square);
 
 // Argument of type 'number' is not assignable to parameter of type 'string'.
-const result2 = square(len(double("hi")))
+const result2 = square(len(double("hi")));
 ```
 
 Here we're trying to double the string "hi", which is impossible as we're passing a string to a function that expects a number. You can see we get the appropriate error when we try to do this by nesting the function calls. But our `pipe` function does not show any errors.
@@ -131,26 +131,26 @@ This is a perfect use case for [Higher Kinded Types](<https://en.m.wikipedia.org
 Turns out, the easiest and most straightforward solution is to set an upper bound on the number of functions that can be passed to the `pipe` function and use [function overloading](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads) to define the type of the returned value.
 
 ```ts
-function pipe<A>(value: A): A
-function pipe<A, B>(value: A, fn1: (input: A) => B): B
-function pipe<A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C
+function pipe<A>(value: A): A;
+function pipe<A, B>(value: A, fn1: (input: A) => B): B;
+function pipe<A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C;
 function pipe<A, B, C, D>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
   fn3: (input: C) => D
-): D
+): D;
 function pipe<A, B, C, D, E>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
   fn3: (input: C) => D,
   fn4: (input: D) => E
-): E
+): E;
 // ... and so on
 
 function pipe(value: any, ...fns: Function[]): unknown {
-  return fns.reduce((acc, fn) => fn(acc), value)
+  return fns.reduce((acc, fn) => fn(acc), value);
 }
 ```
 
@@ -177,27 +177,27 @@ I love my arrow functions and almost never use the `fuction` keyword. Unfortunat
 
 ```ts
 interface Pipe {
-  <A>(value: A): A
-  <A, B>(value: A, fn1: (input: A) => B): B
-  <A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C
+  <A>(value: A): A;
+  <A, B>(value: A, fn1: (input: A) => B): B;
+  <A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C;
   <A, B, C, D>(
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
     fn3: (input: C) => D
-  ): D
+  ): D;
   <A, B, C, D, E>(
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
     fn3: (input: C) => D,
     fn4: (input: D) => E
-  ): E
+  ): E;
   // ... and so on
 }
 
 const pipe: Pipe = (value: any, ...fns: Function[]): unknown => {
-  return fns.reduce((acc, fn) => fn(acc), value)
+  return fns.reduce((acc, fn) => fn(acc), value);
 };
 ```
 

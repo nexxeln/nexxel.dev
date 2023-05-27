@@ -4,17 +4,17 @@ description: "Edge computing is all the rage. Learn how to get typesafe access t
 date: "November 12, 2022"
 ---
 
-import Link from "../../components/Link.vue"
-import Code from "../../components/Code.vue"
-import { createHeading } from "../../components/Heading"
+import Link from "../../components/Link.vue";
+import Code from "../../components/Code.vue";
+import { createHeading } from "../../components/Heading";
 
-export const components = { 
+export const components = {
   a: Link,
   code: Code,
   h1: createHeading("h1"),
   h2: createHeading("h2"),
-  h3: createHeading("h3"),  
-}
+  h3: createHeading("h3"),
+};
 
 ## What is the Edge?
 
@@ -169,12 +169,12 @@ Create a `src/server/db.ts` or whatever file makes sense to you and add the foll
 ```ts
 // src/server/db.ts
 
-import type { Example } from "@prisma/client/edge"
-import { Kysely } from "kysely"
-import { PlanetScaleDialect } from "kysely-planetscale"
+import type { Example } from "@prisma/client/edge";
+import { Kysely } from "kysely";
+import { PlanetScaleDialect } from "kysely-planetscale";
 
 interface Database {
-  Example: Example
+  Example: Example;
 }
 
 export const db = new Kysely<Database>({
@@ -183,18 +183,18 @@ export const db = new Kysely<Database>({
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
   }),
-})
+});
 ```
 
 Here we're importing the `Example` type that we had defined in our schema. If you go to definition of that type, you will see that that type has all the fields we had defined in our schema correctly typed.
 
 ```ts
 export type Example = {
-  id: string
-  createdAt: Date
-  updatedAt: Date
-  text: string
-}
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  text: string;
+};
 ```
 
 The `Database` interface will contain all our types. So let's say we also have a `SecondExample` field in our database, we will have to import that type and add it in the `Database` interface. This is one of the limitations of this approach, it requires you to add new types manually.
@@ -208,7 +208,7 @@ Note: This might look different in your framework but the Kysely code will be th
 ```ts
 // src/routes/index.tsx
 
-import { db } from "~/server/db"
+import { db } from "~/server/db";
 
 export const routeData = () => {
   return createServerData$(async () => {
@@ -216,13 +216,13 @@ export const routeData = () => {
       .selectFrom("Example")
       .selectAll()
       .orderBy("createdAt", "desc")
-      .execute()
+      .execute();
 
-    console.log(examples)
+    console.log(examples);
 
-    return examples
-  })
-}
+    return examples;
+  });
+};
 ```
 
 You will notice which typing this is that it's all beautifully autocompleted for you. Everything is fully typesafe.
@@ -233,19 +233,19 @@ SolidStart also has end-to-end typesafety, so even in the UI code, the typesafet
 // src/routes/index.tsx
 
 export default function Home() {
-  const examples = useRouteData<typeof routeData>()
+  const examples = useRouteData<typeof routeData>();
 
   return (
     <main class="flex flex-col items-center h-screen bg-#050505 font-sans">
       <div class="flex flex-col gap-y-2">
         <For each={examples()}>
           {(example) => {
-            return <p class="text-white">{example.text}</p>
+            return <p class="text-white">{example.text}</p>;
           }}
         </For>
       </div>
     </main>
-  )
+  );
 }
 ```
 
@@ -255,7 +255,7 @@ You will notice that we didn't have to write any types ourselves for this. Every
 
 This way of doing things can break when using [`@map`](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#map) because the casing is different in the types. It also doesn't support [`Prisma.Decimal`](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields#working-with-decimal) because you have to use the special Prisma object to use it. [Mark Lawlor](https://github.com/marklawlor) has some insane TypeScript code to work around this problem but it's still very "hacky". You can see his gist [here](https://gist.github.com/marklawlor/b1c26eefba43539c6611a508e67ee02f).
 
-Update: A wonderful package called [`prisma-kysely`](https://github.com/valtyr/prisma-kysely) created by [Valtýr](https://valtyr.is/) does all of this for you. You should probably use it instead of the approach I've shown here. 
+Update: A wonderful package called [`prisma-kysely`](https://github.com/valtyr/prisma-kysely) created by [Valtýr](https://valtyr.is/) does all of this for you. You should probably use it instead of the approach I've shown here.
 
 ## Conclusion
 
