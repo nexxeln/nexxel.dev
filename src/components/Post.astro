@@ -1,0 +1,9 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+type Props = {
+  post: CollectionEntry<"blog">
+}
+
+const { post: { data: { title, description, date }, slug } } = Astro.props
+---

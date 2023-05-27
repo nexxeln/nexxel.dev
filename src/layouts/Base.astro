@@ -104,16 +104,22 @@ const { title, description } = Astro.props;
      @apply my-6 line-height-7.2
     }
 
+    & h1,
+    & h2,
+    & h3 {
+      @apply text-imp font-semibold my-8;
+    }
+
     & h1 {
-      @apply text-(xl imp) font-semibold;
+      @apply text-2xl;
     }
 
     & h2 {
-      @apply text-(lg imp) font-semibold;
+      @apply text-xl;
     }
 
     & h3 {
-      @apply text-(base imp) font-semibold;
+      @apply text-lg;
     }
 
     & strong {
@@ -129,7 +135,7 @@ const { title, description } = Astro.props;
     }
 
     & ul > li {
-      @apply mb-3;
+      @apply mb-6;
     }
 
     & img {
