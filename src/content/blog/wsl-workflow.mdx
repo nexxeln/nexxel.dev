@@ -6,10 +6,17 @@ date: "August 16, 2022"
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import {createHeading} from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 
-![Screenshot of my terminal](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_fpyOEGTmBd.png)
+![Screenshot of my terminal](/images/wsl-workflow/terminal.png)
 
 Hi! Today I'm gonna talk about my daily developer workflow and all the tools I use to set up a productive enviroment for coding. I think having a nice looking terminal and some tools to save time are really helpful to keep you productive in daily coding sessions.
 
@@ -125,7 +132,7 @@ disabled = true
 
 The icons aren't showing up here because you need a [nerd font](https://github.com/ryanoasis/nerd-fonts) for that. If you set up a Nerd Font (I recommend [Hack](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)), and copy this configuration, you'll get a very minimal looking prompt like this. For more information on configuring Starship, you can look at the docs [here](https://starship.rs/config/).
 
-![Startship prompt](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_jS3SFqMm0V.png)
+![Startship prompt](/images/wsl-workflow/starship.png)
 
 Having a nice looking terminal always helps!
 
@@ -135,7 +142,7 @@ Having a nice looking terminal always helps!
 
 For example, to go to my website's workspace, I just have to type `website` and I'm there.
 
-![Typed website and I'm in my tmux workspace](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_4o6jA67dhy.gif)
+![Typed website and I'm in my tmux workspace](/images/wsl-workflow/tmux.gif)
 
 Here `website` is an alias I've set up to open the `website` tmux session.
 
@@ -155,9 +162,9 @@ Neovim is the best code editor for me because of its speed and ease of customiza
 
 You can find my Neovim configuration [here](https://github.com/nexxeln/nvim). It's just a fork of [craftzdog's configuration](https://github.com/craftzdog/dotfiles-public).
 
-![Screenshot of Neovim auto-importing useEffect from React](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_QbDZP3dZbv.png)
+![Screenshot of Neovim auto-importing useEffect from React](/images/wsl-workflow/auto-import.png)
 
-![Screenshot of telescope file finder in Neovim](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_c2klZUhRLU.png)
+![Screenshot of telescope file finder in Neovim](/images/wsl-workflow/telescope.png)
 
 ## zoxide
 
@@ -171,9 +178,9 @@ The above GIF is from the [zoxide GitHub repository](https://github.com/ajeetdso
 
 [`exa`](https://github.com/ogham/exa) is a modern replacement of the `ls` command. I always find myself using `exa` to get familiar with the files in a new codebase.
 
-![ls -la command](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_es6V6y6yIo.png)
+![ls -la command](/images/wsl-workflow/ls-la.png)
 
-![with exa](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_qNXvN9cMHy.png)
+![with exa](/images/wsl-workflow/exa.png)
 
 As you can see in the screenshot, `exa` has a more readable output with colors and icons which you can look at and instantly know the filetypes of different files. It is also noticeably faster than `ls`.
 

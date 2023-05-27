@@ -6,8 +6,15 @@ date: "February 25, 2023"
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import {createHeading} from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 
 When it comes to Rust, the first thing that usually comes to mind is its impressive performance. And while Rust certainly delivers on this front, there's so much more to the language than just raw speed. From its well-designed syntax and powerful abstractions, to its robust package manager and vibrant ecosystem, Rust is a language that truly has it all. In this post, we'll take a closer look at some of the key features that make Rust such a versatile and compelling language.
 
@@ -80,7 +87,7 @@ fn area(shape: Shape) -> f64 {
 
 Rust's compiler also ensures that our pattern matching is exhaustive, meaning that we must handle all possible cases. This prevents us from accidentally forgetting to handle a case and causing a runtime error.
 
-![Exhaustive pattern matching](<https://us-east-1.tixte.net/uploads/nexxel-has.no-friends.xyz/Alacritty-v0.10.0-portable_(1)_VPpISCD8Jv.png>)
+![Exhaustive pattern matching](/images/rust/match.png)
 
 ADTs along with pattern matching make it trivial to create and handle complex data types in a safe and concise way.
 
@@ -136,7 +143,7 @@ fn main() {
 
 And this works!
 
-![largest function works](<https://us-east-1.tixte.net/uploads/nexxel-has.no-friends.xyz/Alacritty-v0.10.0-portable_(1)_owuuiwwtmI.png>)
+![largest function works](/images/rust/works.png)
 
 But we can do better. Rust provides an extensive standard library that includes a number of useful functions. Here we can create an iterator from our `Option` and use the `max` function to get the largest number:
 

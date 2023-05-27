@@ -78,13 +78,13 @@ Here's what this code is doing:
 
 And this works!
 
-![First iteration of pipe function works!](<https://us-east-1.tixte.net/uploads/nexxel.needs.rest/Alacritty-v0.10.0-portable_(1)_csN4l17Yqf.png>)
+![First iteration of pipe function works!](/images/pipe/first.png)
 
 ### Problems with the initial implementation
 
 There are a few problems with this implementation. The first problem that I immediately noticed is that the type of the returned value from the function is `any`.
 
-![Type of returned value is any](<https://us-east-1.tixte.net/uploads/this-vegetable.is-from.space/Alacritty-v0.10.0-portable_(1)_bsSjmmSE39.png>)
+![Type of returned value is any](/images/pipe/any.png)
 
 Obviously this is not good. Ideally this type should be inferred by the TypeScript compiler. I got some help from Reddit and a user there suggested this:
 
@@ -108,7 +108,7 @@ This is definitely some crazy TypeScript. Let's break it down.
 
 So now the type of the returned value is inferred correctly.
 
-![Type of returned value is inferred correctly](<https://us-east-1.tixte.net/uploads/this-vegetable.is-from.space/Alacritty-v0.10.0-portable_(1)_T7Vnqd1kYN.png>)
+![Type of returned value is inferred correctly](/images/pipe/correct.png)
 
 But there's still a problem. Let me demonstrate it with an example.
 
@@ -122,7 +122,7 @@ const result2 = square(len(double("hi")))
 
 Here we're trying to double the string "hi", which is impossible as we're passing a string to a function that expects a number. You can see we get the appropriate error when we try to do this by nesting the function calls. But our `pipe` function does not show any errors.
 
-![No error when passing a string to a function that expects a number](<https://us-east-1.tixte.net/uploads/this-vegetable.is-from.space/Alacritty-v0.10.0-portable_(1)_ugX7Y8OmQc.png>)
+![No error when passing a string to a function that expects a number](/images/pipe/no-error.png)
 
 This is a perfect use case for [Higher Kinded Types](<https://en.m.wikipedia.org/wiki/Kind_(type_theory)>). Unfortunately, TypeScript does not support Higher Kinded Types yet. There isn't a way to say "for all these functions, the input type is [contravariant](<https://en.m.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)>) to the output type of the previous function".
 
@@ -169,7 +169,7 @@ The last function declaration is the actual implementation of the `pipe` functio
 
 The advantage of this implementation is that it allows the `pipe` function to be more type-safe as it ensures that the input and output types of each function in the pipeline are consistent and match the type of the initial value, and it also ensures that the functions passed to the `pipe` function have the correct signature.
 
-![Types working correctly](<https://us-east-1.tixte.net/uploads/nexxel.needs.rest/Alacritty-v0.10.0-portable_(1)_bn9nOVbkO0.png>)
+![Types working correctly](/images/pipe/overloading.png)
 
 ### Overloading without using the function keyword
 
@@ -203,7 +203,7 @@ const pipe: Pipe = (value: any, ...fns: Function[]): unknown => {
 
 This is same as the previous implementation, but we're using an interface to implement the overloads instead of using the `function` keyword. This way we can use arrow functions for the actual implementation. Pretty neat, right? Everything still works!
 
-![Everything still works!](<https://us-east-1.tixte.net/uploads/this-vegetable.is-from.space/Alacritty-v0.10.0-portable_(1)_8WZ9RDzVlD.png>)
+![Everything still works!](/images/pipe/overloading-arrow.png)
 
 ## Conclusion
 

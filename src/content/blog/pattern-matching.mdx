@@ -6,8 +6,15 @@ date: "December 29, 2022"
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import {createHeading} from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 
 Have you ever found yourself writing long, cumbersome if-else chains in your code, just to handle a few different cases? If so, you'll want to learn about pattern matching. In this post, we'll explore the basics of pattern matching and how it can help you write cleaner, more concise code. We'll also look at some examples of how pattern matching can be used to solve common problems in programming.
 
@@ -227,7 +234,7 @@ let result = eval 2 p
 
 Another benefit to use pattern matching in complex structures like this is that the compiler will make sure your pattern matching is exhaustive so you won't ever miss a case.
 
-![Compiler making sure pattern matching is exhaustive](<https://us-east-1.tixte.net/uploads/this-vegetable.is-from.space/Alacritty-v0.10.0-portable_(1)_KQtv19ft64.gif>)
+![Compiler making sure pattern matching is exhaustive](/images/pattern-matching/exhaustive.gif)
 
 ### Handling Errors
 

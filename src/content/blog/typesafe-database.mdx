@@ -6,8 +6,15 @@ date: "November 12, 2022"
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import {createHeading} from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 
 ## What is the Edge?
 
@@ -55,9 +62,7 @@ Enough talking let's get to some actual code.
 
 ### Setting Up a Database on PlanetScale
 
-First create an account on PlanetScale and create a database. Make sure to enable the serverless driver beta feature in the settings.
-
-![Serverless driver beta feature enabled](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/brave_nVfz1obyo5.png)
+First create an account on PlanetScale and create a database. You can just sign in with your GitHub account and you're good to go.
 
 ### Setting Up Prisma
 
@@ -124,10 +129,10 @@ datasource db {
 }
 
 model Example {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  text      String
+  id         String    @id @default(cuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  text       String
 }
 ```
 
@@ -249,6 +254,8 @@ You will notice that we didn't have to write any types ourselves for this. Every
 ### Limitations
 
 This way of doing things can break when using [`@map`](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#map) because the casing is different in the types. It also doesn't support [`Prisma.Decimal`](https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields#working-with-decimal) because you have to use the special Prisma object to use it. [Mark Lawlor](https://github.com/marklawlor) has some insane TypeScript code to work around this problem but it's still very "hacky". You can see his gist [here](https://gist.github.com/marklawlor/b1c26eefba43539c6611a508e67ee02f).
+
+Update: A wonderful package called [`prisma-kysely`](https://github.com/valtyr/prisma-kysely) created by [Valtýr](https://valtyr.is/) does all of this for you. You should probably use it instead of the approach I've shown here. 
 
 ## Conclusion
 

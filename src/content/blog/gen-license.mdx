@@ -6,8 +6,15 @@ date: "March 25, 2022"
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import {createHeading} from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 
 I'm the type of person who is constantly working on open source projects. But whenever I create a new repository, I haven't yet decided what license I should put the code under. So, I always had to add it at the end when I have pushed all the code. But it was just too much work: go to GitHub, click `Create File`, type `LICENSE`, choose the license and then push it and finally pull the changes locally. So I decided to make a CLI License Generator, in Rust.
 
@@ -15,7 +22,7 @@ This was a nice project to build since I hadn't written Rust code in a while, so
 
 ## Introducing gen-license
 
-![demo](https://us-east-1.tixte.net/uploads/nexxel.needs.rest/idea64_rZlJLu450P.gif)
+![demo](/images/gen-license/demo.gif)
 
 It's as simple as that, it even automatically gets your username from your global git config file!
 
