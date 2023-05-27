@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^0.19.4",
+    "@astrojs/solid-js": "^2.2.0",
     "@astrojs/vue": "^2.2.0",
     "astro": "^2.5.0",
+    "solid-js": "^1.4.3",
     "vue": "^3.2.30",
     "zod": "^3.21.4"
   },

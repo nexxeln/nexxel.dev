@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config"
 import vue from "@astrojs/vue"
 import mdx from "@astrojs/mdx"
+import solidJs from "@astrojs/solid-js"
 import unocss from "unocss/astro"
 import { FontaineTransform } from "fontaine"
 import vesper from "./src/lib/vesper.json"
@@ -8,6 +9,7 @@ import vesper from "./src/lib/vesper.json"
 export default defineConfig({
   integrations: [
     mdx(),
+    solidJs(),
     unocss({ injectReset: true }),
     vue(),
   ],
