@@ -2,15 +2,17 @@
 import type { Project } from "../lib/projects"
 import Link from "./Link.vue"
 
-type Props = Project
+type Props = {
+  project: Project
+}
 
-const { repo: name, description, link } = Astro.props
+const { project: { repo: name, description, link } } = Astro.props
 ---
 
-  <div class="w-20.6666666666666666666666666666666666666666666666667ch">
-    <Link href={link}>
-      <span class="font-medium">{name}</span>
-    </Link>
+<div class="w-20.6666666666666666666666666666666666666666666666667ch flex flex-col">
+  <Link href={link}>
+    <span class="font-medium">{name}</span>
+  </Link>
 
-    <p class="pt-2">{description}</p>
-  </div>
+  <span class="pt-3">{description}</span>
+</div>

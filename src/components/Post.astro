@@ -1,9 +1,25 @@
 ---
 import type { CollectionEntry } from "astro:content"
+import Link from "./Link.vue"
 
 type Props = {
   post: CollectionEntry<"blog">
 }
 
-const { post: { data: { title, description, date }, slug } } = Astro.props
+const { post: { data: { title, date }, slug } } = Astro.props
 ---
+
+<article class="w-full flex justify-between">
+  <Link href={`/blog/${slug}`}>
+    <span>{title}</span>
+  </Link>
+
+  <span>
+    {
+      date.toLocaleDateString(
+        "en-us",
+        { year: "numeric", month: "short", day: "numeric" },
+      )
+    }
+  </span>
+</article>

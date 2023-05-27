@@ -1,9 +1,18 @@
 ---
+import { getCollection } from "astro:content"
+import Link from "../components/Link.vue"
 import Base from "../layouts/Base.astro"
 import Project from "../components/Project.astro"
+import Post from "../components/Post.astro"
 import { getProjects } from "../lib/projects"
 
 const projects = await getProjects(6)
+const posts = await getCollection("blog", ({ data }) => data.isDraft !== true)
+
+// recent 3 posts sorted by date
+const recentPosts = posts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 4)
 ---
 
 <Base title="hi" description="bye">
@@ -11,7 +20,7 @@ const projects = await getProjects(6)
     nexxel
   </h1>
 
-   <main class="prose py-10">
+   <main class="prose">
       <p>
         <small class="text-neutral-600 dark:text-neutral-500"
           >IPA as /ˈnɛks ɛl/ — no meaning, i made it up</small
@@ -21,17 +30,28 @@ const projects = await getProjects(6)
         Hi there, I'm <strong>Shoubhit</strong> aka <strong>nexxel</strong>. I'm 17 y/o and going to university soon. I like <strong>shuffling cards</strong> and <strong>building things</strong>. I enjoy <strong>language design</strong>, <strong>web development</strong> and I live on the <strong>terminal</strong>.
       </p>
 
-      <p class="mt-6 max-w-prose overflow-x-hidden text-ellipsis line-height-7 [&:has(img)]:(mx-0 overflow-x-visible px-0) md:(max-w-screen min-w-prose) [&:has(a)]:(whitespace-nowrap)">
+      <p class="max-w-prose overflow-x-hidden text-ellipsis line-height-7 [&:has(img)]:(mx-0 overflow-x-visible px-0) md:(max-w-screen min-w-prose) [&:has(a)]:(whitespace-nowrap)">
         Right now I'm building an <strong>analytics</strong> service, learning <strong>OCaml</strong>, writing <strong>blog</strong> posts and going to the <strong>gym</strong> regularly.
       </p>
 
-      <h2 class="mt-12">Projects</h2>
+      <div class="mt-12" />
+      <h2>Projects</h2>
 
       <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
-        {projects.map(project => <Project {...project} />)}
+        {projects.map(project => <Project {project} />)}
+      </div>
+
+      <div class="mt-12" />
+      <h2>Blog</h2>
+
+      <div class="flex flex-col gap-5">
+        {recentPosts.map(post => <Post {post} />)}
+
+        <span>
+          <Link href="/blog">
+            All posts →
+          </Link>
+        </span>
       </div>
   </main>
 </Base>
-
-<style>
-</style>
