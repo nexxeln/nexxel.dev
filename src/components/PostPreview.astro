@@ -12,8 +12,10 @@ const { post: { data: { title, description, date }, slug } } = Astro.props
 
 <article class="flex flex-col gap-3">
   <Link href={`/blog/${slug}`}>
-    <span class="font-semibold text-imp">{title}</span>
+    <span class="text-(lg imp) font-semibold">{title}</span>
   </Link>
+
   <span>{description}</span>
+
   <span>{formatDate(date)}</span>
 </article>
