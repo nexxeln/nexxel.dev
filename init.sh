@@ -12,8 +12,15 @@ date: ""
 
 import Link from "../../components/Link.vue"
 import Code from "../../components/Code.vue"
+import { createHeading } from "../../components/Heading"
 
-export const components = { a: Link, code: Code }
+export const components = { 
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),  
+}
 EOF
 )
 
