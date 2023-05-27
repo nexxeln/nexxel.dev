@@ -6,7 +6,9 @@ type Props = {
   description: string
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
+
+const { pathname } = Astro.url
 ---
 
 <html lang="en">
@@ -55,7 +57,7 @@ const { title, description } = Astro.props;
 
       <header class="h-37.5px flex items-center justify-between -mt-2">
         <slot name="header-content">
-          <Link href="/blog">← back</Link>
+          <Link href={pathname === "/blog" ? "/" : "/blog"}>← back</Link>
         </slot>
       </header>
 
