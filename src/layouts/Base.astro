@@ -9,15 +9,12 @@ type Props = {
 }
 
 const { title, description } = Astro.props
-
 const { pathname } = Astro.url
 
 let href = "hi"
 
-if (pathname === "/blog" || pathname === "/blog/")
-  href = "/"
-else if (href.startsWith("/blog/"))
-  href = "/blog"
+if (pathname === "/blog" || pathname === "/blog/")  href = "/"
+else if (pathname.startsWith("/blog/")) href = "/blog"
 else href = "/"
 
 ---
@@ -96,7 +93,7 @@ else href = "/"
 
       <slot />
 
-      <Grain opacity={0.5} />
+      <Grain opacity={0.3} />
 
       <div class="mt-24" />
       <Footer />
