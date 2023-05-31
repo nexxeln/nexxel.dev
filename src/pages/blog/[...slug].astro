@@ -24,7 +24,7 @@ const { Content } = await post.render();
 <Base
   title={post.data.title}
   description={post.data.description}
-  image={`https://og.nxl.sh/blog/?title=${post.data}&top=${formatDate(post.data.date)}`}
+  image={`https://og.nxl.sh/blog/?title=${post.data.title}&top=${formatDate(post.data.date)}`}
 >
   <div class="prose">
     <h1 class="mt-8">{post.data.title}</h1>
