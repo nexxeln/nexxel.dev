@@ -17,17 +17,17 @@ type Props = {
   post: CollectionEntry<"blog">
 }
 
-const { post } = Astro.props
+const { post, post: { data: { title, description, date } } } = Astro.props
 const { Content } = await post.render();
 ---
 
 <Base
-  title={post.data.title}
-  description={post.data.description}
-  image={`https://og.nxl.sh/blog/?title=${post.data.title}&top=${formatDate(post.data.date)}`}
+  {title}
+  description={description}
+  image={`https://og.nxl.sh/blog/?title=${title}&top=${formatDate(date)}`}
 >
   <div class="prose">
-    <h1 class="mt-8">{post.data.title}</h1>
+    <h1 class="mt-8">{title}</h1>
       <Content />
     </div>
 </Base>
