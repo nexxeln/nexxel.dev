@@ -108,8 +108,20 @@ window.localStorage.setItem("theme", theme)
   font-family: "Switzer";
   src: url("/fonts/Switzer.woff2") format("woff2");
   font-weight: 300 900;
-  font-display: swap;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Switzer Fallback";
+  src: local("BlinkMacSystemFont"), local("Segoe UI"), local("Helvetica Neue"),
+    local("Arial"), local("sans-serif");
+  font-weight: 300 900;
+  font-style: normal;
+  ascent-override: 96.67%;
+  descent-override: 24.66%;
+  line-gap-override: 8.88%;
+  size-adjust: 101.38%;
 }
 
 @font-face {
@@ -135,7 +147,7 @@ html {
 }
 
 body {
-  font-family: "Switzer";
+  font-family: "Switzer", "Switzer Fallback";
   @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
 }
 
