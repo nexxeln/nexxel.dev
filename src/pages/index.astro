@@ -10,9 +10,15 @@ import { getProjects } from "../lib/projects"
 const projects = await getProjects(6)
 const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
   .slice(0, 4)
+
+const title = "nexxel • home"
 ---
 
-<Base title="nexxel • home" description="Personal website and blog of Shoubhit Dash aka nexxel.">
+<Base 
+  {title} 
+  description="Personal website and blog of Shoubhit Dash aka nexxel."
+  image="https://og.nxl.sh/home"
+>
   <h1 slot="header-content" class="text-neutral-600 dark:text-neutral-500">
     nexxel
   </h1>

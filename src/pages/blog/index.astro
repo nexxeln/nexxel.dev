@@ -6,9 +6,14 @@ import Base from "../../layouts/Base.astro"
 
 const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
 
+const title = "nexxel • blog"
 ---
 
-<Base title="nexxel • blog" description="Writings on programming and technology.">
+<Base 
+  {title}
+  description="Writings on programming and technology."
+  image={`https://og.nxl.sh/home/?title=${title}`}
+>
   <main class="prose">
     <h1>Blog</h1>
 
