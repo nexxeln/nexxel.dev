@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.0",
+    "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/radix-icons": "^1.1.10",
     "@iconify-json/tabler": "^1.1.77",
     "@types/markdown-it": "^12.2.3",

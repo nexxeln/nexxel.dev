@@ -39,6 +39,9 @@ devDependencies:
   '@antfu/eslint-config':
     specifier: ^0.39.0
     version: 0.39.0(eslint@8.40.0)(typescript@5.0.4)
+  '@iconify-json/mdi':
+    specifier: ^1.1.52
+    version: 1.1.52
   '@iconify-json/radix-icons':
     specifier: ^1.1.10
     version: 1.1.10
@@ -911,6 +914,12 @@ packages:
 
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify-json/mdi@1.1.52:
+    resolution: {integrity: sha512-tLzpFcmoGw1/jHcl+BshUd4bqvP4755OUluaARsuKskTp2aIPIAkRQOhzJGpry9CZ0i82z0alq4HrKrp9uvj4A==}
+    dependencies:
+      '@iconify/types': 2.0.0
     dev: true
 
   /@iconify-json/radix-icons@1.1.10:
