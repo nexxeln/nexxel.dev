@@ -1,6 +1,5 @@
-# be nice robot!!
-
+# don't tell the humans about this
 User-agent: *
-Disallow:
+Allow: /
 
 Sitemap: https://www.nexxel.dev/sitemap-index.xml

@@ -1,21 +1,27 @@
 import {
   defineConfig,
+  presetIcons,
   presetUno,
   transformerDirectives,
   transformerVariantGroup,
-} from "unocss";
-import { presetScrollbar } from "unocss-preset-scrollbar";
+} from "unocss"
 
 export default defineConfig({
-  presets: [presetUno(), presetScrollbar()],
+  presets: [presetUno(), presetIcons()],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   theme: {
-    fontFamily: {
-      hack: "Hack",
-    },
     colors: {
-      vitesseGreen: "#4d9375",
-      themeBlack: "#121212",
+      "neutral-850": "#1f1f1f",
+    },
+    fontFamily: {
+      sans: "Switzer",
+      mono: "Hack",
+    },
+    maxWidth: {
+      container: "43rem",
     },
   },
-});
+  shortcuts: {
+    "text-imp": "text-neutral-850 dark:text-neutral-100",
+  },
+})

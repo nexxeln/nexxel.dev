@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { formatDate } from "../lib/date"
+import Link from "./Link.vue"
+
+type Props = {
+  post: CollectionEntry<"blog">
+}
+
+const { post: { data: { title, date }, slug } } = Astro.props
+---
+
+<article class="flex justify-between">
+  <Link href={`/blog/${slug}`}>
+    <span>{title}</span>
+  </Link>
+
+  <span>{formatDate(date)}</span>
+</article>

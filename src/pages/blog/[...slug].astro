@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { getCollection } from "astro:content"
+import Base from "../../layouts/Base.astro"
+import { formatDate } from "../../lib/date"
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog")
+
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}
+
+type Props = {
+  post: CollectionEntry<"blog">
+}
+
+const { post, post: { data: { title, description, date } } } = Astro.props
+const { Content } = await post.render();
+---
+
+<Base
+  {title}
+  description={description}
+  image={`https://og.nxl.sh/blog/?title=${title}&top=${formatDate(date)}`}
+>
+  <div class="prose">
+    <h1 class="mt-8">{title}</h1>
+      <Content />
+    </div>
+</Base>

@@ -1,50 +1,20 @@
 ---
+import Link from "./Link.vue";
 ---
+<div class="prose">
+  <hr />
 
-<hr class="border-(t-2 t-neutral-800) mt-24" />
+  <footer class="flex justify-between">
+    <span>Shoubhit Dash</span>
 
-<footer class="p-4 text-(neutral-400 center)">
-  <p class="text-neutral-400">Have a nice day!</p>
-  <div class="flex gap-6 items-center justify-center text-sm pt-2">
-    <a
-      href="/rss.xml"
-      class="flex flex-col gap-y-0.5 items-center text-neutral-400 hover:(no-underline text-neutral-200) transition-colors duration-300"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-5 h-5"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-        ></path>
-      </svg>
-      <span>RSS</span>
-    </a>
-    <a
-      href="/sitemap-index.xml"
-      class="flex flex-col gap-y-0.5 items-center text-neutral-400 hover:(no-underline text-neutral-200) transition-colors duration-300"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-5 h-5"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"
-        ></path>
-      </svg>
-      <span>Sitemap</span>
-    </a>
-  </div>
-</footer>
+    <div class="flex gap-4">
+      <Link href="mailto:shoubhit2005@gmail.com">
+        <div class="i-tabler:mail-filled" title="Email" />
+      </Link>
+
+      <Link href="https://github.com/nexxeln">
+        <div class="i-radix-icons:github-logo" title="GitHub" />
+      </Link>
+    </div>
+  </footer>
+</div>
