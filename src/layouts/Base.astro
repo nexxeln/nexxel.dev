@@ -6,46 +6,48 @@ import Grain from "../components/grain/Grain.astro"
 type Props = {
   title: string
   description: string
+  image?: string
 }
 
-const { title, description } = Astro.props
+const { title, description, image } = Astro.props
 const { pathname } = Astro.url
 
 let href = "hi"
 
-if (pathname === "/blog" || pathname === "/blog/")  href = "/"
-else if (pathname.startsWith("/blog/")) href = "/blog"
+if (pathname === "/blog" || pathname === "/blog/")
+  href = "/"
+else if (pathname.startsWith("/blog/"))
+  href = "/blog"
 else href = "/"
-
 ---
 
 <html lang="en">
   <head>
-    <!-- Global Metadata -->
+    <!-- global metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Primary Meta Tags -->
+    <!-- primary meta tags -->
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
 
-    <!-- Open Graph / Facebook -->
+    <!-- open graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Shoubhit Dash" />
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <!-- <meta property="og:image" content={image} /> -->
+    <meta property="og:image" content={image} />
 
-    <!-- Twitter -->
+    <!-- twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <!-- <meta property="twitter:image" content={image} /> -->
+    <meta property="twitter:image" content={image} />
 
     <!-- link tags -->
     <link rel="sitemap" href="/sitemap-index.xml">
@@ -64,23 +66,6 @@ else href = "/"
       crossorigin="anonymous"
     />
   </head>
-
-  <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme"))
-      return localStorage.getItem("theme")
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches)
-      return "dark"
-    else return "light"
-  })()
-
-  if (theme === "light")
-    document.documentElement.classList.remove("dark")
-  else document.documentElement.classList.add("dark")
-
-  window.localStorage.setItem("theme", theme)
-  </script>
 
   <body>
     <div class="mx-auto max-w-container px-4">
@@ -101,89 +86,106 @@ else href = "/"
   </body>
 </html>
 
+<script is:inline>
+const theme = (() => {
+  if (typeof localStorage !== "undefined" && localStorage.getItem("theme"))
+    return localStorage.getItem("theme")
+
+  if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+    return "dark"
+  else return "light"
+})()
+
+if (theme === "light")
+  document.documentElement.classList.remove("dark")
+else document.documentElement.classList.add("dark")
+
+window.localStorage.setItem("theme", theme)
+</script>
+
 <style is:global>
-  @font-face {
-    font-family: "Switzer";
-    src: url("/fonts/Switzer.woff2") format("woff2");
-    font-weight: 300 900;
-    font-display: swap;
-    font-style: normal;
+@font-face {
+  font-family: "Switzer";
+  src: url("/fonts/Switzer.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Hack";
+  src: url("/fonts/Hack.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+body,
+html {
+  @apply overflow-x-hidden;
+}
+
+html {
+  @apply antialiased touch-manipulation scroll-smooth text-base;
+  text-rendering: optimizeLegibility;
+
+  &.dark {
+    color-scheme: dark;
+  }
+}
+
+body {
+  font-family: "Switzer";
+  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+}
+
+* {
+  @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+}
+
+.prose {
+  @apply max-w-container [&>:not(:last-child)]:mb-6;
+
+  & p {
+    @apply my-6 line-height-7.2
   }
 
-  @font-face {
-    font-family: "Hack";
-    src: url("/fonts/Hack.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-    font-style: normal;
+  & h1,
+  & h2,
+  & h3 {
+    @apply text-imp font-semibold my-8;
   }
 
-  body,
-  html {
-    @apply overflow-x-hidden;
+  & h1 {
+    @apply text-2xl;
   }
 
-  html {
-    @apply antialiased touch-manipulation scroll-smooth text-base;
-    text-rendering: optimizeLegibility;
-
-    &.dark {
-      color-scheme: dark;
-    }
+  & h2 {
+    @apply text-xl;
   }
 
-  body {
-    font-family: "Switzer";
-    @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+  & h3 {
+    @apply text-lg;
   }
 
-  * {
-    @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+  & strong {
+    @apply font-medium text-imp;
   }
 
-  .prose {
-    @apply max-w-container [&>:not(:last-child)]:mb-6;
-
-    & p {
-     @apply my-6 line-height-7.2
-    }
-
-    & h1,
-    & h2,
-    & h3 {
-      @apply text-imp font-semibold my-8;
-    }
-
-    & h1 {
-      @apply text-2xl;
-    }
-
-    & h2 {
-      @apply text-xl;
-    }
-
-    & h3 {
-      @apply text-lg;
-    }
-
-    & strong {
-      @apply font-medium text-imp;
-    }
-
-    & hr {
-      @apply border-neutral-300 dark:border-neutral-600 border-b;
-    }
-
-    & ul {
-      @apply list-disc list-outside pl-4;
-    }
-
-    & ul > li {
-      @apply mb-6;
-    }
-
-    & img {
-      @apply mx-auto rounded my-6;
-    }
+  & hr {
+    @apply border-neutral-300 dark:border-neutral-600 border-b;
   }
+
+  & ul {
+    @apply list-disc list-outside pl-4;
+  }
+
+  & ul > li {
+    @apply mb-6;
+  }
+
+  & img {
+    @apply mx-auto rounded my-6;
+  }
+}
 </style>
