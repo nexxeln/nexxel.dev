@@ -1,6 +1,6 @@
 <template>
   <code
-    class="[letter-spacing:-0.02em] rounded font-mono text-sm after:(font-black text-gray-400 dark:text-gray-600) before:(font-black text-gray-400 dark:text-gray-600)"
+    class="[letter-spacing:-0.02em] rounded text-sm after:(font-black text-gray-400 dark:text-gray-600) before:(font-black text-gray-400 dark:text-gray-600)"
   >
     <slot />
   </code>
@@ -13,7 +13,7 @@ code::after {
 }
 
 pre {
-  --at-apply: "[tab-size:2] overflow-x-auto rounded p-4 font-mono text-sm [&code]:(text-base after:content-none before:content-none) [letter-spacing:unset]";
+  --at-apply: "[tab-size:2] overflow-x-auto rounded p-4 text-sm [&code]:(text-base after:content-none before:content-none) [letter-spacing:unset]";
 }
 
 pre code::before,

@@ -146,13 +146,17 @@ html {
   }
 }
 
+* {
+  @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+}
+
 body {
   font-family: "Switzer", "Switzer Fallback";
   @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
 }
 
-* {
-  @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+code, pre {
+  font-family: "Hack", 'Courier New', Courier, monospace
 }
 
 .prose {
