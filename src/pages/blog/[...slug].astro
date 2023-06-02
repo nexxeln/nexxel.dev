@@ -17,7 +17,7 @@ type Props = {
   post: CollectionEntry<"blog">
 }
 
-const { post, post: { data: { title, description, date } } } = Astro.props
+const { post, post: { data: { title, description, date, isDraft } } } = Astro.props
 const { Content } = await post.render();
 ---
 
@@ -26,7 +26,13 @@ const { Content } = await post.render();
   description={description}
   image={`https://og.nxl.sh/blog/?title=${title}&top=${formatDate(date)}`}
 >
-  <div class="prose">
+  <div class="prose tracking-wide">
+    {isDraft && (
+      <blockquote class="my-8 bg-neutral-300 py-4 pl-4 dark:bg-neutral-800" role="alert">
+        This post is a <strong>draft</strong>. If you're reading this, you're probably a cool and trusted person. Please <strong>don't share</strong> it thank you.
+      </blockquote>
+    )}
+
     <h1 class="mt-8">{title}</h1>
       <Content />
     </div>
