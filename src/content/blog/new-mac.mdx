@@ -42,3 +42,50 @@ Since writing my [wsl workflow post](/blog/wsl-workflow), I've switched from zsh
 ## Starship
 
 For my prompt I still use [Starship](https://starship.rs) although my configuration has changed a bit. I've switched the [pure preset](https://starship.rs/presets/pure-preset.html) which is a lot more minimal and less distracting.
+
+![Starship Prompt](/images/new-mac/prompt.png)
+
+## GitHub CLI
+
+[GitHub CLI](https://cli.github.com) has become an essential part of my workflow. I use it for creating, cloning, and managing repositories. It also makes creating a pull request a breeze. Highly recommend using it, it'll save you a lot of time. It's just a `brew install gh` away.
+
+## Other Coding Tools
+
+### fnm
+
+[fnm](https://fnm.vercel.app) is fast and simple Node.js version manager. It's really easy to use and is much faster than nvm.
+
+### exa
+
+I still use [exa](https://the.exa.website) for listing files in the terminal. It's a modern replacement for `ls` with a lot of useful features. With icons, colors, and git integration, it makes listing files much nicer.
+
+I use the same aliases that I did before.
+
+```fish
+# ~/.config/fish/config.fish
+
+alias ll="exa -l -g --icons --git"
+alias llt="exa -1 --icons --tree --git-ignore"
+```
+
+### zoxide
+
+I also still use [zoxide](https://github.com/ajeetdsouza/zoxide) for navigating directories. It's a smarter `cd` command that learns your habits and makes navigating directories a breeze.
+
+![Zoxide in action](https://github.com/ajeetdsouza/zoxide/raw/main/contrib/tutorial.webp)
+
+### bat
+
+[bat](https://github.com/sharkdp/bat) is modern replacement for `cat` with syntax highlighting and themes. I use it for a lot of things, but the coolest use of it that I have is to use it to preview files while fuzzy searching using [fzf](https://github.com/junegunn/fzf) and opening that file in neovim.
+
+![bat to preview files in fzf and open in neovim](/images/new-mac/bat.gif)
+
+Here's the alias.
+
+```fish
+alias search="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs nvim"
+```
+
+## Conclusion
+
+That's it! That's everything I installed on my new Mac. I hope you found this useful. Thanks for reading!
