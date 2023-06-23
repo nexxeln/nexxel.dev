@@ -1,2 +1,2 @@
 *.xsl linguist-detectable=false
-*.mdx linguist-detectable=false
+# *.mdx linguist-detectable=false
