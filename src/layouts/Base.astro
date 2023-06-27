@@ -103,6 +103,15 @@ else document.documentElement.classList.add("dark")
 window.localStorage.setItem("theme", theme)
 </script>
 
+<script is:inline>
+import { loglib } from "@loglib/tracker"
+
+loglib.record({
+  id: "www_nexxel",
+  host: "https://www.loglib.io",
+})
+</script>
+
 <style is:global>
 @font-face {
   font-family: "Switzer";

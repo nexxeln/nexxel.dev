@@ -20,6 +20,9 @@ dependencies:
   '@astrojs/vue':
     specifier: ^2.2.1
     version: 2.2.1(@babel/core@7.22.5)(astro@2.6.6)(vite@4.3.9)(vue@3.3.4)
+  '@loglib/tracker':
+    specifier: ^0.3.4
+    version: 0.3.4
   astro:
     specifier: ^2.6.6
     version: 2.6.6
@@ -984,6 +987,10 @@ packages:
 
   /@ljharb/has-package-exports-patterns@0.0.2:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
+    dev: false
+
+  /@loglib/tracker@0.3.4:
+    resolution: {integrity: sha512-diMx02byoqbyK1KtxarIYTN87mKFWSfpFmuIM40YvCbladIPH5zJ1ozQ3dg4GMBNX8S0KBgCCraEeM+3YP+xEQ==}
     dev: false
 
   /@mdx-js/mdx@2.3.0:
