@@ -4,9 +4,9 @@ description: "A few weeks ago I made the switch from Neovim to VScode as my prim
 date: "June 23, 2023"
 ---
 
-import Link from "../../components/Link.vue"
-import Code from "../../components/Code.vue"
-import { createHeading } from "../../components/Heading"
+import Link from "../../components/Link.vue";
+import Code from "../../components/Code.vue";
+import { createHeading } from "../../components/Heading";
 
 export const components = {
   a: Link,
@@ -14,7 +14,7 @@ export const components = {
   h1: createHeading("h1"),
   h2: createHeading("h2"),
   h3: createHeading("h3"),
-}
+};
 
 I recently switched back to VSCode from Neovim as my primary code editor. You may think this is weird because everyone seems to be going the other way around. Why would anyone want to move away from the most loved code editor? In this post, I'll explain why I made the switch and my experience so far.
 
@@ -44,7 +44,7 @@ On the other hand, Copilot was built for VSCode. It works flawlessly and I haven
 
 ### Tiring Neovim Plugin Ecosystem
 
-Didn't I just say that Neovim has a great plugin ecosystem? Yes, it does. But it's also tiring to keep up with it. Running `:PackerSync` was scary because you never know what plugin introduced a breaking change that you didn't notice and suddenly you can't code as your whole config breaks down. 
+Didn't I just say that Neovim has a great plugin ecosystem? Yes, it does. But it's also tiring to keep up with it. Running `:PackerSync` was scary because you never know what plugin introduced a breaking change that you didn't notice and suddenly you can't code as your whole config breaks down.
 
 ![Real image of my config suddenly having a winbar](/images/neovim-to-vscode/broken-config.png)
 
@@ -78,10 +78,10 @@ I've also noticed that the TypeScript LSP is a bit faster in VSCode as well.
 
 ## Why Not Use a Neovim Distro?
 
-I don't like Neovim distributions. I've tried many, and none of them had the same feel as a vanilla Neovim setup. Most of them are bloated, hard to extend, and have a lot of things I don't need. I don't want to spend time configuring a pre-configured editor. I'd rather just configure it myself. 
+I don't like Neovim distributions. I've tried many, and none of them had the same feel as a vanilla Neovim setup. Most of them are bloated, hard to extend, and have a lot of things I don't need. I don't want to spend time configuring a pre-configured editor. I'd rather just configure it myself.
 
 ## Conclusion
 
-This doesn't mean that I'm never going to use Neovim again. It's still my favourite editor and I'll be using it for minor editing tasks, tinkering stuff here and there on the terminal, taking notes, etc. But for my main editor, I'm going to be using VSCode for now. 
+This doesn't mean that I'm never going to use Neovim again. It's still my favourite editor and I'll be using it for minor editing tasks, tinkering stuff here and there on the terminal, taking notes, etc. But for my main editor, I'm going to be using VSCode for now.
 
 Let me know if you enjoyed this post, and thank you for reading!
