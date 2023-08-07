@@ -19,7 +19,7 @@
     "@astrojs/solid-js": "^2.2.0",
     "@astrojs/vue": "^2.2.1",
     "@loglib/tracker": "^0.3.5",
-    "astro": "^2.9.1",
+    "astro": "^2.10.1",
     "markdown-it": "^13.0.1",
     "sanitize-html": "^2.11.0",
     "solid-js": "^1.7.8",
