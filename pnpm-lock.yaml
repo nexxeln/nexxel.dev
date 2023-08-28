@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -49,6 +49,9 @@ devDependencies:
   '@iconify-json/mdi':
     specifier: ^1.1.53
     version: 1.1.53
+  '@iconify-json/ph':
+    specifier: ^1.1.6
+    version: 1.1.6
   '@iconify-json/radix-icons':
     specifier: ^1.1.10
     version: 1.1.10
@@ -1119,6 +1122,12 @@ packages:
 
   /@iconify-json/mdi@1.1.53:
     resolution: {integrity: sha512-qG72Tc9Bd4w7fha+kMEySVTbH4Obgb9xA1mQl+WReFhtZ3PjcVpIWLgZGTewuIfZY8RAbd8zfAqhZ7qEYZWrhg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/ph@1.1.6:
+    resolution: {integrity: sha512-dexzEndlXQX/sbQhnEpA94Pby6JCGV2tZToSGcPPQpbilDGyk5VMd0ymusYoocRAn6+qLpGRvMoz5XFKGqP+VA==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: true
