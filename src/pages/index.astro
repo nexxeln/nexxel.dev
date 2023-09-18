@@ -12,11 +12,7 @@ const posts = sortPostsByDate(
   await getCollection("blog", ({ data }) => data.isDraft !== true),
 ).slice(0, 4)
 
-const title = "nexxel • home"
-
-const introCollection = await getCollection("intro")
-const { Content } = await introCollection[0].render()
-
+const title = "nexxel • home";
 ---
 
 <Base
@@ -30,7 +26,33 @@ const { Content } = await introCollection[0].render()
 
   <main class="prose">
     <p>
-      <Content />
+      <small class="text-neutral-600 dark:text-neutral-500"
+        >IPA &nbsp; /ˈnɛks ɛl/ — no meaning, i made it up</small
+      >
+      <br />
+
+      Hi there, I'm <strong>Shoubhit</strong> aka <strong>nexxel</strong>. I'm
+      18 y/o and I'm a CS undergrad student. I like <strong
+        >shuffling cards</strong
+      > and <strong>building things</strong>. I enjoy <strong
+        >language design</strong
+      >, <strong>web development</strong> and I live on the <strong
+        >terminal</strong
+      >.
+    </p>
+
+    <p>
+      Right now I'm building a <strong>
+        <a
+          href="https://twitter.com/nexxeln/status/1690648727202197504"
+          target="_blank"
+        >
+          an app to catch up with yourself
+        </a>
+      </strong>
+      at <strong>
+        <a href="https://buildspace.so" target="_blank">buildspace</a></strong
+      >.
     </p>
 
     <div class="mt-12"></div>

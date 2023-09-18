@@ -11,6 +11,4 @@ const blog = defineCollection({
   }),
 })
 
-const intro = defineCollection({ type: "content" })
-
-export const collections = { blog, intro }
+export const collections = { blog }
