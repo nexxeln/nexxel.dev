@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions"
 import Link from "../components/Link.vue"
 import Footer from "../components/Footer.astro"
 import Grain from "../components/grain/Grain.astro"
+import { fade } from "astro:transitions"
 
 type Props = {
   title: string
@@ -24,7 +25,7 @@ else href = "/"
 
 <html lang="en">
   <head>
-    <ViewTransitions />
+    <ViewTransitions transition:animate={fade({duration: "0.2s"})} />
 
     <!-- global metadata -->
     <meta charset="utf-8" />
