@@ -26,6 +26,22 @@
     {
       "source": "/gh/:slug*",
       "destination": "https://github.com/nexxeln/:slug*"
+    },
+    {
+      "source": "/akash",
+      "destination": "https://www.linkedin.com/in/akash-manoj-b3425227b/"
+    },
+    {
+      "source": "/a",
+      "destination": "https://www.linkedin.com/in/akash-manoj-b3425227b/"
+    },
+    {
+      "source": "/krishnaa",
+      "destination": "https://www.linkedin.com/in/krishnaa-nair-9230b7238/"
+    },
+    {
+      "source": "/k",
+      "destination": "https://www.linkedin.com/in/krishnaa-nair-9230b7238/"
     }
   ]
 }
