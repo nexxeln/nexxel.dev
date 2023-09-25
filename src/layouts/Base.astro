@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions"
 import Link from "../components/Link.vue"
 import Footer from "../components/Footer.astro"
 import Grain from "../components/grain/Grain.astro"
@@ -24,8 +23,6 @@ else href = "/"
 
 <html lang="en">
   <head>
-    <ViewTransitions transition:persist />
-
     <!-- global metadata -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -99,11 +96,16 @@ const theme = (() => {
   else return "light"
 })()
 
-if (theme === "light")
-  document.documentElement.classList.remove("dark")
-else document.documentElement.classList.add("dark")
+function setTheme(theme) {
+  if (theme === "light")
+    document.documentElement.classList.remove("dark")
+  else document.documentElement.classList.add("dark")
 
-window.localStorage.setItem("theme", theme)
+  window.localStorage.setItem("theme", theme)
+}
+
+setTheme()
+document.addEventListener("astro:after-swap", setTheme(theme))
 </script>
 
 <script>
@@ -159,12 +161,12 @@ html {
 }
 
 * {
-  @apply outline-black selection-(bg-neutral-200 text-black) dark:(outline-white selection-(bg-neutral-700 text-white));
+  @apply outline-white selection-(bg-neutral-700 text-white)
 }
 
 body {
   font-family: "Switzer", "Switzer Fallback";
-  @apply text-neutral-800 bg-neutral-100 dark:(text-neutral-300 bg-neutral-900) px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
+  @apply text-neutral-300 bg-neutral-900 px-0 md:px-4 py-4 md:py-8 relative min-h-screen text-sm md:text-base;
 }
 
 code, pre {
@@ -201,7 +203,7 @@ code, pre {
   }
 
   & hr {
-    @apply border-neutral-300 dark:border-neutral-600 border-b-0.5;
+    @apply border-neutral-600 border-b-0.5;
   }
 
   & ul {

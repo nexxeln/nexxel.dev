@@ -22,6 +22,6 @@ export default defineConfig({
     },
   },
   shortcuts: {
-    "text-imp": "text-neutral-850 dark:text-neutral-100",
+    "text-imp": "text-neutral-100",
   },
 })
