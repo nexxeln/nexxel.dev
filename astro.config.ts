@@ -18,5 +18,4 @@ export default defineConfig({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   markdown: { shikiConfig: { theme: vesper, wrap: true } },
-  experimental: { viewTransitions: true },
 })

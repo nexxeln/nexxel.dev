@@ -13,32 +13,32 @@
     "format:content": "npx prettier --write ./src/content/blog"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.7",
-    "@astrojs/rss": "^2.4.3",
-    "@astrojs/sitemap": "^1.4.0",
-    "@astrojs/solid-js": "^2.2.0",
-    "@astrojs/vue": "^2.2.1",
-    "@loglib/tracker": "^0.3.5",
-    "astro": "^2.9.1",
+    "@astrojs/mdx": "^1.1.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/solid-js": "^3.0.1",
+    "@astrojs/vue": "^3.0.0",
+    "@loglib/tracker": "^0.6.2",
+    "astro": "^3.1.2",
     "markdown-it": "^13.0.1",
     "sanitize-html": "^2.11.0",
-    "solid-js": "^1.7.8",
+    "solid-js": "^1.7.12",
     "vue": "^3.3.4",
-    "zod": "^3.21.4"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.8",
-    "@iconify-json/mdi": "^1.1.53",
-    "@iconify-json/radix-icons": "^1.1.10",
-    "@iconify-json/tabler": "^1.1.83",
-    "@types/markdown-it": "^12.2.3",
+    "@antfu/eslint-config": "1.0.0-beta.8",
+    "@iconify-json/mdi": "^1.1.54",
+    "@iconify-json/radix-icons": "^1.1.11",
+    "@iconify-json/tabler": "^1.1.92",
+    "@types/markdown-it": "^13.0.1",
     "@types/sanitize-html": "^2.9.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "@unocss/eslint-config": "^0.51.13",
-    "@unocss/reset": "^0.51.13",
-    "eslint": "^8.45.0",
-    "eslint-plugin-astro": "^0.27.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "@unocss/eslint-config": "^0.56.2",
+    "@unocss/reset": "^0.56.2",
+    "eslint": "^8.50.0",
+    "eslint-plugin-astro": "^0.29.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "unocss": "^0.51.13"
+    "unocss": "^0.56.2"
   }
 }

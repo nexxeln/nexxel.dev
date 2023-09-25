@@ -21,7 +21,4 @@ export default defineConfig({
       container: "43rem",
     },
   },
-  shortcuts: {
-    "text-imp": "text-neutral-100",
-  },
 })
