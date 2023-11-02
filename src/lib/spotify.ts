@@ -31,12 +31,6 @@ export async function getAccessToken(): Promise<{ access_token: string }> {
 export async function getTopTracks() {
   const { access_token } = await getAccessToken();
 
-  z.object({
-    artist: z.string(),
-    songUrl: z.string(),
-    title: z.string(),
-  });
-
   const response = await fetch(
     "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
     {
