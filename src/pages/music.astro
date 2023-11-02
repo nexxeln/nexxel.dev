@@ -33,14 +33,14 @@ const title = "nexxel • music";
 
   <div class="flex flex-col gap-y-4">
     {
-      artists.map(({ name, url, image, id }) => (
+      artists.map(({ name, url, image, followers }) => (
         <div class="flex flex-row items-center space-x-4">
           <img src={image} alt={name} class="w-16 h-16" />
           <div class="flex flex-col">
             <Link href={url}>
               <h3 class="font-semibold text-neutral-100">{name}</h3>
             </Link>
-            <p>{id} followers</p>
+            <p>{followers} followers</p>
           </div>
         </div>
       ))

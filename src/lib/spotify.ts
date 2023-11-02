@@ -136,7 +136,6 @@ export async function getTopArtists() {
     name: item.name,
     url: item.external_urls.spotify,
     image: item.images[0].url,
-    followers: item.followers.total,
-    id: getFollowersOfArtistFromId(item.external_urls.spotify.split("/")[item.external_urls.spotify.split("/").length - 1]),
+    followers: getFollowersOfArtistFromId(item.external_urls.spotify.split("/")[item.external_urls.spotify.split("/").length - 1]).then((res) => res.toLocaleString()),
   }));
 }
