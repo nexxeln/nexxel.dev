@@ -1,18 +1,16 @@
 ---
 import Base from "../layouts/Base.astro";
 import Link from "../components/Link.vue";
-import { getTopTracks } from "../lib/spotify";
+import { getTopTracks, getTopArtists } from "../lib/spotify";
 
 const tracks = await getTopTracks();
+const artists = await getTopArtists();
 
 const title = "nexxel • music";
 ---
 
-<!-- <pre>
-    {JSON.stringify(tracks, null, 2)}
-</pre> -->
-<Base {title} description="My top tracks and artists on Spotify.">
-  <h1 class="text-neutral-100 text-2xl font-semibold mt-8 mb-4">Top Tracks</h1>
+<Base {title} description="My top tracks and artists.">
+  <h1 class="text-neutral-100 text-2xl font-semibold my-8">Top Tracks</h1>
 
   <div class="flex flex-col gap-y-4">
     {
@@ -31,6 +29,21 @@ const title = "nexxel • music";
     }
   </div>
 
-  <h1 class="text-neutral-100 text-2xl font-semibold mt-8 mb-4">Top Artists</h1>
+  <h1 class="text-neutral-100 text-2xl font-semibold my-8">Top Artists</h1>
 
+  <div class="flex flex-col gap-y-4">
+    {
+      artists.map(({ name, url, image, id }) => (
+        <div class="flex flex-row items-center space-x-4">
+          <img src={image} alt={name} class="w-16 h-16" />
+          <div class="flex flex-col">
+            <Link href={url}>
+              <h3 class="font-semibold text-neutral-100">{name}</h3>
+            </Link>
+            <p>{id} followers</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </Base>
