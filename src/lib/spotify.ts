@@ -37,11 +37,6 @@ export async function getTopTracks() {
     title: z.string(),
   });
 
-  // return fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term", {
-  //   headers: {
-  //     "Authorization": `Bearer ${access_token}`
-  //   }
-  // })
   const response = await fetch(
     "https://api.spotify.com/v1/me/top/tracks?time_range=short_term",
     {
