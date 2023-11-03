@@ -66,7 +66,7 @@ export async function getTopTracks() {
     })
     .parse(response);
 
-  return items.slice(0, 5).map((item) => ({
+  return items.slice(0, 10).map((item) => ({
     artists: item.artists,
     songUrl: item.external_urls.spotify,
     title: item.name,
@@ -132,7 +132,7 @@ export async function getTopArtists() {
     .parse(response);
 
 
-  return items.slice(0, 5).map((item) => ({
+  return items.slice(0, 10).map((item) => ({
     name: item.name,
     url: item.external_urls.spotify,
     image: item.images[0].url,
