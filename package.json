@@ -17,6 +17,7 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
     "@astrojs/solid-js": "^3.0.1",
+    "@astrojs/vercel": "^5.1.0",
     "@astrojs/vue": "^3.0.0",
     "@loglib/tracker": "^0.8.0",
     "astro": "^3.2.0",
