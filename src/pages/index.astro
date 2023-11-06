@@ -7,7 +7,8 @@ import Project from "../components/Project.astro"
 import PostRow from "../components/PostRow.astro"
 import { getProjects } from "../lib/projects"
 
-const projects = await getProjects(6)
+// const projects = await getProjects(6)
+const projects = await getProjects()
 const posts = sortPostsByDate(
   await getCollection("blog", ({ data }) => data.isDraft !== true),
 ).slice(0, 4)
