@@ -25,7 +25,7 @@ export async function getProjects(): Promise<Project[]> {
     {
       repo: "create-t3-app",
       link: "https://github.com/nexxeln/create-t3-app",
-      description: "The best way to start a full-stack, typesafe next.js app"
+      description: "The best way to start a full-stack, typesafe Next.js app"
     },
     {
       repo: "nexxel.dev",
