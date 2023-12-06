@@ -5,6 +5,7 @@ import solidJs from "@astrojs/solid-js"
 import sitemap from "@astrojs/sitemap"
 import vercel from '@astrojs/vercel/serverless';
 import unocss from "unocss/astro"
+// @ts-ignore
 import vesper from "./src/lib/vesper.json"
 
 export default defineConfig({
@@ -18,7 +19,6 @@ export default defineConfig({
     unocss({ injectReset: true }),
     vue(),
   ],
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
+  prefetch: true,
   markdown: { shikiConfig: { theme: vesper, wrap: true } },
 })
