@@ -1,5 +1,5 @@
 /* eslint-disable quote-props */
-process.env.ESLINT_TSCONFIG = "tsconfig.json"
+process.env.ESLINT_TSCONFIG = "tsconfig.json";
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -23,6 +23,6 @@ const config = {
       },
     },
   ],
-}
+};
 
-module.exports = config
+module.exports = config;

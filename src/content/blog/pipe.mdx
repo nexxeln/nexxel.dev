@@ -138,14 +138,14 @@ function pipe<A, B, C, D>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
-  fn3: (input: C) => D
+  fn3: (input: C) => D,
 ): D;
 function pipe<A, B, C, D, E>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
   fn3: (input: C) => D,
-  fn4: (input: D) => E
+  fn4: (input: D) => E,
 ): E;
 // ... and so on
 
@@ -184,14 +184,14 @@ interface Pipe {
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
-    fn3: (input: C) => D
+    fn3: (input: C) => D,
   ): D;
   <A, B, C, D, E>(
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
     fn3: (input: C) => D,
-    fn4: (input: D) => E
+    fn4: (input: D) => E,
   ): E;
   // ... and so on
 }

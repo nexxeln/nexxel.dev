@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from "vue"
+import { computed } from "vue";
 
-const props = defineProps<{ href: string }>()
+const props = defineProps<{ href: string }>();
 
-const isExternal = computed(() => props.href.startsWith("http"))
+const isExternal = computed(() => props.href.startsWith("http"));
 </script>
 
 <template>

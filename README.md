@@ -9,5 +9,3 @@ personal website and blog of nexxel. inspired by [zaduma](https://github.com/has
 - [solidjs](https://solidjs.com)
 - [mdx](https://mdxjs.com)
 - [eslint](https://eslint.org/)
-
-
