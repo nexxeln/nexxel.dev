@@ -4,6 +4,7 @@ import Link from "../components/Link.vue"
 import Footer from "../components/Footer.astro"
 import Grain from "../components/grain/Grain.astro"
 import { fade } from "astro:transitions"
+import Navbar from "../components/Navbar.astro"
 
 type Props = {
   title: string
@@ -79,17 +80,12 @@ else href = "/"
           <Link {href}>← back</Link>
         </slot>
 
-
-        <div class="flex gap-x-4 text-neutral-500 ">
-          <a href="/blog" target="_self" class="hover:(underline underline-offset-4 transition-transform)">blog</a>
-          <a href="/music" target="_self" class="hover:(underline underline-offset-4 transition-transform)">music</a>
-        </div>
+        <Navbar />
       </header>
 
       <slot />
 
       <Grain opacity={0.3} />
-
 
       <div class="mt-24" />
       <Footer />
