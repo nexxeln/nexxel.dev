@@ -19,6 +19,11 @@ export default defineConfig({
     unocss({ injectReset: true }),
     vue(),
   ],
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "viewport"
+  },
+
+  // @ts-expect-error
   markdown: { shikiConfig: { theme: vesper, wrap: true } },
 });
