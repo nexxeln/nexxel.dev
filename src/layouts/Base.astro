@@ -2,7 +2,6 @@
 import { ViewTransitions } from "astro:transitions"
 import Link from "../components/Link.vue"
 import Footer from "../components/Footer.astro"
-import Grain from "../components/grain/Grain.astro"
 import { fade } from "astro:transitions"
 import Navbar from "../components/Navbar.astro"
 
@@ -84,8 +83,6 @@ else href = "/"
       </header>
 
       <slot />
-
-      <Grain opacity={0.3} />
 
       <div class="mt-24" />
       <Footer />
