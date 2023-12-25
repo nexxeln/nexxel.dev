@@ -20,6 +20,6 @@ export async function GET(context) {
       link: `/blog/${post.slug}`,
       content: sanitizeHtml(parser.render(post.body)),
     })),
-
+    stylesheet: "/rss/styles.xsl"
   });
 }
