@@ -8,10 +8,10 @@ import { sortPostsByDate } from "../lib/date";
 const parser = new MarkdownIt();
 
 export async function get({ site }: APIContext) {
-  const posts = sortPostsByDate(await getCollection("blog"));
+  const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
 
   return rss({
-    title: "nexxel’s blog",
+    title: "nexxel's blog",
     description: "Writings on programming and technology.",
     site: String(site),
     stylesheet: "/rss/styles.xsl",
