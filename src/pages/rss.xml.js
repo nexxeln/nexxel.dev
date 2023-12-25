@@ -1,5 +1,4 @@
 import rss from "@astrojs/rss";
-import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 import sanitizeHtml from "sanitize-html";
 import MarkdownIt from "markdown-it";
@@ -7,7 +6,7 @@ import { sortPostsByDate } from "../lib/date";
 
 const parser = new MarkdownIt();
 
-export async function get({ site }: APIContext) {
+export async function get({ site }) {
   const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
 
   return rss({
