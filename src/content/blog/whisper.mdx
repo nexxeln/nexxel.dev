@@ -163,11 +163,7 @@ const streampot = new StreamPot({
   secret: process.env.STREAMPOT_API_KEY,
 });
 
-async function chunkAndTranscribeAudio(
-  audioURL: string,
-  prompt: string,
-): Promise<(string | null)[]> {
-  const chunkJob = await streampot
+ const chunkJob = await streampot
     .input(audioURL)
     .outputOptions([
       `-f segment`,
@@ -179,19 +175,14 @@ async function chunkAndTranscribeAudio(
     .output(`temp_%03d.mp3`)
     .runAndWait();
 
-  const jobId = chunkJob.id;
-  let chunks = [];
+  let chunks: string[] = [];
 
-  const job = (await streampot.checkStatus(jobId.toString())) as {
-    status: string;
-    outputs: Record<string, string>;
-    };
-    if (job.status === "completed") {
-      chunks = Object.values(job.outputs).map((chunkPath) => chunkPath);
-      break;
-    } else if (job.status === "failed") {
-      throw new Error("StreamPot job failed");
-    }
+  if (chunkJob.status === "completed") {
+    console.log("completed", chunkJob);
+    chunks = Object.values(chunkJob.outputs);
+  } else {
+    throw new Error("StreamPot job failed: " + chunkJob.status);
+  }
 
   const chunkTranscriptions = await Promise.allSettled(
     chunks.map(async (chunkPath, index) => {
