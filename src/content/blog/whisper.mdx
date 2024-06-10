@@ -178,7 +178,6 @@ const streampot = new StreamPot({
   let chunks: string[] = [];
 
   if (chunkJob.status === "completed") {
-    console.log("completed", chunkJob);
     chunks = Object.values(chunkJob.outputs);
   } else {
     throw new Error("StreamPot job failed: " + chunkJob.status);
