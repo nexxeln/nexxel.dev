@@ -1,10 +1,9 @@
 ---
 import { getCollection } from "astro:content"
-import { sortPostsByDate } from "../lib/date"
 import Link from "../components/Link.vue"
-import Base from "../layouts/Base.astro"
-import Project from "../components/Project.astro"
 import PostRow from "../components/PostRow.astro"
+import Base from "../layouts/Base.astro"
+import { sortPostsByDate } from "../lib/date"
 import { getProjects } from "../lib/projects"
 
 // const projects = await getProjects(6)
@@ -13,44 +12,37 @@ const posts = sortPostsByDate(
   await getCollection("blog", ({ data }) => data.isDraft !== true),
 ).slice(0, 4)
 
-const title = "nexxel • home";
+const title = "Ben Margolius • Home";
 ---
 
 <Base
   {title}
-  description="Personal website and blog of Shoubhit Dash aka nexxel."
+  description="Personal website and blog of Ben Margolius"
   image="https://og.nxl.sh/home"
 >
   <h1 slot="header-content" class="text-neutral-500">
-    nexxel
+    Ben Margolius
   </h1>
 
   <main class="prose">
     <p>
-      <small class="text-neutral-500"
-        >IPA &nbsp; /ˈnɛks ɛl/ — no meaning, i made it up</small
-      >
+      Hi! I'm Ben,  a Seattle-based Full Stack developer working day-to-day with  React, Next.js, Typescript, and more! 
       <br />
-
-      Hi there, I'm <strong>Shoubhit</strong> aka <strong>nexxel</strong>. I'm an
-      18 y/o CS undergrad student. I like <strong
-        >shuffling cards</strong
-      > and <strong>building things</strong>. I enjoy <strong
-        >language design</strong
-      >, <strong>web development</strong> and I live on the <strong
-        >terminal</strong
-      >.
+      <br />
+      I'm passionate about creating beautiful solutions that solve real problems for users. 
+      That means I don't just start and stop my day in VSCode. 
+      I go out, talk to users, think outside-the-box, and come up with a game plan that solves the problem, with strong opinions loosely held, even if that doesn't involve a single line of code.
     </p>
 
     <div class="mt-12"></div>
-    <h2>Projects</h2>
-
+    <!-- <h2>Projects</h2> -->
+<!-- 
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       {projects.map(project => <Project {project} />)}
-    </div>
+    </div> -->
 
     <div class="mt-12"></div>
-    <h2>Blog</h2>
+    <h2 class="mb-6">Blog</h2>
 
     <div class="flex flex-col gap-4">
       {posts.map(post => <PostRow {post} />)}

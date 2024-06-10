@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content"
 import PostPreview from "../../components/PostPreview.astro"
-import { sortPostsByDate } from "../../lib/date"
 import Base from "../../layouts/Base.astro"
+import { sortPostsByDate } from "../../lib/date"
 
 const posts = sortPostsByDate(await getCollection("blog", ({ data }) => data.isDraft !== true))
 
-const title = "nexxel • blog"
+const title = "Ben Margolius • Blog"
 ---
 
 <Base
@@ -15,7 +15,7 @@ const title = "nexxel • blog"
   image={`https://og.nxl.sh/home/?title=${title}`}
 >
   <main class="prose">
-    <h1>Blog</h1>
+    <h1>My Blog</h1>
 
     <div class="my-8" />
 

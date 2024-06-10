@@ -13,35 +13,23 @@
   "redirects": [
     {
       "source": "/github",
-      "destination": "https://github.com/nexxeln"
+      "destination": "https://github.com/benmarg"
     },
     {
       "source": "/gh",
-      "destination": "https://github.com/nexxeln"
+      "destination": "https://github.com/benmarg"
     },
     {
       "source": "/github/:slug*",
-      "destination": "https://github.com/nexxeln/:slug*"
+      "destination": "https://github.com/benmarg/:slug*"
     },
     {
       "source": "/gh/:slug*",
-      "destination": "https://github.com/nexxeln/:slug*"
+      "destination": "https://github.com/benmarg/:slug*"
     },
     {
-      "source": "/akash",
-      "destination": "https://www.linkedin.com/in/akash-manoj-b3425227b/"
-    },
-    {
-      "source": "/a",
-      "destination": "https://www.linkedin.com/in/akash-manoj-b3425227b/"
-    },
-    {
-      "source": "/krishnaa",
-      "destination": "https://www.linkedin.com/in/krishnaa-nair-9230b7238/"
-    },
-    {
-      "source": "/k",
-      "destination": "https://www.linkedin.com/in/krishnaa-nair-9230b7238/"
+      "source": "/ben",
+      "destination": "https://www.linkedin.com/in/benmarg/"
     }
   ]
 }

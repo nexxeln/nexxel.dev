@@ -1,0 +1,32 @@
+---
+
+import Base from "../../layouts/Base.astro";
+
+// const projects = await getProjects(6)
+
+const title = "Ben Margolius • Resume";
+---
+
+<Base
+  {title}
+  description="Personal website and blog of Ben Margolius"
+  image="https://og.nxl.sh/home"
+>
+  <h1 slot="header-content" class="text-neutral-500">
+    Ben Margolius
+  </h1>
+
+  <main class="prose">
+    <p>
+      Hi! I'm Ben,  a Seattle-based Full Stack developer working day-to-day with  React, Next.js, Typescript, and more! 
+      <br />
+      <br />
+      I'm passionate about creating beautiful solutions that solve real problems for users. That means I don't just start and stop my day in VSCode. I go out, talk to users, think outside-the-box, and come up with a game plan that solves the problem, with strong opinions loosely held, even if that doesn't involve a single line of code.
+    </p>
+
+    <div class="mt-12"></div>
+    <h2>Projects</h2>
+
+    </div>
+  </main>
+</Base>

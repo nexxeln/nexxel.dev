@@ -1,0 +1,280 @@
+---
+title: "Transcribing Large Audio Files using Whisper in Next.js and Serverless"
+description: "Using some cool tooling to transcrbie large audio files using Whisper."
+date: "June 9, 2024"
+---
+
+import Code from "../../components/Code.vue";
+import { createHeading } from "../../components/Heading";
+import Link from "../../components/Link.vue";
+
+export const components = {
+  a: Link,
+  code: Code,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),
+};
+
+In a recent Next project, I had to allow users to upload audio files to my website, and then generate a transcription from that audio file. Turns out audio files are a lot bigger than I thought! That's a problem, since the OpenAI Whisper API is capped at 25mb per request, which ends up being only an hour of audio. Not only that, but transcribing a one hour long audio file takes around 2-3 minutes. There's gotta be a way to let users upload audio files of any length, and speed the process up. Turns out their is!
+
+## <div class="text-2xl">Letting Users Upload Files</div>
+
+![demo](/images/whisper/ui.png)
+
+First off we have to let our users upload audio files to our project. I suggest using [UploadThing](https://uploadthing.com/) for this.
+It's a stupidly easy to use file uploader that comes with a bunch of nice DX features, like pre-built Next.js components, easy hooks to trigger callbacks (onBeforeUploadBegin, onClientUploadComplete, onUploadError, etc...), and more. We'll be using these hooks shortly!
+
+<div class="my-8" />
+If you want to follow along using UploadThing, follow their [quickstart guide](https://uploadthing.com/docs/quickstart)
+and then come back to this guide. Otherwise feel free to use your file uploader of
+choice and follow along with the rest of the guide.
+<div class="my-8" />
+Once you've got UploadThing set up in your project, we'll need to add an audioUploader
+endpoint to the core.ts file that you created in the UploadThing quickstart guide.
+
+```ts
+// core.ts
+export const ourFileRouter = {
+  audioUploader: f({ audio: { maxFileSize: "1GB", maxFileCount: 10 } })
+    .middleware(async ({ req }) => {
+      // This code runs on your server before upload
+      // You might want to do some validation here,
+      // like fetching your user and then pass that info to onUploadComplete
+
+      // Whatever is returned here is accessible
+      // in onUploadComplete as `metadata`
+      return { userId, name, projectId };
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      // This code RUNS ON YOUR SERVER after upload
+      const { userId, name, projectId } = metadata;
+      const audio = api.projects.addAudio({
+        projectId: projectId,
+        uploadedBy: userId,
+        uploadedByName: name,
+        audio: [
+          {
+            url: file.url,
+            key: file.key,
+            name: file.name,
+            type: file.type,
+          },
+        ],
+      });
+      return { uploadedBy: metadata.userId, uploadedByName: metadata.name };
+    }),
+} satisfies FileRouter;
+```
+
+In the example above, you might want to fetch your user from your database, and then pass that info to onUploadComplete. I didn't show specifics here as the exact flow here depends a lot on what your Schema and Auth solution and looks like.
+
+<div class="my-8"/>
+Once we pass down our metadata, we can create a new Audio item in our DB that's attached to our user/project. The idea here is that we are creating the audio file in our database as soon as it's uploaded by the user so that we can update the UI to show the user their UploadedFile. We'll update this Audio ite with the transcription once it's generated!
+<div class="my-8"/>
+Now that we have our audioUploader endpoint set up, we can use it in our frontend. We'll use the UploadThing React component to handle the uploading of the file. 
+<div class="my-8"/>
+```tsx
+// pages/index.tsx
+import { ImageUp } from "lucide-react";
+ 
+ <UploadButton
+    endpoint="audioUploader"
+    headers={{
+      projectid: projectId,
+    }}
+    appearance={{ allowedContent: "hidden", button: "w-auto" }}
+    content={{
+        button: (
+          <>
+            <ImageUp className="mx-2 sm:hidden" size={24} />
+              <span className="hidden p-3 font-bold sm:inline">
+                  Choose File(s)
+              </span>
+          </>
+        ),
+      }}
+      className="w-fit"
+      onClientUploadComplete={async (res) => {
+        void utils.projects.getAudio.invalidate({ projectId });
+          toast({
+            title: "Audio uploaded successfully",
+            description:
+              "Your audio has been uploaded successfully. Please wait for a few seconds while the transcrption is being generated.",
+            });
+            await fetch("/api/transcrbie", {
+              method: "POST",
+              body: JSON.stringify({
+                audioURLs: res.map((file) => file.url),
+              }),
+              }).catch((error: Error) => {
+              toast({
+                title: "Error uploading audio",
+                description: error.message,
+                variant: "destructive",
+              });
+              });
+              toast({
+                title: "Audio transcrbied successfully",
+                description:
+                 "Your audio has been transcribed successfully. Check your file for the transcription.",
+            });
+              await utils.projects.getAudio.invalidate({ projectId });
+            }}
+      onUploadError={(error: Error) => {
+          toast({
+            title: "Error uploading audio",
+            description: error.message,
+            variant: "destructive",
+           });
+        }}
+   />
+```
+Ok let's break down what this code does:
+
+• We're using the audioUploader endpoint we made in the first step to handle the file upload
+
+• We use headers to pass in the projectId to audioUploader that we can use it in our onUploadComplete callback to add the audio to our database
+
+• Using Apperance, Content, and className, we can customize the UI of the UploadThing component to be mobile friendly
+
+• We use onClientUploadComplete to handle the file upload on the client side. First we invalidate the getAudio query to force a re-fetch of the audio data.  Next we hit the /transcrbie endpoint we're about to create to transcribe the audio. Once we sucessfully transcribe the audio, we invalidate the getAudio query again to force a re-fetch of the audio data, this time with the transcription.
+
+## <div class="text-2xl">Creating the /transcribe endpoint</div>
+
+Ok so now the fun part! First things first, we'll create a new folder in our `src/app/api/` directory called `transcribe`. Inside this folder, we'll create a new file called `route.ts`.
+
+Ok so now how do we handle chunking out the audio file? Well, my first thought was to use ffmpeg, a great tool for manipulating audio and video files on the backend. The problem is, ffmpeg is really difficult to get working with Serverless, it's a pretty bloated tool, it has to be in order to offer all the video manipulation features that it does. The problem is, it's so big that it makes it very hard to use it in a serverless environment. So we'll have to find a different way to handle this. Or do we...?
+
+It turns out someone's just solved this problem for us! A recent project that's sprung up, called [StreamPot](https://streampot.io/), allows you to use ffmpeg by hitting their easy-to-use API. And it's free! So we'll use StreamPot to handle our audio chunking. Checkout their [quickstart guide](https://docs.streampot.io/getting-started) to get started, it's super easy, should take your less than 3 minutes to get it up and running in your project!
+
+Once you hav that setup, let's get to creating our endpoint:
+
+```ts
+export const maxDuration = 180; // Make sure you're within the limits of your Vercel project
+
+import openai from "@/lib/openai";
+import { api } from "@/trpc/server";
+import StreamPot from "@streampot/client";
+import { NextResponse, type NextRequest } from "next/server";
+import { type ChatCompletionMessage } from "openai/resources/index.mjs";
+
+const streampot = new StreamPot({
+  secret: process.env.STREAMPOT_API_KEY,
+});
+
+async function chunkAndTranscribeAudio(
+  audioURL: string,
+  prompt: string,
+): Promise<(string | null)[]> {
+  const chunkJob = await streampot
+    .input(audioURL)
+    .outputOptions([
+      `-f segment`,
+      `-segment_time 300`, // Segment time in seconds, adjust if needed
+      `-segment_format mp3`,
+      `-segment_list_size 0`, // No maximum list size
+      `-segment_wrap 0`, // No wrapping
+    ])
+    .output(`temp_%03d.mp3`)
+    .runAndWait();
+
+  const jobId = chunkJob.id;
+  let chunks = [];
+
+  const job = (await streampot.checkStatus(jobId.toString())) as {
+    status: string;
+    outputs: Record<string, string>;
+    };
+    if (job.status === "completed") {
+      chunks = Object.values(job.outputs).map((chunkPath) => chunkPath);
+      break;
+    } else if (job.status === "failed") {
+      throw new Error("StreamPot job failed");
+    }
+
+  const chunkTranscriptions = await Promise.allSettled(
+    chunks.map(async (chunkPath, index) => {
+      const file = await fetch(chunkPath);
+
+      const transcription = await openai.audio.transcriptions.create({
+        file: file,
+        model: "whisper-1",
+        temperature: 0,
+        prompt: prompt,
+      });
+
+      return transcription
+        ? transcription.text
+        : `Failed to transcribe chunk ${index}`;
+    }),
+  );
+
+  return chunkTranscriptions
+    .map((result) => (result.status === "fulfilled" ? result.value : null))
+    .filter((text) => text !== null);
+}
+```
+
+Let's break down this chunkAndTranscribeAudio function:
+
+• We're sending a request to StreamPot to chunk the audio file. We provide the input by passing the audioURL that was returned from UploadThing. We also provide the output options, the important one here is `-segment_time 300`, this tells ffmpeg to split the audio into 300 second chunks. You might want to adjust the value depending on what tier you fall under for [OpenAI's Rate Limits](https://platform.openai.com/docs/guides/rate-limits/usage-tiers?context=tier-four). The smaller the chunks, the faster the transcription will be since we're doing all the transcriptions concurrently using Promise.all. That said you can chew through your rate limits pretty quickly depending on how much audio is getting uploaded to your service. Do the math and pick a reasonable number here.
+
+• Next we send all of the chunks to OpenAI to be transcribed
+
+Now that all the audio chunks are transcribed, we need to join them together into a single transcription. Once we do that, I like to generate a summary of the transcription using GPT. Lastly we update the database with both the transcription and the summary.
+
+```ts
+//add the following below your imports
+type Body = {
+  audioURLs: string[];
+  prompt?: string;
+};
+
+export async function POST(req: NextRequest): Promise<NextResponse> {
+  const body = (await req.json()) as Body;
+  const audioURLs = body.audioURLs;
+  const prompt = body.prompt ?? "Transcribe the following audio:";
+
+  const transcriptions = await Promise.allSettled(
+    audioURLs.map((audioURL) => chunkAndTranscribeAudio(audioURL, prompt)),
+  );
+
+  const joinedTranscription = (
+    transcriptions[0] as PromiseFulfilledResult<(string | null)[]>
+  ).value?.join("\n");
+
+  const systemMessage: ChatCompletionMessage = {
+    role: "system",
+    content:
+      "You are an intelligent AI, your job is to create a 2-3 paragraph summary from a transcription of a conversation generated by Whisper.",
+  };
+
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o",
+    temperature: 0,
+    messages: [
+      systemMessage,
+      {
+        role: "system",
+        content: "Transcription: " + joinedTranscription,
+      },
+    ],
+  });
+
+  await api.projects.updateTranscription({
+    url: audioURLs[0] ?? "",
+    summary: response.choices[0]?.message.content ?? "",
+    transcription: joinedTranscription ?? "",
+  });
+
+  return new NextResponse(JSON.stringify({ message: "success" }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
+```
+
+And that's it! We've made a Next.js serverless endpoint that transcribes audio files using Whisper and GPT. It's a pretty simple setup, but it works well for me. I hope you find it useful too!
