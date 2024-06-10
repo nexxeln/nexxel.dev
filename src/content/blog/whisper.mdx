@@ -67,7 +67,7 @@ export const ourFileRouter = {
 } satisfies FileRouter;
 ```
 
-In the example above, you might want to fetch your user from your database, and then pass that info to onUploadComplete. I didn't show specifics here as the exact flow here depends a lot on what your Schema and Auth solution and looks like.
+In the example above, you'll probably want to add some of your own functionality in thr `middlware` function. For example, you might want to fetch your user from your database, and then pass that info to onUploadComplete. I didn't show specifics here as the exact flow depends a lot on what your Schema and Auth solution and look like.
 
 <div class="my-8"/>
 Once we pass down our metadata, we can create a new Audio item in our DB that's attached to our user/project. The idea here is that we are creating the audio file in our database as soon as it's uploaded by the user so that we can update the UI to show the user their UploadedFile. We'll update this Audio ite with the transcription once it's generated!
