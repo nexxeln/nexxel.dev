@@ -24,7 +24,7 @@ const { Content } = await post.render();
 <Base
   title={title}
   description={description}
-  image={`https://og.nxl.sh/blog/?title=${title}&top=${formatDate(date)}`}
+  image={`https://embed-image.vercel.app/api/blog/?title=${title}&top=${formatDate(date)}`}
 >
   <div class="prose tracking-wide">
     {isDraft && (

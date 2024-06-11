@@ -24,7 +24,7 @@ export default defineConfig({
     defaultStrategy: "viewport"
   },
   server: {
-    port: 3000,
+    port: 7000,
   },
   // @ts-expect-error
   markdown: { shikiConfig: { theme: vesper, wrap: true } },
