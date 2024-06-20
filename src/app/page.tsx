@@ -61,7 +61,7 @@ export default function HomePage() {
             co-founder and cto @&nbsp;
             <Link
               href="https://leapflow.tech"
-              className="text-purple-500 underline underline-offset-4"
+              className="underline underline-offset-4"
             >
               leapflow
             </Link>
@@ -70,9 +70,10 @@ export default function HomePage() {
       </div>
 
       <p className="prose prose-neutral dark:prose-invert">
-        i&apos;m a 19 y/o cs undergrad student. i like shuffling cards and
-        building things. i enjoy language design, web development and i live on
-        the terminal.
+        i&apos;m a 19 y/o cs undergrad student. i love building things and
+        solving problems. i enjoy language design, web development and i live on
+        the terminal. if i&apos;m not coding, i&apos;m probably doing cardistry,
+        watching movies or obsessing over mechanical keyboards.
       </p>
     </main>
   );
