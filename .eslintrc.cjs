@@ -1,28 +1,42 @@
-/* eslint-disable quote-props */
-process.env.ESLINT_TSCONFIG = "tsconfig.json";
-
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  root: true,
-  extends: ["@antfu", "@unocss", "plugin:astro/recommended"],
-  overrides: [
-    {
-      files: ["*"],
-      rules: {
-        quotes: ["error", "double"],
-        "@typescript-eslint/quotes": ["error", "double"],
-        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
-      },
-    },
-    {
-      files: ["*.astro"],
-      parser: "astro-eslint-parser",
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".astro"],
-      },
-    },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true
+  },
+  "plugins": [
+    "@typescript-eslint"
   ],
-};
-
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked"
+  ],
+  "rules": {
+    "@typescript-eslint/array-type": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "inline-type-imports"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ]
+  }
+}
 module.exports = config;
