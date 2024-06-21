@@ -32,7 +32,7 @@ export function GET(request: Request) {
   );
 }
 
-export function calculateDistance(
+function calculateDistance(
   lat1: number,
   lon1: number,
   lat2: number,
