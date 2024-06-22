@@ -17,7 +17,7 @@ type MDXFileData = FrontmatterParseResult & {
   tweetIds: string[];
 };
 
-function parseFrontmatter(fileContent: string): FrontmatterParseResult {
+const parseFrontmatter = (fileContent: string): FrontmatterParseResult => {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
   if (!match) {
@@ -41,23 +41,23 @@ function parseFrontmatter(fileContent: string): FrontmatterParseResult {
   });
 
   return { metadata: metadata as Metadata, content };
-}
+};
 
-function getMDXFiles(dir: string): string[] {
+const getMDXFiles = (dir: string): string[] => {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
-}
+};
 
-function readMDXFile(filePath: string): FrontmatterParseResult {
+const readMDXFile = (filePath: string): FrontmatterParseResult => {
   const rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
-}
+};
 
-function extractTweetIds(content: string): string[] {
+const extractTweetIds = (content: string): string[] => {
   const tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g);
   return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/)?.[0] ?? "") ?? [];
-}
+};
 
-function getMDXData(dir: string): MDXFileData[] {
+const getMDXData = (dir: string): MDXFileData[] => {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
@@ -70,12 +70,12 @@ function getMDXData(dir: string): MDXFileData[] {
       content,
     };
   });
-}
+};
 
-export function getBlogPosts(): MDXFileData[] {
+export const getBlogPosts = (): MDXFileData[] => {
   return getMDXData(path.join(process.cwd(), "posts"));
-}
+};
 
-export function getBlogPostBySlug(slug: string): MDXFileData | null {
+export const getBlogPostBySlug = (slug: string): MDXFileData | null => {
   return getBlogPosts().find((post) => post.slug === slug) ?? null;
-}
+};
