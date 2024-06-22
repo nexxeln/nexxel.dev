@@ -1,5 +1,25 @@
 import Link from "next/link";
 
+function RightArrowIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </svg>
+  );
+}
+
 function WorkIcon() {
   return (
     <svg
@@ -44,7 +64,7 @@ function LocationIcon() {
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="text-left">
       <h1 className="mb-2 text-2xl font-medium tracking-tighter">
         shoubhit dash
       </h1>
@@ -57,15 +77,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">
-            co-founder and cto @&nbsp;
-            <Link
-              href="https://leapflow.tech"
-              className="underline underline-offset-4"
-            >
-              leapflow
-            </Link>
-          </p>
+          <p className="inline-flex">co-founder and cto @ leapflow</p>
         </div>
       </div>
 
@@ -75,6 +87,80 @@ export default function HomePage() {
         the terminal. if i&apos;m not coding, i&apos;m probably doing cardistry,
         watching movies or obsessing over mechanical keyboards.
       </p>
+
+      <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="text-left">
+          <h3 className="mb-4 text-lg font-medium">work</h3>
+
+          <Link
+            href="https://leapflow.tech"
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            leapflow
+          </Link>
+          <p className="mt-2">co-founder and cto (may 2024 - present)</p>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            leading engineering to build ai agents for automating repetitive
+            tasks in existing software
+          </p>
+
+          <div className="mt-6"></div>
+
+          <Link
+            href="https://dimension.dev"
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            dimension
+          </Link>
+          <p className="mt-2">full-stack engineer (nov 2023 - jan 2024)</p>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            contributed to a large-scale t3 stack app. worked on real-time
+            presence and chat features
+          </p>
+        </div>
+
+        <div className="text-left">
+          <h3 className="mb-4 text-lg font-medium">projects</h3>
+          <Link
+            href="https://create.t3.gg/"
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            create-t3-app
+          </Link>
+          <p className="mt-2">creator and maintainer</p>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            popular open-source project for full-stack, typesafe Next.js apps.
+            20k+ stars, 200+ contributors, impacting various industries
+          </p>
+
+          <div className="mt-6"></div>
+
+          <Link
+            href="https://github.com/nexxeln/spotify-voice-control"
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            spotify-voice-control
+          </Link>
+          <p className="mt-2">creator and maintainer</p>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            python-based terminal app for controlling spotify via voice commands
+          </p>
+
+          <div className="mt-6"></div>
+
+          <Link
+            href="https://github.com/nexxeln"
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            all projects →
+          </Link>
+        </div>
+      </div>
     </main>
   );
 }
