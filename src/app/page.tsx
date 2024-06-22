@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getBlogPosts } from "~~/blog";
 
 function WorkIcon() {
   return (
@@ -58,7 +59,7 @@ function ExperienceSection({
 }) {
   return (
     <section className="text-left">
-      <h3 className="mb-6 text-lg font-medium">{title}</h3>
+      <h3 className="mb-6 text-xl font-medium">{title}</h3>
       {items.map((item, index) => (
         <div key={index}>
           <Link
@@ -103,7 +104,7 @@ export default function HomePage() {
       link: "https://create.t3.gg/",
       position: "creator and maintainer",
       description:
-        "popular open-source project for full-stack, typesafe Next.js apps. 20k+ stars, 200+ contributors, impacting various industries",
+        "open-source project for initializing full-stack Next.js apps. 20k+ stars, 200+ contributors",
     },
     {
       name: "spotify-voice-control",
@@ -119,6 +120,14 @@ export default function HomePage() {
       description: "",
     },
   ] satisfies ExperienceItem[];
+
+  const posts = getBlogPosts()
+    .sort(
+      (a, b) =>
+        new Date(b.metadata.date).getTime() -
+        new Date(a.metadata.date).getTime(),
+    )
+    .slice(0, 4);
 
   return (
     <main className="text-left">
@@ -145,9 +154,38 @@ export default function HomePage() {
         watching movies or obsessing over mechanical keyboards.
       </p>
 
-      <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
         <ExperienceSection title="work" items={workItems} />
         <ExperienceSection title="projects" items={projectItems} />
+      </div>
+
+      <h3 className="mb-6 text-xl font-medium">blog</h3>
+      <div className="flex flex-col gap-4">
+        {posts.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="">
+            <div className="flex w-full justify-between">
+              <p className="decoration-neutral-4000 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
+                {post.metadata.title.toLowerCase()}
+              </p>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                {new Date(post.metadata.date)
+                  .toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })
+                  .toLowerCase()}
+              </p>
+            </div>
+          </Link>
+        ))}
+
+        <Link
+          href="/blog"
+          className="decoration-neutral-4000 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
+        >
+          all posts →
+        </Link>
       </div>
     </main>
   );
