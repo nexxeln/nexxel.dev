@@ -122,7 +122,7 @@ export default function HomePage() {
 
   return (
     <main className="text-left">
-      <h1 className="mb-2 text-2xl font-medium tracking-tighter">
+      <h1 className="mb-4 text-2xl font-medium tracking-tighter">
         shoubhit dash
       </h1>
 
