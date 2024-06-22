@@ -15,13 +15,9 @@ html {
 }
 
 .prose a.anchor::before {
-  content: "#";
-  position: absolute;
-  left: -1em;
-  opacity: 0;
-  transition: opacity 0.2s;
+  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'];
 }
 
 .prose a.anchor:hover::before {
-  opacity: 1;
+  @apply opacity-100;
 }
