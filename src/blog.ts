@@ -14,7 +14,6 @@ type FrontmatterParseResult = {
 
 type MDXFileData = FrontmatterParseResult & {
   slug: string;
-  tweetIds: string[];
 };
 
 const parseFrontmatter = (fileContent: string): FrontmatterParseResult => {
@@ -52,21 +51,14 @@ const readMDXFile = (filePath: string): FrontmatterParseResult => {
   return parseFrontmatter(rawContent);
 };
 
-const extractTweetIds = (content: string): string[] => {
-  const tweetMatches = content.match(/<StaticTweet\sid="[0-9]+"\s\/>/g);
-  return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/)?.[0] ?? "") ?? [];
-};
-
 const getMDXData = (dir: string): MDXFileData[] => {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
     const slug = path.basename(file, path.extname(file));
-    const tweetIds = extractTweetIds(content);
     return {
       metadata,
       slug,
-      tweetIds,
       content,
     };
   });
