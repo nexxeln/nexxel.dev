@@ -35,25 +35,27 @@ async function Pre({
   // Extract className from the children code tag
   const codeElement = Children.toArray(children).find(
     (child) => React.isValidElement(child) && child.type === "code",
-  ) as React.ReactElement;
+  ) as React.ReactElement<HTMLPreElement> | undefined;
 
-  const className = codeElement?.props.className;
-  const isCodeBlock = className?.startsWith("language-");
+  const className = codeElement?.props?.className ?? "";
+  const isCodeBlock =
+    typeof className === "string" && className.startsWith("language-");
 
   if (isCodeBlock) {
-    const lang = className?.split(" ")[0]?.split("-")[1];
+    const lang = className.split(" ")[0]?.split("-")[1] ?? "";
 
     if (!lang) {
       return <code {...props}>{children}</code>;
     }
 
-    const html = await codeToHtml(String(codeElement.props.children), {
+    const html = await codeToHtml(String(codeElement?.props.children), {
       lang,
       themes: {
         dark: "vesper",
         light: "vitesse-light",
       },
     });
+
     return <div dangerouslySetInnerHTML={{ __html: html }} />;
   }
 
