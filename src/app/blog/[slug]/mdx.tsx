@@ -1,6 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
+import React from "react";
 import { Children, createElement } from "react";
+import { codeToHtml } from "shiki";
 
 function CustomLink({
   href,
@@ -24,6 +26,39 @@ function CustomLink({
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
   // eslint-disable-next-line @next/next/no-img-element
   return <img alt={props.alt} className="rounded-lg" {...props} />;
+}
+
+async function Pre({
+  children,
+  ...props
+}: React.HtmlHTMLAttributes<HTMLPreElement>) {
+  // Extract className from the children code tag
+  const codeElement = Children.toArray(children).find(
+    (child) => React.isValidElement(child) && child.type === "code",
+  ) as React.ReactElement;
+
+  const className = codeElement?.props.className;
+  const isCodeBlock = className?.startsWith("language-");
+
+  if (isCodeBlock) {
+    const lang = className?.split(" ")[0]?.split("-")[1];
+
+    if (!lang) {
+      return <code {...props}>{children}</code>;
+    }
+
+    const html = await codeToHtml(String(codeElement.props.children), {
+      lang,
+      themes: {
+        dark: "vesper",
+        light: "vitesse-light",
+      },
+    });
+    return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  }
+
+  // If not, return the component as is
+  return <pre {...props}>{children}</pre>;
 }
 
 function slugify(str: string) {
@@ -66,6 +101,7 @@ const components = {
   h4: createHeading(4),
   h5: createHeading(5),
   h6: createHeading(6),
+  pre: Pre,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
