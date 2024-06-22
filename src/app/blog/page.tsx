@@ -9,13 +9,13 @@ export default function BlogPage() {
 
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">blog</h1>
+      <h1 className="mb-12 text-2xl font-medium tracking-tighter">blog</h1>
 
       <div className="flex flex-col gap-8">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
             <div className="flex w-full flex-col gap-y-1">
-              <p className="text-lg font-medium underline underline-offset-4">
+              <p className="text-lg font-medium">
                 {post.metadata.title.toLowerCase()}
               </p>
               <p className="prose prose-neutral dark:prose-invert">
