@@ -75,3 +75,7 @@ function getMDXData(dir: string): MDXFileData[] {
 export function getBlogPosts(): MDXFileData[] {
   return getMDXData(path.join(process.cwd(), "posts"));
 }
+
+export function getBlogPostBySlug(slug: string): MDXFileData | null {
+  return getBlogPosts().find((post) => post.slug === slug) ?? null;
+}
