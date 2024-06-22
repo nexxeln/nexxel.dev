@@ -32,7 +32,7 @@ async function Pre({
   children,
   ...props
 }: React.HtmlHTMLAttributes<HTMLPreElement>) {
-  // Extract className from the children code tag
+  // extract className from the children code tag
   const codeElement = Children.toArray(children).find(
     (child) => React.isValidElement(child) && child.type === "code",
   ) as React.ReactElement<HTMLPreElement> | undefined;
