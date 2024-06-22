@@ -42,7 +42,84 @@ function LocationIcon() {
   );
 }
 
+type ExperienceItem = {
+  name: string;
+  link: string;
+  position: string;
+  description: string;
+};
+
+function ExperienceSection({
+  title,
+  items,
+}: {
+  title: string;
+  items: ExperienceItem[];
+}) {
+  return (
+    <section className="text-left">
+      <h3 className="mb-4 text-lg font-medium">{title}</h3>
+      {items.map((item, index) => (
+        <div key={index}>
+          <Link
+            href={item.link}
+            target="_blank"
+            className="font-medium underline underline-offset-4"
+          >
+            {item.name}
+          </Link>
+          <p className="mt-2">{item.position}</p>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            {item.description}
+          </p>
+          {index !== items.length - 1 && <div className="mt-6"></div>}
+        </div>
+      ))}
+    </section>
+  );
+}
+
 export default function HomePage() {
+  const workItems = [
+    {
+      name: "leapflow",
+      link: "https://leapflow.tech",
+      position: "co-founder and cto (may 2024 - present)",
+      description:
+        "leading engineering to build ai agents for automating repetitive tasks in existing software",
+    },
+    {
+      name: "dimension",
+      link: "https://dimension.dev",
+      position: "full-stack engineer (nov 2023 - jan 2024)",
+      description:
+        "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
+    },
+  ] satisfies ExperienceItem[];
+
+  const projectItems = [
+    {
+      name: "create-t3-app",
+      link: "https://create.t3.gg/",
+      position: "creator and maintainer",
+      description:
+        "popular open-source project for full-stack, typesafe Next.js apps. 20k+ stars, 200+ contributors, impacting various industries",
+    },
+    {
+      name: "spotify-voice-control",
+      link: "https://github.com/nexxeln/spotify-voice-control",
+      position: "creator and maintainer",
+      description:
+        "python-based terminal app for controlling spotify via voice commands",
+    },
+    {
+      name: "all projects →",
+      link: "https://github.com/nexxeln",
+      position: "",
+      description: "",
+    },
+  ] satisfies ExperienceItem[];
+
   return (
     <main className="text-left">
       <h1 className="mb-2 text-2xl font-medium tracking-tighter">
@@ -69,77 +146,8 @@ export default function HomePage() {
       </p>
 
       <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="text-left">
-          <h3 className="mb-4 text-lg font-medium">work</h3>
-
-          <Link
-            href="https://leapflow.tech"
-            target="_blank"
-            className="font-medium underline underline-offset-4"
-          >
-            leapflow
-          </Link>
-          <p className="mt-2">co-founder and cto (may 2024 - present)</p>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
-            leading engineering to build ai agents for automating repetitive
-            tasks in existing software
-          </p>
-
-          <div className="mt-6"></div>
-
-          <Link
-            href="https://dimension.dev"
-            target="_blank"
-            className="font-medium underline underline-offset-4"
-          >
-            dimension
-          </Link>
-          <p className="mt-2">full-stack engineer (nov 2023 - jan 2024)</p>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
-            contributed to a large-scale t3 stack app. worked on real-time
-            presence and chat features
-          </p>
-        </div>
-
-        <div className="text-left">
-          <h3 className="mb-4 text-lg font-medium">projects</h3>
-          <Link
-            href="https://create.t3.gg/"
-            target="_blank"
-            className="font-medium underline underline-offset-4"
-          >
-            create-t3-app
-          </Link>
-          <p className="mt-2">creator and maintainer</p>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
-            popular open-source project for full-stack, typesafe Next.js apps.
-            20k+ stars, 200+ contributors, impacting various industries
-          </p>
-
-          <div className="mt-6"></div>
-
-          <Link
-            href="https://github.com/nexxeln/spotify-voice-control"
-            target="_blank"
-            className="font-medium underline underline-offset-4"
-          >
-            spotify-voice-control
-          </Link>
-          <p className="mt-2">creator and maintainer</p>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
-            python-based terminal app for controlling spotify via voice commands
-          </p>
-
-          <div className="mt-6"></div>
-
-          <Link
-            href="https://github.com/nexxeln"
-            target="_blank"
-            className="font-medium underline underline-offset-4"
-          >
-            all projects →
-          </Link>
-        </div>
+        <ExperienceSection title="work" items={workItems} />
+        <ExperienceSection title="projects" items={projectItems} />
       </div>
     </main>
   );
