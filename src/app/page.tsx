@@ -58,13 +58,13 @@ function ExperienceSection({
 }) {
   return (
     <section className="text-left">
-      <h3 className="mb-4 text-lg font-medium">{title}</h3>
+      <h3 className="mb-6 text-lg font-medium">{title}</h3>
       {items.map((item, index) => (
         <div key={index}>
           <Link
             href={item.link}
             target="_blank"
-            className="font-medium underline underline-offset-4"
+            className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
           >
             {item.name}
           </Link>

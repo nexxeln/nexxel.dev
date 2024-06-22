@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { MDX } from "~~/app/blog/[slug]/mdx";
 import { getBlogPostBySlug } from "~~/blog";
 
 export default function Post({ params }: { params: { slug: string } }) {
@@ -47,7 +48,7 @@ export default function Post({ params }: { params: { slug: string } }) {
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
-        {post.content}
+        <MDX source={post.content} />
       </article>
     </section>
   );

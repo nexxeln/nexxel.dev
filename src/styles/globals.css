@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  min-width: 360px;
+}
+
+.prose a:not(.anchor) {
+  @apply decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600;
+}
+
+.prose a.anchor {
+  @apply relative no-underline;
+}
+
+.prose a.anchor::before {
+  content: "#";
+  position: absolute;
+  left: -1em;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.prose a.anchor:hover::before {
+  opacity: 1;
+}
