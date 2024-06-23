@@ -1,6 +1,26 @@
 import Link from "next/link";
 import { getBlogPosts } from "~~/blog";
 
+function UpRightArrowIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <path d="M7 7h10v10" />
+      <path d="M7 17 17 7" />
+    </svg>
+  );
+}
+
 function WorkIcon() {
   return (
     <svg
@@ -187,6 +207,43 @@ export default function HomePage() {
           all posts →
         </Link>
       </div>
+
+      <h3 className="mt-8 text-xl font-medium">links</h3>
+      <ul className="font-sm mt-4 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://x.com/nexxeln"
+          >
+            <p className="mr-1 h-7">x.com</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/nexxeln"
+          >
+            <p className="mr-1 h-7">github</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/shoubhit-dash/"
+          >
+            <p className="mr-1 h-7">linkedin</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+      </ul>
     </main>
   );
 }
