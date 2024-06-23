@@ -215,6 +215,17 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
+            href="mailto:shoubhit2005@gmail.com"
+          >
+            <p className="mr-1 h-7">email</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
             href="https://x.com/nexxeln"
           >
             <p className="mr-1 h-7">x.com</p>
