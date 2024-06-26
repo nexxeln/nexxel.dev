@@ -1,4 +1,5 @@
 import { Link } from "next-view-transitions";
+import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { getBlogPosts } from "~~/blog";
 
 export default function BlogPage() {
@@ -9,7 +10,12 @@ export default function BlogPage() {
 
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tighter">blog</h1>
+      <h1 className="text-2xl font-medium tracking-tighter">blog</h1>
+
+      <div className="my-8">
+        <p className="mb-4 font-medium">subscribe for updates. no spam.</p>
+        <NewsletterForm />
+      </div>
 
       <div className="flex flex-col gap-8">
         {posts.map((post) => (
