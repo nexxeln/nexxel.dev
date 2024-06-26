@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import React from "react";
 import { Children, createElement } from "react";
 import { codeToHtml } from "shiki";

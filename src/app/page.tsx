@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { Link as ViewTransitionLink } from "next-view-transitions";
+import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
 
 function UpRightArrowIcon() {
@@ -183,11 +182,7 @@ export default function HomePage() {
       <h3 className="mb-6 text-xl font-medium">blog</h3>
       <div className="flex flex-col gap-4">
         {posts.map((post) => (
-          <ViewTransitionLink
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className=""
-          >
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="">
             <div className="flex w-full justify-between">
               <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
                 {post.metadata.title.toLowerCase()}
@@ -202,7 +197,7 @@ export default function HomePage() {
                   .toLowerCase()}
               </p>
             </div>
-          </ViewTransitionLink>
+          </Link>
         ))}
 
         <Link
