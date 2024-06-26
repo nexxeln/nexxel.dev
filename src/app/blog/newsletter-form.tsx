@@ -31,7 +31,7 @@ export function SubmitButton() {
       className="rounded-md bg-transparent p-1 text-black transition-colors duration-300 ease-in-out hover:bg-black hover:text-white focus:outline-none focus:ring-2 focus:ring-black disabled:cursor-not-allowed disabled:bg-neutral-400 disabled:text-neutral-600 dark:text-white dark:hover:bg-neutral-100 dark:hover:text-black dark:focus:ring-white"
       disabled={pending}
     >
-      {pending ? <SvgSpinners3DotsMove /> : "Subscribe"}
+      {pending ? <SvgSpinners3DotsMove /> : "subscribe"}
     </button>
   );
 }
