@@ -32,35 +32,35 @@ const title = "nexxel • home";
       >
       <br />
 
-      Hi there, I'm <strong>Shoubhit</strong> aka <strong>nexxel</strong>. I'm an
-      19 y/o CS undergrad student. I like <strong
+      hi there, i'm <strong>shoubhit</strong> aka <strong>nexxel</strong>. i'm an
+      19 y/o cs undergrad student. i like <strong
         >shuffling cards</strong
-      > and <strong>building things</strong>. I enjoy <strong
+      > and <strong>building things</strong>. i enjoy <strong
         >language design</strong
-      >, <strong>web development</strong> and I live on the <strong
+      >, <strong>web development</strong> and i live on the <strong
         >terminal</strong
       >.
     </p>
 
-<p>
-  I'm currently working on <strong><a href="https://leapflow.tech" class="underline decoration-neutral-600 underline-offset-4 transition-colors focus:(decoration-neutral-500 outline-offset-6) hover:decoration-neutral-500">Leapflow</a></strong>, a platform for automating workflows and repetitive tasks by integrating with existing software and tools.
-</p>
+    <p>
+      i'm currently working on <strong><a href="https://leapflow.tech" class="underline decoration-neutral-600 underline-offset-4 transition-colors focus:(decoration-neutral-500 outline-offset-6) hover:decoration-neutral-500">leapflow</a></strong>, where i'm leading the engineering team to build ai agents for automating repetitive tasks in existing software.
+    </p>
 
     <div class="mt-12"></div>
-    <h2>Projects</h2>
+    <h2>projects</h2>
 
     <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
       {projects.map(project => <Project {project} />)}
     </div>
 
     <div class="mt-12"></div>
-    <h2>Blog</h2>
+    <h2>blog</h2>
 
     <div class="flex flex-col gap-4">
       {posts.map(post => <PostRow {post} />)}
 
       <span>
-        <Link href="/blog">All posts →</Link>
+        <Link href="/blog">all posts →</Link>
       </span>
     </div>
   </main>

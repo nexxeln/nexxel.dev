@@ -12,8 +12,8 @@ const { post: { data: { title, date }, slug } } = Astro.props
 
 <article class="flex justify-between">
   <Link href={`/blog/${slug}`}>
-    <span class="font-medium text-neutral-100">{title}</span>
+    <span class="font-medium text-neutral-100">{title.toLowerCase()}</span>
   </Link>
 
-  <span>{formatDate(date)}</span>
+  <span>{formatDate(date).toLowerCase()}</span>
 </article>

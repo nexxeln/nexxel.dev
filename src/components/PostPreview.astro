@@ -12,10 +12,10 @@ const { post: { data: { title, description, date }, slug } } = Astro.props
 
 <article class="flex flex-col gap-3">
   <Link href={`/blog/${slug}`}>
-    <span class="text-(lg imp) font-semibold">{title}</span>
+    <span class="text-(lg imp) font-semibold">{title.toLowerCase()}</span>
   </Link>
 
-  <span>{description}</span>
+  <span>{description.toLowerCase()}</span>
 
-  <span>{formatDate(date)}</span>
+  <span>{formatDate(date).toLowerCase()}</span>
 </article>
