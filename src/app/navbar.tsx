@@ -37,7 +37,8 @@ export function Navbar() {
                   href={path}
                   className={clx(
                     "relative flex px-2 py-1 align-middle transition-all hover:text-neutral-800 dark:hover:text-neutral-200",
-                    isActive && "underline decoration-wavy underline-offset-4",
+                    isActive &&
+                      "underline decoration-wavy decoration-[0.1em] underline-offset-4",
                   )}
                 >
                   {name}
