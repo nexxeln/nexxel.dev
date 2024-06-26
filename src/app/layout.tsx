@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { clx } from "~~/utils";
 import { Navbar } from "~~/app/navbar";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata = {
   title: "Create T3 App",
@@ -17,20 +18,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={clx(
-        "bg-neutral-100 text-black dark:bg-neutral-950 dark:text-white",
-        GeistSans.variable,
-        GeistMono.variable,
-      )}
-    >
-      <body className="mx-4 mb-40 mt-8 flex max-w-2xl flex-col antialiased md:flex-row lg:mx-auto">
-        <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
-          <Navbar />
-          {children}
-        </main>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html
+        lang="en"
+        className={clx(
+          "bg-neutral-100 text-black dark:bg-neutral-950 dark:text-white",
+          GeistSans.variable,
+          GeistMono.variable,
+        )}
+      >
+        <body className="mx-4 mb-40 mt-8 flex max-w-2xl flex-col antialiased md:flex-row lg:mx-auto">
+          <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
+            <Navbar />
+            {children}
+          </main>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

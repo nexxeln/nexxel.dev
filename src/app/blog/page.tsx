@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
 
 export default function BlogPage() {
