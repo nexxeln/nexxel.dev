@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content"
+import { sortPostsByDate } from "../lib/date"
+import Link from "../components/Link.vue"
+import Base from "../layouts/Base.astro"
+import Project from "../components/Project.astro"
+import PostRow from "../components/PostRow.astro"
+import { getProjects } from "../lib/projects"
+
+// const projects = await getProjects(6)
+const projects = await getProjects()
+const posts = sortPostsByDate(
+  await getCollection("blog", ({ data }) => data.isDraft !== true),
+).slice(0, 4)
+
+const title = "nexxel • home";
+---
+
+<Base
+  {title}
+  description="Personal website and blog of Shoubhit Dash aka nexxel."
+  image="https://og.nxl.sh/home"
+>
+  <h1 slot="header-content" class="text-neutral-500">
+    nexxel
+  </h1>
+
+  <main class="prose">
+    <p>
+      <small class="text-neutral-500"
+        >IPA &nbsp; /ˈnɛks ɛl/ — no meaning, i made it up</small
+      >
+      <br />
+
+      hi there, i'm <strong>shoubhit</strong> aka <strong>nexxel</strong>. i'm an
+      19 y/o cs undergrad student. i like <strong
+        >shuffling cards</strong
+      > and <strong>building things</strong>. i enjoy <strong
+        >language design</strong
+      >, <strong>web development</strong> and i live on the <strong
+        >terminal</strong
+      >.
+    </p>
+
+    <p>
+      i'm currently working on <strong><a href="https://leapflow.tech" class="underline decoration-neutral-600 underline-offset-4 transition-colors focus:(decoration-neutral-500 outline-offset-6) hover:decoration-neutral-500">leapflow</a></strong>, where i'm leading the engineering team to build ai agents for automating repetitive tasks in existing software.
+    </p>
+
+    <div class="mt-12"></div>
+    <h2>projects</h2>
+
+    <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+      {projects.map(project => <Project {project} />)}
+    </div>
+
+    <div class="mt-12"></div>
+    <h2>blog</h2>
+
+    <div class="flex flex-col gap-4">
+      {posts.map(post => <PostRow {post} />)}
+
+      <span>
+        <Link href="/blog">all posts →</Link>
+      </span>
+    </div>
+  </main>
+</Base>
