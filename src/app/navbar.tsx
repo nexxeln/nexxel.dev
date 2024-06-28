@@ -30,7 +30,7 @@ export function Navbar() {
             {Object.entries(navItems).map(([path, { name }]) => {
               const isActive =
                 pathname === path ||
-                (pathname.startsWith(path) && pathname[path.length] === "/");
+                (pathname?.startsWith(path) && pathname[path.length] === "/");
               return (
                 <Link
                   key={path}
