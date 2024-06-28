@@ -31,7 +31,7 @@ export default function Post({ params }: { params: { slug: string } }) {
         }}
       />
 
-      <h1 className="title mb-2 max-w-[650px] text-2xl font-medium tracking-tighter">
+      <h1 className="title mb-2 max-w-[650px] text-3xl font-medium tracking-tighter">
         {post.metadata.title}
       </h1>
       <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
