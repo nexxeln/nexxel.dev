@@ -1,6 +1,54 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { MDX } from "~~/app/blog/[slug]/mdx";
 import { getBlogPostBySlug } from "~~/blog";
+
+const formatDate = (date: string) => {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata | undefined> {
+  const post = getBlogPostBySlug(params.slug);
+  if (!post) {
+    return;
+  }
+
+  const publishedTime = formatDate(post.metadata.date);
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.description,
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.description,
+      publishedTime,
+      type: "article",
+      url: `https://www.nexxel.dev/blog/${post.slug}`,
+      images: [
+        {
+          url: `https://www.nexxel.dev/og?title=${post.metadata.title}&top=${publishedTime}`,
+        },
+      ],
+    },
+    twitter: {
+      title: post.metadata.title,
+      description: post.metadata.description,
+      card: "summary_large_image",
+      creator: "@nexxeln",
+      images: [
+        `https://www.nexxel.dev/og?title=${post.metadata.title}&top=${publishedTime}`,
+      ],
+    },
+  };
+}
 
 export default function Post({ params }: { params: { slug: string } }) {
   const post = getBlogPostBySlug(params.slug);
@@ -36,11 +84,7 @@ export default function Post({ params }: { params: { slug: string } }) {
       </h1>
       <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {new Date(post.metadata.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
+          {formatDate(post.metadata.date)}
         </p>
         {/* <Suspense fallback={<p className="h-5" />}>
           <Views slug={post.slug} />

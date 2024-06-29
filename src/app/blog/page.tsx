@@ -2,6 +2,11 @@ import { Link } from "next-view-transitions";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { getBlogPosts } from "~~/blog";
 
+export const metadata = {
+  title: "Blog",
+  description: "Writings on programming, computer science, and more.",
+};
+
 export default function BlogPage() {
   const posts = getBlogPosts().sort(
     (a, b) =>
