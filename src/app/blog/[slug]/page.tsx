@@ -37,7 +37,7 @@ export async function generateMetadata({
       url: `https://www.nexxel.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://www.nexxel.dev/og?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
         },
       ],
     },
@@ -47,7 +47,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       creator: "@nexxeln",
       images: [
-        `https://www.nexxel.dev/og?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
@@ -72,7 +72,9 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://nexxel.dev/og?title=${post.metadata.title}`,
+            image: `https://nexxel.dev/og/blog?title=${post.metadata.title}&top=${formatDate(
+              post.metadata.date,
+            )}`,
             url: `https://nexxel.dev/blog/${post.slug}`,
             author: {
               "@type": "Person",

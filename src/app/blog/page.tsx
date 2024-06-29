@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Link } from "next-view-transitions";
 import { Suspense } from "react";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
@@ -5,9 +6,16 @@ import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
 import { redis } from "~~/lib/redis";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
   description: "Writings on programming, computer science, and more.",
+  openGraph: {
+    images: [
+      {
+        url: "https://www.nexxel.dev/og/home?title=nexxel's blog",
+      },
+    ],
+  },
 };
 
 export default function BlogPage() {

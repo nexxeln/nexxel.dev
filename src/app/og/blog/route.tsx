@@ -4,12 +4,12 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-const geistBold = fetch(new URL("./Geist-Bold.otf", import.meta.url)).then(
+const geistBold = fetch(new URL("../Geist-Bold.otf", import.meta.url)).then(
   (res) => res.arrayBuffer(),
 );
 
 const geistMonoRegular = fetch(
-  new URL("./GeistMono-Regular.otf", import.meta.url),
+  new URL("../GeistMono-Regular.otf", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export async function GET(request: Request) {
@@ -100,7 +100,7 @@ export async function GET(request: Request) {
                 nexxel.dev
               </p>
               <img
-                src="https://og.nxl.sh/nexxel.jpg"
+                src="https://www.nexxel.dev/nexxel.jpg"
                 alt="nexxel's avatar"
                 width={70}
                 height={70}

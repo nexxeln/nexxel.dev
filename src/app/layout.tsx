@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     siteName: "Shoubhit Dash",
     locale: "en_US",
     type: "website",
+    images: ["https://www.nexxel.dev/og/home"],
   },
   robots: {
     index: true,
