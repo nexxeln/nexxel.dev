@@ -124,7 +124,7 @@ export default function HomePage() {
       link: "https://create.t3.gg/",
       position: "creator and maintainer",
       description:
-        "open-source project for initializing full-stack Next.js apps. 20k+ stars, 200+ contributors",
+        "open-source project for initializing full-stack next.js apps. 24k+ stars, 200+ contributors",
     },
     {
       name: "spotify-voice-control",
