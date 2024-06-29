@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { MDX } from "~~/app/blog/[slug]/mdx";
+import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPostBySlug } from "~~/blog";
+import { redis } from "~~/lib/redis";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -86,9 +89,9 @@ export default function Post({ params }: { params: { slug: string } }) {
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.date)}
         </p>
-        {/* <Suspense fallback={<p className="h-5" />}>
+        <Suspense>
           <Views slug={post.slug} />
-        </Suspense> */}
+        </Suspense>
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
@@ -96,4 +99,23 @@ export default function Post({ params }: { params: { slug: string } }) {
       </article>
     </section>
   );
+}
+
+async function Views({ slug }: { slug: string }) {
+  // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+  const viewsData = (await redis.get("views")) as {
+    slug: string;
+    views: number;
+  }[];
+
+  const postViews = viewsData.find((view) => view.slug === slug);
+  if (postViews) {
+    postViews.views += 1;
+  } else {
+    viewsData.push({ slug, views: 1 });
+  }
+
+  await redis.set("views", JSON.stringify(viewsData));
+
+  return <ViewCounter slug={slug} allViews={viewsData} />;
 }
