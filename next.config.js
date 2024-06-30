@@ -7,9 +7,6 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const config = {
   transpilePackages: ["next-mdx-remote"],
-  experimental: {
-    ppr: true,
-  },
 };
 
 export default config;
