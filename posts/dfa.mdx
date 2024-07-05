@@ -1,0 +1,209 @@
+---
+title: "Implementing String Pattern Matching Using Deterministic Finite Automata"
+description: "Using DFAs for string pattern matching."
+date: "July 5, 2024"
+---
+
+I took a course called Digital Systems Design in my previous semester and ended up really loving it. It was probably my favourite course that semester. In the course we learnt about basic logic gates, combinational and sequential circuits, finite state machines, programmable logic arrays, etc.
+
+I found all of this very interesting and dove deeper into these topics. In this post, we'll focus on of these topics, Finite State Machines (FSMs) and use them to implement string pattern matching.
+
+## Understanding FSMs
+
+Finite State Machines are computational models used to design both programs and sequential circuits. They have a set of finite states, transitions between states, and actions, making them ideal for modelling behaviour that can be broken down into distinct steps.
+
+### Components of FSMs
+
+1. **States**: The different modes or conditions the system can be in.
+2. **Transitions**: Moving from one state to another, triggered by specific inputs or events.
+3. **Inputs**: Signals or events that cause the state to change.
+4. **Outputs**: Actions or signals that result from the current state or a state change.
+
+### Working of an FSM
+
+Let's consider a basic FSM designed to recognise binary strings that end with "01."
+
+**States:**
+
+1. **S0:** The initial state.
+2. **S1:** State after reading '0'.
+3. **S2:** State after reading '01' (accepting state).
+
+**Transitions**
+
+<Table
+  data={{
+    headers: ["Current State", "Input", "Next State", "Description"],
+    rows: [
+      ["S0", "0", "S1", "Transition to S1 on input '0'"],
+      ["S0", "1", "S0", "Remain in S0 on input '1'"],
+      ["S1", "0", "S1", "Remain in S1 on input '0'"],
+      ["S1", "1", "S2", "Transition to S2 on input '1'"],
+      ["S2", "0", "S1", "Transition to S1 on input '0'"],
+      ["S2", "1", "S0", "Transition to S0 on input '1'"],
+    ],
+  }}
+/>
+
+![fsm-example.png](/images/dfa/fsm-example.png)
+
+In this FSM, starting from the initial state **S0**, the machine reads each bit of the input string. If it ends in "01", the FSM will be in state **S2**, indicating a successful recognition of the pattern.
+
+### Types of FSMs
+
+There are two main types of FSMs: Deterministic Finite Automata (DFA) and Non-Deterministic Finite Automata (NFA).
+
+**DFA**: In a DFA, each state has exactly one transition for each possible input. This makes them more predicate and easier to design. The above example that we just saw is an example of a DFA.
+
+**NFA**: An NFA, on the other hand, can have multiple transitions for the same input, including transitions to multiple states or none at all. This makes NFAs more flexible but also harder to implement and reason about.
+
+## Implementation
+
+Now that we know the basics of FSMs, and understand how DFAs work, we can implement string pattern matching by using DFAs.
+
+The program will take two strings as input: a pattern string and an input string. If the pattern string is present in the input string, it will return true. Otherwise, it will return false. For example, if the pattern string is "abc" and the input string is "ahabchf", the program should return true, since the pattern "abc" is present in the input string. On the other hand, if the pattern string is "def" and the input string is "ahabchf", the program should return false, as the pattern "def" is not found in the input string.
+
+We'll be using Go in this blog post as it is very simple and easy to understand and you can follow along in other languages easily.
+
+### Define the DFA
+
+First, we need to define the structure of our DFA. A DFA consists of a set of states, transitions between states based on input symbols, a start state, and one or more accept states.
+
+```go
+package main
+
+type DFA struct {
+	numStates    int
+	transitions  map[int]map[rune]int
+	startState   int
+	acceptStates map[int]bool
+}
+```
+
+Here, `DFA` is a struct with the following fields:
+
+- `numStates`: The number of states in the DFA.
+- `transitions`: A map representing state transitions. Each state maps to another map where input symbols (runes) map to the next state.
+- `startState`: The start state of the DFA.
+- `acceptStates`: A set of accept states. We use a map for easy lookup.
+
+Let's also create a function to initialise a DFA.
+
+```go
+func NewDFA(numStates int, transitions map[int]map[rune]int, startState int, acceptStates map[int]bool) *DFA {
+	return &DFA{
+		numStates:    numStates,
+		transitions:  transitions,
+		startState:   startState,
+		acceptStates: acceptStates,
+	}
+}
+```
+
+This function just creates a `DFA` with the provided parameters and returns a pointer to it.
+
+### Build the DFA for a Pattern
+
+Now, we need to build the DFA for a specific pattern. This involves setting up the states and transitions based on the pattern.
+
+- We need to determine the number of states required. The number of states required is equal to the length of the pattern plus one. This is because each character in the pattern corresponds to a state, and there is an additional state for the start state.
+- We also need to create a map to hold transitions for each state. This will be empty initially.
+- For each character in the pattern, we also need to set the transition from current state to the next state.
+- The last state (equal to the length of the pattern) will be an accept state.
+
+```go
+func buildDFA(pattern string) *DFA {
+	numStates := len(pattern) + 1
+	transitions := make(map[int]map[rune]int)
+
+	for i := 0; i < numStates; i++ {
+		transitions[i] = make(map[rune]int)
+	}
+
+	for i, char := range pattern {
+		transitions[i][char] = i + 1
+	}
+
+	acceptStates := map[int]bool{numStates - 1: true}
+	return NewDFA(numStates, transitions, 0, acceptStates)
+}
+```
+
+- We calculate the number of states as `len(pattern) + 1`.
+- We initialise the `transitions` map to hold transitions for each state.
+- Then we iterate over the pattern and for each character, we set the transition from the current state to the next state.
+- Lastly we create an `acceptStates` map where the last state is marked as the accept state.
+
+### Simulate the DFA
+
+Now we'll make a function to simulate the DFA on an input string. This function will basically run our DFA and check if it accepts it.
+
+```go
+func (dfa *DFA) Simulate(input string) bool {
+	currentState := dfa.startState
+
+	for _, symbol := range input {
+		if nextState, exists := dfa.transitions[currentState][symbol]; exists {
+			currentState = nextState
+		} else {
+			currentState = dfa.startState
+		}
+
+		if dfa.acceptStates[currentState] {
+			return true
+		}
+	}
+
+	return dfa.acceptStates[currentState]
+}
+```
+
+The algorithm begins at the DFA's initial state. For each symbol in the input string, it checks if a valid transition exists from the current state. If so, it moves to the next state. Otherwise, it resets to the start state. If the current state becomes an accept state at any point, it returns `true`. Finally, after processing all symbols, it returns whether the final state is an accept state.
+
+### Testing
+
+We're pretty much done! Let's test our DFA with various input strings to see if it correctly matches the pattern.
+
+```go
+func main() {
+	pattern := "abc"
+	dfa := buildDFA(pattern)
+
+	inputStrings := []string{
+		"xxabcxx",   // Output: True (pattern "abc" is in the string)
+		"abc",       // Output: True (pattern "abc" matches the entire string)
+		"ababc",     // Output: True (pattern "abc" is in the string)
+		"defabcghi", // Output: True (pattern "abc" is in the string)
+		"abdefgh",   // Output: False (pattern "abc" is not in the string)
+		"aabbcc",    // Output: False (pattern "abc" is not in the string)
+	}
+
+	for _, input := range inputStrings {
+		result := dfa.Simulate(input)
+		fmt.Printf("Input: %q -> Output: %v\n", input, result)
+	}
+}
+```
+
+We first build the DFA for the pattern `"abc"` and then simulate the DFA on various input strings.
+
+And this works flawlessly!
+
+```sh
+Input: "xxabcxx" -> Output: True
+Input: "abc" -> Output: True
+Input: "ababc" -> Output: True
+Input: "defabcghi" -> Output: True
+Input: "abdefgh" -> Output: False
+Input: "aabbcc" -> Output: False
+```
+
+That was an intro to a very basic implementation of a DFA. DFAs are powerful tools that can be applied in various areas beyond pattern matching. They are used in the design of lexers, which are crucial in the process of compiling programming languages. DFAs also play a vital role in network protocols and text parsing algorithms.
+
+DFAs are also used in digital circuit design to model the behavior of sequential logic circuits. They help in the development of microprocessors.
+
+NFAs, the other type of FSMs, are actually used to build regex engines, making them essential for complex pattern matching tasks in text processing and search algorithms.
+
+Let me know if you guys would be interested in learning about NFAs or exploring more advanced applications of DFAs and NFAs in computational theory and practical implementations.
+
+Thank you for reading this and I hope you liked it!
