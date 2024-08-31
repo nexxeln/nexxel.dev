@@ -1,5 +1,6 @@
 const getAccessToken = async () => {
   const response = await fetch("https://accounts.spotify.com/api/token", {
+    cache: "no-store",
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -20,6 +21,7 @@ export const getNowPlaying = async () => {
   const response = await fetch(
     "https://api.spotify.com/v1/me/player/currently-playing",
     {
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
