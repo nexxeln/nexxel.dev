@@ -25,18 +25,22 @@ export default function BlogPage() {
   );
 
   return (
-    <section>
+    <section className="space-y-12">
       <h1 className="text-2xl font-medium tracking-tighter">blog</h1>
 
-      <div className="my-8">
-        <p className="mb-4 font-medium">subscribe for updates. no spam.</p>
+      <div className="space-y-6">
+        <p className="font-medium">subscribe for updates. no spam.</p>
         <NewsletterForm />
       </div>
 
-      <div className="flex flex-col gap-8">
+      <div className="space-y-12">
         {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
-            <div className="flex w-full flex-col gap-y-1">
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group block"
+          >
+            <div className="flex w-full flex-col space-y-3">
               <p className="text-lg font-medium group-hover:underline group-hover:decoration-neutral-400 group-hover:underline-offset-4 group-hover:dark:decoration-neutral-600">
                 {post.metadata.title.toLowerCase()}
               </p>
@@ -63,6 +67,7 @@ export default function BlogPage() {
     </section>
   );
 }
+
 async function Views({ slug }: { slug: string }) {
   // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
   const allViews = (await redis.get("views")) as {

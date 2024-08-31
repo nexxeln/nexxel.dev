@@ -79,9 +79,10 @@ function ExperienceSection({
 }) {
   return (
     <section className="text-left">
-      <h3 className="mb-6 text-xl font-medium">{title}</h3>
+      <h3 className="mb-8 text-xl font-medium">{title}</h3>
+
       {items.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="mb-8">
           <a
             href={item.link}
             target="_blank"
@@ -89,11 +90,12 @@ function ExperienceSection({
           >
             {item.name}
           </a>
-          <p className="mt-2">{item.position}</p>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+
+          <p className="mt-3">{item.position}</p>
+
+          <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             {item.description}
           </p>
-          {index !== items.length - 1 && <div className="mt-6"></div>}
         </div>
       ))}
     </section>
@@ -151,36 +153,36 @@ export default function HomePage() {
 
   return (
     <main className="text-left">
-      <h1 className="mb-4 text-2xl font-medium tracking-tighter">
+      <h1 className="mb-6 text-2xl font-medium tracking-tighter">
         shoubhit dash
       </h1>
 
-      <div className="mb-4 flex flex-col gap-1">
-        <div className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300">
+      <div className="mb-6 flex flex-col gap-2">
+        <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <LocationIcon />
           <p>chennai, india</p>
         </div>
 
-        <div className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300">
+        <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
           <p className="inline-flex">co-founder and cto @ leapflow</p>
         </div>
       </div>
 
-      <p className="prose prose-neutral dark:prose-invert">
+      <p className="prose prose-neutral mb-10 dark:prose-invert">
         i&apos;m a 19 y/o cs undergrad student. i love building things and
-        solving problems. i enjoy language design, web development and i live on
-        the terminal. if i&apos;m not coding, i&apos;m probably doing cardistry,
-        watching movies or obsessing over mechanical keyboards.
+        solving problems. i enjoy language design, theoretical computer science
+        and i live on the terminal. if i&apos;m not coding, i&apos;m probably
+        doing cardistry, watching movies or obsessing over mechanical keyboards.
       </p>
 
-      <div className="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
         <ExperienceSection title="work" items={workItems} />
         <ExperienceSection title="projects" items={projectItems} />
       </div>
 
-      <h3 className="mb-6 text-xl font-medium">blog</h3>
-      <div className="flex flex-col gap-4">
+      <h3 className="mb-8 text-xl font-medium">blog</h3>
+      <div className="flex flex-col gap-6">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="">
             <div className="flex w-full justify-between">
@@ -202,14 +204,14 @@ export default function HomePage() {
 
         <Link
           href="/blog"
-          className="decoration-neutral-4000 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
+          className="decoration-neutral-4000 mt-4 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
         >
           all posts →
         </Link>
       </div>
 
-      <h3 className="mt-8 text-xl font-medium">links</h3>
-      <ul className="font-sm mt-4 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0 dark:text-neutral-300">
+      <h3 className="mb-6 mt-12 text-xl font-medium">links</h3>
+      <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
@@ -217,7 +219,7 @@ export default function HomePage() {
             target="_blank"
             href="mailto:shoubhit2005@gmail.com"
           >
-            <p className="mr-1 h-7">email</p>
+            <p className="mr-2 h-7">email</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -228,7 +230,7 @@ export default function HomePage() {
             target="_blank"
             href="https://x.com/nexxeln"
           >
-            <p className="mr-1 h-7">x.com</p>
+            <p className="mr-2 h-7">x.com</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -239,7 +241,7 @@ export default function HomePage() {
             target="_blank"
             href="https://github.com/nexxeln"
           >
-            <p className="mr-1 h-7">github</p>
+            <p className="mr-2 h-7">github</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -250,7 +252,7 @@ export default function HomePage() {
             target="_blank"
             href="https://www.linkedin.com/in/shoubhit-dash/"
           >
-            <p className="mr-1 h-7">linkedin</p>
+            <p className="mr-2 h-7">linkedin</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -261,7 +263,7 @@ export default function HomePage() {
             target="_blank"
             href="https://cal.com/nexxel"
           >
-            <p className="mr-1 h-7">book a call</p>
+            <p className="mr-2 h-7">book a call</p>
             <UpRightArrowIcon />
           </a>
         </li>
