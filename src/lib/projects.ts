@@ -23,34 +23,34 @@ export type Project = z.infer<typeof projectSchema>;
 export async function getProjects(): Promise<Project[]> {
   return [
     {
-      repo: "create-t3-app",
-      link: "https://github.com/nexxeln/create-t3-app",
-      description: "the best way to start a full-stack, typesafe next.js app",
+      repo: "ferresys",
+      link: "https://github.com/davidadarme/ferresys",
+      description: "a hardware store saas built with pern stack and devops/agile/aws methodologies",
     },
-    {
-      repo: "nexxel.dev",
-      link: "https://github.com/nexxeln/nexxel.dev",
-      description: "boring personal site built with astro",
-    },
-    {
-      repo: "license-generator",
-      link: "https://github.com/nexxeln/license-generator",
-      description: "create licenses for your projects right from your terminal",
-    },
-    {
-      repo: "spotify-voice-control",
-      link: "https://github.com/nexxeln/spotify-voice-control",
-      description: "voice control for spotify through the terminal",
-    },
-    {
-      repo: "hackernews",
-      link: "https://github.com/nexxeln/hackernews",
-      description: "hacker news clone made with solidstart and tRPC",
-    },
-    {
-      repo: "dots",
-      link: "https://github.com/nexxeln/dots",
-      description: "my dotfiles for macos",
-    },
+    // {
+    //   repo: "nexxel.dev",
+    //   link: "https://github.com/nexxeln/nexxel.dev",
+    //   description: "boring personal site built with astro",
+    // },
+    // {
+    //   repo: "license-generator",
+    //   link: "https://github.com/nexxeln/license-generator",
+    //   description: "create licenses for your projects right from your terminal",
+    // },
+    // {
+    //   repo: "spotify-voice-control",
+    //   link: "https://github.com/nexxeln/spotify-voice-control",
+    //   description: "voice control for spotify through the terminal",
+    // },
+    // {
+    //   repo: "hackernews",
+    //   link: "https://github.com/nexxeln/hackernews",
+    //   description: "hacker news clone made with solidstart and tRPC",
+    // },
+    // {
+    //   repo: "dots",
+    //   link: "https://github.com/nexxeln/dots",
+    //   description: "my dotfiles for macos",
+    // },
   ];
 }

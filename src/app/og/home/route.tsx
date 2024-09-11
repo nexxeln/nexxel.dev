@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const geistBoldData = await geistBold;
 
   const { searchParams } = new URL(request.url);
-  const title = searchParams.get("title") ?? "nexxel";
+  const title = searchParams.get("title") ?? "David Adarme";
 
   return new ImageResponse(
     (
@@ -28,7 +28,7 @@ export async function GET(request: Request) {
           alignItems: "center",
         }}
       >
-        {title ? title : "nexxel"}
+        {title ? title : "David Adarme"}
       </div>
     ),
     {

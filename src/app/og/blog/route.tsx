@@ -100,7 +100,7 @@ export async function GET(request: Request) {
                 nexxel.dev
               </p>
               <img
-                src="https://www.nexxel.dev/nexxel.jpg"
+                src="https://davidadarme.vercel.app/davidadarme.png"
                 alt="nexxel's avatar"
                 width={70}
                 height={70}

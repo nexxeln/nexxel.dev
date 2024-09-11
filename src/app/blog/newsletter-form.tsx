@@ -1,7 +1,7 @@
 "use client";
 import type { SVGProps } from "react";
 import { useFormStatus } from "react-dom";
-import { subscribe } from "~~/app/blog/actions";
+import { subscribe } from "../blog/actions";
 
 export function NewsletterForm() {
   return (

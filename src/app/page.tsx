@@ -1,5 +1,6 @@
 import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
+import { NewsletterForm } from "~~/app/blog/newsletter-form";
 
 function UpRightArrowIcon() {
   return (
@@ -104,40 +105,43 @@ function ExperienceSection({
 
 export default function HomePage() {
   const workItems = [
-    {
-      name: "leapflow",
-      link: "https://leapflow.tech",
-      position: "co-founder and cto (may 2024 - present)",
-      description:
-        "leading engineering to build ai agents for automating repetitive tasks in existing software",
-    },
-    {
-      name: "dimension",
-      link: "https://dimension.dev",
-      position: "full-stack engineer (nov 2023 - jan 2024)",
-      description:
-        "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-    },
+    // {
+    //   name: "leapflow",
+    //   link: "https://leapflow.tech",
+    //   position: "co-founder and cto (may 2024 - present)",
+    //   description:
+    //     "leading engineering to build ai agents for automating repetitive tasks in existing software",
+    // },
+    // {
+    //   name: "dimension",
+    //   link: "https://dimension.dev",
+    //   position: "full-stack engineer (nov 2023 - jan 2024)",
+    //   description:
+    //     "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
+    // },
   ] satisfies ExperienceItem[];
+
+
+  // ⤤ ↗ ⬏
 
   const projectItems = [
     {
-      name: "create-t3-app",
-      link: "https://create.t3.gg/",
-      position: "creator and maintainer",
+      name: "Ferresys Saas ↗",
+      link: "https://www.github.com/davidadarme/ferresys",
+      position: "DBA, Backend, CI/CD and maintainer",
       description:
-        "open-source project for initializing full-stack next.js apps. 24k+ stars, 200+ contributors",
+        "3tier RESTful API designed to register and track products, manage purchases and sales, and handle customers. Currently in development for version 2 (V2) using the PERN stack (PostgreSQL, Express.js, React, Node.js), with integration of DevOps practices, Agile methodologies, and AWS cloud services for enhanced scalability and operational efficiency."
     },
-    {
-      name: "spotify-voice-control",
-      link: "https://github.com/nexxeln/spotify-voice-control",
-      position: "creator and maintainer",
-      description:
-        "python-based terminal app for controlling spotify via voice commands",
-    },
+    // {
+    //   name: "spotify-voice-control",
+    //   link: "https://github.com/nexxeln/spotify-voice-control",
+    //   position: "creator and maintainer",
+    //   description:
+    //     "python-based terminal app for controlling spotify via voice commands",
+    // },
     {
       name: "all projects →",
-      link: "https://github.com/nexxeln",
+      link: "https://github.com/davidadarme",
       position: "",
       description: "",
     },
@@ -154,30 +158,82 @@ export default function HomePage() {
   return (
     <main className="text-left">
       <h1 className="mb-6 text-2xl font-medium tracking-tighter">
-        shoubhit dash
+        David Adarme
       </h1>
 
       <div className="mb-6 flex flex-col gap-2">
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <LocationIcon />
-          <p>chennai, india</p>
+          <p>Colombia - Bucaramanga, Santander </p>
         </div>
 
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">co-founder and cto @ leapflow</p>
+          <p className="inline-flex">desarrollador de software</p>
         </div>
       </div>
 
-      <p className="prose prose-neutral mb-10 dark:prose-invert">
-        i&apos;m a 19 y/o cs undergrad student. i love building things and
-        solving problems. i enjoy language design, theoretical computer science
-        and i live on the terminal. if i&apos;m not coding, i&apos;m probably
-        doing cardistry, watching movies or obsessing over mechanical keyboards.
-      </p>
+      <h3 className="mb-6 mt-12 text-xl font-medium">connect on</h3>
+      <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
+      <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/davidadarme"
+          >
+            <p className="mr-2 h-7">github</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/davidadarme/"
+          >
+            <p className="mr-2 h-7">linkedin</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="mailto:timdavidarm@pm.me"
+          >
+            <p className="mr-2 h-7">email</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://guayahack.co/community/member/davidadarme/"
+          >
+            <p className="mr-2 h-7">guayahack.co</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+      </ul>
+
+      <div className="mt-12 flex flex-col gap-6">
+        <p className="prose prose-neutral mb-10 dark:prose-invert">
+          Soy David, estudiante de Análisis y Desarrollo de Software en el SENA. Me apasiona el mundo de la tecnología y estoy en constante aprendizaje sobre diferentes áreas de IT, como la administración de bases de datos (DBA), desarrollo de software, sysadmin, devops, y arquitectura en la nube. Busco oportunidades para aplicar y expandir mis conocimientos mientras sigo creciendo profesionalmente.
+        </p>
+        <div>
+          <iframe 
+          src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+        </div>
+      </div>
 
       <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <ExperienceSection title="work" items={workItems} />
+        {/* <ExperienceSection title="work" items={workItems} /> */}
         <ExperienceSection title="projects" items={projectItems} />
       </div>
 
@@ -206,68 +262,13 @@ export default function HomePage() {
           href="/blog"
           className="decoration-neutral-4000 mt-4 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
         >
-          all posts →
+          All posts →
         </Link>
+        <div className="space-y-6">
+        <p className="font-medium">subscribe for updates. no spam.</p>
+        <NewsletterForm />
+        </div>
       </div>
-
-      <h3 className="mb-6 mt-12 text-xl font-medium">links</h3>
-      <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="mailto:shoubhit2005@gmail.com"
-          >
-            <p className="mr-2 h-7">email</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://x.com/nexxeln"
-          >
-            <p className="mr-2 h-7">x.com</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/nexxeln"
-          >
-            <p className="mr-2 h-7">github</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/shoubhit-dash/"
-          >
-            <p className="mr-2 h-7">linkedin</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://cal.com/nexxel"
-          >
-            <p className="mr-2 h-7">book a call</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-      </ul>
     </main>
   );
 }

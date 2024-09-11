@@ -9,20 +9,20 @@ import { ViewTransitions } from "next-view-transitions";
 import Footer from "../app/footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.nexxel.dev"),
+  metadataBase: new URL("https://davidadarme.vercel.app"),
   title: {
-    default: "Shoubhit Dash",
-    template: "%s | Shoubhit Dash",
+    default: "David Adarme",
+    template: "%s | David Adarme",
   },
-  description: "Developer, cardist and maker of things.",
+  description: "Software Developer | Backend | Cloud",
   openGraph: {
-    title: "Shoubhit Dash",
-    description: "Developer, cardist and maker of things.",
-    url: "https://www.nexxel.dev",
-    siteName: "Shoubhit Dash",
-    locale: "en_US",
+    title: "David Adarme",
+    description: "Software Developer | Backend | Cloud",
+    url: "https://davidadarme.vercel.app",
+    siteName: "David Adarme",
+    locale: "es_CO",
     type: "website",
-    images: ["https://www.nexxel.dev/og/home"],
+    images: ["https://davidadarme.vercel.app/og/home"],
   },
   robots: {
     index: true,
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     "max-snippet": -1,
   },
   twitter: {
-    title: "Shoubhit Dash",
+    title: "David Adarme",
     card: "summary_large_image",
-    creator: "@nexxeln",
+    creator: "@davidadarme",
   },
 };
 

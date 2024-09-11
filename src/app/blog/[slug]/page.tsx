@@ -32,10 +32,10 @@ export async function generateMetadata({
       description: post.metadata.description,
       publishedTime,
       type: "article",
-      url: `https://www.nexxel.dev/blog/${post.slug}`,
+      url: `https://davidadarme.vercel.app/blog/${post.slug}`,
       images: [
         {
-          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
         },
       ],
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       creator: "@nexxeln",
       images: [
-        `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
@@ -76,7 +76,7 @@ export default function Post({ params }: { params: { slug: string } }) {
             url: `https://nexxel.dev/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "Shoubhit Dash",
+              name: "David Adarme",
             },
           }),
         }}
