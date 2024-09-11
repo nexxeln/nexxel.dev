@@ -3,10 +3,10 @@ import "~~/styles/globals.css";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { clx } from "~~/utils";
-import { Navbar } from "~~/app/navbar";
+import { clx } from "../utils";
+import { Navbar } from "../app/navbar";
 import { ViewTransitions } from "next-view-transitions";
-import { Footer } from "~~/app/footer";
+import Footer from "../app/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nexxel.dev"),

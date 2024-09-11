@@ -9,8 +9,8 @@ export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
     PLUNK_API_KEY: z.string(),
-    REDIS_URL: z.string().url(),
-    REDIS_TOKEN: z.string(),
+    // REDIS_URL: z.string().url(),
+    // REDIS_TOKEN: z.string(),
   },
 
   /**
@@ -29,8 +29,8 @@ export const env = createEnv({
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     PLUNK_API_KEY: process.env.PLUNK_API_KEY,
-    REDIS_URL: process.env.REDIS_URL,
-    REDIS_TOKEN: process.env.REDIS_TOKEN,
+    // REDIS_URL: process.env.REDIS_URL,
+    // REDIS_TOKEN: process.env.REDIS_TOKEN,
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },

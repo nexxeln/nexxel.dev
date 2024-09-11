@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@geist-ui/react": "^2.2.5",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tailwindcss/typography": "^0.5.13",
     "@upstash/redis": "^1.31.6",

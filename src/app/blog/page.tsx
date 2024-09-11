@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
-import { redis } from "~~/lib/redis";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -55,10 +54,6 @@ export default function BlogPage() {
                     year: "numeric",
                   })
                   .toLowerCase()}
-                <Suspense>
-                  {" • "}
-                  <Views slug={post.slug} />
-                </Suspense>
               </p>
             </div>
           </Link>
@@ -66,14 +61,4 @@ export default function BlogPage() {
       </div>
     </section>
   );
-}
-
-async function Views({ slug }: { slug: string }) {
-  // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
-  const allViews = (await redis.get("views")) as {
-    slug: string;
-    views: number;
-  }[];
-
-  return <ViewCounter slug={slug} allViews={allViews} />;
 }
