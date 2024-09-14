@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
+import IconSocial from "../../components/iconSocial";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -17,6 +18,37 @@ export const metadata: Metadata = {
   },
 };
 
+function TagSection({ tags }: { tags: string[] }) {
+  return (
+    <div className="mb-8">
+      <h3 className="mb-4 text-xl font-medium">Tags</h3>
+      <div className="flex flex-wrap gap-2">
+        {tags.map((tag, index) => (
+          <span
+            key={index}
+            className="rounded-full bg-neutral-700 px-3 py-1 text-sm text-neutral-200"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+  const tags = [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "PostgreSQL",
+    "Express.js",
+    "DevOps",
+    "AWS",
+    "DBA",
+    "RESTful API",
+    "PERN Stack"
+  ];
+
 export default function BlogPage() {
   const posts = getBlogPosts().sort(
     (a, b) =>
@@ -26,6 +58,8 @@ export default function BlogPage() {
   return (
     <section className="space-y-12">
       <h1 className="text-2xl font-medium tracking-tighter">blog</h1>
+
+      <TagSection tags={tags} />
 
       <div className="space-y-6">
         <p className="font-medium">subscribe for updates. no spam.</p>
@@ -59,6 +93,7 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
+        <IconSocial />
     </section>
   );
 }

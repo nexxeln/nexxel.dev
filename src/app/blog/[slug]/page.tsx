@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { MDX } from "./mdx";
 import { getBlogPostBySlug } from "~~/blog";
+import IconSocial from "../../../components/iconSocial";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -95,6 +96,9 @@ export default function Post({ params }: { params: { slug: string } }) {
       <article className="prose prose-neutral dark:prose-invert">
         <MDX source={post.content} />
       </article>
+      <div style={{ marginTop: '25px' }}>
+        <IconSocial />
+      </div>
     </section>
   );
 }
