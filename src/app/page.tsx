@@ -2,6 +2,7 @@ import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 function UpRightArrowIcon() {
   return (
@@ -291,6 +292,7 @@ function ExperienceSection({
         <p className="font-medium">subscribe for updates. no spam.</p>
         <NewsletterForm />
         <SpeedInsights />
+        <Analytics/>
         </div>
       </div>
     </main>
