@@ -1,8 +1,8 @@
 import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function UpRightArrowIcon() {
   return (
@@ -123,27 +123,27 @@ function ExperienceSection({
 //     },
 //   ] satisfies ExperienceItem[];
 
-  export default function HomePage() {
-    const studyItems = [
-      {
-        name: "Sena",
-        link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
-        position: "student (july 2022 - present)",
-        description:
-          "team-based learning on software development (SDLC), databases and requirements engineering",
-      }
-    ] satisfies ExperienceItem[];
+export default function HomePage() {
+  const studyItems = [
+    {
+      name: "Servicio Nacional de Aprendizaje  ↗",
+      link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
+      position: "Software analysis and development student (a.k.a ADSO) (july 2022 - present)",
+      description:
+        "Learning on requirements engineering, documentation, SDLC, data modeling, relational databases (SQL) and software development.",
+    },
+  ] satisfies ExperienceItem[];
 
-    // cv experience
-    // const experienceItems = [
-    //   {
-    //     name: "Freelance Developer",
-    //     link: "#",
-    //     position: "Full Stack Developer (Jan 2023 - present)",
-    //     description:
-    //       "Developing web applications using PERN stack. Implementing RESTful APIs and integrating various third-party services.",
-    //   }
-    // ] satisfies ExperienceItem[];
+  // cv experience
+  // const experienceItems = [
+  //   {
+  //     name: "Freelance Developer",
+  //     link: "#",
+  //     position: "Full Stack Developer (Jan 2023 - present)",
+  //     description:
+  //       "Developing web applications using PERN stack. Implementing RESTful APIs and integrating various third-party services.",
+  //   }
+  // ] satisfies ExperienceItem[];
 
   // ⤤ ↗ ⬏
 
@@ -151,9 +151,9 @@ function ExperienceSection({
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend, CI/CD and maintainer (july 2023 - present)",
+      position: "DBA, Backend, CI/CD, Ops and maintainer (july 2023 - present)",
       description:
-        "3tier RESTful API designed to register and track products, manage purchases and sales, and handle customers. Currently in development for version 2 (V2) using the PERN stack (PostgreSQL, Express.js, React, Node.js), with integration of DevOps practices, Agile methodologies, and AWS cloud services for enhanced scalability and operational efficiency."
+        "3tier RESTful API designed to register and track products, manage purchases and sales, and handle customers. Currently in development for version 2 (V2) using the PERN stack (PostgreSQL, Express.js, React, Node.js), with integration of DevOps practices, Agile methodologies, and AWS cloud services for enhanced scalability and operational efficiency.",
     },
     // {
     //   name: "spotify-voice-control",
@@ -198,7 +198,7 @@ function ExperienceSection({
 
       <h3 className="mb-6 mt-12 text-xl font-medium">connect on</h3>
       <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
-      <li>
+        <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -236,7 +236,7 @@ function ExperienceSection({
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://guayahack.co/community/member/davidadarme/"
+            href="http://davidadarme.guayahack.co/"
           >
             <p className="mr-2 h-7">guayahack.co</p>
             <UpRightArrowIcon />
@@ -246,12 +246,24 @@ function ExperienceSection({
 
       <div className="mt-12 flex flex-col gap-6">
         <p className="prose prose-neutral mb-10 dark:prose-invert">
-          Soy David Adarme, Me apasiona el mundo de la tecnología y estoy en constante aprendizaje sobre diferentes áreas de IT, como la administración de bases de datos (DBA), desarrollo de software, DevOps, y arquitectura en la nube. Busco oportunidades para aplicar y expandir mis conocimientos mientras sigo creciendo profesionalmente. Mis principal meta es fortalecer un stack como PERN (PostgreSQL, Express.Js, React y NodeJS) y orientarme hacia la nube a lo largo de mi carrera.
+          Soy David Adarme, Me apasiona el mundo de la tecnología y estoy en
+          constante aprendizaje sobre diferentes áreas de IT, como la
+          administración de bases de datos (DBA), desarrollo de software y DevOps. Busco oportunidades para aplicar y
+          expandir mis conocimientos mientras sigo creciendo profesionalmente.
+          Mis principal meta es fortalecer un stack como PERN (PostgreSQL,
+          Express.Js, React y NodeJS) y orientarme hacia la nube a lo largo de
+          mi carrera.
         </p>
         <div>
-          <iframe 
-          src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-        </iframe>
+          <iframe
+            src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen={true}
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
 
@@ -289,10 +301,10 @@ function ExperienceSection({
           All posts →
         </Link>
         <div className="space-y-6">
-        <p className="font-medium">subscribe for updates. no spam.</p>
-        <NewsletterForm />
-        <SpeedInsights />
-        <Analytics/>
+          <p className="font-medium">subscribe for updates. no spam.</p>
+          <NewsletterForm />
+          <SpeedInsights />
+          <Analytics />
         </div>
       </div>
     </main>

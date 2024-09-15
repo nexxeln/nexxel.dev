@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 function TagSection({ tags }: { tags: string[] }) {
   return (
     <div className="mb-8">
-      <h3 className="mb-4 text-xl font-medium">Tags</h3>
       <div className="flex flex-wrap gap-2">
         {tags.map((tag, index) => (
           <span
@@ -36,18 +35,18 @@ function TagSection({ tags }: { tags: string[] }) {
   );
 }
 
-  const tags = [
-    "JavaScript",
-    "React",
-    "Node.js",
-    "PostgreSQL",
-    "Express.js",
-    "DevOps",
-    "AWS",
-    "DBA",
-    "RESTful API",
-    "PERN Stack"
-  ];
+const tags = [
+  "JavaScript",
+  "React",
+  "Node.js",
+  "PostgreSQL",
+  "Express.js",
+  "DevOps",
+  "AWS",
+  "DBA",
+  "RESTful API",
+  "PERN Stack",
+];
 
 export default function BlogPage() {
   const posts = getBlogPosts().sort(
@@ -93,7 +92,7 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
-        <IconSocial />
+      <IconSocial />
     </section>
   );
 }

@@ -25,7 +25,8 @@ export async function getProjects(): Promise<Project[]> {
     {
       repo: "ferresys",
       link: "https://github.com/davidadarme/ferresys",
-      description: "a hardware store saas built with pern stack and devops/agile/aws methodologies",
+      description:
+        "a hardware store saas built with pern stack and devops/agile/aws methodologies",
     },
     // {
     //   repo: "nexxel.dev",

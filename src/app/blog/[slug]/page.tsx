@@ -96,7 +96,7 @@ export default function Post({ params }: { params: { slug: string } }) {
       <article className="prose prose-neutral dark:prose-invert">
         <MDX source={post.content} />
       </article>
-      <div style={{ marginTop: '25px' }}>
+      <div style={{ marginTop: "25px" }}>
         <IconSocial />
       </div>
     </section>
