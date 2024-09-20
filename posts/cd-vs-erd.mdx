@@ -4,19 +4,18 @@ author: David Adarme
 title: "UML: ¿Cúal es la diferencia entre CD y ERD?"
 date: 2023-08-21 21:40:05 +0100
 category: uml
-tags: guayahack, newbie, eml, databases, erd, erm, cd, uml, datos, bases de datos, diagramas
-description: Hace poco me surgió la duda sobre la diferencia entre diagrama de clases y diagrama entidad relación, la verdad es que son muy similares al menos en forma. A continuación veremos conceptos, diferencias y similitudes...
-image: assets/post-img/2023-08-21-reto-diferencias-diagrama-clases-entidad-relacion/preview-reto-diferencias-diagrama-clases-entidad-relacion.png
+tags: guayahack, newbie, eml, databases, erd, erm, cd, uml, datos, bases de datos, diagramas, modelado, modelado de datos
+description: diferencia entre diagrama de clases y diagrama entidad relación
 language: español
 ---
 
-## Contexto e Introducción
+# Contexto e Introducción
 
-### Guayahack
+## Guayahack
 
 Bueno, me gustaría agradecer a [Jayson Salazar](https://guayahack.co/community/member/jdsalaro) que ha creado esta [comunidad](https://guayahack.co) y por permitir compartir el conocimiento de él y otros usuarios más experimentados para apoyarnos a mejorar nuestras habilidades a nosotros, los amateurs/aficionados de la industria.
 
-Hace poco me salió la duda sobre la diferencia entre [diagrama de clases](#dc-cd-diagrama-de-clases-class-diagram) y [diagrama entidad relación](#der-erd-diagrama-entidad-relaci%C3%B3n-entity-relationship-diagram), la verdad es que son muy similares al menos en forma.
+Hace poco me salió la duda sobre la diferencia entre [diagrama de clases](cd-vs-erd#qu-es-un-diagrama-de-clases) y [diagrama entidad relación](cd-vs-erd#mer-erm-modelo-entidad-relacin-o-entity-relationship-model), la verdad es que son muy similares al menos en forma.
 
 ---
 
@@ -30,14 +29,21 @@ Bueno, UML (_Unified Language Model-Lenguaje unificado de modelado_) es un lengu
 
 Un ejemplo:
 
-![19](../assets/post-img/2023-08-21-reto-diferencias-diagrama-clases-entidad-relacion/uml.png)
-_Ejemplo de UML: unified model language / lenguaje unificado de modelado_
+![UML diagram example](/images/cd-vs-erd/uml.png)
 
 Éste tutorial es muy recomendable:
 
-{/* {% include embed/youtube.html id='WnMQ8HlmeXc' %} */}
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+  <iframe 
+    src="https://www.youtube.com/embed/WnMQ8HlmeXc" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+  ></iframe>
+</div>
 
-## ¿Qué diagramas hay y cuál utilizar para cada caso en concreto?
+__¿Qué diagramas hay y cuál utilizar para cada caso en concreto?__
 
 ## MER-ERM (Modelo Entidad Relación o Entity Relationship Model)
 
@@ -45,8 +51,7 @@ Es un modelo visual que muestra las entidades _(Persona, empresa, usuario, banco
 
 **Cuándo usarlo:** El MER se utiliza en la fase inicial del diseño de bases de datos para identificar y modelar las entidades, atributos y relaciones entre ellas.
 
-![Ejemplo de Modelo Entidad Relación](../assets/post-img/2023-08-21-reto-diferencias-diagrama-clases-entidad-relacion/uml-example.png)
-_Ejemplo de Modelo Entidad Relación (MER) / entity relationship model (ERM)_
+![ERM diagram example](/images/cd-vs-erd/uml-example.png)
 
 ## DER-ERD (Diagrama entidad relación-Entity relationship diagram)
 
@@ -56,8 +61,7 @@ Los DER son útiles para planificar y comunicar cómo se organizarán y relacion
 
 **Cuándo usarlo:** El DER se crea a partir del MER y se utiliza para representar gráficamente las entidades, atributos, relaciones y cardinalidades (ejemplo: 1:N) en una base de datos.
 
-![Ejemplo de diagrama entidad relacion (DER) / diagram relationship diagram (ERD)](../assets/post-img/2023-08-21-reto-diferencias-diagrama-clases-entidad-relacion/der.jpg)
-_Ejemplo de diagrama entidad relacion (DER) / diagram relationship diagram (ERD)_
+![DER diagram example](/images/cd-vs-erd/der.jpg)
 
 ## ¿Qué es un diagrama de clases?
 
@@ -71,8 +75,7 @@ El diagrama de clase se utiliza para representar visualmente las clases, sus atr
 
 **Cuándo usarlo:** El Diagrama de Clases se utiliza en la programación orientada a objetos para representar las clases, sus atributos y relaciones en un sistema de software.
 
-![Ejemplo de diagrama de clases (DC) / class diagram (CD)](../assets/post-img/2023-08-21-reto-diferencias-diagrama-clases-entidad-relacion/diagrama-de-clases.png)
-_Ejemplo de diagrama de clases (DC) / class diagram (CD)_
+![CD diagram example](/images/cd-vs-erd/diagrama-de-clases.png)
 
 ---
 
