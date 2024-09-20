@@ -128,9 +128,9 @@ export default function HomePage() {
     {
       name: "Servicio Nacional de Aprendizaje  ↗",
       link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
-      position: "Software analysis and development student (a.k.a ADSO) (july 2022 - present)",
+      position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Presente)",
       description:
-        "Learning on requirements engineering, documentation, SDLC, data modeling, relational databases (SQL) and software development.",
+        "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
     },
   ] satisfies ExperienceItem[];
 
@@ -151,9 +151,9 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend, CI/CD, Ops and maintainer (july 2023 - present)",
+      position: "DBA, Backend, CI/CD, Operaciones y mantenedor (Julio 2023 - Presente)", 
       description:
-        "3tier RESTful API designed to register and track products, manage purchases and sales, and handle customers. Currently in development for version 2 (V2) using the PERN stack (PostgreSQL, Express.js, React, Node.js), with integration of DevOps practices, Agile methodologies, and AWS cloud services for enhanced scalability and operational efficiency.",
+        "API RESTful de 3 capas diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN (PostgreSQL, Express.js, React, Node.js), con integración de prácticas DevOps, metodologías ágiles y servicios en la nube de AWS para mejorar la escalabilidad y la eficiencia operativa.",
     },
     // {
     //   name: "spotify-voice-control",
@@ -196,7 +196,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <h3 className="mb-6 mt-12 text-xl font-medium">connect on</h3>
+      <h3 className="mb-6 mt-12 text-xl font-medium">Conéctate conmigo</h3>
       <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
         <li>
           <a
@@ -268,8 +268,8 @@ export default function HomePage() {
       </div>
 
       <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <ExperienceSection title="studies" items={studyItems} />
-        <ExperienceSection title="projects" items={projectItems} />
+        <ExperienceSection title="Estudios" items={studyItems} />
+        <ExperienceSection title="Proyectos" items={projectItems} />
         {/* <ExperienceSection title="experience" items={experienceItems} /> */}
       </div>
 
@@ -301,7 +301,7 @@ export default function HomePage() {
           All posts →
         </Link>
         <div className="space-y-6">
-          <p className="font-medium">subscribe for updates. no spam.</p>
+          <p className="font-medium">Suscríbete para recibir nuevos posts.</p>
           <NewsletterForm />
           <SpeedInsights />
           <Analytics />
