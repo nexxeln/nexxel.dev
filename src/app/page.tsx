@@ -71,6 +71,7 @@ type ExperienceItem = {
   link: string;
   position: string;
   description: string;
+  toolkit: string;
 };
 
 function ExperienceSection({
@@ -99,29 +100,13 @@ function ExperienceSection({
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             {item.description}
           </p>
+
+          <p className="mt-3" style={{ color: '#3e3e3e' }}>{item.toolkit}</p>
         </div>
       ))}
     </section>
   );
 }
-
-// export default function HomePage() {
-//   const workItems = [
-//     {
-//       name: "leapflow",
-//       link: "https://leapflow.tech",
-//       position: "co-founder and cto (may 2024 - present)",
-//       description:
-//         "leading engineering to build ai agents for automating repetitive tasks in existing software",
-//     },
-//     {
-//       name: "dimension",
-//       link: "https://dimension.dev",
-//       position: "full-stack engineer (nov 2023 - jan 2024)",
-//       description:
-//         "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-//     },
-//   ] satisfies ExperienceItem[];
 
 export default function HomePage() {
   const studyItems = [
@@ -129,19 +114,19 @@ export default function HomePage() {
       name: "Servicio Nacional de Aprendizaje  ↗",
       link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
       position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Presente)",
-      description:
-        "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
-    },
+      description: "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
+      toolkit: ""
+      },
   ] satisfies ExperienceItem[];
 
   // cv experience
   // const experienceItems = [
   //   {
-  //     name: "Freelance Developer",
+  //     name: "Atek Group",
   //     link: "#",
-  //     position: "Full Stack Developer (Jan 2023 - present)",
-  //     description:
-  //       "Developing web applications using PERN stack. Implementing RESTful APIs and integrating various third-party services.",
+  //     position: "Apprenticeship (September 2024 - Presente)",
+  //     description:"",
+  //     toolkit: ""
   //   }
   // ] satisfies ExperienceItem[];
 
@@ -154,19 +139,22 @@ export default function HomePage() {
       position: "DBA, Backend, CI/CD, Operaciones y mantenedor (Julio 2023 - Presente)", 
       description:
         "API RESTful de 3 capas diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN (PostgreSQL, Express.js, React, Node.js), con integración de prácticas DevOps, metodologías ágiles y servicios en la nube de AWS para mejorar la escalabilidad y la eficiencia operativa.",
+      toolkit: ""
+      },
+    {
+      name: "Serverless Auth (NoSQL/SQL) ↗",
+      link: "",
+      position: "Backend (Octubre 2024 - Presente)", 
+      description:
+        "Serverless authentication system where developers can choose between SQL (PostgreSQL) or NoSQL (MongoDB) databases.",
+        toolkit: "Toolkit: NodeJS, Express, Lambda, MongoDB, PostgreSQL, Docker, Jenkins"
     },
-    // {
-    //   name: "spotify-voice-control",
-    //   link: "https://github.com/nexxeln/spotify-voice-control",
-    //   position: "creator and maintainer",
-    //   description:
-    //     "python-based terminal app for controlling spotify via voice commands",
-    // },
     {
       name: "all projects →",
       link: "https://github.com/davidadarme",
       position: "",
       description: "",
+      toolkit: ""
     },
   ] satisfies ExperienceItem[];
 
