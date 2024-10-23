@@ -40,3 +40,16 @@ const sentryConfig = {
 };
 
 export default withSentryConfig(config, sentryConfig);
+
+// R2 Storage
+module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '$CLOUDFLARE_ACCOUNT_ID.r2.cloudflarestorage.com', // it reads from secrets
+        pathname: '$CLOUDFLARE__R2_BUCKET_NAME', // it reads from secrets
+      },
+    ],
+  },
+};
