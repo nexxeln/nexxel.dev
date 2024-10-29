@@ -10,7 +10,11 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
+  env: {
+    NEXT_PUBLIC_CF_R2_BUCKET_URL: process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL,
+  },
 };
 
 const sentryConfig = {
@@ -40,16 +44,3 @@ const sentryConfig = {
 };
 
 export default withSentryConfig(config, sentryConfig);
-
-// R2 Storage
-module.exports = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '$CLOUDFLARE_ACCOUNT_ID.r2.cloudflarestorage.com', // it reads from secrets
-        pathname: '$CLOUDFLARE__R2_BUCKET_NAME', // it reads from secrets
-      },
-    ],
-  },
-};
