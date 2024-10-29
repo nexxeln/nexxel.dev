@@ -82,9 +82,15 @@ const Footer = () => {
       <hr className="mb-4 border-t border-neutral-400 dark:border-neutral-600" />
       <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
         <span className="font-bold">David Adarme.</span>
-          <span className="font-medium">
-            <a href="https://www.nexxel.dev/" target="_blank" rel="noopener noreferrer">Using the nexxel theme for a t3 app</a>
-          </span>
+        <span className="font-medium">
+          <a
+            href="https://www.nexxel.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Using the nexxel theme for a t3 app
+          </a>
+        </span>
       </div>
     </footer>
   );

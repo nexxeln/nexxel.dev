@@ -1,15 +1,14 @@
 ---
 layout: post
-title:  "Introducción a la arquitectura fe-be o client-server"
-date:   2023-09-03 07:40:05 +0100
+title: "Introducción a la arquitectura fe-be o client-server"
+date: 2023-09-03 07:40:05 +0100
 category: architecture
 tags: retos, guayahack, wiki, newbie, frontend, backend, architecture, os
-description: La arquitectura cliente-servidor es un tema fundamental en la informática, ya que facilita la comunicación entre componentes clave el cliente, el servidor y el sistema operativo. Estos conceptos, en conjunto, sustentan el funcionamiento de aplicaciones y sistemas, conformando la base sobre la cual se construye la tecnología moderna.
-image: assets/post-img/2023-09-03-reto-arquitectura-frontend-backend-cliente-servidor/preview-reto-arquitectura-frontend-backend-cliente-servidor.jpg
+description: comunicación entre componentes clave el cliente, el servidor y el sistema operativo
 language: español
 ---
 
-## Contexto e Introducción
+# Contexto e Introducción
 
 El reto surgió debido a una exposición de proyecto que teníamos pendiente en el SENA y que debíamos presentar de acuerdo a los requisitos de entrega, los cuales incluían información sobre la arquitectura de software en la que estábamos trabajando. Por lo tanto, tenía dudas respecto a los conceptos de cómo está conformada la arquitectura de un aplicativo, y fue gracias a conversaciones con miembros de la comunidad sobre la arquitectura de aplicaciones que decidí aceptar un reto buscando entenderlo mejor. Éste artículo presenta mi solución al reto [Entender y explicar la arquitectura frontend-backend o cliente-servidor](https://gitlab.com/guayahack/main/-/issues/105), preparado por [Jayson Salazar](https://guayahack.co/community/member/jdsalaro).
 
@@ -19,34 +18,41 @@ Son todos los componentes físicos de un medio informático como las partes fís
 
 ## ¿Qué es un sistema operativo?
 
-El sistema operativo _(OS, por sus siglas en inglés, que significa Operating System)_ es un tipo de software intermediario que actúa como puente entre el hardware de una computadora y las aplicaciones que utilizan los usuarios. Un dato que me parece interesante es que los OS utilizan el lenguaje de bajo nivel[^1], que es el tipo de lenguaje que interpreta el hardware, y el lenguaje de alto nivel, que es más cercano a como piensan y escriben código los humanos.
-
+El sistema operativo _(OS, por sus siglas en inglés, que significa Operating System)_ es un tipo de software intermediario que actúa como puente entre el hardware de una computadora y las aplicaciones que utilizan los usuarios. Un dato que me parece interesante es que los OS utilizan el lenguaje de bajo nivel, que es el tipo de lenguaje que interpreta el hardware, y el lenguaje de alto nivel, que es más cercano a como piensan y escriben código los humanos.
 
 ## ¿Qué es una aplicación servidor (server application) y aplicación cliente (client application)?
 
-**Aplicación Servidor (Application Server):** Es un software diseñado para ofrecer servicios y recursos a otras aplicaciones. Los servidores de aplicaciones [^2] suelen manejar tareas como la gestión de transacciones, la seguridad, el manejo de bases de datos y la lógica empresarial (backend[^3]).
+**Aplicación Servidor (Application Server):** Es un software diseñado para ofrecer servicios y recursos a otras aplicaciones. Los servidores de aplicaciones suelen manejar tareas como la gestión de transacciones, la seguridad, el manejo de bases de datos y la lógica empresarial (backend).
 
-**Aplicación Cliente-Servidor (Client-Server):** es un modelo en el que las tareas se distribuyen entre los componentes cliente y servidor. El **cliente** como lo mencione anteriormente es el medio que solicita recursos al servidor mientras que el **servidor** es el sistema que proporciona esos recursos en respuesta a las solicitudes del cliente. Esta arquitectura es común en aplicaciones de red, como aplicaciones web y bases de datos [^4][^5][^6].
+**Aplicación Cliente-Servidor (Client-Server):** es un modelo en el que las tareas se distribuyen entre los componentes cliente y servidor. El **cliente** como lo mencione anteriormente es el medio que solicita recursos al servidor mientras que el **servidor** es el sistema que proporciona esos recursos en respuesta a las solicitudes del cliente. Esta arquitectura es común en aplicaciones de red, como aplicaciones web y bases de datos.
 
 > En una analogía, el chef es el servidor de aplicaciones y los platos de comida son los recursos o servicios que solicita a un cliente.
 
-{/* {% include embed/youtube.html id="QSEDr2e1gSQ" %} */}
+<div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+  <iframe 
+    src="https://www.youtube.com/embed/QSEDr2e1gSQ" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen 
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+  ></iframe>
+</div>
 
 ## ¿Cómo se comunican el servidor y el cliente?
 
 La comunicación entre el cliente (navegador web) y el servidor (donde reside el sitio web o la aplicación) se basa en el protocolo HTTP.
 
-**HTTP _(Esp. Protocolo de transferencia de hipertexto/ Eng. Hypertext Transfer Protocol)_** permite que el cliente envíe solicitudes al servidor para obtener recursos, como datos, y el servidor responde con la información solicitada. Lee más acerca de HTTP[^7]
+**HTTP _(Esp. Protocolo de transferencia de hipertexto/ Eng. Hypertext Transfer Protocol)_** permite que el cliente envíe solicitudes al servidor para obtener recursos, como datos, y el servidor responde con la información solicitada. Lee más acerca de HTTP.
 
-**REST _(Esp. Transferencia de estado representacional/ Eng. Representational State Transfer)_**  utiliza HTTP para estructurar éstas solicitudes y respuestas, organizando los recursos en endpoints _(puntos finales)_ y utilizando los métodos HTTP _**(GET, POST, PUT, DELETE)**_ para realizar operaciones en esos recursos. Lee más acerca de REST[^8]
+**REST _(Esp. Transferencia de estado representacional/ Eng. Representational State Transfer)_** utiliza HTTP para estructurar éstas solicitudes y respuestas, organizando los recursos en endpoints _(puntos finales)_ y utilizando los métodos HTTP _**(GET, POST, PUT, DELETE)**_ para realizar operaciones en esos recursos. Lee más acerca de REST.
 
 ## Otras tecnologías de la historia:
 
-1. **CGI (Common Gateway Interface):** utilizada en los primeros días de la web, CGI permitía a los servidores web ejecutar programas externos para generar contenido dinámico en respuesta a las solicitudes del cliente. Aunque se ha vuelto menos común debido a su ineficiencia, sentó las bases para la interactividad en línea. Lee más acerca de CGI[^9]
+1. **CGI (Common Gateway Interface):** utilizada en los primeros días de la web, CGI permitía a los servidores web ejecutar programas externos para generar contenido dinámico en respuesta a las solicitudes del cliente. Aunque se ha vuelto menos común debido a su ineficiencia, sentó las bases para la interactividad en línea. Lee más acerca de CGI.
 
-2. **XML-RPC:** permitía la comunicación entre sistemas utilizando XML para codificar solicitudes y respuestas. Aunque menos eficiente que REST, fue una de las primeras tecnologías en permitir la integración entre aplicaciones y servicios web. Lee más acerca de XML-RPC[^10]
+2. **XML-RPC:** permitía la comunicación entre sistemas utilizando XML para codificar solicitudes y respuestas. Aunque menos eficiente que REST, fue una de las primeras tecnologías en permitir la integración entre aplicaciones y servicios web. Lee más acerca de XML-RPC.
 
-3. **SOAP (Simple Object Access Protocol):** Un protocolo de comunicación más complejo que XML-RPC, SOAP permitía la transmisión de mensajes estructurados entre aplicaciones a través de diversos protocolos, no solo HTTP. Lee más acerca de SOAP[^11].
+3. **SOAP (Simple Object Access Protocol):** Un protocolo de comunicación más complejo que XML-RPC, SOAP permitía la transmisión de mensajes estructurados entre aplicaciones a través de diversos protocolos, no solo HTTP. Lee más acerca de SOAP.
 
 Cada una de estas tecnologías ha contribuido al desarrollo y la evolución de la comunicación cliente-servidor en la historia de la informática y la web.
 
@@ -60,14 +66,12 @@ El backend es la parte "detrás de escena _(Behind The Scenes)_" de una aplicaci
 
 ## Arquitectura de Comunicación Cliente-Servidor
 
-![Diagrama-cliente-servidor](../assets/post-img/2023-09-03-reto-arquitectura-frontend-backend-cliente-servidor/diagrama-cliente-servidor.png)
-_Diagrama-cliente-servidor_
+![client server diagram example](/images/fe-vs-be/diagrama-cliente-servidor.png)
 
-![Diagrama Cliente-Servidor y Base de datos](../assets/post-img/2023-09-03-reto-arquitectura-frontend-backend-cliente-servidor/diagrama-cliente-servidor-base-de-datos.png)
-_Diagrama Cliente-Servidor y Base de datos_
+![client server and database diagram example](/images/fe-vs-be/diagrama-cliente-servidor-base-de-datos.png)
 
-![Arquitectura de tres capas](../assets/post-img/2023-09-03-reto-arquitectura-frontend-backend-cliente-servidor/arquitectura-tres-capas.png)
-_Arquitectura de tres capas_
+![3tier architecture diagram example](/images/fe-vs-be/arquitectura-tres-capas.png)
+
 
 ## Conclusiones
 
@@ -79,14 +83,24 @@ En resumen, la arquitectura cliente-servidor es un tema fundamental en la inform
 
 ## Notas al Pie
 
-[^1]: [Low-level programming language - Wikipedia](https://en.wikipedia.org/wiki/Low-level_programming_language)
-[^2]: [Servidor de aplicaciones - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Servidor_de_aplicaciones)
-[^3]: [Back-End Web Architecture - Codecademy](https://www.codecademy.com/article/back-end-architecture)
-[^4]: [Cliente-servidor - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Cliente-servidor)
-[^5]: [¿Qué significa lado del cliente y lado del servidor? - Lado del cliente vs. Lado del servidor - Cloudflare](https://www.cloudflare.com/es-es/learning/serverless/glossary/client-side-vs-server-side/)
-[^6]: [Introduction to client-server architecture (frontend backend)](https://fluffy.es/introduction-to-client-server)
-[^7]: [Protocolo de transferencia de hipertexto - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_hipertexto)
-[^8]: [Transferencia de Estado Representacional - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional)
-[^9]: [Interfaz de entrada común - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Interfaz_de_entrada_com%C3%BAn)
-[^10]: [XML-RPC - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/XML-RPC)
-[^11]: [Simple Object Access Protocol - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol)
+1. [Low-level programming language - Wikipedia](https://en.wikipedia.org/wiki/Low-level_programming_language)
+
+2. [Servidor de aplicaciones - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Servidor_de_aplicaciones)
+
+3. [Back-End Web Architecture - Codecademy](https://www.codecademy.com/article/back-end-architecture)
+
+4. [Cliente-servidor - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Cliente-servidor)
+
+5. [¿Qué significa lado del cliente y lado del servidor? - Lado del cliente vs. Lado del servidor - Cloudflare](https://www.cloudflare.com/es-es/learning/serverless/glossary/client-side-vs-server-side/)
+
+6. [Introduction to client-server architecture](https://fluffy.es/introduction-to-client-server)
+
+7. [Protocolo de transferencia de hipertexto - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_hipertexto)
+
+8. [Transferencia de Estado Representacional - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Transferencia_de_Estado_Representacional)
+
+9. [Interfaz de entrada común - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Interfaz_de_entrada_com%C3%BAn)
+
+10. [XML-RPC - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/XML-RPC)
+
+11. [Simple Object Access Protocol - Wikipedia, la enciclopedia libre](https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol)

@@ -1,6 +1,8 @@
 import { Link } from "next-view-transitions";
 import { getBlogPosts } from "~~/blog";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 function UpRightArrowIcon() {
   return (
@@ -69,6 +71,7 @@ type ExperienceItem = {
   link: string;
   position: string;
   description: string;
+  toolkit: string;
 };
 
 function ExperienceSection({
@@ -97,6 +100,8 @@ function ExperienceSection({
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             {item.description}
           </p>
+
+          <p className="mt-3" style={{ color: '#3e3e3e' }}>{item.toolkit}</p>
         </div>
       ))}
     </section>
@@ -104,23 +109,26 @@ function ExperienceSection({
 }
 
 export default function HomePage() {
-  const workItems = [
-    // {
-    //   name: "leapflow",
-    //   link: "https://leapflow.tech",
-    //   position: "co-founder and cto (may 2024 - present)",
-    //   description:
-    //     "leading engineering to build ai agents for automating repetitive tasks in existing software",
-    // },
-    // {
-    //   name: "dimension",
-    //   link: "https://dimension.dev",
-    //   position: "full-stack engineer (nov 2023 - jan 2024)",
-    //   description:
-    //     "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-    // },
+  const studyItems = [
+    {
+      name: "Servicio Nacional de Aprendizaje  ↗",
+      link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
+      position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Presente)",
+      description: "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
+      toolkit: ""
+      },
   ] satisfies ExperienceItem[];
 
+  // cv experience
+  // const experienceItems = [
+  //   {
+  //     name: "Atek Group",
+  //     link: "#",
+  //     position: "Apprenticeship (September 2024 - Presente)",
+  //     description:"",
+  //     toolkit: ""
+  //   }
+  // ] satisfies ExperienceItem[];
 
   // ⤤ ↗ ⬏
 
@@ -128,22 +136,25 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend, CI/CD and maintainer",
+      position: "DBA, Backend, CI/CD, Operaciones y mantenedor (Julio 2023 - Presente)", 
       description:
-        "3tier RESTful API designed to register and track products, manage purchases and sales, and handle customers. Currently in development for version 2 (V2) using the PERN stack (PostgreSQL, Express.js, React, Node.js), with integration of DevOps practices, Agile methodologies, and AWS cloud services for enhanced scalability and operational efficiency."
+        "API RESTful de 3 capas diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN (PostgreSQL, Express.js, React, Node.js), con integración de prácticas DevOps, metodologías ágiles y servicios en la nube de AWS para mejorar la escalabilidad y la eficiencia operativa.",
+      toolkit: ""
+      },
+    {
+      name: "Serverless Auth (NoSQL/SQL) ↗",
+      link: "",
+      position: "Backend (Octubre 2024 - Presente)", 
+      description:
+        "Serverless authentication system where developers can choose between SQL (PostgreSQL) or NoSQL (MongoDB) databases.",
+        toolkit: "Toolkit: NodeJS, Express, Lambda, MongoDB, PostgreSQL, Docker, Jenkins"
     },
-    // {
-    //   name: "spotify-voice-control",
-    //   link: "https://github.com/nexxeln/spotify-voice-control",
-    //   position: "creator and maintainer",
-    //   description:
-    //     "python-based terminal app for controlling spotify via voice commands",
-    // },
     {
       name: "all projects →",
       link: "https://github.com/davidadarme",
       position: "",
       description: "",
+      toolkit: ""
     },
   ] satisfies ExperienceItem[];
 
@@ -173,9 +184,9 @@ export default function HomePage() {
         </div>
       </div>
 
-      <h3 className="mb-6 mt-12 text-xl font-medium">connect on</h3>
+      <h3 className="mb-6 mt-12 text-xl font-medium">Conéctate conmigo</h3>
       <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
-      <li>
+        <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -213,7 +224,7 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://guayahack.co/community/member/davidadarme/"
+            href="http://davidadarme.guayahack.co/"
           >
             <p className="mr-2 h-7">guayahack.co</p>
             <UpRightArrowIcon />
@@ -223,18 +234,31 @@ export default function HomePage() {
 
       <div className="mt-12 flex flex-col gap-6">
         <p className="prose prose-neutral mb-10 dark:prose-invert">
-          Soy David, estudiante de Análisis y Desarrollo de Software en el SENA. Me apasiona el mundo de la tecnología y estoy en constante aprendizaje sobre diferentes áreas de IT, como la administración de bases de datos (DBA), desarrollo de software, sysadmin, devops, y arquitectura en la nube. Busco oportunidades para aplicar y expandir mis conocimientos mientras sigo creciendo profesionalmente.
+          Soy David Adarme, Me apasiona el mundo de la tecnología y estoy en
+          constante aprendizaje sobre diferentes áreas de IT, como la
+          administración de bases de datos (DBA), desarrollo de software y DevOps. Busco oportunidades para aplicar y
+          expandir mis conocimientos mientras sigo creciendo profesionalmente.
+          Mis principal meta es fortalecer un stack como PERN (PostgreSQL,
+          Express.Js, React y NodeJS) y orientarme hacia la nube a lo largo de
+          mi carrera.
         </p>
         <div>
-          <iframe 
-          src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-        </iframe>
+          <iframe
+            src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
+            width="100%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen={true}
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
 
       <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-        {/* <ExperienceSection title="work" items={workItems} /> */}
-        <ExperienceSection title="projects" items={projectItems} />
+        <ExperienceSection title="Estudios" items={studyItems} />
+        <ExperienceSection title="Proyectos" items={projectItems} />
+        {/* <ExperienceSection title="experience" items={experienceItems} /> */}
       </div>
 
       <h3 className="mb-8 text-xl font-medium">blog</h3>
@@ -265,8 +289,10 @@ export default function HomePage() {
           All posts →
         </Link>
         <div className="space-y-6">
-        <p className="font-medium">subscribe for updates. no spam.</p>
-        <NewsletterForm />
+          <p className="font-medium">Suscríbete para recibir nuevos posts.</p>
+          <NewsletterForm />
+          <SpeedInsights />
+          <Analytics />
         </div>
       </div>
     </main>
