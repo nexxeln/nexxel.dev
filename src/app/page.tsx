@@ -1,273 +1,101 @@
-import { Link } from "next-view-transitions";
-import { getBlogPosts } from "~~/blog";
+import Image from "next/image";
 
-function UpRightArrowIcon() {
+export default function Home() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-    >
-      <path d="M7 7h10v10" />
-      <path d="M7 17 17 7" />
-    </svg>
-  );
-}
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
+              src/app/page.tsx
+            </code>
+            .
+          </li>
+          <li>Save and see your changes instantly.</li>
+        </ol>
 
-function WorkIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-    >
-      <path d="M12 12h.01" />
-      <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-      <path d="M22 13a18.15 18.15 0 0 1-20 0" />
-      <rect width="20" height="14" x="2" y="6" rx="2" />
-    </svg>
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-    >
-      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
-
-type ExperienceItem = {
-  name: string;
-  link: string;
-  position: string;
-  description: string;
-};
-
-function ExperienceSection({
-  title,
-  items,
-}: {
-  title: string;
-  items: ExperienceItem[];
-}) {
-  return (
-    <section className="text-left">
-      <h3 className="mb-8 text-xl font-medium">{title}</h3>
-
-      {items.map((item, index) => (
-        <div key={index} className="mb-8">
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
           <a
-            href={item.link}
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
             target="_blank"
-            className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
+            rel="noopener noreferrer"
           >
-            {item.name}
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
           </a>
-
-          <p className="mt-3">{item.position}</p>
-
-          <p className="mt-3 text-neutral-700 dark:text-neutral-300">
-            {item.description}
-          </p>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
         </div>
-      ))}
-    </section>
-  );
-}
-
-export default function HomePage() {
-  const workItems = [
-    {
-      name: "leapflow",
-      link: "https://leapflow.tech",
-      position: "co-founder and cto (may 2024 - present)",
-      description:
-        "leading engineering to build ai agents for automating repetitive tasks in existing software",
-    },
-    {
-      name: "dimension",
-      link: "https://dimension.dev",
-      position: "full-stack engineer (nov 2023 - jan 2024)",
-      description:
-        "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-    },
-  ] satisfies ExperienceItem[];
-
-  const projectItems = [
-    {
-      name: "create-t3-app",
-      link: "https://create.t3.gg/",
-      position: "creator and maintainer",
-      description:
-        "open-source project for initializing full-stack next.js apps. 24k+ stars, 200+ contributors",
-    },
-    {
-      name: "spotify-voice-control",
-      link: "https://github.com/nexxeln/spotify-voice-control",
-      position: "creator and maintainer",
-      description:
-        "python-based terminal app for controlling spotify via voice commands",
-    },
-    {
-      name: "all projects →",
-      link: "https://github.com/nexxeln",
-      position: "",
-      description: "",
-    },
-  ] satisfies ExperienceItem[];
-
-  const posts = getBlogPosts()
-    .sort(
-      (a, b) =>
-        new Date(b.metadata.date).getTime() -
-        new Date(a.metadata.date).getTime(),
-    )
-    .slice(0, 4);
-
-  return (
-    <main className="text-left">
-      <h1 className="mb-6 text-2xl font-medium tracking-tighter">
-        shoubhit dash
-      </h1>
-
-      <div className="mb-6 flex flex-col gap-2">
-        <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
-          <LocationIcon />
-          <p>chennai, india</p>
-        </div>
-
-        <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
-          <WorkIcon />
-          <p className="inline-flex">co-founder and cto @ leapflow</p>
-        </div>
-      </div>
-
-      <p className="prose prose-neutral mb-10 dark:prose-invert">
-        i&apos;m a 19 y/o cs undergrad student. i love building things and
-        solving problems. i enjoy language design, theoretical computer science
-        and i live on the terminal. if i&apos;m not coding, i&apos;m probably
-        doing cardistry, watching movies or obsessing over mechanical keyboards.
-      </p>
-
-      <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
-        <ExperienceSection title="work" items={workItems} />
-        <ExperienceSection title="projects" items={projectItems} />
-      </div>
-
-      <h3 className="mb-8 text-xl font-medium">blog</h3>
-      <div className="flex flex-col gap-6">
-        {posts.map((post) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`} className="">
-            <div className="flex w-full justify-between">
-              <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
-                {post.metadata.title.toLowerCase()}
-              </p>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                {new Date(post.metadata.date)
-                  .toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })
-                  .toLowerCase()}
-              </p>
-            </div>
-          </Link>
-        ))}
-
-        <Link
-          href="/blog"
-          className="decoration-neutral-4000 mt-4 font-medium underline decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600"
+      </main>
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          all posts →
-        </Link>
-      </div>
-
-      <h3 className="mb-6 mt-12 text-xl font-medium">links</h3>
-      <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="mailto:shoubhit2005@gmail.com"
-          >
-            <p className="mr-2 h-7">email</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://x.com/nexxeln"
-          >
-            <p className="mr-2 h-7">x.com</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/nexxeln"
-          >
-            <p className="mr-2 h-7">github</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://www.linkedin.com/in/shoubhit-dash/"
-          >
-            <p className="mr-2 h-7">linkedin</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-        <li>
-          <a
-            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://cal.com/nexxel"
-          >
-            <p className="mr-2 h-7">book a call</p>
-            <UpRightArrowIcon />
-          </a>
-        </li>
-      </ul>
-    </main>
+          <Image
+            aria-hidden
+            src="/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
+    </div>
   );
 }
