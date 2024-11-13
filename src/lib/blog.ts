@@ -1,18 +1,18 @@
 import fs from "fs"
 import path from "path"
 
-type Metadata = {
+export type Metadata = {
   title: string
   description: string
   date: string
 }
 
-type FrontmatterParseResult = {
+export type FrontmatterParseResult = {
   metadata: Metadata
   content: string
 }
 
-type MDXFileData = FrontmatterParseResult & {
+export type MDXFileData = FrontmatterParseResult & {
   slug: string
 }
 

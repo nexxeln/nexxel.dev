@@ -8,10 +8,11 @@ export function Navbar() {
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      // Only trigger if no input elements are focused
+      // Don't trigger if any input elements are focused or if event target is an input
       if (
         document.activeElement?.tagName === "INPUT" ||
-        document.activeElement?.tagName === "TEXTAREA"
+        document.activeElement?.tagName === "TEXTAREA" ||
+        event.target instanceof HTMLInputElement
       ) {
         return
       }
