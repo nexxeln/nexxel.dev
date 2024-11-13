@@ -74,7 +74,7 @@ export default function Post({ params }: { params: { slug: string } }) {
       />
 
       <h1 className="text-4xl font-bold mb-4 text-white">
-        <span className="text-[#ff6b35] mr-2">*</span>
+        <span className="text-accent mr-2">*</span>
         {post.metadata.title}
       </h1>
 

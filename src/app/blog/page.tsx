@@ -11,7 +11,7 @@ export default function BlogPage() {
   return (
     <main className="animate-fade-in-up relative">
       <h1 className="text-4xl font-bold mb-8 text-white">
-        <span className="text-[#ff6b35] mr-2">*</span>
+        <span className="text-accent mr-2">*</span>
         <ScrambleText text="blog" />
       </h1>
 
