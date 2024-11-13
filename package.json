@@ -12,7 +12,8 @@
     "lucide-react": "^0.456.0",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "use-scramble": "^2.2.15"
   },
   "devDependencies": {
     "typescript": "^5",

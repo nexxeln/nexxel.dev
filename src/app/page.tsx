@@ -1,7 +1,7 @@
-import { Header } from "./header"
-import { SectionList } from "./section-list"
-import { BlogSection } from "./blog-section"
-import { LinksSection } from "./links-section"
+import { Header } from "../components/header"
+import { SectionList } from "../components/section-list"
+import { BlogSection } from "../components/blog-section"
+import { LinksSection } from "../components/links-section"
 
 const workItems = [
   {
@@ -35,7 +35,7 @@ const projectItems = [
   },
 ]
 
-export default function Component() {
+export default function HomePage() {
   return (
     <>
       <Header />
