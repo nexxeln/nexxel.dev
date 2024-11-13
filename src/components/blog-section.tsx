@@ -1,23 +1,13 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { getPosts } from "@/lib/blog"
 
-const posts = [
-  {
-    title: "implementing string pattern matching using dfas",
-    date: "jul 5, 2024",
-    href: "/blog/pattern-matching",
-  },
-  {
-    title: "ricing macos",
-    date: "nov 1, 2023",
-    href: "/blog/ricing-macos",
-  },
-  {
-    title: "how i organise my life",
-    date: "aug 3, 2023",
-    href: "/blog/life-organisation",
-  },
-]
+const posts = getPosts()
+  .sort(
+    (a, b) =>
+      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
+  )
+  .slice(0, 4)
 
 export function BlogSection() {
   return (
@@ -29,12 +19,14 @@ export function BlogSection() {
         {posts.map((post, index) => (
           <div key={index} className="flex justify-between items-center group">
             <Link
-              href={post.href}
+              href={`/blog/${post.slug}`}
               className="hover:text-[#ff6b35] transition-colors duration-200"
             >
-              {post.title}
+              {post.metadata.title.toLowerCase()}
             </Link>
-            <span className="text-sm text-gray-400">{post.date}</span>
+            <span className="text-sm text-gray-400">
+              {formatDate(post.metadata.date)}
+            </span>
           </div>
         ))}
       </div>
@@ -47,4 +39,14 @@ export function BlogSection() {
       </Link>
     </section>
   )
+}
+
+function formatDate(dateString: string) {
+  return new Date(dateString)
+    .toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
+    .toLowerCase()
 }

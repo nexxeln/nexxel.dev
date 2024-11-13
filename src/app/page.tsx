@@ -2,6 +2,7 @@ import { Header } from "../components/header"
 import { SectionList } from "../components/section-list"
 import { BlogSection } from "../components/blog-section"
 import { LinksSection } from "../components/links-section"
+import { getPosts } from "@/lib/blog"
 
 const workItems = [
   {

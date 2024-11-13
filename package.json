@@ -11,8 +11,10 @@
   "dependencies": {
     "lucide-react": "^0.456.0",
     "next": "15.0.3",
+    "next-mdx-remote": "^5.0.0",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
+    "shiki": "^1.22.2",
     "use-scramble": "^2.2.15"
   },
   "devDependencies": {
