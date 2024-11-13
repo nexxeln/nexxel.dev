@@ -1,16 +1,16 @@
-import { Header } from "../components/header"
-import { SectionList } from "../components/section-list"
-import { BlogSection } from "../components/blog-section"
-import { LinksSection } from "../components/links-section"
-import { getPosts } from "@/lib/blog"
+import { Header } from "@/components/header"
+import { Item, SectionList } from "@/components/section-list"
+import { BlogSection } from "@/components/blog-section"
+import { LinksSection } from "@/components/links-section"
 
-const workItems = [
+const workItems: Item[] = [
   {
     title: "leapflow",
     role: "co-founder and cto",
     period: "may 2024 - present",
     description:
       "leading engineering to build ai agents for automating repetitive tasks in existing software",
+    href: "https://leapflow.tech",
   },
   {
     title: "dimension",
@@ -18,6 +18,7 @@ const workItems = [
     period: "nov 2023 - jan 2024",
     description:
       "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
+    href: "https://dimension.dev",
   },
 ]
 
@@ -27,12 +28,13 @@ const projectItems = [
     role: "creator and maintainer",
     description:
       "open-source project for initializing full-stack next.js apps. 24k+ stars, 200+ contributors",
+    href: "https://create.t3.gg",
   },
   {
-    title: "spotify-voice-control",
-    role: "creator and maintainer",
-    description:
-      "python-based terminal app for controlling spotify via voice commands",
+    title: "mini-git",
+    role: "creator",
+    description: "simplified version of git from scratch",
+    href: "https://github.com/nexxeln/mini-git",
   },
 ]
 

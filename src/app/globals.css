@@ -22,7 +22,7 @@ body {
 }
 
 .prose a:not(.anchor) {
-  @apply text-accent no-underline;
+  @apply text-accent no-underline hover:underline;
 }
 
 .prose a.anchor {

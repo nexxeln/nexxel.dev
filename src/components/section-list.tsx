@@ -1,14 +1,15 @@
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 
-interface Item {
+export type Item = {
   title: string
+  href: string
   role: string
   period?: string
   description: string
 }
 
-interface SectionListProps {
+type SectionListProps = {
   title: string
   items: Item[]
   viewAllHref?: string
@@ -28,14 +29,16 @@ export function SectionList({
       </h2>
       <div className="space-y-8">
         {items.map((item, index) => (
-          <div key={index} className="group">
-            <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
-              {item.title}
-            </h3>
-            <p className="text-sm text-gray-400 mb-2">
-              {item.role} {item.period && `(${item.period})`}
-            </p>
-            <p className="text-gray-300">{item.description}</p>
+          <div key={item.title} className="group">
+            <Link href={item.href} target="_blank">
+              <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-400 mb-2">
+                {item.role} {item.period && `(${item.period})`}
+              </p>
+              <p className="text-gray-300">{item.description}</p>
+            </Link>
           </div>
         ))}
       </div>
