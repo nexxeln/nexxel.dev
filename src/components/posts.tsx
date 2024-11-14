@@ -32,12 +32,13 @@ export function Posts({ posts }: PostsProps) {
         setSearchQuery("")
       } else if (
         isSearching &&
-        (e.ctrlKey || e.metaKey) &&
-        (e.key === "j" || e.key === "k")
+        (((e.ctrlKey || e.metaKey) && (e.key === "j" || e.key === "k")) ||
+          e.key === "ArrowDown" ||
+          e.key === "ArrowUp")
       ) {
         e.preventDefault()
         setSelectedIndex((prev) => {
-          if (e.key === "j") {
+          if (e.key === "j" || e.key === "ArrowDown") {
             return prev < filteredPosts.length - 1 ? prev + 1 : prev
           } else {
             return prev > 0 ? prev - 1 : prev
@@ -55,7 +56,7 @@ export function Posts({ posts }: PostsProps) {
   return (
     <>
       {isSearching && (
-        <div className="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm border border-gray-800 rounded-lg p-2">
+        <div className="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm border border-gray-800 p-2">
           <div className="flex items-center text-gray-400">
             <span className="text-accent mr-2">/</span>
             <input
@@ -76,7 +77,7 @@ export function Posts({ posts }: PostsProps) {
             key={post.slug}
             className={`flex justify-between items-center group ${
               isSearching && index === selectedIndex
-                ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2 rounded border-l-2 border-l-accent/50"
+                ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2 border-l-2 border-l-accent/50"
                 : ""
             }`}
           >

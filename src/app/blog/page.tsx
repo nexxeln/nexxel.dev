@@ -28,6 +28,14 @@ export default function BlogPage() {
         <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
           ctrl / ⌘ k
         </kbd>{" "}
+        or{" "}
+        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+          ↑
+        </kbd>{" "}
+        and{" "}
+        <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
+          ↓
+        </kbd>{" "}
         to navigate
       </p>
 
