@@ -24,6 +24,9 @@ export function Navbar() {
         case "b":
           router.push("/blog")
           break
+        case "p":
+          router.push("/projects")
+          break
       }
     }
 
@@ -45,6 +48,12 @@ export function Navbar() {
           className="hover:text-accent transition-colors duration-200"
         >
           [b] blog
+        </Link>
+        <Link
+          href="/projects"
+          className="hover:text-accent transition-colors duration-200"
+        >
+          [p] projects
         </Link>
       </div>
     </nav>
