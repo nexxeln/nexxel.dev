@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "@upstash/redis": "^1.34.3",
     "lucide-react": "^0.456.0",
     "next": "15.0.3",
     "next-mdx-remote": "^5.0.0",

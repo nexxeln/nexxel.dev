@@ -1,5 +1,5 @@
 import { ScrambleText } from "@/components/scramble-text"
-import { Posts } from "@/components/posts"
+import { PostsList } from "@/components/posts-list"
 import { getPosts } from "@/lib/blog"
 
 const posts = getPosts().sort(
@@ -7,7 +7,7 @@ const posts = getPosts().sort(
     new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
 )
 
-export default function BlogPage() {
+export default async function BlogPage() {
   return (
     <main className="animate-fade-in-up relative">
       <h1 className="text-4xl font-bold mb-8 text-white">
@@ -15,7 +15,7 @@ export default function BlogPage() {
         <ScrambleText text="blog" />
       </h1>
 
-      <p className="text-sm text-gray-400 mb-8">
+      <p className="hidden sm:block text-sm text-gray-400 mb-8">
         press{" "}
         <kbd className="px-1 py-0.5 text-xs border border-gray-700 rounded">
           /
@@ -39,7 +39,7 @@ export default function BlogPage() {
         to navigate
       </p>
 
-      <Posts posts={posts} />
+      <PostsList posts={posts} />
     </main>
   )
 }

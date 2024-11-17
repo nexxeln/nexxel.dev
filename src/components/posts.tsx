@@ -3,19 +3,25 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import type { MDXFileData } from "@/lib/blog"
+import { PostItem } from "./post-item"
 
-type PostsProps = {
-  posts: MDXFileData[]
+type PostWithViews = {
+  post: MDXFileData
+  viewsComponent: React.ReactNode
 }
 
-export function Posts({ posts }: PostsProps) {
+type PostsProps = {
+  postsWithViews: PostWithViews[]
+}
+
+export function Posts({ postsWithViews }: PostsProps) {
   const [isSearching, setIsSearching] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
   const router = useRouter()
 
-  const filteredPosts = posts.filter((post) =>
-    post.metadata.title.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPosts = postsWithViews.filter((item) =>
+    item.post.metadata.title.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
   useEffect(() => {
@@ -45,7 +51,7 @@ export function Posts({ posts }: PostsProps) {
           }
         })
       } else if (isSearching && e.key === "Enter" && filteredPosts.length > 0) {
-        router.push(`/blog/${filteredPosts[selectedIndex].slug}`)
+        router.push(`/blog/${filteredPosts[selectedIndex].post.slug}`)
       }
     }
 
@@ -71,32 +77,14 @@ export function Posts({ posts }: PostsProps) {
         </div>
       )}
 
-      <div className="space-y-4">
-        {filteredPosts.map((post, index) => (
-          <div
-            key={post.slug}
-            className={`flex justify-between items-center group ${
-              isSearching && index === selectedIndex
-                ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2 border-l-2 border-l-accent/50"
-                : ""
-            }`}
-          >
-            <a
-              href={`/blog/${post.slug}`}
-              className="text-gray-200 hover:text-accent transition-colors duration-200"
-            >
-              {post.metadata.title.toLowerCase()}
-            </a>
-            <span className="text-sm text-gray-400">
-              {new Date(post.metadata.date)
-                .toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })
-                .toLowerCase()}
-            </span>
-          </div>
+      <div className="space-y-8 sm:space-y-4">
+        {filteredPosts.map((item, index) => (
+          <PostItem
+            key={item.post.slug}
+            post={item.post}
+            viewsComponent={item.viewsComponent}
+            isSelected={isSearching && index === selectedIndex}
+          />
         ))}
       </div>
     </>

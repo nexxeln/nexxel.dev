@@ -2,6 +2,10 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug } from "@/lib/blog"
+import { Views } from "@/components/view-counter"
+import { Suspense } from "react"
+import { ViewCounterSkeleton } from "@/components/view-counter"
+import { incrementViews } from "@/lib/actions"
 
 export async function generateMetadata({
   params,
@@ -42,11 +46,13 @@ export async function generateMetadata({
   }
 }
 
-export default function Post({ params }: { params: { slug: string } }) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const post = getPostBySlug(params.slug)
   if (!post) {
     notFound()
   }
+
+  await incrementViews(params.slug)
 
   return (
     <section className="animate-fade-in-up">
@@ -78,10 +84,13 @@ export default function Post({ params }: { params: { slug: string } }) {
         {post.metadata.title}
       </h1>
 
-      <div className="mb-8">
-        <p className="text-sm text-gray-400">
-          {formatDate(post.metadata.date)}
-        </p>
+      <div className="mb-8 flex items-center justify-between text-sm text-gray-400">
+        <span>{formatDate(post.metadata.date)}</span>
+        <div className="flex items-center gap-4">
+          <Suspense fallback={<ViewCounterSkeleton />}>
+            <Views slug={params.slug} />
+          </Suspense>
+        </div>
       </div>
 
       <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
