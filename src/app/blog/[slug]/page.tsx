@@ -7,12 +7,13 @@ import { Suspense } from "react"
 import { ViewCounterSkeleton } from "@/components/view-counter"
 import { incrementViews } from "@/lib/actions"
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
-  const post = getPostBySlug(params.slug)
+type PageProps = {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
   if (!post) {
     return
   }
@@ -46,13 +47,14 @@ export async function generateMetadata({
   }
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug)
+export default async function Post({ params }: PageProps) {
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
   if (!post) {
     notFound()
   }
 
-  await incrementViews(params.slug)
+  await incrementViews(slug)
 
   return (
     <section className="animate-fade-in-up">
@@ -88,7 +90,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <span>{formatDate(post.metadata.date)}</span>
         <div className="flex items-center gap-4">
           <Suspense fallback={<ViewCounterSkeleton />}>
-            <Views slug={params.slug} />
+            <Views slug={slug} />
           </Suspense>
         </div>
       </div>
