@@ -6,7 +6,6 @@ type ProjectCardProps = {
   description: string
   role: string
   period?: string
-  challenges: string[]
   achievements: string[]
   technologies: string[]
   href: string
@@ -17,7 +16,6 @@ export function ProjectCard({
   description,
   role,
   period,
-  challenges,
   achievements,
   technologies,
   href,
@@ -40,15 +38,6 @@ export function ProjectCard({
       <p className="text-gray-300 mb-6">{description}</p>
 
       <div className="space-y-6">
-        <div>
-          <h3 className="text-white font-semibold mb-2">challenges</h3>
-          <ul className="list-disc list-inside space-y-1 text-gray-400">
-            {challenges.map((challenge, index) => (
-              <li key={index}>{challenge}</li>
-            ))}
-          </ul>
-        </div>
-
         <div>
           <h3 className="text-white font-semibold mb-2">achievements</h3>
           <ul className="list-disc list-inside space-y-1 text-gray-400">
