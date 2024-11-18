@@ -43,3 +43,17 @@ export default async function BlogPage() {
     </main>
   )
 }
+
+export async function generateStaticParams() {
+  const posts = getPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
+export async function generateMetadata() {
+  return {
+    title: "Blog | Shoubhit Dash",
+    description: "Personal blog of Shoubhit Dash",
+  }
+}
