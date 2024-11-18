@@ -10,8 +10,33 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Shoubhit Dash",
-  description: "Personal website of Shoubhit Dash",
+  metadataBase: new URL("https://www.nexxel.dev"),
+  title: {
+    default: "Shoubhit Dash",
+    template: "%s | Shoubhit Dash",
+  },
+  description: "Developer, cardist and maker of things.",
+  openGraph: {
+    title: "Shoubhit Dash",
+    description: "Developer, cardist and maker of things.",
+    url: "https://www.nexxel.dev",
+    siteName: "Shoubhit Dash",
+    locale: "en_US",
+    type: "website",
+    images: ["https://www.nexxel.dev/og/home"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    "max-video-preview": -1,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+  },
+  twitter: {
+    title: "Shoubhit Dash",
+    card: "summary_large_image",
+    creator: "@nexxeln",
+  },
 }
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { PostsList } from "@/components/posts-list"
 import { getPosts } from "@/lib/blog"
+import { Metadata } from "next"
 
 const posts = getPosts().sort(
   (a, b) =>
@@ -44,16 +45,14 @@ export default async function BlogPage() {
   )
 }
 
-export async function generateStaticParams() {
-  const posts = getPosts()
-  return posts.map((post) => ({
-    slug: post.slug,
-  }))
-}
-
-export async function generateMetadata() {
-  return {
-    title: "Blog | Shoubhit Dash",
-    description: "Personal blog of Shoubhit Dash",
-  }
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Writings on programming, computer science, and more.",
+  openGraph: {
+    images: [
+      {
+        url: "https://www.nexxel.dev/og/home?title=nexxel's blog",
+      },
+    ],
+  },
 }
