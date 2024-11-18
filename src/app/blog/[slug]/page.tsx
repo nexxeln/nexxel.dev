@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug } from "@/lib/blog"
@@ -31,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
       url: `https://www.nexxel.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}`,
         },
       ],
     },

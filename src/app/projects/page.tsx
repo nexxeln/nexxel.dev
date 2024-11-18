@@ -1,5 +1,6 @@
 import { ScrambleText } from "@/components/scramble-text"
 import { ProjectCard } from "@/components/project-card"
+import { Metadata } from "next"
 
 const projects = [
   {
@@ -110,4 +111,16 @@ export default function ProjectsPage() {
       </div>
     </main>
   )
+}
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Some of the projects I've worked on.",
+  openGraph: {
+    images: [
+      {
+        url: "https://www.nexxel.dev/og/home?title=projects",
+      },
+    ],
+  },
 }
