@@ -1,30 +1,23 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import { MDX } from "~~/app/blog/[slug]/mdx";
-import { ViewCounter } from "~~/app/blog/view-counter";
-import { getBlogPostBySlug } from "~~/blog";
-import { redis } from "~~/lib/redis";
+import { notFound } from "next/navigation"
+import { MDX } from "./mdx"
+import { getPostBySlug } from "@/lib/blog"
+import { Views } from "@/components/view-counter"
+import { Suspense } from "react"
+import { ViewCounterSkeleton } from "@/components/view-counter"
+import { incrementViews } from "@/lib/actions"
 
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
+type PageProps = {
+  params: Promise<{ slug: string }>
+}
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata | undefined> {
-  const post = getBlogPostBySlug(params.slug);
+export async function generateMetadata({ params }: PageProps) {
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
   if (!post) {
-    return;
+    return
   }
 
-  const publishedTime = formatDate(post.metadata.date);
+  const publishedTime = formatDate(post.metadata.date)
 
   return {
     title: post.metadata.title,
@@ -37,7 +30,7 @@ export async function generateMetadata({
       url: `https://www.nexxel.dev/blog/${post.slug}`,
       images: [
         {
-          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://www.nexxel.dev/og/blog?title=${post.metadata.title}`,
         },
       ],
     },
@@ -50,17 +43,20 @@ export async function generateMetadata({
         `https://www.nexxel.dev/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
-  };
+  }
 }
 
-export default function Post({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug);
+export default async function Post({ params }: PageProps) {
+  const slug = (await params).slug
+  const post = getPostBySlug(slug)
   if (!post) {
-    notFound();
+    notFound()
   }
 
+  await incrementViews(slug)
+
   return (
-    <section>
+    <section className="animate-fade-in-up">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -72,9 +68,9 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://nexxel.dev/og/blog?title=${post.metadata.title}&top=${formatDate(
-              post.metadata.date,
-            )}`,
+            image: `https://nexxel.dev/og/blog?title=${
+              post.metadata.title
+            }&top=${formatDate(post.metadata.date)}`,
             url: `https://nexxel.dev/blog/${post.slug}`,
             author: {
               "@type": "Person",
@@ -84,40 +80,31 @@ export default function Post({ params }: { params: { slug: string } }) {
         }}
       />
 
-      <h1 className="title mb-2 max-w-[650px] text-3xl font-medium tracking-tighter">
+      <h1 className="text-4xl font-bold mb-4 text-white">
+        <span className="text-accent mr-2">*</span>
         {post.metadata.title}
       </h1>
-      <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.date)}
-        </p>
-        <Suspense>
-          <Views slug={post.slug} />
-        </Suspense>
+
+      <div className="mb-8 flex items-center justify-between text-sm text-gray-400">
+        <span>{formatDate(post.metadata.date)}</span>
+        <div className="flex items-center gap-4">
+          <Suspense fallback={<ViewCounterSkeleton />}>
+            <Views slug={slug} />
+          </Suspense>
+        </div>
       </div>
 
-      <article className="prose prose-neutral dark:prose-invert">
+      <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
         <MDX source={post.content} />
       </article>
     </section>
-  );
+  )
 }
 
-async function Views({ slug }: { slug: string }) {
-  // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
-  const viewsData = (await redis.get("views")) as {
-    slug: string;
-    views: number;
-  }[];
-
-  const postViews = viewsData.find((view) => view.slug === slug);
-  if (postViews) {
-    postViews.views += 1;
-  } else {
-    viewsData.push({ slug, views: 1 });
-  }
-
-  await redis.set("views", JSON.stringify(viewsData));
-
-  return <ViewCounter slug={slug} allViews={viewsData} />;
+function formatDate(date: string) {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
 }

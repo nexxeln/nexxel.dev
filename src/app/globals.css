@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #111;
+  --foreground: #d1d5db;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+.shiki,
+.shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+.prose a:not(.anchor) {
+  @apply text-accent no-underline hover:underline;
+}
+
+.prose a.anchor {
+  @apply relative no-underline;
+}
+
+.prose a.anchor::before {
+  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'];
+}
+
+.prose a.anchor:hover::before {
+  @apply opacity-100;
+}
+
+.prose pre {
+  @apply overflow-x-auto border border-neutral-800 bg-[#111] my-4 rounded-none;
+}
+
+.prose code:not(pre code) {
+  @apply px-1 py-0.5 text-sm border border-gray-700 rounded text-gray-200;
+}
+
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: none;
+}
+
+.prose pre code {
+  @apply p-4 block bg-transparent;
+  border: initial;
+  line-height: 1.6;
+}
+
+.prose code span {
+  @apply font-medium text-gray-200;
+}
