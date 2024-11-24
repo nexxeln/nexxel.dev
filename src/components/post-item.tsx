@@ -18,6 +18,7 @@ export function PostItem({ post, isSelected, viewsComponent }: PostItemProps) {
     >
       <Link
         href={`/blog/${post.slug}`}
+        prefetch={true}
         className="text-gray-200 hover:text-accent transition-colors duration-200"
       >
         {post.metadata.title.toLowerCase()}
