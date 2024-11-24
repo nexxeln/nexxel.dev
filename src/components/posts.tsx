@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useRouter } from "next/navigation"
 import type { MDXFileData } from "@/lib/blog"
 import { PostItem } from "./post-item"
@@ -19,6 +19,7 @@ export function Posts({ postsWithViews }: PostsProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
   const router = useRouter()
+  const selectedItemRef = useRef<HTMLDivElement>(null)
 
   const filteredPosts = postsWithViews.filter((item) =>
     item.post.metadata.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -28,6 +29,15 @@ export function Posts({ postsWithViews }: PostsProps) {
     setSelectedIndex(0)
   }, [searchQuery])
 
+  const scrollSelectedIntoView = () => {
+    if (selectedItemRef.current) {
+      selectedItemRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      })
+    }
+  }
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "/" && !isSearching) {
@@ -36,6 +46,8 @@ export function Posts({ postsWithViews }: PostsProps) {
       } else if (e.key === "Escape" && isSearching) {
         setIsSearching(false)
         setSearchQuery("")
+        document.activeElement instanceof HTMLElement &&
+          document.activeElement.blur()
       } else if (
         isSearching &&
         (((e.ctrlKey || e.metaKey) && (e.key === "j" || e.key === "k")) ||
@@ -44,11 +56,19 @@ export function Posts({ postsWithViews }: PostsProps) {
       ) {
         e.preventDefault()
         setSelectedIndex((prev) => {
-          if (e.key === "j" || e.key === "ArrowDown") {
-            return prev < filteredPosts.length - 1 ? prev + 1 : prev
-          } else {
-            return prev > 0 ? prev - 1 : prev
-          }
+          const isDownward =
+            e.key === "ArrowDown" || ((e.ctrlKey || e.metaKey) && e.key === "j")
+
+          const newIndex = isDownward
+            ? prev < filteredPosts.length - 1
+              ? prev + 1
+              : prev
+            : prev > 0
+            ? prev - 1
+            : prev
+
+          scrollSelectedIntoView()
+          return newIndex
         })
       } else if (isSearching && e.key === "Enter" && filteredPosts.length > 0) {
         router.push(`/blog/${filteredPosts[selectedIndex].post.slug}`)
@@ -72,6 +92,15 @@ export function Posts({ postsWithViews }: PostsProps) {
               className="flex-1 bg-transparent outline-none"
               autoFocus
               placeholder="search posts..."
+              aria-label="Search posts"
+              role="searchbox"
+              aria-expanded={filteredPosts.length > 0}
+              aria-controls="search-results"
+              aria-activedescendant={
+                isSearching && filteredPosts.length > 0
+                  ? `post-${filteredPosts[selectedIndex].post.slug}`
+                  : undefined
+              }
             />
           </div>
         </div>
@@ -79,12 +108,18 @@ export function Posts({ postsWithViews }: PostsProps) {
 
       <div className="space-y-8 sm:space-y-4">
         {filteredPosts.map((item, index) => (
-          <PostItem
+          <div
             key={item.post.slug}
-            post={item.post}
-            viewsComponent={item.viewsComponent}
-            isSelected={isSearching && index === selectedIndex}
-          />
+            ref={
+              isSearching && index === selectedIndex ? selectedItemRef : null
+            }
+          >
+            <PostItem
+              post={item.post}
+              viewsComponent={item.viewsComponent}
+              isSelected={isSearching && index === selectedIndex}
+            />
+          </div>
         ))}
       </div>
     </>
