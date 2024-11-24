@@ -45,6 +45,7 @@ export function Navbar() {
         </Link>
         <Link
           href="/blog"
+          prefetch={true}
           className="hover:text-accent transition-colors duration-200"
         >
           [b] blog
