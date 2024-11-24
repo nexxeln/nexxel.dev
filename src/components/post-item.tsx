@@ -1,4 +1,5 @@
 import { type MDXFileData } from "@/lib/blog"
+import Link from "next/link"
 
 type PostItemProps = {
   post: MDXFileData
@@ -15,12 +16,12 @@ export function PostItem({ post, isSelected, viewsComponent }: PostItemProps) {
           : ""
       }`}
     >
-      <a
+      <Link
         href={`/blog/${post.slug}`}
         className="text-gray-200 hover:text-accent transition-colors duration-200"
       >
         {post.metadata.title.toLowerCase()}
-      </a>
+      </Link>
       <div className="flex items-center gap-4 text-sm text-gray-400 shrink-0">
         {viewsComponent}
         <span>•</span>
