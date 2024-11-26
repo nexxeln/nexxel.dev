@@ -88,20 +88,20 @@ Here's an imperative implementation of the same function in TypeScript:
 
 const fib = (n: number): number => {
   if (n === 0) {
-    return 0;
+    return 0
   } else if (n === 1) {
-    return 1;
+    return 1
   } else {
-    let a = 0;
-    let b = 1;
+    let a = 0
+    let b = 1
 
     for (let i = 2; i <= n; i++) {
-      [a, b] = [b, a + b];
+      ;[a, b] = [b, a + b]
     }
 
-    return b;
+    return b
   }
-};
+}
 ```
 
 If you look at the code, you'll see that it is much more verbose than the declarative version. It also uses mutable variables, which can be error-prone. Moreover, it is not very easy to understand what the code is doing. Although this can be improved and be written in a declarative way using recursion.
@@ -111,13 +111,13 @@ If you look at the code, you'll see that it is much more verbose than the declar
 
 const fib = (n: number): number => {
   if (n === 0) {
-    return 0;
+    return 0
   } else if (n === 1) {
-    return 1;
+    return 1
   } else {
-    return fib(n - 1) + fib(n - 2);
+    return fib(n - 1) + fib(n - 2)
   }
-};
+}
 ```
 
 This version is much more readable and concise, but it is still not as concise and satisfying to read and write as the pattern matching version.
@@ -222,7 +222,7 @@ let result = eval 2 p
 
 Another benefit to use pattern matching in complex structures like this is that the compiler will make sure your pattern matching is exhaustive so you won't ever miss a case.
 
-![Compiler making sure pattern matching is exhaustive](/images/pattern-matching/exhaustive.gif)
+![Compiler making sure pattern matching is exhaustive](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOp9hdXORz86nQrL2IoVE5KJYAuOC7iSjhgNZH)
 
 ### Handling Errors
 
