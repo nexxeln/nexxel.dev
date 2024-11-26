@@ -41,11 +41,11 @@ You can see how the pipe operator really helps in improving the readability of t
 After watching [Theo's video on the proposal for adding pipes in JavaScript](https://youtu.be/h1FvtIJ6ecE), I was inspired to implement the pipe operator as a function that composes functions together. Here is what I set out to achieve.
 
 ```ts
-const len = (s: string): number => s.length;
-const double = (n: number): number => n * 2;
-const square = (n: number): number => n ** 2;
+const len = (s: string): number => s.length
+const double = (n: number): number => n * 2
+const square = (n: number): number => n ** 2
 
-console.log(pipe("hi", len, double, square)); // 16
+console.log(pipe("hi", len, double, square)) // 16
 ```
 
 ### Initial implementation
@@ -54,7 +54,7 @@ This was my first iteration of the `pipe` function.
 
 ```ts
 const pipe = (value: any, ...fns: Function[]) =>
-  fns.reduce((acc, fn) => fn(acc), value);
+  fns.reduce((acc, fn) => fn(acc), value)
 ```
 
 Here's what this code is doing:
@@ -66,25 +66,25 @@ Here's what this code is doing:
 
 And this works!
 
-![First iteration of pipe function works!](/images/pipe/first.png)
+![First iteration of pipe function works!](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOa6oxRk8POAdbf1WpZxS4aQKsvoi6hqnJrML2)
 
 ### Problems with the initial implementation
 
 There are a few problems with this implementation. The first problem that I immediately noticed is that the type of the returned value from the function is `any`.
 
-![Type of returned value is any](/images/pipe/any.png)
+![Type of returned value is any](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOmZR7O2wTfJ9H5N2pPQglYUqDXcnr8sOA3kj0)
 
 Obviously this is not good. Ideally this type should be inferred by the TypeScript compiler. I got some help from Reddit and a user there suggested this:
 
 ```ts
-type Fn = (...args: any[]) => any;
+type Fn = (...args: any[]) => any
 
 type LastReturnType<L extends Fn[]> = L extends [...any, infer Last extends Fn]
   ? ReturnType<Last>
-  : never;
+  : never
 
 const pipe = <Funcs extends Fn[]>(value: any, ...fns: Funcs) =>
-  fns.reduce((acc, fn) => fn(acc), value) as LastReturnType<Funcs>;
+  fns.reduce((acc, fn) => fn(acc), value) as LastReturnType<Funcs>
 ```
 
 This is definitely some crazy TypeScript. Let's break it down.
@@ -96,21 +96,21 @@ This is definitely some crazy TypeScript. Let's break it down.
 
 So now the type of the returned value is inferred correctly.
 
-![Type of returned value is inferred correctly](/images/pipe/correct.png)
+![Type of returned value is inferred correctly](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOv4DwHjhBgi7INtHuz1y5olPWmdqkCX0rOLjc)
 
 But there's still a problem. Let me demonstrate it with an example.
 
 ```ts
 // does not show an error
-const result = pipe("hi", double, len, square);
+const result = pipe("hi", double, len, square)
 
 // Argument of type 'number' is not assignable to parameter of type 'string'.
-const result2 = square(len(double("hi")));
+const result2 = square(len(double("hi")))
 ```
 
 Here we're trying to double the string "hi", which is impossible as we're passing a string to a function that expects a number. You can see we get the appropriate error when we try to do this by nesting the function calls. But our `pipe` function does not show any errors.
 
-![No error when passing a string to a function that expects a number](/images/pipe/no-error.png)
+![No error when passing a string to a function that expects a number](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOOZqQTLrBskbtXNl9FdoyRvnLACmuwI5K2jZ4)
 
 This is a perfect use case for [Higher Kinded Types](<https://en.m.wikipedia.org/wiki/Kind_(type_theory)>). Unfortunately, TypeScript does not support Higher Kinded Types yet. There isn't a way to say "for all these functions, the input type is [contravariant](<https://en.m.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)>) to the output type of the previous function".
 
@@ -119,26 +119,26 @@ This is a perfect use case for [Higher Kinded Types](<https://en.m.wikipedia.org
 Turns out, the easiest and most straightforward solution is to set an upper bound on the number of functions that can be passed to the `pipe` function and use [function overloading](https://www.typescriptlang.org/docs/handbook/2/functions.html#function-overloads) to define the type of the returned value.
 
 ```ts
-function pipe<A>(value: A): A;
-function pipe<A, B>(value: A, fn1: (input: A) => B): B;
-function pipe<A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C;
+function pipe<A>(value: A): A
+function pipe<A, B>(value: A, fn1: (input: A) => B): B
+function pipe<A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C
 function pipe<A, B, C, D>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
   fn3: (input: C) => D,
-): D;
+): D
 function pipe<A, B, C, D, E>(
   value: A,
   fn1: (input: A) => B,
   fn2: (input: B) => C,
   fn3: (input: C) => D,
   fn4: (input: D) => E,
-): E;
+): E
 // ... and so on
 
 function pipe(value: any, ...fns: Function[]): unknown {
-  return fns.reduce((acc, fn) => fn(acc), value);
+  return fns.reduce((acc, fn) => fn(acc), value)
 }
 ```
 
@@ -157,7 +157,7 @@ The last function declaration is the actual implementation of the `pipe` functio
 
 The advantage of this implementation is that it allows the `pipe` function to be more type-safe as it ensures that the input and output types of each function in the pipeline are consistent and match the type of the initial value, and it also ensures that the functions passed to the `pipe` function have the correct signature.
 
-![Types working correctly](/images/pipe/overloading.png)
+![Types working correctly](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOHh655kV6BoXqjNGHav4zVmfbUQpd8e01ZOcl)
 
 ### Overloading without using the function keyword
 
@@ -165,33 +165,33 @@ I love my arrow functions and almost never use the `fuction` keyword. Unfortunat
 
 ```ts
 interface Pipe {
-  <A>(value: A): A;
-  <A, B>(value: A, fn1: (input: A) => B): B;
-  <A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C;
+  <A>(value: A): A
+  <A, B>(value: A, fn1: (input: A) => B): B
+  <A, B, C>(value: A, fn1: (input: A) => B, fn2: (input: B) => C): C
   <A, B, C, D>(
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
     fn3: (input: C) => D,
-  ): D;
+  ): D
   <A, B, C, D, E>(
     value: A,
     fn1: (input: A) => B,
     fn2: (input: B) => C,
     fn3: (input: C) => D,
     fn4: (input: D) => E,
-  ): E;
+  ): E
   // ... and so on
 }
 
 const pipe: Pipe = (value: any, ...fns: Function[]): unknown => {
-  return fns.reduce((acc, fn) => fn(acc), value);
-};
+  return fns.reduce((acc, fn) => fn(acc), value)
+}
 ```
 
 This is same as the previous implementation, but we're using an interface to implement the overloads instead of using the `function` keyword. This way we can use arrow functions for the actual implementation. Pretty neat, right? Everything still works!
 
-![Everything still works!](/images/pipe/overloading-arrow.png)
+![Everything still works!](https://utfs.io/a/09ir0bgwfb/ZnKwSvEWGbTOtQkzXC654vIzQ2Cjwp50ZGTuEYx69fOdh8k1)
 
 ## Conclusion
 
