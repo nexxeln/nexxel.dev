@@ -4,10 +4,9 @@ import Link from "next/link"
 type PostItemProps = {
   post: MDXFileData
   isSelected?: boolean
-  viewsComponent: React.ReactNode
 }
 
-export function PostItem({ post, isSelected, viewsComponent }: PostItemProps) {
+export function PostItem({ post, isSelected }: PostItemProps) {
   return (
     <div
       className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 group ${
@@ -23,9 +22,7 @@ export function PostItem({ post, isSelected, viewsComponent }: PostItemProps) {
       >
         {post.metadata.title.toLowerCase()}
       </Link>
-      <div className="flex items-center gap-4 text-sm text-gray-400 shrink-0">
-        {viewsComponent}
-        <span>•</span>
+      <div className="flex items-center text-sm text-gray-400 shrink-0">
         <span>
           {new Date(post.metadata.date)
             .toLocaleDateString("en-US", {
