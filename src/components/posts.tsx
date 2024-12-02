@@ -5,24 +5,19 @@ import { useRouter } from "next/navigation"
 import type { MDXFileData } from "@/lib/blog"
 import { PostItem } from "./post-item"
 
-type PostWithViews = {
-  post: MDXFileData
-  viewsComponent: React.ReactNode
-}
-
 type PostsProps = {
-  postsWithViews: PostWithViews[]
+  posts: MDXFileData[]
 }
 
-export function Posts({ postsWithViews }: PostsProps) {
+export function Posts({ posts }: PostsProps) {
   const [isSearching, setIsSearching] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedIndex, setSelectedIndex] = useState(0)
   const router = useRouter()
   const selectedItemRef = useRef<HTMLDivElement>(null)
 
-  const filteredPosts = postsWithViews.filter((item) =>
-    item.post.metadata.title.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPosts = posts.filter((item) =>
+    item.metadata.title.toLowerCase().includes(searchQuery.toLowerCase()),
   )
 
   useEffect(() => {
@@ -64,14 +59,14 @@ export function Posts({ postsWithViews }: PostsProps) {
               ? prev + 1
               : prev
             : prev > 0
-            ? prev - 1
-            : prev
+              ? prev - 1
+              : prev
 
           scrollSelectedIntoView()
           return newIndex
         })
       } else if (isSearching && e.key === "Enter" && filteredPosts.length > 0) {
-        router.push(`/blog/${filteredPosts[selectedIndex].post.slug}`)
+        router.push(`/blog/${filteredPosts[selectedIndex].slug}`)
       }
     }
 
@@ -98,7 +93,7 @@ export function Posts({ postsWithViews }: PostsProps) {
               aria-controls="search-results"
               aria-activedescendant={
                 isSearching && filteredPosts.length > 0
-                  ? `post-${filteredPosts[selectedIndex].post.slug}`
+                  ? `post-${filteredPosts[selectedIndex].slug}`
                   : undefined
               }
             />
@@ -109,14 +104,13 @@ export function Posts({ postsWithViews }: PostsProps) {
       <div className="space-y-8 sm:space-y-4">
         {filteredPosts.map((item, index) => (
           <div
-            key={item.post.slug}
+            key={item.slug}
             ref={
               isSearching && index === selectedIndex ? selectedItemRef : null
             }
           >
             <PostItem
-              post={item.post}
-              viewsComponent={item.viewsComponent}
+              post={item}
               isSelected={isSearching && index === selectedIndex}
             />
           </div>
