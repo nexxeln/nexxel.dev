@@ -2,11 +2,13 @@
 const config = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: true,
+    project: "./tsconfig.json",
   },
   plugins: ["@typescript-eslint"],
   extends: [
+    "eslint:recommended",
     "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
   ],
