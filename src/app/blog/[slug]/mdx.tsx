@@ -50,8 +50,13 @@ function CustomLink({
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img alt={props.alt} className="rounded-lg" {...props} />;
+  const RESOURCE_URL = process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL;
+  // console.log("RESOURCE_URL:", RESOURCE_URL);
+
+  const src = `${RESOURCE_URL?.replace(/\/$/, '')}/${props.src?.replace(/^\//, '')}`;
+  // console.log("Image URL:", src);
+
+  return <img {...props} src={src} alt={props.alt} className="rounded-lg" />;
 }
 
 async function Pre({
