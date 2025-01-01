@@ -71,10 +71,10 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://nexxel.dev/og/blog?title=${post.metadata.title}&top=${formatDate(
+            image: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${formatDate(
               post.metadata.date,
             )}`,
-            url: `https://nexxel.dev/blog/${post.slug}`,
+            url: `https://davidadarme.vercel.app/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: "David Adarme",

@@ -101,7 +101,7 @@ function ExperienceSection({
             {item.description}
           </p>
 
-          <p className="mt-3" style={{ color: '#3e3e3e' }}>{item.toolkit}</p>
+          <p className="mt-3" style={{ color: '#6d6d6d' }}>{item.toolkit}</p>
         </div>
       ))}
     </section>
@@ -117,18 +117,14 @@ export default function HomePage() {
       description: "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
       toolkit: ""
       },
+      {
+        name: "ATEK Group ↗",
+        link: "https://www.atek-group.com/",
+        position: "Software Developer Intern",
+        description: "Developed user manuals, supported debugging and bug fixing in BE-FE",
+        toolkit: ""
+      }
   ] satisfies ExperienceItem[];
-
-  // cv experience
-  // const experienceItems = [
-  //   {
-  //     name: "Atek Group",
-  //     link: "#",
-  //     position: "Apprenticeship (September 2024 - Presente)",
-  //     description:"",
-  //     toolkit: ""
-  //   }
-  // ] satisfies ExperienceItem[];
 
   // ⤤ ↗ ⬏
 
@@ -136,18 +132,18 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend, CI/CD, Operaciones y mantenedor (Julio 2023 - Presente)", 
+      position: "DBA, Backend y CI/CD (Julio 2023 - Presente)", 
       description:
-        "API RESTful de 3 capas diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN (PostgreSQL, Express.js, React, Node.js), con integración de prácticas DevOps, metodologías ágiles y servicios en la nube de AWS para mejorar la escalabilidad y la eficiencia operativa.",
+        "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN y servicios en la nube de AWS",
       toolkit: ""
       },
     {
       name: "Serverless Auth (NoSQL/SQL) ↗",
       link: "",
-      position: "Backend (Octubre 2024 - Presente)", 
+      position: "Backend, DevOps (Enero 2025 - Presente)", 
       description:
-        "Serverless authentication system where developers can choose between SQL (PostgreSQL) or NoSQL (MongoDB) databases.",
-        toolkit: "Toolkit: NodeJS, Express, Lambda, MongoDB, PostgreSQL, Docker, Jenkins"
+        "Serverless authentication system where developers can choose between SQL or NoSQL databases.",
+        toolkit: "Toolkit: Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB), Terraform, Docker, Github Actions, etc."
     },
     {
       name: "all projects →",
@@ -180,7 +176,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">desarrollador de software</p>
+          <p className="inline-flex">Software Developer</p>
         </div>
       </div>
 
@@ -193,7 +189,7 @@ export default function HomePage() {
             target="_blank"
             href="https://github.com/davidadarme"
           >
-            <p className="mr-2 h-7">github</p>
+            <p className="mr-2 h-7">Github</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -204,7 +200,7 @@ export default function HomePage() {
             target="_blank"
             href="https://www.linkedin.com/in/davidadarme/"
           >
-            <p className="mr-2 h-7">linkedin</p>
+            <p className="mr-2 h-7">Linkedin</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -233,15 +229,12 @@ export default function HomePage() {
       </ul>
 
       <div className="mt-12 flex flex-col gap-6">
-        <p className="prose prose-neutral mb-10 dark:prose-invert">
-          Soy David Adarme, Me apasiona el mundo de la tecnología y estoy en
-          constante aprendizaje sobre diferentes áreas de IT, como la
-          administración de bases de datos (DBA), desarrollo de software y DevOps. Busco oportunidades para aplicar y
-          expandir mis conocimientos mientras sigo creciendo profesionalmente.
-          Mis principal meta es fortalecer un stack como PERN (PostgreSQL,
-          Express.Js, React y NodeJS) y orientarme hacia la nube a lo largo de
-          mi carrera.
-        </p>
+      <p className="prose prose-neutral max-w-3xl mb-10 dark:prose-invert">
+        Soy una aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, la infraestructura y la automatización. Me apasiona la tecnología, especialmente en áreas como bases de datos (DBA), desarrollo back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
+      
+        En mi tiempo libre, disfruto explorar temas relacionados con tecnología, así como hobbies creativos como armar y coleccionar Legos y Hot Wheels. También me apasionan las motos-autos deportivos, la música y el cine.
+      </p>
+
         <div>
           <iframe
             src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
