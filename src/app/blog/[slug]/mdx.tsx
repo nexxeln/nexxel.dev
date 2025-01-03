@@ -79,7 +79,7 @@ async function Pre({
       return <code {...props}>{children}</code>;
     }
 
-    const html = await codeToHtml(String(codeElement?.props.children), {
+    const html = await codeToHtml(String(codeElement?.props.children).replace(/`/g, ''), {
       lang,
       themes: {
         dark: "vesper",

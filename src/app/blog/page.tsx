@@ -18,35 +18,35 @@ export const metadata: Metadata = {
   },
 };
 
-function TagSection({ tags }: { tags: string[] }) {
-  return (
-    <div className="mb-8">
-      <div className="flex flex-wrap gap-2">
-        {tags.map((tag, index) => (
-          <span
-            key={index}
-            className="rounded-full bg-neutral-700 px-3 py-1 text-sm text-neutral-200"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
+// function TagSection({ tags }: { tags: string[] }) {
+//   return (
+//     <div className="mb-8">
+//       <div className="flex flex-wrap gap-2">
+//         {tags.map((tag, index) => (
+//           <span
+//             key={index}
+//             className="rounded-full bg-neutral-700 px-3 py-1 text-sm text-neutral-200"
+//           >
+//             {tag}
+//           </span>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
-const tags = [
-  "JavaScript",
-  "React",
-  "Node.js",
-  "PostgreSQL",
-  "Express.js",
-  "DevOps",
-  "AWS",
-  "DBA",
-  "RESTful API",
-  "PERN Stack",
-];
+// const tags = [
+//   "JavaScript",
+//   "React",
+//   "Node.js",
+//   "PostgreSQL",
+//   "Express.js",
+//   "DevOps",
+//   "AWS",
+//   "DBA",
+//   "RESTful API",
+//   "PERN Stack",
+// ];
 
 export default function BlogPage() {
   const posts = getBlogPosts().sort(
@@ -58,12 +58,7 @@ export default function BlogPage() {
     <section className="space-y-12">
       <h1 className="text-2xl font-medium tracking-tighter">blog</h1>
 
-      <TagSection tags={tags} />
-
-      <div className="space-y-6">
-        <p className="font-medium">subscribe for updates. no spam.</p>
-        <NewsletterForm />
-      </div>
+      {/* <TagSection tags={tags} /> */}
 
       <div className="space-y-12">
         {posts.map((post) => (
@@ -92,6 +87,13 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
+
+      <div className="space-y-6">
+        <p className="font-medium"> Suscríbete para recibir nuevos posts ⬎ </p>
+        {/* ⬎  ⇲ ↘ */}
+        <NewsletterForm />
+      </div>
+
       <IconSocial />
     </section>
   );

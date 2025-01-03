@@ -230,11 +230,11 @@ export default function HomePage() {
 
       <div className="mt-12 flex flex-col gap-6">
       <p className="prose prose-neutral max-w-3xl mb-10 dark:prose-invert">
-        Soy una aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, la infraestructura y la automatización. Me apasiona la tecnología, especialmente en áreas como bases de datos (DBA), desarrollo back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
+        Soy un aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, la infraestructura y la automatización. Me apasiona la tecnología, especialmente en áreas como bases de datos (DBA), desarrollo back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
       
         En mi tiempo libre, disfruto explorar temas relacionados con tecnología, así como hobbies creativos como armar y coleccionar Legos y Hot Wheels. También me apasionan las motos-autos deportivos, la música y el cine.
       </p>
-
+{/* 
         <div>
           <iframe
             src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
@@ -245,7 +245,7 @@ export default function HomePage() {
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           ></iframe>
-        </div>
+        </div> */}
       </div>
 
       <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
