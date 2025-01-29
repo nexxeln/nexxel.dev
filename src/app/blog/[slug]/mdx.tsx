@@ -97,7 +97,7 @@ async function Pre({
 function slugify(str: string) {
   return str
     .toString()
-    .toLowerCase()
+    // .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
     .replace(/\s+/g, "-") // Replace spaces with -
     .replace(/&/g, "-and-") // Replace & with 'and'

@@ -16,7 +16,7 @@ language: "español"
 
 El uso de múltiples cuentas de Git con diferente proveedor (como GitHub, GitLab o Bitbucket) en una sola máquina puede ser un poco complicado si queremos trabajar con diferentes cuentas por cada repositorio. La forma más común de hacerlo es utilizando claves SSH para autenticar las cuentas en lugar de usar HTTPS. Esto es más seguro y eficiente, ya que cada cuenta requiere un par de claves SSH único **(Llave privada y pública)**. Este post es una pequeña guía educativa que se me ocurrio debido a que en el algunas ocasiones uso mi computadora personal para los proyectos del trabajo.
 
-Primero que todo vamos a abarcar algunos conceptos básicos de SSH y luego veremos cómo realizar configurar múltiples cuentas de Git.
+Primero que todo vamos a abarcar algunos conceptos básicos de SSH y luego veremos cómo realizar las configuraciones.
 
 ### ¿Qué es una llave SSH?
 
@@ -77,7 +77,7 @@ gh-business-username */}
 - `-t`: Especifica el tipo de clave que se generará. En este caso, se generará una clave `ed25519`.
 - `ed25519`: Es un algoritmo de clave asimétrica que es más seguro y eficiente que `rsa`.
 - `-C`: Este comentario se incluirá en la clave. Es útil para identificar la clave.
-- `-f`: Es para definir el nombre del archivo de clave, si agregamos <code>~/.ssh/</code> es para indicar que la clave se va a almacenar en el directorio de SSH que es creado por defecto en sistemas *UNIX*.
+- `-f`: Es para definir el nombre del archivo de clave, si agregamos <code>~/.ssh/</code> es para indicar que la clave se va a almacenar en el directorio de SSH que es creado por defecto en sistemas *UNIX* (Cabe recalcar que si no se ha inicializado nunca algún comando de SSH o herramienta que lo requiera, este directorio no existirá).
 
 <div className="alert-warning">
 Recuerda que esto te genera dos archivos, uno con la extensión `.pub` que es la clave pública y otro sin extensión que es la clave privada. La clave privada es la que debes guardar en tu máquina y la clave pública es la que debes agregar a tu proveedor Git.
@@ -140,14 +140,14 @@ Ubica la clave pública en tu directorio `~/.ssh` y copia su contenido. Si está
 
 ```bash
 $ cd ~/.ssh
-$ cat id_ed25519_personal.pub # clave para la cuenta personal
+$ cat id_ed25519_personal.pub # Clave para la cuenta personal
 ssh-ed25519 AAAAC3NzaC1l************************* personal@email.com # copiar
 
-$ cat id_ed25519_business.pub # clave para la cuenta de trabajo
+$ cat id_ed25519_business.pub # Clave para la cuenta de trabajo
 ssh-ed25519 AAAAC3NzaC1l************************* business@email.com # copiar
 ```
 
-Luego, ve a tu cuenta de Github y sigue estos pasos:
+Luego, ve a tu cuenta de Github y sigue los siguientes pasos:
 
 1. Seleccionamos nuestra foto de perfil -> **Setttings** -> **SSH and GPG keys**
 ![GitHub Settings](/managing-git-accounts/gh_settings.png)
@@ -239,12 +239,12 @@ Si ya cuentas con un repositorio clonado, solo necesitas configurar el nombre de
 Cambia la URL remota del repositorio para que utilice la clave SSH correcta. Esto asegura que las operaciones de `push` y `pull` se realicen con la cuenta adecuada.
 
 ```bash
-# personal repo project
+# Repositorio personal
 $ git remote set-url origin git@github-personalUsername:personalUsername/repo-name.git
 ```
 
 ```bash
-# business repo project
+# Repositorio de trabajo
 $ git remote set-url origin git@github-businessUsername:businessUsername/repo-name.git
 ```
 
@@ -253,14 +253,14 @@ $ git remote set-url origin git@github-businessUsername:businessUsername/repo-na
 Verifica que las URLs remotas se han configurado correctamente y que las conexiones SSH funcionan para cada repositorio.
 
 ```bash
-# personal repo project
+# Repositorio personal
 $ git remote -v
 origin  git@github-personalUsername:personalUsername/repo-name.git (fetch)
 origin  git@github-personalUsername:personalUsername/repo-name.git (push) 
 ```
 
 ```bash
-# business repo project
+# Repositorio de trabajo
 $ git remote -v
 origin  git@github-businessUsername:businessUsername/repo-name.git (fetch)
 origin  git@github-businessUsername:businessUsername/repo-name.git (push) 
@@ -274,11 +274,15 @@ Establece el nombre de usuario y correo electrónico específicos para cada repo
 # Cuenta personal
 $ git config user.name "personalUsername"
 $ git config user.email "personal@email.com"
+```
 
+```bash
 # Cuenta de trabajo
 $ git config user.name "businessUsername"
 $ git config user.email "business@email.com"
-```
+``` 
+
+Y como resultado final, tus repositorios estarán configurados para trabajar con diferentes cuentas de Git en una sola máquina.
 
 Tu carpeta `~/.ssh` debería verse algo así:
 
@@ -292,7 +296,7 @@ Tu carpeta `~/.ssh` debería verse algo así:
 │   └── known_hosts # -> Hosts conectados
 ```
 
-Gracias por leer! Espero que esta guía te haya sido útil y te haya ayudado a configurar múltiples cuentas de Git en tu máquina. Si tienes alguna pregunta o sugerencia, no dudes en dejar un comentario.
+Gracias por leer! Pronto la guía usando .gitconfig por directorios.
 
 ## Referencias
 1. [What Is ssh-keygen?](https://www.ssh.com/academy/ssh/keygen)

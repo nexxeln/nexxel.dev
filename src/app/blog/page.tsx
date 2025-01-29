@@ -56,7 +56,7 @@ export default function BlogPage() {
 
   return (
     <section className="space-y-12">
-      <h1 className="text-2xl font-medium tracking-tighter">blog</h1>
+      <h1 className="text-2xl font-medium tracking-tighter">Blog</h1>
 
       {/* <TagSection tags={tags} /> */}
 
@@ -69,10 +69,10 @@ export default function BlogPage() {
           >
             <div className="flex w-full flex-col space-y-3">
               <p className="text-lg font-medium group-hover:underline group-hover:decoration-neutral-400 group-hover:underline-offset-4 group-hover:dark:decoration-neutral-600">
-                {post.metadata.title.toLowerCase()}
+                {post.metadata.title}
               </p>
               <p className="prose prose-neutral dark:prose-invert">
-                {post.metadata.description.toLowerCase()}
+                {post.metadata.description}
               </p>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 {new Date(post.metadata.date)
@@ -81,15 +81,16 @@ export default function BlogPage() {
                     day: "numeric",
                     year: "numeric",
                   })
-                  .toLowerCase()}
+                  }
               </p>
             </div>
+            {/* <hr className="my-4 border-gray-700 border-1.5" /> */}
           </Link>
         ))}
       </div>
 
       <div className="space-y-6">
-        <p className="font-medium"> Suscríbete para recibir nuevos posts ⬎ </p>
+        <p className="font-medium"> Suscríbete para recibir nuevos posts</p>
         {/* ⬎  ⇲ ↘ */}
         <NewsletterForm />
       </div>
