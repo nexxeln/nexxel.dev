@@ -58,6 +58,10 @@ export default function Post({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  const author = {
+    name: "David Adarme",
+  };
+
   return (
     <section>
       <script
@@ -77,7 +81,7 @@ export default function Post({ params }: { params: { slug: string } }) {
             url: `https://davidadarme.vercel.app/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "David Adarme",
+              name: author.name,
             },
           }),
         }}
@@ -87,10 +91,12 @@ export default function Post({ params }: { params: { slug: string } }) {
         {post.metadata.title}
       </h1>
       <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
+        {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          {author.name}
+        </p> */}
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.date)}
         </p>
-        {/* Si deseas agregar algo más en el futuro, puedes hacerlo aquí */}
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">

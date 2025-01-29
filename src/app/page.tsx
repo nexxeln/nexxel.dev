@@ -120,9 +120,9 @@ export default function HomePage() {
       {
         name: "ATEK Group ↗",
         link: "https://www.atek-group.com/",
-        position: "Software Developer Intern",
+        position: "Software Developer Apprenticeship",
         description: "Developed user manuals, supported debugging and bug fixing in BE-FE",
-        toolkit: ""
+        toolkit: "HTML, Javascript, NodeJS, Express, NoSQL (MongoDB), Git, Github Actions, Digital Ocean, Datagrip, Linux, Nginx, etc."
       }
   ] satisfies ExperienceItem[];
 
@@ -143,7 +143,7 @@ export default function HomePage() {
       position: "Backend, DevOps (Enero 2025 - Presente)", 
       description:
         "Serverless authentication system where developers can choose between SQL or NoSQL databases.",
-        toolkit: "Toolkit: Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB), Terraform, Docker, Github Actions, etc."
+        toolkit: "Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB), Terraform, Docker, Github Actions, etc."
     },
     {
       name: "all projects →",
@@ -176,7 +176,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">Software Developer</p>
+          <p className="inline-flex">Software Developer Apprenticeship</p>
         </div>
       </div>
 
@@ -220,6 +220,17 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
+            href="https://drive.google.com/file/d/1n-KCN-yyDwK-fpbVosCsi61S3EVS5216/view?usp=sharing"
+          >
+            <p className="mr-2 h-7">cv</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
             href="http://davidadarme.guayahack.co/"
           >
             <p className="mr-2 h-7">guayahack.co</p>
@@ -230,11 +241,12 @@ export default function HomePage() {
 
       <div className="mt-12 flex flex-col gap-6">
       <p className="prose prose-neutral max-w-3xl mb-10 dark:prose-invert">
-        Soy una aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, la infraestructura y la automatización. Me apasiona la tecnología, especialmente en áreas como bases de datos (DBA), desarrollo back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
+        Soy un aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, infraestructura y automatización de procesos. Tengo un fuerte interés en la tecnologia, especialmente en áreas como arquitectura de bases de datos relacionales y no relacionales (DBA), arquitectura-desarrollo de sistemas back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
       
-        En mi tiempo libre, disfruto explorar temas relacionados con tecnología, así como hobbies creativos como armar y coleccionar Legos y Hot Wheels. También me apasionan las motos-autos deportivos, la música y el cine.
+      
+        En mi tiempo libre, así como hobbies creativos me gusta coleccionar y armar Legos y Hot Wheels. También me apasionan las motos-autos deportivos, los gatos (Mi sueño algún día es montar una fundación para gatitos y animales), la música y el cine.
       </p>
-
+{/* 
         <div>
           <iframe
             src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
@@ -245,22 +257,22 @@ export default function HomePage() {
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           ></iframe>
-        </div>
+        </div> */}
       </div>
 
-      <div className="my-12 grid grid-cols-1 gap-12 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
         <ExperienceSection title="Estudios" items={studyItems} />
         <ExperienceSection title="Proyectos" items={projectItems} />
         {/* <ExperienceSection title="experience" items={experienceItems} /> */}
       </div>
 
-      <h3 className="mb-8 text-xl font-medium">blog</h3>
+      <h3 className="mb-8 text-xl font-medium">Blog</h3>
       <div className="flex flex-col gap-6">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="">
             <div className="flex w-full justify-between">
               <p className="font-medium underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 dark:decoration-neutral-600">
-                {post.metadata.title.toLowerCase()}
+                {post.metadata.title}
               </p>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 {new Date(post.metadata.date)
@@ -269,7 +281,8 @@ export default function HomePage() {
                     day: "numeric",
                     year: "numeric",
                   })
-                  .toLowerCase()}
+                  // .toLowerCase()
+                }
               </p>
             </div>
           </Link>

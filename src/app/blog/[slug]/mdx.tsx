@@ -79,7 +79,7 @@ async function Pre({
       return <code {...props}>{children}</code>;
     }
 
-    const html = await codeToHtml(String(codeElement?.props.children), {
+    const html = await codeToHtml(String(codeElement?.props.children).replace(/`/g, ''), {
       lang,
       themes: {
         dark: "vesper",
@@ -97,7 +97,7 @@ async function Pre({
 function slugify(str: string) {
   return str
     .toString()
-    .toLowerCase()
+    // .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
     .replace(/\s+/g, "-") // Replace spaces with -
     .replace(/&/g, "-and-") // Replace & with 'and'
