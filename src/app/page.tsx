@@ -3,6 +3,7 @@ import { getBlogPosts } from "~~/blog";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import IconSocial from "../components/iconSocial";
 
 function UpRightArrowIcon() {
   return (
@@ -139,7 +140,7 @@ export default function HomePage() {
       },
     {
       name: "Serverless Auth (NoSQL/SQL) ↗",
-      link: "",
+      link: "https://gitlab.com/davidadarme/serverless-auth",
       position: "Backend, DevOps (Enero 2025 - Presente)", 
       description:
         "Serverless authentication system where developers can choose between SQL or NoSQL databases.",
@@ -190,6 +191,17 @@ export default function HomePage() {
             href="https://github.com/davidadarme"
           >
             <p className="mr-2 h-7">Github</p>
+            <UpRightArrowIcon />
+          </a>
+        </li>
+        <li>
+          <a
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://gitlab.com/davidadarme"
+          >
+            <p className="mr-2 h-7">Gitlab</p>
             <UpRightArrowIcon />
           </a>
         </li>
@@ -299,8 +311,10 @@ export default function HomePage() {
           <NewsletterForm />
           <SpeedInsights />
           <Analytics />
+          <IconSocial />
         </div>
       </div>
     </main>
   );
 }
+
