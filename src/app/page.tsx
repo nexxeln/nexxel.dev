@@ -5,6 +5,14 @@ import { LinksSection } from "@/components/links-section"
 
 const workItems: Item[] = [
   {
+    title: "ENS labs",
+    role: "software engineer",
+    period: "feb 2024 - present",
+    description:
+      "building a decentralized identity protocol as part of ENS labs",
+    href: "https://ens.domains",
+  },
+  {
     title: "leapflow",
     role: "co-founder and cto",
     period: "may 2024 - present",
