@@ -115,16 +115,24 @@ export default function HomePage() {
       name: "Servicio Nacional de Aprendizaje  ↗",
       link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
       position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Presente)",
-      description: "Aprendiendo sobre ingeniería de requisitos, documentación, SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
+      description: "SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
       toolkit: ""
       },
       {
         name: "ATEK Group ↗",
         link: "https://www.atek-group.com/",
-        position: "Software Developer Apprenticeship",
-        description: "Developed user manuals, supported debugging and bug fixing in BE-FE",
-        toolkit: "HTML, Javascript, NodeJS, Express, NoSQL (MongoDB), Git, Github Actions, Digital Ocean, Datagrip, Linux, Nginx, etc."
-      }
+        position: "Aprendiz en Desarrollo de Software (Septiembre 2024 - Marzo 2025)",
+        description: "Actualización de manuales de usuario, debugging y bugfixing en el backend y frontend.",
+        toolkit: "HTML, Javascript, NodeJS, Express, NoSQL (MongoDB), Git, Linux, Nginx, etc."
+      },      
+      {
+        name: "Digital Process ↗",
+        link: "https://www.digitalprocess.co/",
+        position: "Desarrollador de software (Presente)",
+        description: "Diseño, implementación, bugfixing, desarrollo de nuevas funcionalidades y mantenimiento de la infraestructura",
+        toolkit: " NodeJS, Javascript, NoSQL (MongoDB), Git, Github Actions, Infraestructura Cloud-CI/CD, Linux (Ubuntu), VSCode, Datagrip, Nginx, etc."
+      }      
+
   ] satisfies ExperienceItem[];
 
   // ⤤ ↗ ⬏
@@ -133,18 +141,23 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend y CI/CD (Julio 2023 - Presente)", 
-      description:
-        "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes. Actualmente en desarrollo para la versión 2 (V2) utilizando el stack PERN y servicios en la nube de AWS",
+      position: "DBA, Backend y CI/CD", 
+      description: "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes.",
       toolkit: ""
       },
     {
       name: "Serverless Auth (NoSQL/SQL) ↗",
       link: "https://gitlab.com/davidadarme/serverless-auth",
-      position: "Backend, DevOps (Enero 2025 - Presente)", 
-      description:
-        "Serverless authentication system where developers can choose between SQL or NoSQL databases.",
-        toolkit: "Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB), Terraform, Docker, Github Actions, etc."
+      position: "Backend, DevOps", 
+      description: "Autenticación serverless que permite elegir entre bases de datos SQL o NoSQL, con infraestructura automatizada en AWS y Terraform",
+      toolkit: "Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Terraform, Github Actions."
+    },
+    {
+      name: "envVault ↗",
+      link: "",
+      position: "DBA, Backend, DevOps",
+      description:"Gestionar secretos y variables de entorno en la nube, proporcionando un acceso seguro y escalable a través de una API",
+      toolkit: "Arquitectura Hexagonal, Typescript, Nest, GraphQL, Podman, Redis, Terraform, Kubernetes, Prometheus + Grafana"
     },
     {
       name: "all projects →",
@@ -177,7 +190,7 @@ export default function HomePage() {
 
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">Software Developer Apprenticeship</p>
+          <p className="inline-flex">Desarrollador de Software</p>
         </div>
       </div>
 
