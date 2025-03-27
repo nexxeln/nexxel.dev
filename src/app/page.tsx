@@ -7,7 +7,7 @@ const workItems: Item[] = [
   {
     title: "ENS labs",
     role: "software engineer",
-    period: "feb 2024 - present",
+    period: "feb 2025 - present",
     description:
       "building a decentralized identity protocol as part of ENS labs",
     href: "https://ens.domains",
