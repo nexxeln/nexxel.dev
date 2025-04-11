@@ -112,26 +112,19 @@ function ExperienceSection({
 export default function HomePage() {
   const studyItems = [
     {
-      name: "Servicio Nacional de Aprendizaje  ↗",
+      name: "SENA ↗",
       link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
-      position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Presente)",
-      description: "SDLC, modelado de datos, bases de datos relacionales (SQL) y desarrollo de software.",
+      position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Marzo 2025)",
+      description: "Aprendizaje sobre ciclo de vida del desarrollo de software (SDLC), Lenguaje Unificado de Modelado (UML), modelado, diseño y desarrollo de bases de datos relacionales con SQL y desarrollo de software en general.",
       toolkit: ""
-      },
-      {
-        name: "ATEK Group ↗",
-        link: "https://www.atek-group.com/",
-        position: "Aprendiz en Desarrollo de Software (Septiembre 2024 - Marzo 2025)",
-        description: "Actualización de manuales de usuario, debugging y bugfixing en el backend y frontend.",
-        toolkit: "HTML, Javascript, NodeJS, Express, NoSQL (MongoDB), Git, Linux, Nginx, etc."
-      },      
-      {
-        name: "Digital Process ↗",
-        link: "https://www.digitalprocess.co/",
-        position: "Desarrollador de software (Presente)",
-        description: "Diseño, implementación, bugfixing, desarrollo de nuevas funcionalidades y mantenimiento de la infraestructura",
-        toolkit: " NodeJS, Javascript, NoSQL (MongoDB), Git, Github Actions, Infraestructura Cloud-CI/CD, Linux (Ubuntu), VSCode, Datagrip, Nginx, etc."
-      }      
+    },
+    {
+      name: "Digital Process ↗",
+      link: "https://www.digitalprocess.co/",
+      position: "Practicante en Desarrollo de Software (Septiembre 2024 - Marzo 2025)",
+      description: "Diseño, implementación y soporte de software monolítico, incluyendo desarrollo de nuevas funcionalidades, corrección de errores (bugfixing) y despliegue en infraestructura de producción.",
+      toolkit: "HTML, CSS, NodeJS, Javascript, NoSQL (MongoDB), Git, Github Actions, Linux (Ubuntu), Nginx, etc."
+    }
 
   ] satisfies ExperienceItem[];
 
@@ -141,7 +134,7 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Backend y CI/CD", 
+      position: "DBA, Frontend y Backend",
       description: "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes.",
       toolkit: ""
       },
@@ -150,18 +143,18 @@ export default function HomePage() {
       link: "https://gitlab.com/davidadarme/serverless-auth",
       position: "Backend, DevOps", 
       description: "Autenticación serverless que permite elegir entre bases de datos SQL o NoSQL, con infraestructura automatizada en AWS y Terraform",
-      toolkit: "Typescript, MongoDB, PostgreSQL, AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Terraform, Github Actions."
+      toolkit: "AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Javascript, MongoDB, PostgreSQL, Terraform, Github Actions."
     },
     {
       name: "envVault ↗",
       link: "",
       position: "DBA, Backend, DevOps",
       description:"Gestionar secretos y variables de entorno en la nube, proporcionando un acceso seguro y escalable a través de una API",
-      toolkit: "Arquitectura Hexagonal, Typescript, Nest, GraphQL, Podman, Redis, Terraform, Kubernetes, Prometheus + Grafana"
+      toolkit: "Arquitectura Hexagonal, Javascript, NodeJS, GraphQL, Podman, Redis, Terraform, Kubernetes, Prometheus + Grafana"
     },
     {
       name: "all projects →",
-      link: "https://github.com/davidadarme",
+      link: "https://github.com/linustorvaldss",
       position: "",
       description: "",
       toolkit: ""
@@ -201,7 +194,7 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://github.com/davidadarme"
+            href="https://github.com/linustorvaldss"
           >
             <p className="mr-2 h-7">Github</p>
             <UpRightArrowIcon />

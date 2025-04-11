@@ -9,20 +9,20 @@ import { ViewTransitions } from "next-view-transitions";
 // import Footer from "../app/footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://davidadarme.vercel.app"),
+  metadataBase: new URL("https://davidadarme.com"),
   title: {
-    default: "David Adarme - SWE & DevOps enthusiast",
+    default: "David Adarme - SWE & DevOps entusiasta",
     template: "%s | David Adarme",
   },
-  description: "Software Developer Intern | SWE & DevOps enthusiast",
+  description: "Desarrollador de software (back-end) | SWE & DevOps entusiasta",
   openGraph: {
     title: "David Adarme",
-    description: "Software Developer Intern | SWE & DevOps enthusiast",
-    url: "https://davidadarme.vercel.app",
+    description: "Desarrollador de software (back-end) | SWE & DevOps entusiasta",
+    url: "https://davidadarme.com",
     siteName: "David Adarme",
     locale: "es_CO",
     type: "website",
-    images: ["https://davidadarme.vercel.app/og/home"],
+    images: ["https://davidadarme.com/og/home"],
   },
   robots: {
     index: true,
