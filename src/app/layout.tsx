@@ -11,16 +11,16 @@ import { ViewTransitions } from "next-view-transitions";
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidadarme.com"),
   title: {
-    default: "David Adarme - SWE & DevOps entusiasta",
+    default: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
     template: "%s | David Adarme",
   },
-  description: "Desarrollador de software (back-end) | SWE & DevOps entusiasta",
+  description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
   openGraph: {
     title: "David Adarme",
-    description: "Desarrollador de software (back-end) | SWE & DevOps entusiasta",
+    description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
     url: "https://davidadarme.com",
     siteName: "David Adarme",
-    locale: "es_CO",
+    locale: "en_CO",
     type: "website",
     images: ["https://davidadarme.com/og/home"],
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "David Adarme",
     card: "summary_large_image",
-    creator: "@davidadarme",
+    creator: "@ozwain",
   },
 };
 

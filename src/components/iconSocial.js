@@ -10,7 +10,7 @@ const IconSocial = () => {
         "M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z",
     },
     {
-      href: "https://github.com/davidadarme",
+      href: "https://github.com/linustorvaldss",
       ariaLabel: "Github",
       title: "Github",
       svgPath:
@@ -24,7 +24,7 @@ const IconSocial = () => {
         "M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 0 1-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 0 1 4.82 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.49h8.1l2.44-7.51A.42.42 0 0 1 18.6 2a.43.43 0 0 1 .58 0 .42.42 0 0 1 .11.18l2.44 7.51L23 13.45a.84.84 0 0 1-.35.94z",
     },
     {
-      href: "https://x.com/xdavidadarme",
+      href: "https://x.com/ozwain",
       ariaLabel: "Twitter",
       title: "Twitter",
       svgPath:

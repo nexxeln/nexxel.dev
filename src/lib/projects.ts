@@ -28,30 +28,5 @@ export async function getProjects(): Promise<Project[]> {
       description:
         "a hardware store saas built with pern stack and devops/agile/aws methodologies",
     },
-    // {
-    //   repo: "nexxel.dev",
-    //   link: "https://github.com/nexxeln/nexxel.dev",
-    //   description: "boring personal site built with astro",
-    // },
-    // {
-    //   repo: "license-generator",
-    //   link: "https://github.com/nexxeln/license-generator",
-    //   description: "create licenses for your projects right from your terminal",
-    // },
-    // {
-    //   repo: "spotify-voice-control",
-    //   link: "https://github.com/nexxeln/spotify-voice-control",
-    //   description: "voice control for spotify through the terminal",
-    // },
-    // {
-    //   repo: "hackernews",
-    //   link: "https://github.com/nexxeln/hackernews",
-    //   description: "hacker news clone made with solidstart and tRPC",
-    // },
-    // {
-    //   repo: "dots",
-    //   link: "https://github.com/nexxeln/dots",
-    //   description: "my dotfiles for macos",
-    // },
   ];
 }

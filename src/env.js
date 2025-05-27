@@ -9,6 +9,7 @@ export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
     PLUNK_API_KEY: z.string(),
+    SENTRY_DSN: z.string().url(),
     // REDIS_URL: z.string().url(),
     // REDIS_TOKEN: z.string(),
   },
@@ -31,6 +32,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_CF_R2_BUCKET_URL: process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL,
     PLUNK_API_KEY: process.env.PLUNK_API_KEY,
+    SENTRY_DSN: process.env.SENTRY_DSN,
     // REDIS_URL: process.env.REDIS_URL,
     // REDIS_TOKEN: process.env.REDIS_TOKEN,
 

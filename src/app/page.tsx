@@ -71,8 +71,10 @@ type ExperienceItem = {
   name: string;
   link: string;
   position: string;
+  date: string;
   description: string;
   toolkit: string;
+
 };
 
 function ExperienceSection({
@@ -96,7 +98,11 @@ function ExperienceSection({
             {item.name}
           </a>
 
-          <p className="mt-3">{item.position}</p>
+          {/* <div className="flex items-center gap-2 mt-3"> */}
+          <p>{item.position}</p>
+          <p className="flex text-neutral-700 dark:text-neutral-400 text-xs gap-2 mt-1">
+            {item.date}
+          </p>
 
           <p className="mt-3 text-neutral-700 dark:text-neutral-300">
             {item.description}
@@ -114,16 +120,26 @@ export default function HomePage() {
     {
       name: "SENA ↗",
       link: "https://www.sena.edu.co/es-co/Paginas/default.aspx",
-      position: "Estudiante de análisis y desarrollo de software (ADSO) (Julio 2022 - Marzo 2025)",
-      description: "Aprendizaje sobre ciclo de vida del desarrollo de software (SDLC), Lenguaje Unificado de Modelado (UML), modelado, diseño y desarrollo de bases de datos relacionales con SQL y desarrollo de software en general.",
+      position: "Software Analysis and Development Technician",
+      date: "Jul. 2022 - Mar. 2025",
+      description: "Learning about software development life cycle, UML, data modeling, relational database (SQL) design and development, and software development in general.",
       toolkit: ""
     },
     {
       name: "Digital Process ↗",
       link: "https://www.digitalprocess.co/",
-      position: "Practicante en Desarrollo de Software (Septiembre 2024 - Marzo 2025)",
-      description: "Diseño, implementación y soporte de software monolítico, incluyendo desarrollo de nuevas funcionalidades, corrección de errores (bugfixing) y despliegue en infraestructura de producción.",
-      toolkit: "HTML, CSS, NodeJS, Javascript, NoSQL (MongoDB), Git, Github Actions, Linux (Ubuntu), Nginx, etc."
+      position: "Software Developer Intern",
+      date: "Sept. 2024 - Mar. 2025",
+      description: "Built and maintained RESTful APIs with Node.js and JavaScript. Implemented NoSQL databases with MongoDB. Deployed applications using Docker and Nginx on Linux servers. Optimized existing applications and fixed bugs across environments. Provided technical support during integration and product delivery.",
+      toolkit: "NodeJS, JavaScript, MongoDB, Git, Docker, Nginx, EJS, React, Linux"
+    },
+    {
+      name: "Digital Process ↗",
+      link: "https://www.digitalprocess.co/",
+      position: "Software Developer (Backend)",
+      date: "Mar. 2024 - Present",
+      description: "Design RESTful APIs using Node.js with TypeScript/JavaScript. Document and automate API workflows with Postman. Implement and optimize MongoDB databases. Manage version control with Git and collaborate through code reviews. Support integration using Docker and Podman.",
+      toolkit: "NodeJS, TypeScript, JavaScript, MongoDB, Git, Docker, Podman, Postman"
     }
 
   ] satisfies ExperienceItem[];
@@ -135,6 +151,7 @@ export default function HomePage() {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
       position: "DBA, Frontend y Backend",
+      date: "",
       description: "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes.",
       toolkit: ""
       },
@@ -142,6 +159,7 @@ export default function HomePage() {
       name: "Serverless Auth (NoSQL/SQL) ↗",
       link: "https://gitlab.com/davidadarme/serverless-auth",
       position: "Backend, DevOps", 
+      date: "",
       description: "Autenticación serverless que permite elegir entre bases de datos SQL o NoSQL, con infraestructura automatizada en AWS y Terraform",
       toolkit: "AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Javascript, MongoDB, PostgreSQL, Terraform, Github Actions."
     },
@@ -149,6 +167,7 @@ export default function HomePage() {
       name: "envVault ↗",
       link: "",
       position: "DBA, Backend, DevOps",
+      date: "",
       description:"Gestionar secretos y variables de entorno en la nube, proporcionando un acceso seguro y escalable a través de una API",
       toolkit: "Arquitectura Hexagonal, Javascript, NodeJS, GraphQL, Podman, Redis, Terraform, Kubernetes, Prometheus + Grafana"
     },
@@ -156,6 +175,7 @@ export default function HomePage() {
       name: "all projects →",
       link: "https://github.com/linustorvaldss",
       position: "",
+      date: "",
       description: "",
       toolkit: ""
     },
@@ -183,11 +203,11 @@ export default function HomePage() {
 
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
-          <p className="inline-flex">Desarrollador de Software</p>
+          <p className="inline-flex">Software Developer</p>
         </div>
       </div>
 
-      <h3 className="mb-6 mt-12 text-xl font-medium">Conéctate conmigo</h3>
+      <h3 className="mb-6 mt-1 text-xl font-medium">Connect with me</h3>
       <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
         <li>
           <a
@@ -227,7 +247,7 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="mailto:timdavidarm@pm.me"
+            href="mailto:developer@davidadarme.com"
           >
             <p className="mr-2 h-7">email</p>
             <UpRightArrowIcon />
@@ -257,12 +277,16 @@ export default function HomePage() {
         </li>
       </ul>
 
-      <div className="mt-12 flex flex-col gap-6">
+      {/* ADD LATER */}
+      {/* <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+      <div className="badge-base LI-profile-badge" data-locale="es_ES" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="davidadarme" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://co.linkedin.com/in/davidadarme?trk=profile-badge">David Adarme</a></div> */}
+              
+
+      <div className="mt-4 flex flex-col gap-6">
       <p className="prose prose-neutral max-w-3xl mb-10 dark:prose-invert">
-        Soy un aspirante a Software Engineer (SWE) y DevOps con un enfoque en el desarrollo back-end, infraestructura y automatización de procesos. Tengo un fuerte interés en la tecnologia, especialmente en áreas como arquitectura de bases de datos relacionales y no relacionales (DBA), arquitectura-desarrollo de sistemas back-end y DevOps. Actualmente, estoy en un proceso de aprendizaje autodidacta para fortalecer mis conocimientos en IT y avanzar hacia una carrera en ingeniería de software.
-      
-      
-        En mi tiempo libre, así como hobbies creativos me gusta coleccionar y armar Legos y Hot Wheels. También me apasionan las motos-autos deportivos, los gatos (Mi sueño algún día es montar una fundación para gatitos y animales), la música y el cine.
+        Software Developer (Backend mostly) and DevOps enthusiast with a strong focus on learning to build robust, efficient, and scalable systems. My interests lie in backend architecture, API development, relational and non-relational databases, and infrastructure.
+ 
+        Passionate about software development, DevOps, cloud infrastructure, databases, software architecture, and automation. I am currently seeking hands-on experience to grow my skills and maturity as a backend developer. I am especially eager to learn more about microservices, frameworks, best practices, and building scalable systems. I have experience working on monolithic applications using Node.Js, Javascript, Typescript, Express with SQL and NoSQL databases in both the medical and financial domains. In the future, I aim to transition into a DevOps-focused role where I can contribute to building and maintaining reliable, automated, and efficient infrastructure.
       </p>
 {/* 
         <div>
@@ -279,8 +303,8 @@ export default function HomePage() {
       </div>
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-        <ExperienceSection title="Estudios" items={studyItems} />
-        <ExperienceSection title="Proyectos" items={projectItems} />
+        <ExperienceSection title="Experience" items={studyItems} />
+        <ExperienceSection title="Projects" items={projectItems} />
         {/* <ExperienceSection title="experience" items={experienceItems} /> */}
       </div>
 
@@ -313,7 +337,7 @@ export default function HomePage() {
           All posts →
         </Link>
         <div className="space-y-6">
-          <p className="font-medium">Suscríbete para recibir nuevos posts.</p>
+          <p className="font-medium">Subscribe to receive new posts.</p>
           <NewsletterForm />
           <SpeedInsights />
           <Analytics />

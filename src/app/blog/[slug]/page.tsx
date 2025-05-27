@@ -33,10 +33,10 @@ export async function generateMetadata({
       description: post.metadata.description,
       publishedTime,
       type: "article",
-      url: `https://davidadarme.vercel.app/blog/${post.slug}`,
+      url: `https://davidadarme.com/blog/${post.slug}`,
       images: [
         {
-          url: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://davidadarme.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
         },
       ],
     },
@@ -44,9 +44,9 @@ export async function generateMetadata({
       title: post.metadata.title,
       description: post.metadata.description,
       card: "summary_large_image",
-      creator: "@nexxeln",
+      creator: "@ozwain",
       images: [
-        `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://davidadarme.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
