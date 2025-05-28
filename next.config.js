@@ -10,7 +10,11 @@ import { withSentryConfig } from "@sentry/nextjs";
 
 /** @type {import("next").NextConfig} */
 const config = {
+  reactStrictMode: true,
   transpilePackages: ["next-mdx-remote"],
+  env: {
+    NEXT_PUBLIC_CF_R2_BUCKET_URL: process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL,
+  },
 };
 
 const sentryConfig = {

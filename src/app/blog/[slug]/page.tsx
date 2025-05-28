@@ -33,10 +33,10 @@ export async function generateMetadata({
       description: post.metadata.description,
       publishedTime,
       type: "article",
-      url: `https://davidadarme.vercel.app/blog/${post.slug}`,
+      url: `https://davidadarme.com/blog/${post.slug}`,
       images: [
         {
-          url: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+          url: `https://davidadarme.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
         },
       ],
     },
@@ -44,9 +44,9 @@ export async function generateMetadata({
       title: post.metadata.title,
       description: post.metadata.description,
       card: "summary_large_image",
-      creator: "@nexxeln",
+      creator: "@ozwain",
       images: [
-        `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
+        `https://davidadarme.com/og/blog?title=${post.metadata.title}&top=${publishedTime}`,
       ],
     },
   };
@@ -57,6 +57,10 @@ export default function Post({ params }: { params: { slug: string } }) {
   if (!post) {
     notFound();
   }
+
+  const author = {
+    name: "David Adarme",
+  };
 
   return (
     <section>
@@ -71,13 +75,13 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://nexxel.dev/og/blog?title=${post.metadata.title}&top=${formatDate(
+            image: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${formatDate(
               post.metadata.date,
             )}`,
-            url: `https://nexxel.dev/blog/${post.slug}`,
+            url: `https://davidadarme.vercel.app/blog/${post.slug}`,
             author: {
               "@type": "Person",
-              name: "David Adarme",
+              name: author.name,
             },
           }),
         }}
@@ -87,10 +91,12 @@ export default function Post({ params }: { params: { slug: string } }) {
         {post.metadata.title}
       </h1>
       <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
+        {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
+          {author.name}
+        </p> */}
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.date)}
         </p>
-        {/* Si deseas agregar algo más en el futuro, puedes hacerlo aquí */}
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">

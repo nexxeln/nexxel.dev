@@ -10,4 +10,6 @@ export async function register() {
   }
 }
 
-export const onRequestError = Sentry.captureRequestError;
+// If you need to handle request errors, you can define your own handler or use another Sentry API.
+// For example, you might want to export Sentry.captureException:
+export const onRequestError = Sentry.captureException;

@@ -38,6 +38,25 @@ html {
   @apply overflow-x-auto rounded-lg border border-neutral-200 bg-neutral-50 dark:border-neutral-900 dark:bg-neutral-900;
 }
 
+.prose pre::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: #707070;
+  border-radius: 10px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: #444444;
+  border-radius: 10px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: #333333;
+}
+
 .prose code {
   @apply rounded-lg px-1 py-0.5;
 }
@@ -48,6 +67,36 @@ html {
   line-height: 1.5;
 }
 
+.prose code:not(pre code)::before,
+.prose code:not(pre code)::after {
+  content: none;
+}
+
 .prose code span {
   @apply font-medium;
+}
+
+code {
+  background-color: #272727;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 0.5px solid #363636;
+  font-size: 0.95em;
+  position: relative;
+}
+
+code::before,
+code::after {
+  content: '';
+  position: absolute;
+  color: transparent;
+}
+
+.alert-warning {
+  padding: 10px;
+  background-color: #111111;
+  color: #d4d4d4;
+  border: 1px solid #202020; 
+  margin-bottom: 20px;
+  border-radius: 4px;
 }

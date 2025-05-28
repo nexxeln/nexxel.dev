@@ -6,23 +6,23 @@ import { GeistMono } from "geist/font/mono";
 import { clx } from "../utils";
 import { Navbar } from "../app/navbar";
 import { ViewTransitions } from "next-view-transitions";
-import Footer from "../app/footer";
+// import Footer from "../app/footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://davidadarme.vercel.app"),
+  metadataBase: new URL("https://davidadarme.com"),
   title: {
-    default: "David Adarme",
+    default: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
     template: "%s | David Adarme",
   },
-  description: "Software Developer | Backend | Cloud",
+  description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
   openGraph: {
     title: "David Adarme",
-    description: "Software Developer | Backend | Cloud",
-    url: "https://davidadarme.vercel.app",
+    description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
+    url: "https://davidadarme.com",
     siteName: "David Adarme",
-    locale: "es_CO",
+    locale: "en_CO",
     type: "website",
-    images: ["https://davidadarme.vercel.app/og/home"],
+    images: ["https://davidadarme.com/og/home"],
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     title: "David Adarme",
     card: "summary_large_image",
-    creator: "@davidadarme",
+    creator: "@ozwain",
   },
 };
 
@@ -53,11 +53,11 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
-        <body className="mx-4 mb-40 mt-8 flex max-w-2xl flex-col antialiased md:flex-row lg:mx-auto">
+        <body className="mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto">
           <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
             <Navbar />
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </main>
         </body>
       </html>

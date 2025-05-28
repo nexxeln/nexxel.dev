@@ -50,8 +50,13 @@ function CustomLink({
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img alt={props.alt} className="rounded-lg" {...props} />;
+  const RESOURCE_URL = process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL;
+  // console.log("RESOURCE_URL:", RESOURCE_URL);
+
+  const src = `${RESOURCE_URL?.replace(/\/$/, '')}/${props.src?.replace(/^\//, '')}`;
+  // console.log("Image URL:", src);
+
+  return <img {...props} src={src} alt={props.alt} className="rounded-lg" />;
 }
 
 async function Pre({
@@ -74,7 +79,7 @@ async function Pre({
       return <code {...props}>{children}</code>;
     }
 
-    const html = await codeToHtml(String(codeElement?.props.children), {
+    const html = await codeToHtml(String(codeElement?.props.children).replace(/`/g, ''), {
       lang,
       themes: {
         dark: "vesper",
@@ -92,7 +97,7 @@ async function Pre({
 function slugify(str: string) {
   return str
     .toString()
-    .toLowerCase()
+    // .toLowerCase()
     .trim() // Remove whitespace from both ends of a string
     .replace(/\s+/g, "-") // Replace spaces with -
     .replace(/&/g, "-and-") // Replace & with 'and'

@@ -1,0 +1,304 @@
+---
+layout: post
+title: "Configurar múltiples cuentas de Git con llaves SSH" 
+date: "2025-01-31"
+category: "Git"
+tags: ["git", "github", "gitlab", "ssh", "openssh", "vcs"]
+description: "Configurar y gestionar múltiples cuentas de Git en una sola máquina utilizando claves SSH"
+version: "1.0.0"
+language: "español"
+---
+
+<div style={{ fontSize: "0.9em", color: "#666" }}>
+  <p style={{ margin: "0.01rem 0" }}>version: v1.0.0 - Configurar múltiples cuentas de Git con llaves SSH</p>
+  <p style={{ margin: "0.01rem 0" }}>version: v1.0.1 - Integración de manera dinámica con .gitconfig por directorios</p>
+</div>
+
+El uso de múltiples cuentas de Git con diferente proveedor (como GitHub, GitLab o Bitbucket) en una sola máquina puede ser un poco complicado si queremos trabajar con diferentes cuentas por cada repositorio. La forma más común de hacerlo es utilizando claves SSH para autenticar las cuentas en lugar de usar HTTPS. Esto es más seguro y eficiente, ya que cada cuenta requiere un par de claves SSH único **(Llave privada y pública)**. Este post es una pequeña guía educativa que se me ocurrio debido a que en el algunas ocasiones uso mi computadora personal para los proyectos del trabajo.
+
+Primero que todo vamos a abarcar algunos conceptos básicos de SSH y luego veremos cómo realizar las configuraciones.
+
+### ¿Qué es una llave SSH?
+
+Una clave SSH es un par de claves criptográficas **(una pública y una privada)** que se utilizan para autenticar a los usuarios en un servidor remoto a través del protocolo **(Secure Shell)**. La clave privada se almacena en la máquina local y nunca se comparte con nadie. Se utiliza para descifrar mensajes cifrados que solo pueden ser cifrados por su contraparte pública. 
+
+### ¿Por qué usar llaves SSH?
+
+{/* Cada proveedor de Git no permite la autenticación con la misma clave SSH, necesitamos generar una clave SSH para cada cuenta de Git que tengamos. */}
+
+ El protocolo de red seguro que funciona con autenticación y cifrado de SSH es muy utíl cuando las maquinas remotas a las que nos conectamos pertenecen a una red abierta no segura. Además, para poder hacer pull o push a los repositorios y si de algun modo estan privados, necesitamos autenticarnos con el servidor, y la forma más segura y eficiente de hacerlo es utilizando claves SSH.¿
+
+---
+
+## Crea las SSH keys para cada cuenta
+Genera una clave SSH para cada cuenta que tengas. Para ello, usaremos `ssh-keygen` para iniciar el sistema de generado de clave
+
+1. **Genera una clave SSH para la cuenta personal**
+
+```bash
+$ ssh-keygen -t ed25519 -C "personal@email.com" -f ~/.ssh/id_ed25519_personal
+```
+
+2. **Genera una clave SSH para la cuenta de trabajo** 
+
+```bash
+$ ssh-keygen -t ed25519 -C "business@email.com" -f ~/.ssh/id_ed25519_business
+```
+
+En los dos pasos anteriores no optamos por elegir la frase para la llave creada. Si deseas agregar una frase de paso a tus claves, puedes hacerlo al momento de generar la clave SSH. Esto te permitirá proteger tus claves en caso de que alguien tenga acceso a tu máquina. A continuación se muestra un ejemplo de cómo agregar una frase de paso a la clave SSH:
+
+```bash
+$ ssh-keygen -t ed25519 -C "business@email.com" -f ~/.ssh/id_ed25519_business
+Generating public/private ed25519 key pair.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/user/.ssh/id_ed25519_business
+Your public key has been saved in /home/user/.ssh/id_ed25519_business.pub
+The key fingerprint is:
+SHA256:ui7NfXfNXobIH1lMt0XTXZqH4uwxY70TRpwEl3hRdZM personal@email.com
+The key's randomart image is:
++--[ED25519 256]--+
+|            .o+*%|
+|            .+oE*|
+|            ..B =|
+|           o + ++|
+|        S   B +.o|
+|       .   + * * |
+|     o..    + *oo|
+|    . o.. . ...++|
+|     oo  . . ....|
++----[SHA256]-----+
+```
+
+
+{/* gh-personal-username
+gh-business-username */}
+
+- `-t`: Especifica el tipo de clave que se generará. En este caso, se generará una clave `ed25519`.
+- `ed25519`: Es un algoritmo de clave asimétrica que es más seguro y eficiente que `rsa`.
+- `-C`: Este comentario se incluirá en la clave. Es útil para identificar la clave.
+- `-f`: Es para definir el nombre del archivo de clave, si agregamos <code>~/.ssh/</code> es para indicar que la clave se va a almacenar en el directorio de SSH que es creado por defecto en sistemas *UNIX* (Cabe recalcar que si no se ha inicializado nunca algún comando de SSH o herramienta que lo requiera, este directorio no existirá).
+
+<div className="alert-warning">
+Recuerda que esto te genera dos archivos, uno con la extensión `.pub` que es la clave pública y otro sin extensión que es la clave privada. La clave privada es la que debes guardar en tu máquina y la clave pública es la que debes agregar a tu proveedor Git.
+</div>
+
+Los tipos de claves que se pueden generar son: `dsa`, `ecdsa`, `ed25519`, `ed25519-sk`, `rsa`. Cada uno tiene sus propias características de seguridad, tamaño de clave, velocidad y compatibilidad. A continuación se muestra una tabla con las características de cada tipo de clave:
+
+<div style={{ overflowX: "auto" }}>
+  <Table
+    data={{
+      headers: ["Algoritmo", "Seguridad", "Tamaño de Clave", "Velocidad"],
+      rows: [
+          [ "DSA", "Débil", "1024 bits", "Rápido, pero inseguro"],
+          [ "ECDSA", "Débil", "256, 384, 521 bits", "Rápido"],
+          [ "RSA", "Fuerte", "2048, 3072, 4096 bits", "Lento"],
+          [ "ED25519", "Fuerte", "256 bits", "Muy rápido"],
+      ],
+    }}
+  />
+</div>
+
+---
+
+## Añadir las SSH keys al agente
+
+Carga ambas claves en el agente SSH:
+
+1. **Inicia el agente SSH en tu terminal:**
+
+```bash
+eval "$(ssh-agent -s)"
+```
+Este comando inicia el agente SSH, que es un programa que mantiene tus claves SSH en memoria y las utiliza para autenticarse en servidores SSH.
+
+2. **Agrega las claves privadas al agente:**
+
+```bash
+$ ssh-add ~/.ssh/id_ed25519_personal
+$ ssh-add ~/.ssh/id_ed25519_business
+```
+
+```bash
+$ ssh-add -l 
+256 SHA256:/khgpmgucg9iXsh4EEGoCL21Zvu5JoDdpH0gypoQc6k personal@email.com (ED25519)
+256 SHA256:bd/Tq+BlXQgOeu26RxYfU3gKM/uRwzl9Vd8MHat0Lus business@email.com (ED25519)
+```
+El comando <code>ssh-add -l</code> lista las claves que actualmente están cargadas en el agente SSH. La salida muestra dos claves ED25519 con sus respectivos identificadores y direcciones de correo electrónico asociadas.
+
+Las llaves las agregas al agente para que no tengas que escribir la contraseña cada vez que hagas un push o pull a un repositorio. Esto te permite autenticarte en los servidores sin tener que escribir la contraseña cada vez.
+
+---
+
+## Agregar la claves a los perfiles de tu proveedor Git
+
+Ahora agregaremos nuestra clave pública y la agregaremos a nuestro proveedor de Git correspondiente (En este caso Gitub).
+
+1. **Copia la clave pública que acabas de generar:**
+
+Ubica la clave pública en tu directorio `~/.ssh` y copia su contenido. Si estás en una terminal, puedes usar el comando `cat filename.pub` para ver el contenido de la clave.
+
+```bash
+$ cd ~/.ssh
+$ cat id_ed25519_personal.pub # Clave para la cuenta personal
+ssh-ed25519 AAAAC3NzaC1l************************* personal@email.com # copiar
+
+$ cat id_ed25519_business.pub # Clave para la cuenta de trabajo
+ssh-ed25519 AAAAC3NzaC1l************************* business@email.com # copiar
+```
+
+Luego, ve a tu cuenta de Github y sigue los siguientes pasos:
+
+1. Seleccionamos nuestra foto de perfil -> **Setttings** -> **SSH and GPG keys**
+![GitHub Settings](/managing-git-accounts/gh_settings.png)
+
+2. Agregamos una nueva clave SSH en -> **New SSH key**
+![GitHub Settings](/managing-git-accounts/gh_settings_ssh.png)
+
+3. Pegamos la clave pública que copiamos anteriormente y le damos un nombre
+![GitHub Settings](/managing-git-accounts/gh_settings_ssh_add.png)
+
+<div className="alert-warning">
+- `title`: Título de la clave para identificar las llave SSH que creamos.
+- `key type`: Acá podemos elegir que tipo de llave es, si es *Authentication Type* significa que es la clave que vamos a usar para autenticarnos en el servidor, si es *Signing Key* significa que es para firmar tus commits y tags digitalmente. En este caso, seleccionamos *Authentication type*. 
+- `key`: la clave SSH pública.
+</div>
+
+--- 
+
+## Crea un archivo de configuración y agrega los hosts 
+
+El `~/.ssh/config` es un archivo de texto plano que contiene configuraciones de los hosts a los que te conectas. En este archivo, puedes definir diferentes configuraciones para diferentes hosts. En nuestro caso, vamos a definir dos hosts, uno para nuestra cuenta personal y otro para nuestra cuenta de trabajo.
+
+1. **Crea un archivo de configuración:**
+
+Ve al directorio `~/.ssh`: y edita el archivo `config`. Si el archivo `config` no existe, crea uno.
+
+```bash
+$ cd ~/.ssh
+$ touch config
+$ vim config
+```
+
+2. **Agrega las siguientes líneas al archivo, cada bloque corresponde a cada cuenta que creamos anteriormente:**
+
+```bash
+# Cuenta personal
+Host github-personalUsername
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_personal.pub
+
+# Cuenta de trabajo
+Host github-businessUsername
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_business.pub
+```
+<div className="alert-warning">
+- `Host`: Nombre de la conexión configurada
+- `HostName`: IP-Hostname del servidor al que te conectas 
+- `User`: Usuario local del sistema.
+- `IdentityFile`: la ruta de llave SSH publica que usaremos para autenticarnos en el servidor.
+</div>
+
+
+3. **Prueba la conexión:**
+
+```bash
+$ ssh -T git@github-personalUsername
+Hi User! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+```bash
+$ ssh -T git@github-businessUsername
+Hi User! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+## Clonar repositorios de GitHub usando diferentes cuentas
+
+Ahora clonaremos un repositorio de GitHub utilizando una de las cuentas que hemos agregado. Dependiendo de la cuenta que desees usar (personal o de trabajo), deberás especificar la configuración adecuada en el archivo `~/.ssh/config` y utilizar la URL SSH correspondiente al clonar el repositorio.
+
+```bash
+# Clonar un repositorio desde la cuenta personal
+$ git clone git@github-personalUsername:personalUsername/repo-name.git
+
+# Clonar un repositorio desde la cuenta de trabajo
+$ git clone git@github-businessUsername:businessUsername/repo-name.git
+
+#Ejemplo: 
+git clone git@github.com-linustorvalds:linustorvalds/repository.git
+```
+
+### Configurar hosts para repositorios existentes
+
+Si ya cuentas con un repositorio clonado, solo necesitas configurar el nombre de usuario y correo para cada repositorio para hacer push o pull a la cuenta correcta.
+
+1. **Configura el nombre de usuario y correo para cada repositorio:**
+
+Cambia la URL remota del repositorio para que utilice la clave SSH correcta. Esto asegura que las operaciones de `push` y `pull` se realicen con la cuenta adecuada.
+
+```bash
+# Repositorio personal
+$ git remote set-url origin git@github-personalUsername:personalUsername/repo-name.git
+```
+
+```bash
+# Repositorio de trabajo
+$ git remote set-url origin git@github-businessUsername:businessUsername/repo-name.git
+```
+
+2. **Confirma que las conexiones SSH funcionan para cada repositorio:**
+
+Verifica que las URLs remotas se han configurado correctamente y que las conexiones SSH funcionan para cada repositorio.
+
+```bash
+# Repositorio personal
+$ git remote -v
+origin  git@github-personalUsername:personalUsername/repo-name.git (fetch)
+origin  git@github-personalUsername:personalUsername/repo-name.git (push) 
+```
+
+```bash
+# Repositorio de trabajo
+$ git remote -v
+origin  git@github-businessUsername:businessUsername/repo-name.git (fetch)
+origin  git@github-businessUsername:businessUsername/repo-name.git (push) 
+```
+
+3. **Configura el nombre de usuario y correo para cada repositorio:**
+
+Establece el nombre de usuario y correo electrónico específicos para cada repositorio. Esto es importante para que los commits se registren con la información correcta.
+
+```bash
+# Cuenta personal
+$ git config user.name "personalUsername"
+$ git config user.email "personal@email.com"
+```
+
+```bash
+# Cuenta de trabajo
+$ git config user.name "businessUsername"
+$ git config user.email "business@email.com"
+``` 
+
+Y como resultado final, tus repositorios estarán configurados para trabajar con diferentes cuentas de Git en una sola máquina.
+
+Tu carpeta `~/.ssh` debería verse algo así:
+
+```bash
+├── .ssh/
+│   ├── config # -> Config file
+│   └── id_ed25519_personal
+│   └── id_ed25519_business
+│   └── id_ed25519_personal.pub
+│   └── id_ed25519_business.pub
+│   └── known_hosts # -> Hosts conectados
+```
+
+Gracias por leer! Pronto la guía usando .gitconfig por directorios.
+
+## Referencias
+1. [What Is ssh-keygen?](https://www.ssh.com/academy/ssh/keygen)
+2. [Uso del archivo de configuración SSH](https://linuxize.com/post/using-the-ssh-config-file/) 
+3. [ Claves SSH de Git: tutorial completo | Atlassian Git Tutorial ](https://www.atlassian.com/es/git/tutorials/git-ssh)

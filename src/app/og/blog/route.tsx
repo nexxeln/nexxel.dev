@@ -97,11 +97,11 @@ export async function GET(request: Request) {
                   fontSize: "28px",
                 }}
               >
-                nexxel.dev
+                David Adarme
               </p>
               <img
                 src="https://davidadarme.vercel.app/davidadarme.png"
-                alt="nexxel's avatar"
+                alt="David's avatar"
                 width={70}
                 height={70}
                 style={{
