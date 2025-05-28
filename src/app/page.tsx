@@ -130,7 +130,7 @@ export default function HomePage() {
       link: "https://www.digitalprocess.co/",
       position: "Software Developer Intern",
       date: "Sept. 2024 - Mar. 2025",
-      description: "Built and maintained RESTful APIs with Node.js and JavaScript. Implemented NoSQL databases with MongoDB. Deployed applications using Docker and Nginx on Linux servers. Optimized existing applications and fixed bugs across environments. Provided technical support during integration and product delivery.",
+      description: "Built and maintained RESTful APIs with Node.js and JavaScript. Maintain NoSQL databases with MongoDB. Deployed applications using Docker and Nginx on Linux servers. Optimized existing applications and fixed bugs across environments. Provided technical support during integration and product delivery.",
       toolkit: "NodeJS, JavaScript, MongoDB, Git, Docker, Nginx, EJS, React, Linux"
     },
     {
@@ -138,7 +138,7 @@ export default function HomePage() {
       link: "https://www.digitalprocess.co/",
       position: "Software Developer (Backend)",
       date: "Mar. 2024 - Present",
-      description: "Design RESTful APIs using Node.js with TypeScript/JavaScript. Document and automate API workflows with Postman. Implement and optimize MongoDB databases. Manage version control with Git and collaborate through code reviews. Support integration using Docker and Podman.",
+      description: "Design RESTful APIs using Node.js with TypeScript/JavaScript. Document and automate API workflows with Postman. Implement and optimize MongoDB databases. Support integration using Docker and Podman.",
       toolkit: "NodeJS, TypeScript, JavaScript, MongoDB, Git, Docker, Podman, Postman"
     }
 
@@ -150,26 +150,26 @@ export default function HomePage() {
     {
       name: "Ferresys Saas ↗",
       link: "https://www.github.com/davidadarme/ferresys",
-      position: "DBA, Frontend y Backend",
-      date: "",
-      description: "API RESTful diseñada para registrar y rastrear productos, gestionar compras y ventas, y manejar clientes.",
+      position: "DBA and Deployment",
+      date: "Oct. 2023 - Apr. 2024 (Sena graduation project)",
+      description: "API RESTful designed to register, manage and track products, purchases, sales and customers.",
       toolkit: ""
       },
     {
       name: "Serverless Auth (NoSQL/SQL) ↗",
       link: "https://gitlab.com/davidadarme/serverless-auth",
       position: "Backend, DevOps", 
-      date: "",
-      description: "Autenticación serverless que permite elegir entre bases de datos SQL o NoSQL, con infraestructura automatizada en AWS y Terraform",
-      toolkit: "AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Javascript, MongoDB, PostgreSQL, Terraform, Github Actions."
+      date: "In progress",
+      description: "Serverless authentication with choice of SQL or NoSQL databases, with automated AWS and Terraform infrastructure.",
+      toolkit: "AWS (Lambda, RDS/DynamoDB, API Gateway, Cognito), Python, MongoDB, PostgreSQL, Terraform, Act, Jenkins."
     },
     {
       name: "envVault ↗",
       link: "",
       position: "DBA, Backend, DevOps",
-      date: "",
-      description:"Gestionar secretos y variables de entorno en la nube, proporcionando un acceso seguro y escalable a través de una API",
-      toolkit: "Arquitectura Hexagonal, Javascript, NodeJS, GraphQL, Podman, Redis, Terraform, Kubernetes, Prometheus + Grafana"
+      date: "In progress",
+      description:"Cloud-based secrets and environment variables management platform. It allows you to store, manage, and retrieve sensitive information securely.",
+      toolkit: "Hexagonal Architecture, Multi-tenant, Redis, PostgreSQL,Terraform, K8S, Prometheus + Grafana, OAuth 2.0, AWS (Secrets Manager, RDS, EC2)"
     },
     {
       name: "all projects →",
@@ -220,7 +220,7 @@ export default function HomePage() {
             <UpRightArrowIcon />
           </a>
         </li>
-        <li>
+        {/* <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -230,7 +230,7 @@ export default function HomePage() {
             <p className="mr-2 h-7">Gitlab</p>
             <UpRightArrowIcon />
           </a>
-        </li>
+        </li> */}
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
@@ -258,7 +258,7 @@ export default function HomePage() {
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://drive.google.com/file/d/1n-KCN-yyDwK-fpbVosCsi61S3EVS5216/view?usp=sharing"
+            href="https://drive.google.com/file/d/1ebdSF6p3sn-CePOUq4VQ3fJKsJR9ASKU/view"
           >
             <p className="mr-2 h-7">cv</p>
             <UpRightArrowIcon />
@@ -284,9 +284,7 @@ export default function HomePage() {
 
       <div className="mt-4 flex flex-col gap-6">
       <p className="prose prose-neutral max-w-3xl mb-10 dark:prose-invert">
-        Software Developer (Backend mostly) and DevOps enthusiast with a strong focus on learning to build robust, efficient, and scalable systems. My interests lie in backend architecture, API development, relational and non-relational databases, and infrastructure.
- 
-        Passionate about software development, DevOps, cloud infrastructure, databases, software architecture, and automation. I am currently seeking hands-on experience to grow my skills and maturity as a backend developer. I am especially eager to learn more about microservices, frameworks, best practices, and building scalable systems. I have experience working on monolithic applications using Node.Js, Javascript, Typescript, Express with SQL and NoSQL databases in both the medical and financial domains. In the future, I aim to transition into a DevOps-focused role where I can contribute to building and maintaining reliable, automated, and efficient infrastructure.
+        Passionate about software development, DevOps, cloud infrastructure, databases, software architecture, and automation. I am currently seeking hands-on experience to grow my skills and maturity as a backend developer. I am especially eager to learn more about microservices, frameworks, best practices, and building scalable systems. I have experience as Software Developer (Backend mostly) working on monolithic applications using Node.Js, Javascript, Typescript, Express with SQL and NoSQL databases in both the medical and financial domains. In the future, I aim to transition into a DevOps-focused role where I can contribute to building and maintaining reliable, automated, and efficient infrastructure.
       </p>
 {/* 
         <div>
