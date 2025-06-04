@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
-import IconSocial from "../../components/iconSocial";
+import IconSocial from "~~/components/iconSocial";
 // import Share from "../../components/share-buttons";
 
 export const metadata: Metadata = {

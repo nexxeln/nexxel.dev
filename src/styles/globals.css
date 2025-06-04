@@ -77,84 +77,108 @@ html {
 }
 
 code {
-  background-color: #272727;
+  background-color: #f5f5f5;
+  color: #111;
   padding: 2px 4px;
   border-radius: 4px;
-  border: 0.5px solid #363636;
+  border: 0.5px solid #e5e5e5;
   font-size: 0.95em;
   position: relative;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 
-code::before,
-code::after {
-  content: '';
-  position: absolute;
-  color: transparent;
+@media (prefers-color-scheme: dark) {
+  code {
+    background-color: #272727;
+    color: #fff;
+    border: 0.5px solid #363636;
+  }
 }
 
 .alert-warning {
   padding: 10px;
-  background-color: #111111;
-  color: #d4d4d4;
-  border: 1px solid #202020; 
+  background-color: #fffbe6;
+  color: #b45309;
+  border: 1px solid #ffe58f;
   margin-bottom: 20px;
   border-radius: 4px;
+  font-size: 0.97em;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .alert-warning {
+    background-color: #2d2d1f;
+    color: #ffe58f;
+    border: 1px solid #b45309;
+  }
 }
 
 /* Toastify custom styles for Vercel/Next.js look */
+
+/* Light mode */
 .Toastify__toast {
-  background: #111 !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #111 !important;
   border-radius: 12px !important;
   font-family: var(--font-geist-sans), GeistSans, sans-serif !important;
   font-size: 13px !important;
-  border: 1px solid #202020 !important;
-  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+  border: 1px solid #e5e5e5 !important;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.08);
 }
-
-.Toastify__toast--success {
-  background: #000000 !important;
-  color: #fff !important;
-}
-
+.Toastify__toast--success,
 .Toastify__toast--error {
-  background: #111 !important;
-  color: #fff !important;
+  background: #fff !important;
+  color: #111 !important;
 }
-
 .Toastify__close-button {
-  color: #fff !important;
+  color: #111 !important;
   font-size: 10px !important;
   opacity: 0.7;
 }
-
 .Toastify__close-button:hover {
   opacity: 1;
 }
-
-.Toastify__close-button {
-  color: #fff !important;
-  font-size: 10px !important;
-  opacity: 0.7;
-}
-
-/* Toastify: iconos blancos */
-:root {
-  --toastify-icon-color-info: #fff;
-  --toastify-icon-color-success: #fff;
-  --toastify-icon-color-warning: #fff;
-  --toastify-icon-color-error: #fff;
-}
-
 .Toastify__toast-icon svg {
-  fill: #fff !important;
-  color: #fff !important;
-  margin-left: 0.5rem !important;
+  fill: #111 !important;
+  color: #111 !important;
   width: 14px !important;
 }
 
-/* .Toastify__icon-color-success {
-  background: #3b82f6 !important;
-  height: 3px !important;
-  border-radius: 0 0 12px 12px !important;
-} */
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .Toastify__toast {
+    background: #111 !important;
+    color: #fff !important;
+    border: 1px solid #202020 !important;
+    box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+  }
+  .Toastify__toast--success,
+  .Toastify__toast--error {
+    background: #111 !important;
+    color: #fff !important;
+  }
+  .Toastify__close-button {
+    color: #fff !important;
+  }
+  .Toastify__toast-icon svg {
+    fill: #fff !important;
+    color: #fff !important;
+  }
+}
+
+/* Toastify: iconos blancos en dark, negros en light */
+:root {
+  --toastify-icon-color-info: #111;
+  --toastify-icon-color-success: #111;
+  --toastify-icon-color-warning: #111;
+  --toastify-icon-color-error: #111;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --toastify-icon-color-info: #fff;
+    --toastify-icon-color-success: #fff;
+    --toastify-icon-color-warning: #fff;
+    --toastify-icon-color-error: #fff;
+  }
+}

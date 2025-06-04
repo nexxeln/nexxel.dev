@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { MDX } from "./mdx";
 import { getBlogPostBySlug } from "~~/blog";
-import IconSocial from "../../../components/iconSocial";
+import IconSocial from "~~/components/iconSocial";
 import Share from "../../../components/share-buttons";
+import "~~/styles/globals.css";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
