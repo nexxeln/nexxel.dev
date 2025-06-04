@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Data Transfer Object (DTO): Un Patrón de Diseño para la Transferencia de Datos" 
+date: "2025-06-15"
+category: "object-oriented programming"
+tags: ["dtos", "java", "typescript", "system", "design", "oop", "object-oriented", "programming"]
+description: "Más allá de la transferencia de datos con los DTOs"
+version: "1.0.0"
+language: "español"
+---
+
+Dev
+
+### Ejemplo DTO en Java
+
+```java
+
+@Entity
+public class User {
+    @Id
+    private Long id;
+    private String username;
+    private String email;
+    private String password; // Should not be exposed in APIs
+    private String address;
+    // Getters and setters
+}
+
+```
+
+
+```java
+
+public class UserDTO {
+    private String username;
+    private String email;
+    // Getters and setters
+}
+
+```
+
+```java
+
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+public List<UserDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(user -> {
+                    UserDTO dto = new UserDTO();
+                    dto.setUsername(user.getUsername());
+                    dto.setEmail(user.getEmail());
+                    return dto;
+                })
+                .collect(Collectors.toList());
+    }
+}
+
+```
+
+
+## Referencias:
+1. [Dto vs Projections vs Mappers](https://medium.com/@avicsebooks/dto-vs-projections-vs-mappers-d88086d95536)

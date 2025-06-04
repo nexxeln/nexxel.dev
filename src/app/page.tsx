@@ -169,7 +169,7 @@ export default function HomePage() {
       position: "DBA, Backend, DevOps",
       date: "In progress",
       description:"Cloud-based secrets and environment variables management platform. It allows you to store, manage, and retrieve sensitive information securely.",
-      toolkit: "Hexagonal Architecture, Multi-tenant, Redis, PostgreSQL,Terraform, K8S, Prometheus + Grafana, OAuth 2.0, AWS (Secrets Manager, RDS, EC2)"
+      toolkit: "Hexagonal Architecture, Multi-tenant, Go, Redis, PostgreSQL,Terraform, K8S, Prometheus + Grafana, OAuth 2.0, AWS (Secrets Manager, RDS, EC2)"
     },
     {
       name: "all projects →",

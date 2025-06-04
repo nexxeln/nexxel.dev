@@ -100,3 +100,61 @@ code::after {
   margin-bottom: 20px;
   border-radius: 4px;
 }
+
+/* Toastify custom styles for Vercel/Next.js look */
+.Toastify__toast {
+  background: #111 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  font-family: var(--font-geist-sans), GeistSans, sans-serif !important;
+  font-size: 13px !important;
+  border: 1px solid #202020 !important;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+}
+
+.Toastify__toast--success {
+  background: #000000 !important;
+  color: #fff !important;
+}
+
+.Toastify__toast--error {
+  background: #111 !important;
+  color: #fff !important;
+}
+
+.Toastify__close-button {
+  color: #fff !important;
+  font-size: 10px !important;
+  opacity: 0.7;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+.Toastify__close-button {
+  color: #fff !important;
+  font-size: 10px !important;
+  opacity: 0.7;
+}
+
+/* Toastify: iconos blancos */
+:root {
+  --toastify-icon-color-info: #fff;
+  --toastify-icon-color-success: #fff;
+  --toastify-icon-color-warning: #fff;
+  --toastify-icon-color-error: #fff;
+}
+
+.Toastify__toast-icon svg {
+  fill: #fff !important;
+  color: #fff !important;
+  margin-left: 0.5rem !important;
+  width: 14px !important;
+}
+
+/* .Toastify__icon-color-success {
+  background: #3b82f6 !important;
+  height: 3px !important;
+  border-radius: 0 0 12px 12px !important;
+} */

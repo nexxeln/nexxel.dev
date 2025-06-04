@@ -27,6 +27,8 @@
     "next-view-transitions": "^0.2.0",
     "react": "19.0.0-rc-58af67a8f8-20240628",
     "react-dom": "19.0.0-rc-58af67a8f8-20240628",
+    "react-share": "^5.2.2",
+    "react-toastify": "^11.0.5",
     "remark-footnotes": "^5.0.0",
     "zod": "^3.23.8"
   },

@@ -7,6 +7,10 @@ import { clx } from "../utils";
 import { Navbar } from "../app/navbar";
 import { ViewTransitions } from "next-view-transitions";
 // import Footer from "../app/footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "~~/styles/globals.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidadarme.com"),
@@ -48,19 +52,22 @@ export default function RootLayout({
       <html
         lang="en"
         className={clx(
-          "bg-neutral-100 text-black dark:bg-neutral-950 dark:text-white",
+          // "bg-white text-black", // Cambia a blanco y negro
           GeistSans.variable,
           GeistMono.variable,
         )}
       >
-        <body className="mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto">
+        <body className="mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto bg-black text-white">
           <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
             <Navbar />
             {children}
             {/* <Footer /> */}
           </main>
+          <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar />
         </body>
       </html>
+      
     </ViewTransitions>
+    
   );
 }

@@ -56,6 +56,12 @@ dependencies:
   react-dom:
     specifier: 19.0.0-rc-58af67a8f8-20240628
     version: 19.0.0-rc-58af67a8f8-20240628(react@19.0.0-rc-58af67a8f8-20240628)
+  react-share:
+    specifier: ^5.2.2
+    version: 5.2.2(react@19.0.0-rc-58af67a8f8-20240628)
+  react-toastify:
+    specifier: ^11.0.5
+    version: 11.0.5(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628)
   remark-footnotes:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2881,8 +2887,17 @@ packages:
     resolution: {integrity: sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==}
     dev: false
 
+  /classnames@2.5.1:
+    resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
+    dev: false
+
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
     dev: false
 
   /collapse-white-space@2.1.0:
@@ -2989,6 +3004,17 @@ packages:
       es-errors: 1.3.0
       is-data-view: 1.0.2
     dev: true
+
+  /debug@2.6.9:
+    resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+    dependencies:
+      ms: 2.0.0
+    dev: false
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -4412,6 +4438,14 @@ packages:
     hasBin: true
     dev: false
 
+  /jsonp@0.2.1:
+    resolution: {integrity: sha512-pfog5gdDxPdV4eP7Kg87M8/bHgshlZ5pybl+yKxAnCZ5O7lCIn7Ixydj03wOlnDQesky2BPyA91SQ+5Y/mNwzw==}
+    dependencies:
+      debug: 2.6.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
     engines: {node: '>=4.0'}
@@ -4970,6 +5004,10 @@ packages:
 
   /module-details-from-path@1.0.4:
     resolution: {integrity: sha512-EGWKgxALGMgzvxYF1UyGTy0HXX/2vHLkw6+NvDKW2jypWbHpjQuj4UMcqQWXHERJhVGKikolT06G3bcKe4fi7w==}
+    dev: false
+
+  /ms@2.0.0:
+    resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
     dev: false
 
   /ms@2.1.3:
@@ -5532,6 +5570,29 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-share@5.2.2(react@19.0.0-rc-58af67a8f8-20240628):
+    resolution: {integrity: sha512-z0nbOX6X6vHHWAvXduNkYeJUKTKNpKM5Xpmc5a2BxjJhUWl+sE7AsSEMmYEUj2DuDjZr5m7KFIGF0sQPKcUN6w==}
+    peerDependencies:
+      react: ^17 || ^18 || ^19
+    dependencies:
+      classnames: 2.5.1
+      jsonp: 0.2.1
+      react: 19.0.0-rc-58af67a8f8-20240628
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /react-toastify@11.0.5(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628):
+    resolution: {integrity: sha512-EpqHBGvnSTtHYhCPLxML05NLY2ZX0JURbAdNYa6BUkk+amz4wbKBQvoKQAB0ardvSarUBuY4Q4s1sluAzZwkmA==}
+    peerDependencies:
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0-rc-58af67a8f8-20240628
+      react-dom: 19.0.0-rc-58af67a8f8-20240628(react@19.0.0-rc-58af67a8f8-20240628)
+    dev: false
 
   /react@19.0.0-rc-58af67a8f8-20240628:
     resolution: {integrity: sha512-s5Bv9TNybVxfX3nKZIjeu5dU/N4dwVdSxEnXc4hVNeCKZcVZyrKWd8WrwFfDPWHLbADMo1S0Fje86nmNDtPlPA==}
