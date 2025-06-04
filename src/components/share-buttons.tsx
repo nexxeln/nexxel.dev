@@ -25,9 +25,23 @@ export default function Share({ url }: { url: string }) {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      toast.success("Copied to clipboard");
+        // toast.success("Copied to clipboard", {
+        //   icon: (
+        //     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-check"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+        //   ),
+        // });
+
+        toast.error("Failed to copy link.", {
+        icon: (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+        ),
+      });
     } catch (err) {
-      toast.error("Failed to copy link.");
+      // toast.error("Failed to copy link.", {
+      //   icon: (
+      //     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-alert"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>
+      //   ),
+      // });
     }
   };
 
@@ -258,14 +272,17 @@ export default function Share({ url }: { url: string }) {
               type="button"
             >
               <svg
+                className="w-4 h-4 text-gray-800 dark:text-white"
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
                 height="18"
                 viewBox="0 0 24 24"
+                fill="none"
               >
                 <path
-                  fill="#evenodd"
-                  d="m21.936 5.17l-3.03 14.185c-.226.999-.806 1.224-1.644.773l-4.545-3.352l-2.225 2.127c-.225.226-.451.452-.967.452l.355-4.675l8.478-7.704c.354-.355-.097-.484-.548-.193l-10.541 6.64l-4.546-1.386c-.999-.322-.999-1 .226-1.45L20.614 3.72c.87-.258 1.612.194 1.322 1.45"
+                  fill="currentColor"
+                  fillRule="evenodd"
+                  d="m21.936 5.17-3.03 14.185c-.226.999-.806 1.224-1.644.773l-4.545-3.352-2.225 2.127c-.225.226-.451.452-.967.452l.355-4.675 8.478-7.704c.354-.355-.097-.484-.548-.193l-10.541 6.64-4.546-1.386c-.999-.322-.999-1 .226-1.45L20.614 3.72c.87-.258 1.612.194 1.322 1.45"
                   clipRule="evenodd"
                 />
               </svg>
