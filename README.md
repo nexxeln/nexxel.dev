@@ -1,4 +1,5 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/linustorvaldss/davidadarme.com)
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m797677959-98e7ed32bc65a4f10972c702)
 
 ## Learn More
 
