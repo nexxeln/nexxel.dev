@@ -4,7 +4,8 @@ import { Suspense } from "react";
 import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
-import IconSocial from "../../components/iconSocial";
+import IconSocial from "~~/components/iconSocial";
+// import Share from "../../components/share-buttons";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://davidadarme.vercel.app/og/home?title=davidadarme's blog",
+        url: "https://davidadarme.com/og/home?title=DavidAdarme's Blog",
       },
     ],
   },
@@ -83,10 +84,23 @@ export default function BlogPage() {
                   })
                   }
               </p>
+
+              
             </div>
             {/* <hr className="my-4 border-gray-700 border-1.5" /> */}
+
+            <div className="space-y-12">
+
+            
+        </div>
+          {/* <div key={post.slug}>
+              <Share url={`https://davidadarme.com/blog/${post.slug}`} />
+            </div>   */}
           </Link>
+          
         ))}
+
+         
       </div>
 
       <div className="space-y-6">

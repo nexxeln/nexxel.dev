@@ -48,8 +48,9 @@ const IconSocial = () => {
             width="16"
             viewBox="0 0 24 24"
             style={{ margin: "0 5px" }}
+            className="text-black dark:text-white transition-colors"
           >
-            <path fill="#fff" d={icon.svgPath}></path>
+            <path fill="currentColor" d={icon.svgPath}></path>
           </svg>
         </a>
       ))}
@@ -58,4 +59,3 @@ const IconSocial = () => {
 };
 
 export default IconSocial;
-

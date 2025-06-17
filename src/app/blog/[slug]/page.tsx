@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { MDX } from "./mdx";
 import { getBlogPostBySlug } from "~~/blog";
-import IconSocial from "../../../components/iconSocial";
+import IconSocial from "~~/components/iconSocial";
+import Share from "../../../components/share-buttons";
+// import TableOfContents from "~~/components/toc";
+import "~~/styles/globals.css";
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {
@@ -75,10 +78,10 @@ export default function Post({ params }: { params: { slug: string } }) {
             datePublished: post.metadata.date,
             dateModified: post.metadata.date,
             description: post.metadata.description,
-            image: `https://davidadarme.vercel.app/og/blog?title=${post.metadata.title}&top=${formatDate(
+            image: `https://davidadarme.com/og/blog?title=${post.metadata.title}&top=${formatDate(
               post.metadata.date,
             )}`,
-            url: `https://davidadarme.vercel.app/blog/${post.slug}`,
+            url: `https://davidadarme.com/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: author.name,
@@ -90,18 +93,23 @@ export default function Post({ params }: { params: { slug: string } }) {
       <h1 className="title mb-2 max-w-[650px] text-3xl font-medium tracking-tighter">
         {post.metadata.title}
       </h1>
+
       <div className="mb-8 flex max-w-[650px] items-center justify-between text-sm">
         {/* <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {author.name}
         </p> */}
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2">
           {formatDate(post.metadata.date)}
-        </p>
+          <Share url={`https://davidadarme.com/blog/${post.slug}`} />
+        </div>
       </div>
 
       <article className="prose prose-neutral dark:prose-invert">
         <MDX source={post.content} />
       </article>
+        {/* <div className="hidden lg:block">
+          <TableOfContents url={`/blog/${post.slug}`} />
+        </div> */}
       <div style={{ marginTop: "25px" }}>
         <IconSocial />
       </div>
