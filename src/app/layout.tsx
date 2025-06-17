@@ -15,13 +15,13 @@ import "~~/styles/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidadarme.com"),
   title: {
-    default: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
+    default: "David Adarme - Software Developer - SWE & DevOps enthusiast",
     template: "%s | David Adarme",
   },
-  description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
+  description: "David Adarme - Software Developer - SWE & DevOps enthusiast",
   openGraph: {
     title: "David Adarme",
-    description: "David Adarme - Sofware Developer - SWE & DevOps enthusiast",
+    description: "David Adarme - Software Developer - SWE & DevOps enthusiast",
     url: "https://davidadarme.com",
     siteName: "David Adarme",
     locale: "en_CO",

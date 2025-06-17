@@ -5,6 +5,7 @@ import { MDX } from "./mdx";
 import { getBlogPostBySlug } from "~~/blog";
 import IconSocial from "~~/components/iconSocial";
 import Share from "../../../components/share-buttons";
+import TableOfContents from "~~/components/toc";
 import "~~/styles/globals.css";
 
 const formatDate = (date: string) => {
@@ -106,6 +107,9 @@ export default function Post({ params }: { params: { slug: string } }) {
       <article className="prose prose-neutral dark:prose-invert">
         <MDX source={post.content} />
       </article>
+        <div className="hidden lg:block">
+          <TableOfContents url={`/blog/${post.slug}`} />
+        </div>
       <div style={{ marginTop: "25px" }}>
         <IconSocial />
       </div>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     images: [
       {
-        url: "https://davidadarme.vercel.app/og/home?title=davidadarme's blog",
+        url: "https://davidadarme.com/og/home?title=DavidAdarme's Blog",
       },
     ],
   },
