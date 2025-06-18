@@ -5,6 +5,11 @@ type Metadata = {
   title: string;
   description: string;
   date: string;
+  author?: string;
+  category?: string;
+  // tags: string[];
+  substack?: string;
+  medium?: string;
 };
 
 type FrontmatterParseResult = {
