@@ -5,6 +5,7 @@ import { NewsletterForm } from "~~/app/blog/newsletter-form";
 import { ViewCounter } from "~~/app/blog/view-counter";
 import { getBlogPosts } from "~~/blog";
 import IconSocial from "~~/components/iconSocial";
+import Share from "~~/components/share-buttons";
 // import Share from "../../components/share-buttons";
 
 
@@ -157,30 +158,39 @@ export default function BlogPage() {
               </div>
             </Link>
 
-            <div className="flex gap-3 justify-end">
-              {post.metadata.medium && (
-                <a 
-                  href={post.metadata.medium} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[#000] dark:text-[#ffff] hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-                  aria-label="Read on Medium"
-                >
-                  <MediumPublishedIcon />
-                </a>
-              )}
-              
-              {post.metadata.substack && (
-                <a 
-                  href={post.metadata.substack} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-[#000] dark:text-[#ffff] hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
-                  aria-label="Read on Substack"
-                >
-                  <SubstackPublishedIcon />
-                </a>
-              )}
+            <div className="flex items-center gap-3 justify-between mt-2">
+              <div className="flex items-center gap-3">
+                {post.metadata.medium && (
+                  <a 
+                    href={post.metadata.medium} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#000] dark:text-[#ffff] hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+                    aria-label="Read on Medium"
+                  >
+                    <MediumPublishedIcon />
+                  </a>
+                )}
+                {post.metadata.substack && (
+                  <a 
+                    href={post.metadata.substack} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#000] dark:text-[#ffff] hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+                    aria-label="Read on Substack"
+                  >
+                    <SubstackPublishedIcon />
+                  </a>
+                )}
+              </div>
+              <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                <Share url={`https://davidadarme.com/blog/${post.slug}`} />
+              </span>
+            </div>
+
+             <div className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center gap-2 justify-end">
+               
+             
             </div>
 
             <hr className="my-4 border-gray-700 border-1.5" />
