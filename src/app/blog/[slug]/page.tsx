@@ -7,6 +7,7 @@ import IconSocial from "~~/components/iconSocial";
 import Share from "../../../components/share-buttons";
 // import TableOfContents from "~~/components/toc";
 import "~~/styles/globals.css";
+// import { Avatar, AvatarFallback, AvatarImage } from "~~/components/ui/avatar"
 
 const formatDate = (date: string) => {
   return new Date(date).toLocaleDateString("en-US", {

@@ -46,34 +46,28 @@ export default function HomePage() {
           </p>
 
 
-          <img
+          {/* <img
             alt="Memories"
             className="w-full h-auto rounded-lg shadow-lg"
-            src="https://davidadarme.com/about/blade-runner-2049.jpg"
-          />
+            src="https://r2.davidadarme.com/about/blade-runner-2049.jpg"
+          /> */}
+
+          {/* <img
+            alt="Memories"
+            className="w-full h-auto rounded-lg shadow-lg"
+            src="https://r2.davidadarme.com/about/blade-runner-2049-movie-joi-and-k.jpg"
+          /> */}
+
+          {/* <img
+            alt="Memories"
+            className="w-full h-auto rounded-lg shadow-lg"
+            src="https://r2.davidadarme.com/about/1280px-Nighthawks_by_Edward_Hopper_1942.jpg"
+          /> */}
 
           <img
-            alt="Memories"
+            alt="Caspar David Friedrich"
             className="w-full h-auto rounded-lg shadow-lg"
-            src="https://davidadarme.com/about/blade-runner-2049-movie-joi-and-k.jpg"
-          />
-
-          <img
-            alt="Memories"
-            className="w-full h-auto rounded-lg shadow-lg"
-            src="https://davidadarme.com/about/1280px-Nighthawks_by_Edward_Hopper_1942.jpg"
-          />
-
-          <img
-            alt="Memories"
-            className="w-full h-auto rounded-lg shadow-lg"
-            src="https://davidadarme.com/about/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg"
-          />
-
-          <img
-            alt="Memories"
-            className="w-full h-auto rounded-lg shadow-lg"
-            src="https://davidadarme.com/about/191769-darth-vader-1920x1080.jpg"
+            src="https://r2.davidadarme.com/about/800px-Caspar_David_Friedrich_-_Wanderer_above_the_sea_of_fog.jpg"
           />
 
           {/* <p className="prose prose-neutral max-w-3xl dark:prose-invert">

@@ -57,6 +57,7 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
+
         <body className="mx-4 mb-40 mt-8 flex max-w-3xl flex-col antialiased md:flex-row lg:mx-auto bg-white text-black dark:bg-black dark:text-white">
           <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
             <Navbar />
@@ -64,6 +65,12 @@ export default function RootLayout({
             {/* <Footer /> */}
           </main>
           <ToastContainer position="bottom-right" autoClose={2000} hideProgressBar />
+          
+          <script
+              src="https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/"
+              async
+              defer
+            />
         </body>
       </html>
       
