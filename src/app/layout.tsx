@@ -12,6 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "~~/styles/globals.css";
 // import "react-toastify/dist/ReactToastify.css";
 
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidadarme.com"),
   title: {

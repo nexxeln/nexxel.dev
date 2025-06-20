@@ -21,6 +21,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_CF_R2_BUCKET_URL: z.string().url(),
+    NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY: z.string(),
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
 
@@ -33,6 +34,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CF_R2_BUCKET_URL: process.env.NEXT_PUBLIC_CF_R2_BUCKET_URL,
     PLUNK_API_KEY: process.env.PLUNK_API_KEY,
     SENTRY_DSN: process.env.SENTRY_DSN,
+    NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY: process.env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY,
     // REDIS_URL: process.env.REDIS_URL,
     // REDIS_TOKEN: process.env.REDIS_TOKEN,
 

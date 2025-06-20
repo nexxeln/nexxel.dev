@@ -50,6 +50,9 @@ dependencies:
   next-mdx-remote:
     specifier: ^5.0.0
     version: 5.0.0(@types/react@18.3.3)(acorn@8.14.1)(react@19.0.0-rc-58af67a8f8-20240628)
+  next-turnstile:
+    specifier: ^1.0.5
+    version: 1.0.5(next@15.0.0-rc.0)(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628)
   next-view-transitions:
     specifier: ^0.2.0
     version: 0.2.0(next@15.0.0-rc.0)(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628)
@@ -83,6 +86,9 @@ dependencies:
   unified:
     specifier: ^11.0.5
     version: 11.0.5
+  uuid:
+    specifier: ^11.1.0
+    version: 11.1.0
   zod:
     specifier: ^3.23.8
     version: 3.23.8
@@ -5162,6 +5168,18 @@ packages:
       - supports-color
     dev: false
 
+  /next-turnstile@1.0.5(next@15.0.0-rc.0)(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628):
+    resolution: {integrity: sha512-DUdmQ0m4lSkHD2nn/Nmh8nAKjYlZD9nXJTaQJJAr0pYE0MUHmwz8bvjex71RuVJaoGRsP7qGnlhuEnXDEuojcw==}
+    peerDependencies:
+      next: '>=12'
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      next: 15.0.0-rc.0(@babel/core@7.27.1)(@opentelemetry/api@1.8.0)(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628)
+      react: 19.0.0-rc-58af67a8f8-20240628
+      react-dom: 19.0.0-rc-58af67a8f8-20240628(react@19.0.0-rc-58af67a8f8-20240628)
+    dev: false
+
   /next-view-transitions@0.2.0(next@15.0.0-rc.0)(react-dom@19.0.0-rc-58af67a8f8-20240628)(react@19.0.0-rc-58af67a8f8-20240628):
     resolution: {integrity: sha512-dFxevMIJy8irIstytJivLEtgYT4IJ7Gy7fnDCKHJtNZAsuQgmewYcdA/o/mRkMd1zwxTfyGALiOlZYxvtsn5jg==}
     peerDependencies:
@@ -6700,6 +6718,11 @@ packages:
       is-generator-function: 1.1.0
       is-typed-array: 1.1.15
       which-typed-array: 1.1.19
+    dev: false
+
+  /uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
+    hasBin: true
     dev: false
 
   /uuid@8.0.0:

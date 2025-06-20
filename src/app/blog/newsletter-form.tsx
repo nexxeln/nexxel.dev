@@ -2,6 +2,8 @@
 import type { SVGProps } from "react";
 import { useFormStatus } from "react-dom";
 import { subscribe } from "../blog/actions";
+import { Turnstile } from "next-turnstile";
+import { env } from "~~/env";
 
 export function NewsletterForm() {
   return (
@@ -17,6 +19,9 @@ export function NewsletterForm() {
           />
         </div>
         <SubmitButton />
+      </div>
+      <div className="mt-4">
+        <Turnstile siteKey={env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY} />
       </div>
       <div></div>
     </form>
