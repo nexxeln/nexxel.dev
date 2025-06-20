@@ -20,30 +20,27 @@ export default function HomePage() {
         <div className="mt-4 flex flex-col gap-6">
 
           <p className="prose prose-neutral max-w-3xl dark:prose-invert">
-            i consider myself a person who likes to learn new things but also feel sometimes lost. i am passionate about software development, DevOps, cloud infrastructure, databases, software architecture, and automation. i'd like to explore and learn more about some topics focused in backend, infra, devops and database. 
-          </p>
-
-          <p className="prose prose-neutral max-w-3xl dark:prose-invert">
-            outside of the software box, i like build legos, collect hot wheels, listen music and watch movies and play with my cats (i'd like to fund an animals foundation someday). as a extreme sport i like cars and motorcycles especiall a bmw sr1000rr and a ducati panigale v4s. i like arms and guns, but i don't have any. i like to learn new languages, especially english, german and swedish
-
+            i consider myself a person who likes to learn new things. i am passionate about software development, devops, cloud infrastructure, databases, software architecture, and automation. i'd like to explore and learn more about some topics focused in backend, infra, devops and database. im also interested in pursuing a degree in software enginering later on. i have a strong interest in the world of technology, and i am always looking for new challenges and opportunities to grow in this field. there are some ideas that i'd like to explore like founding a software fintech or create something relevant to share with the world that will make me useful in the swe field. 
           </p>
 
           <h3 className="prose prose-neutral text-xl max-w-3xl dark:prose-invert">
             things i like:
-          </h3>
+          </h3> 
 
           <p className="prose prose-neutral max-w-3xl dark:prose-invert">
+            outside of the software box, i like build legos, collect hot wheels, listen music, watch movies and play with my cats (i'd like to found an animals foundation someday). also i like cars and motorcycles especially bmw sr1000rr and ducati panigale v4s. i like arms and guns, but i don't have any. 
+          </p>
+
+{/* 
+          <li className="prose prose-neutral dark:prose-invert">
             favorite artists: avicii, lil peep, juice wrld, daft punk, cigarretes after sex, hans zimmers, ludwig göransson, swedish house mafia, blessd
-          </p>
-
-          <p className="prose prose-neutral max-w-3xl dark:prose-invert">
+          </li>
+          <li className="prose prose-neutral dark:prose-invert">
             favorite places to live someday: medellin, edinburgh, stockholm, berlin, amsterdam, zurich, prague, bruges
-          </p>
-
-
-          <p className="prose prose-neutral max-w-3xl mb-5 dark:prose-invert">
-            movie i enjoy to watch: blade runner 2049, tron, fight club, joker, tenet, john wick, star wars, seven,  watchmen, No Country for older men, There Will Be Blood, drive
-          </p>
+          </li>
+          <li className="prose prose-neutral dark:prose-invert">
+            movies i enjoy watching: blade runner 2049, tron, fight club, joker, tenet, john wick, star wars, seven,  watchmen, No Country for older men, There Will Be Blood, drive
+          </li> */}
 
 
           {/* <img
@@ -103,7 +100,11 @@ export default function HomePage() {
 
         {/* <div className="mt-4 flex flex-col gap-6"> */}
         <div>
-          <p className="prose prose-neutral max-w-3xl dark:prose-invert">my favorite album is avicii's true</p>
+          <br></br>
+          <p className="prose prose-neutral max-w-3xl dark:prose-invert">
+            my favorite album is avicii's true
+          </p>
+
           <iframe
             src="https://open.spotify.com/embed/album/2H6i2CrWgXE1HookLu8Au0?utm_source=generator&theme=0"
             width="100%"
