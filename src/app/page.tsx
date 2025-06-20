@@ -5,25 +5,25 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import IconSocial from "~~/components/iconSocial";
 
-function UpRightArrowIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-    >
-      <path d="M7 7h10v10" />
-      <path d="M7 17 17 7" />
-    </svg>
-  );
-}
+// function UpRightArrowIcon() {
+//   return (
+//     <svg
+//       xmlns="http://www.w3.org/2000/svg"
+//       width="24"
+//       height="24"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       stroke="currentColor"
+//       strokeWidth="2"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       className="h-5 w-5"
+//     >
+//       <path d="M7 7h10v10" />
+//       <path d="M7 17 17 7" />
+//     </svg>
+//   );
+// }
 
 function WorkIcon() {
   return (
@@ -201,14 +201,17 @@ export default function HomePage() {
           <p>Colombia - Bucaramanga, Santander </p>
         </div>
 
+        
+
         <div className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300">
           <WorkIcon />
           <p className="inline-flex">Software Developer</p>
         </div>
       </div>
 
-      <h3 className="mb-6 mt-1 text-xl font-medium">Connect with me</h3>
-      <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
+      {/* <h3 className="mb-6 mt-1 text-xl font-medium">Connect with me</h3> */}
+      <IconSocial />
+      {/* <ul className="font-sm flex flex-col space-x-0 space-y-3 text-neutral-600 md:flex-row md:space-x-6 md:space-y-0 dark:text-neutral-300">
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
@@ -220,7 +223,7 @@ export default function HomePage() {
             <UpRightArrowIcon />
           </a>
         </li>
-        {/* <li>
+        <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
@@ -230,7 +233,7 @@ export default function HomePage() {
             <p className="mr-2 h-7">Gitlab</p>
             <UpRightArrowIcon />
           </a>
-        </li> */}
+        </li>
         <li>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
@@ -275,7 +278,7 @@ export default function HomePage() {
             <UpRightArrowIcon />
           </a>
         </li>
-      </ul>
+      </ul> */}
 
       {/* ADD LATER */}
       {/* <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
@@ -339,7 +342,7 @@ export default function HomePage() {
           <NewsletterForm />
           <SpeedInsights />
           <Analytics />
-          <IconSocial />
+          
         </div>
       </div>
     </main>
