@@ -14,7 +14,7 @@ export default function HomePage() {
         <img
           alt="Memories"
           className="w-full h-auto rounded-lg shadow-lg"
-          src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Alexandre_Cabanel_-_Fallen_Angel.jpg"
+          src="https://r2.davidadarme.com/about/Alexandre_Cabanel_-_Fallen_Angel.jpg"
         />
 
         <div className="mt-4 flex flex-col gap-6">
