@@ -16,11 +16,11 @@ export function Header() {
         </div>
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4" />
-          co-founder and cto @ leapflow
+          co-founder and cto @ mocha
         </div>
       </div>
       <p className="leading-relaxed animate-fade-in-up">
-        i&apos;m a 19 y/o cs undergrad student. i love building things and
+        i&apos;m a 20 y/o cs undergrad student. i love building things and
         solving problems. i enjoy language design, theoretical computer science
         and i live on the terminal. if i&apos;m not coding, i&apos;m probably
         doing cardistry, watching movies or obsessing over mechanical keyboards.

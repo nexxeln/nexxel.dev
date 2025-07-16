@@ -5,19 +5,26 @@ import { LinksSection } from "@/components/links-section"
 
 const workItems: Item[] = [
   {
+    title: "mocha",
+    role: "co-founder and cto",
+    period: "jul 2025 - present",
+    description: "building an ai native email client designed for speed and ease of use",
+    href: "https://mocha.email",
+  },
+  {
     title: "ENS labs",
     role: "software engineer",
-    period: "feb 2025 - present",
+    period: "feb 2025 - jul 2025",
     description:
-      "building a decentralized identity protocol as part of ENS labs",
+      "helped migrate ensjs to namechain and optimized ci for the manager app",
     href: "https://ens.domains",
   },
   {
     title: "leapflow",
     role: "co-founder and cto",
-    period: "may 2024 - present",
+    period: "may 2024 - jun 2025",
     description:
-      "leading engineering to build ai agents for automating repetitive tasks in existing software",
+      "headed engineering to develop ai agents that automate repetitive workflows in existing software",
     href: "https://leapflow.tech",
   },
   {
@@ -51,13 +58,13 @@ export default function HomePage() {
     <>
       <Header />
       <SectionList title="work" items={workItems} />
+      <BlogSection />
       <SectionList
         title="projects"
         items={projectItems}
         viewAllHref="/projects"
         viewAllText="all projects"
       />
-      <BlogSection />
       <LinksSection />
     </>
   )
