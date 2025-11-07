@@ -5,10 +5,17 @@ import { LinksSection } from "@/components/links-section"
 
 const workItems: Item[] = [
   {
+    title: "supermemory",
+    role: "founding engineer",
+    period: "nov 2025 - present",
+    description: "building the best memory engine for ai agents",
+    href: "https://supermemory.ai",
+  },
+  {
     title: "mocha",
     role: "co-founder and cto",
-    period: "jul 2025 - present",
-    description: "building an ai native email client designed for speed and ease of use",
+    period: "jul 2025 - oct 2025",
+    description: "built an ai native email client designed for speed and ease of use",
     href: "https://mocha.email",
   },
   {
