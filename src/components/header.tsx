@@ -12,7 +12,7 @@ export function Header() {
       <div className="flex flex-col gap-2 text-gray-400">
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4" />
-          chennai, india
+          dehradun, india
         </div>
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4" />
