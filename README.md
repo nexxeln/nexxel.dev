@@ -1,3 +1,3 @@
 <samp>
-stack: next.js, tailwindcss, typescript, mdx, vercel, test
+stack: next.js, tailwindcss, typescript, mdx, vercel
 </samp>
