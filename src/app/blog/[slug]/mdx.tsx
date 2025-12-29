@@ -3,13 +3,48 @@ import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
 
-function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
-  let headers = data.headers.map((header, index) => (
+function Table({
+  data,
+  ascii = false,
+}: {
+  data: { headers: string[]; rows: string[][] }
+  ascii?: boolean
+}) {
+  if (ascii) {
+    const allRows = [data.headers, ...data.rows]
+    const colWidths = data.headers.map((_, colIndex) =>
+      Math.max(...allRows.map((row) => (row[colIndex] ?? "").length)),
+    )
+
+    const formatRow = (row: string[]) =>
+      "| " +
+      row.map((cell, i) => cell.padEnd(colWidths[i] ?? 0)).join(" | ") +
+      " |"
+
+    const separator =
+      "+" + colWidths.map((w) => "-".repeat(w + 2)).join("+") + "+"
+
+    const lines = [
+      separator,
+      formatRow(data.headers),
+      separator,
+      ...data.rows.map(formatRow),
+      separator,
+    ]
+
+    return (
+      <div className="font-mono text-sm overflow-x-auto whitespace-pre">
+        {lines.join("\n")}
+      </div>
+    )
+  }
+
+  const headers = data.headers.map((header, index) => (
     <th key={index} className="p-2 text-left">
       {header}
     </th>
   ))
-  let rows = data.rows.map((row, index) => (
+  const rows = data.rows.map((row, index) => (
     <tr key={index}>
       {row.map((cell, cellIndex) => (
         <td key={cellIndex} className="p-2 text-left">
@@ -49,6 +84,7 @@ function CustomLink({
 }
 
 function CustomImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  // eslint-disable-next-line @next/next/no-img-element
   return <img alt={props.alt} className="rounded-lg" {...props} />
 }
 
@@ -131,7 +167,7 @@ const components = {
   Table,
 }
 
-export function MDX(props: any) {
+export function MDX(props: React.ComponentProps<typeof MDXRemote>) {
   return (
     <MDXRemote
       {...props}

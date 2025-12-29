@@ -1,11 +1,19 @@
 import fs from "fs"
 import path from "path"
+import { z } from "zod"
 
-export type Metadata = {
-  title: string
-  description: string
-  date: string
-}
+const metadataSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  date: z.string(),
+  draft: z
+    .string()
+    .transform((val) => val === "true")
+    .optional()
+    .default(false),
+})
+
+export type Metadata = z.infer<typeof metadataSchema>
 
 export type FrontmatterParseResult = {
   metadata: Metadata
@@ -20,6 +28,10 @@ export function getPosts(): MDXFileData[] {
   return getMDXData(path.join(process.cwd(), "posts"))
 }
 
+export function getPublishedPosts(): MDXFileData[] {
+  return getPosts().filter((post) => !post.metadata.draft)
+}
+
 export function getPostBySlug(slug: string): MDXFileData | null {
   return getPosts().find((post) => post.slug === slug) ?? null
 }
@@ -28,30 +40,26 @@ function parseFrontmatter(fileContent: string): FrontmatterParseResult {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/
   const match = frontmatterRegex.exec(fileContent)
 
-  if (!match) {
-    throw new Error("No frontmatter found")
-  }
-
-  const frontmatter = match[1]
-
-  if (!frontmatter) {
+  if (!match?.[1]) {
     throw new Error("No frontmatter found")
   }
 
   const content = fileContent.replace(frontmatterRegex, "").trim()
-  const frontmatterLines = frontmatter.trim().split("\n")
-  const metadata: Partial<Metadata> = {}
+  const frontmatterLines = match[1].trim().split("\n")
+  const raw: Record<string, string> = {}
 
-  frontmatterLines.forEach((line) => {
+  for (const line of frontmatterLines) {
     const [key, ...values] = line.split(": ")
+    if (!key) continue
     let value = values.join(": ").trim()
-    value = value.replace(/^['"](.*)['"]$/, "$1") // Remove quotes
-    if (key && value) {
-      metadata[key.trim() as keyof Metadata] = value
+    value = value.replace(/^['"](.*)['"]$/, "$1")
+    if (value) {
+      raw[key.trim()] = value
     }
-  })
+  }
 
-  return { metadata: metadata as Metadata, content }
+  const metadata = metadataSchema.parse(raw)
+  return { metadata, content }
 }
 
 function getMDXFiles(dir: string): string[] {
@@ -60,7 +68,6 @@ function getMDXFiles(dir: string): string[] {
 
 function readMDXFile(filePath: string): FrontmatterParseResult {
   const rawContent = fs.readFileSync(filePath, "utf-8")
-
   return parseFrontmatter(rawContent)
 }
 

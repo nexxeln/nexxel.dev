@@ -1,9 +1,9 @@
 import { ScrambleText } from "@/components/scramble-text"
-import { PostsList } from "@/components/posts-list"
-import { getPosts } from "@/lib/blog"
+import { Posts } from "@/components/posts"
+import { getPublishedPosts } from "@/lib/blog"
 import { Metadata } from "next"
 
-const posts = getPosts().sort(
+const posts = getPublishedPosts().sort(
   (a, b) =>
     new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime()
 )
@@ -40,7 +40,7 @@ export default async function BlogPage() {
         to navigate
       </p>
 
-      <PostsList posts={posts} />
+      <Posts posts={posts} />
     </main>
   )
 }

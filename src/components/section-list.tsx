@@ -28,7 +28,7 @@ export function SectionList({
         <span className="text-accent mr-2">*</span> {title}
       </h2>
       <div className="space-y-8">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <div key={item.title} className="group">
             <Link href={item.href} target="_blank">
               <h3 className="text-xl font-semibold mb-1 text-white group-hover:text-accent transition-colors duration-200">

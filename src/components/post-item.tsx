@@ -1,5 +1,6 @@
 import { type MDXFileData } from "@/lib/blog"
 import Link from "next/link"
+import { formatDate } from "@/lib/utils"
 
 type PostItemProps = {
   post: MDXFileData
@@ -23,15 +24,7 @@ export function PostItem({ post, isSelected }: PostItemProps) {
         {post.metadata.title.toLowerCase()}
       </Link>
       <div className="flex items-center text-sm text-gray-400 shrink-0">
-        <span>
-          {new Date(post.metadata.date)
-            .toLocaleDateString("en-US", {
-              month: "short",
-              day: "numeric",
-              year: "numeric",
-            })
-            .toLowerCase()}
-        </span>
+        <span>{formatDate(post.metadata.date)}</span>
       </div>
     </div>
   )

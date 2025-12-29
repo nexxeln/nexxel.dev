@@ -22,7 +22,7 @@ export function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className="group border border-gray-800 p-6 transition-colors hover:border-accent/50">
-      <Link href={href} target="_blank">
+      <Link href={href} target="_blank" rel="noopener noreferrer">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-2xl font-bold text-white group-hover:text-accent transition-colors">
             {title}
@@ -41,8 +41,8 @@ export function ProjectCard({
         <div>
           <h3 className="text-white font-semibold mb-2">achievements</h3>
           <ul className="list-disc list-inside space-y-1 text-gray-400">
-            {achievements.map((achievement, index) => (
-              <li key={index}>{achievement}</li>
+            {achievements.map((achievement) => (
+              <li key={achievement}>{achievement}</li>
             ))}
           </ul>
         </div>

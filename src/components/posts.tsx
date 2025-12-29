@@ -20,10 +20,6 @@ export function Posts({ posts }: PostsProps) {
     item.metadata.title.toLowerCase().includes(searchQuery.toLowerCase()),
   )
 
-  useEffect(() => {
-    setSelectedIndex(0)
-  }, [searchQuery])
-
   const scrollSelectedIntoView = () => {
     if (selectedItemRef.current) {
       selectedItemRef.current.scrollIntoView({
@@ -41,8 +37,9 @@ export function Posts({ posts }: PostsProps) {
       } else if (e.key === "Escape" && isSearching) {
         setIsSearching(false)
         setSearchQuery("")
-        document.activeElement instanceof HTMLElement &&
+        if (document.activeElement instanceof HTMLElement) {
           document.activeElement.blur()
+        }
       } else if (
         isSearching &&
         (((e.ctrlKey || e.metaKey) && (e.key === "j" || e.key === "k")) ||
@@ -83,12 +80,15 @@ export function Posts({ posts }: PostsProps) {
             <input
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value)
+                setSelectedIndex(0)
+              }}
               className="flex-1 bg-transparent outline-none"
               autoFocus
               placeholder="search posts..."
               aria-label="Search posts"
-              role="searchbox"
+              role="combobox"
               aria-expanded={filteredPosts.length > 0}
               aria-controls="search-results"
               aria-activedescendant={

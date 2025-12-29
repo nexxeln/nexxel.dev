@@ -1,0 +1,407 @@
+---
+title: "Building code-chunk: AST Aware Code Chunking"
+description: "How we built the best AST-based code chunking library by taking a research paper and making it actually useful for production RAG systems."
+date: "December 27, 2025"
+draft: true
+---
+
+At [Supermemory](https://supermemory.ai), we're building context engineering infrastructure for AI. A huge part of that is dealing with code: ingesting repos, understanding structure, and making it searchable. The problem is that most code chunking solutions are terrible.
+
+We built [code-chunk](https://github.com/supermemoryai/code-chunk) to fix this. It's now the best AST-based code chunking library out there, and I want to walk through how we built it.
+
+## The Problem with Text Splitters
+
+Here's what most RAG pipelines do with code:
+
+```
+Source code → Split by character count → Generate embeddings → Store in vector DB
+```
+
+This is fine for prose. But code isn't prose. When you split Python at 500 characters, you end up with chunks like:
+
+```python
+def calculate_total(items):
+    """Calculate the total price of all items with tax."""
+    subtotal = 0
+    for item in items:
+        subtotal += item.price * item.qu
+```
+
+Congratulations, you just cut a function in half. The embedding for this chunk has no idea what `qu` is. It doesn't know the function returns anything. If someone searches for "calculate total with tax", they might get this useless fragment.
+
+The fundamental issue: **text splitters don't understand code structure**.
+
+## Enter cAST
+
+I found [this paper](https://arxiv.org/html/2506.15655v2) from CMU called "cAST: Enhancing Code Retrieval-Augmented Generation with Structural Chunking via Abstract Syntax Tree". The core idea is elegant:
+
+1. Parse code into an AST (Abstract Syntax Tree)
+2. Use the tree structure to find natural split points (functions, classes, methods)
+3. Chunk at semantic boundaries instead of arbitrary character limits
+
+The paper shows solid improvements: 4.3 points on Recall@5 for RepoEval, 2.67 points on Pass@1 for SWE-bench. But reading through the paper, I realized their implementation was missing a lot of what you actually need in production.
+
+So we took the core idea and built something better.
+
+## How code-chunk Works
+
+### Step 1: Parse with tree-sitter
+
+We use [tree-sitter](https://tree-sitter.github.io/tree-sitter/) to parse source code into an AST. tree-sitter is battle-tested (it powers syntax highlighting in editors like Neovim, Helix, and Zed) and supports basically every language.
+
+```typescript
+import { chunk } from 'code-chunk'
+
+const chunks = await chunk('src/user.ts', sourceCode)
+```
+
+From a filepath, we detect the language and load the appropriate tree-sitter grammar. The result is a structured tree where every node has a type (function_declaration, class_body, import_statement, etc.) and byte ranges.
+
+### Step 2: Extract Entities
+
+Here's where we diverge from the paper. We don't just traverse the tree. We extract semantic entities:
+
+```typescript
+interface ExtractedEntity {
+  type: 'function' | 'method' | 'class' | 'interface' | 'type' | 'enum' | 'import'
+  name: string
+  signature: string              // e.g., "async getUser(id: string): Promise<User>"
+  docstring: string | null       // JSDoc, docstrings, etc.
+  byteRange: { start: number; end: number }
+  lineRange: { start: number; end: number }
+  parent: string | null          // Which class/function contains this
+}
+```
+
+For each entity, we extract:
+- The full signature (not just the name)
+- Any documentation comments
+- Parent relationships (a method knows it belongs to a class)
+- Import sources and symbols
+
+This metadata becomes critical later.
+
+### Step 3: Build the Scope Tree
+
+Entities are organized into a hierarchical scope tree. A method inside a class knows its parent. A nested function knows its containing function.
+
+```typescript
+interface ScopeNode {
+  entity: ExtractedEntity
+  children: ScopeNode[]
+  parent: ScopeNode | null
+}
+```
+
+We build this by sorting entities by byte range and using DFS to find the deepest container for each entity:
+
+```typescript
+const findParentNode = (roots: ScopeNode[], entity: ExtractedEntity): ScopeNode | null => {
+  const findInNode = (node: ScopeNode): ScopeNode | null => {
+    // Does this node contain the entity?
+    if (!rangeContains(node.entity.byteRange, entity.byteRange)) {
+      return null
+    }
+    // Check children for deeper match
+    for (const child of node.children) {
+      const deeperMatch = findInNode(child)
+      if (deeperMatch) return deeperMatch
+    }
+    // No child contains it, so this is the deepest
+    return node
+  }
+  
+  for (const root of roots) {
+    const found = findInNode(root)
+    if (found) return found
+  }
+  return null
+}
+```
+
+This scope tree lets us answer questions like "where does this code live?" with context like `UserService > getUser`.
+
+### Step 4: The Chunking Algorithm
+
+Here's the core algorithm. The paper calls it "recursive split-then-merge", but I'll explain what it actually does.
+
+**The goal:** Pack as many complete syntactic units as possible into each chunk, without exceeding a size limit.
+
+**The approach:** Greedy window assignment.
+
+```typescript
+function* greedyAssignWindows(nodes: SyntaxNode[], code: string, maxSize: number) {
+  let currentWindow = { nodes: [], size: 0 }
+  
+  for (const node of nodes) {
+    const nodeSize = getNwsCount(node) // Non-whitespace character count
+    
+    if (currentWindow.size + nodeSize <= maxSize) {
+      // Node fits - add it
+      currentWindow.nodes.push(node)
+      currentWindow.size += nodeSize
+    } else if (nodeSize > maxSize) {
+      // Node is too big - recurse into children
+      yield currentWindow
+      yield* greedyAssignWindows(node.children, code, maxSize)
+      currentWindow = { nodes: [], size: 0 }
+    } else {
+      // Node doesn't fit but isn't oversized - start new window
+      yield currentWindow
+      currentWindow = { nodes: [node], size: nodeSize }
+    }
+  }
+  
+  if (currentWindow.nodes.length > 0) {
+    yield currentWindow
+  }
+}
+```
+
+Key insight from the paper: **use non-whitespace character count, not lines**. Two chunks with the same line count can have wildly different amounts of actual code. A file full of blank lines and comments shouldn't count the same as dense logic.
+
+We precompute a cumulative sum array for O(1) range queries:
+
+```typescript
+const preprocessNwsCumsum = (code: string): Uint32Array => {
+  const cumsum = new Uint32Array(code.length + 1)
+  let count = 0
+  for (let i = 0; i < code.length; i++) {
+    if (code.charCodeAt(i) > 32) count++ // Not whitespace
+    cumsum[i + 1] = count
+  }
+  return cumsum
+}
+
+// O(1) range query
+const getNwsCount = (start: number, end: number) => cumsum[end] - cumsum[start]
+```
+
+After generating windows, we merge adjacent small ones to reduce fragmentation:
+
+```typescript
+function* mergeAdjacentWindows(windows: Generator<ASTWindow>, maxSize: number) {
+  let current: ASTWindow | null = null
+  
+  for (const window of windows) {
+    if (!current) {
+      current = window
+    } else if (current.size + window.size <= maxSize) {
+      current = mergeWindows(current, window)
+    } else {
+      yield current
+      current = window
+    }
+  }
+  
+  if (current) yield current
+}
+```
+
+### Step 5: Contextualized Text
+
+Here's where code-chunk really differentiates itself. Raw chunk text isn't enough for good embeddings. You need context.
+
+Each chunk includes a `contextualizedText` field:
+
+```
+# src/services/user.ts
+# Scope: UserService
+# Defines: async getUser(id: string): Promise<User>
+# Uses: Database
+# After: constructor
+
+  async getUser(id: string): Promise<User> {
+    return this.db.query('SELECT * FROM users WHERE id = ?', [id])
+  }
+```
+
+This prepends semantic context to the raw code:
+
+1. **File path**: where this code lives
+2. **Scope chain**: what class/function contains it
+3. **Entity signatures**: what's defined here
+4. **Imports used**: dependencies
+5. **Sibling context**: what comes before/after
+
+Why does this matter? Embedding models are trained on natural language. When you embed `async getUser(id: string)`, the model doesn't inherently know this is inside a UserService class or that it uses a Database. By prepending this context, the embedding captures semantic relationships that pure code misses.
+
+The implementation:
+
+```typescript
+function formatChunkWithContext(text: string, context: ChunkContext): string {
+  const parts: string[] = []
+  
+  if (context.filepath) {
+    parts.push(`# ${context.filepath.split('/').slice(-3).join('/')}`)
+  }
+  
+  if (context.scope.length > 0) {
+    parts.push(`# Scope: ${context.scope.map(s => s.name).reverse().join(' > ')}`)
+  }
+  
+  const signatures = context.entities
+    .filter(e => e.signature && e.type !== 'import')
+    .map(e => e.signature)
+  if (signatures.length > 0) {
+    parts.push(`# Defines: ${signatures.join(', ')}`)
+  }
+  
+  if (context.imports.length > 0) {
+    parts.push(`# Uses: ${context.imports.slice(0, 10).map(i => i.name).join(', ')}`)
+  }
+  
+  parts.push('')
+  parts.push(text)
+  return parts.join('\n')
+}
+```
+
+## What We Added Beyond the Paper
+
+The cAST paper is a great foundation, but it's research code. Here's what we built on top:
+
+**1. Rich context extraction.** The paper just chunks. We extract full entity metadata, build scope trees, and format context for embeddings.
+
+**2. Overlap support.** Chunks can include the last N lines from the previous chunk. This helps with queries that target code at chunk boundaries.
+
+```typescript
+const chunks = await chunk('file.ts', code, { overlapLines: 10 })
+```
+
+**3. Streaming.** Process large files without loading everything into memory:
+
+```typescript
+for await (const chunk of chunkStream('large-file.ts', code)) {
+  await process(chunk)
+}
+```
+
+**4. Batch processing.** Chunk entire codebases with controlled concurrency:
+
+```typescript
+const results = await chunkBatch(files, { 
+  concurrency: 10,
+  onProgress: (done, total) => console.log(`${done}/${total}`)
+})
+```
+
+**5. Effect integration.** First-class support for the [Effect](https://effect.website/) library:
+
+```typescript
+const program = Stream.runForEach(
+  chunkStreamEffect('file.ts', code),
+  (chunk) => Effect.log(chunk.text)
+)
+```
+
+**6. WASM support.** Works in Cloudflare Workers and other edge runtimes:
+
+```typescript
+import { createChunkerFromWasm } from 'code-chunk/wasm'
+import treeSitterWasm from 'web-tree-sitter/tree-sitter.wasm'
+import typescriptWasm from 'tree-sitter-typescript/tree-sitter-tsx.wasm'
+
+const chunker = await createChunkerFromWasm({
+  treeSitter: treeSitterWasm,
+  languages: { typescript: typescriptWasm }
+})
+```
+
+## Evaluating It
+
+Building a good chunker is one thing. Knowing if it's actually good is another.
+
+We built an eval harness using RepoEval data. First run: 100% recall across all chunkers. That's not a good result. That's a broken benchmark.
+
+### The Benchmark Was Too Easy
+
+The original setup had a fundamental flaw. The query was a code prefix (say, lines 0-19 of a file), and the target was the same file containing that exact prefix. Embedding models trivially found the target because the query text was literally inside the target file.
+
+This is like asking someone to find a book when you've already told them the exact title and they're standing in front of it.
+
+### Fixing the Eval
+
+First, we added hard negatives: 500 distractor files from the same repository. Same-repo files share vocabulary and coding style, making them genuinely hard to distinguish from the target. Before we had 108 files from the target repo. After, we had the target file plus 500 same-repo distractors.
+
+Second, we added an Intersection over Union (IoU) threshold of 0.3. A chunk is only "relevant" if it actually overlaps with the ground truth lines, not just somewhere in the same file.
+
+```
+Ground truth: lines 0-19 (20 lines)
+
+Chunk A (lines 0-61):  IoU = 20/62  = 0.32 ✓ Relevant
+Chunk B (lines 0-100): IoU = 20/101 = 0.20 ✗ Too bloated
+Chunk C (lines 0-25):  IoU = 20/26  = 0.77 ✓ Excellent
+```
+
+This penalizes chunkers that create oversized chunks. Getting "somewhere in the file" isn't good enough. You need to actually hit the relevant code.
+
+We also started tracking IoU directly as a quality metric. Recall is binary: did you find it or not. IoU is continuous: how well did you find it. We track `iou_at_5` and `iou_at_10`, the average best IoU score in top-k retrieved chunks.
+
+### Results
+
+After fixing the benchmark:
+
+<Table ascii data={{
+  headers: ["Chunker", "Recall@5", "IoU@5"],
+  rows: [
+    ["code-chunk (AST)", "70.1%", "0.43"],
+    ["chonkie-code", "49.0%", "0.38"],
+    ["Fixed-size baseline", "42.4%", "0.34"]
+  ]
+}} />
+
+The AST-based chunker creates chunks that align better with semantic boundaries. Higher IoU means the retrieved chunks actually contain the relevant code, not just code from the same file.
+
+We also ran an agent-based eval on SWE-bench Lite comparing ops-only (Read/Grep/Glob) vs ops+semantic-search. The semantic search agent finds relevant files faster, especially for queries that need code understanding rather than just text matching.
+
+## Using code-chunk
+
+Installation:
+
+```bash
+bun add code-chunk
+# or npm install code-chunk
+```
+
+Basic usage:
+
+```typescript
+import { chunk } from 'code-chunk'
+
+const chunks = await chunk('src/user.ts', sourceCode)
+
+for (const c of chunks) {
+  console.log(c.text)                // Raw code
+  console.log(c.contextualizedText)  // Code with context for embeddings
+  console.log(c.context.scope)       // [{ name: 'UserService', type: 'class' }]
+  console.log(c.context.entities)    // [{ name: 'getUser', type: 'method', ... }]
+}
+```
+
+For RAG, use `contextualizedText` when generating embeddings:
+
+```typescript
+for (const c of chunks) {
+  const embedding = await embed(c.contextualizedText)
+  await vectorDB.upsert({
+    id: `${filepath}:${c.index}`,
+    embedding,
+    metadata: { filepath, lines: c.lineRange }
+  })
+}
+```
+
+Supported languages: TypeScript, JavaScript, Python, Rust, Go, Java.
+
+## Wrapping Up
+
+code-chunk started from a research paper and became a production-ready library. The key insight: chunking code isn't just about respecting size limits. It's about preserving and enriching semantic context.
+
+If you're building code RAG and using naive text splitters, you're leaving performance on the table. Give code-chunk a try.
+
+- **GitHub**: [supermemoryai/code-chunk](https://github.com/supermemoryai/code-chunk)
+- **npm**: [code-chunk](https://www.npmjs.com/package/code-chunk)
+- **Paper**: [cAST: Enhancing Code Retrieval-Augmented Generation](https://arxiv.org/html/2506.15655v2)
+
+Questions? I'm on [Twitter/X](https://x.com/nexxeln).

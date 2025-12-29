@@ -1,19 +1,21 @@
 import { notFound } from "next/navigation"
 import { MDX } from "./mdx"
 import { getPostBySlug } from "@/lib/blog"
+import { formatDateLong } from "@/lib/utils"
+import type { Metadata } from "next"
 
 type PageProps = {
   params: Promise<{ slug: string }>
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata | undefined> {
   const slug = (await params).slug
   const post = getPostBySlug(slug)
   if (!post) {
     return
   }
 
-  const publishedTime = formatDate(post.metadata.date)
+  const publishedTime = formatDateLong(post.metadata.date)
 
   return {
     title: post.metadata.title,
@@ -64,7 +66,7 @@ export default async function Post({ params }: PageProps) {
             description: post.metadata.description,
             image: `https://nexxel.dev/og/blog?title=${
               post.metadata.title
-            }&top=${formatDate(post.metadata.date)}`,
+            }&top=${formatDateLong(post.metadata.date)}`,
             url: `https://nexxel.dev/blog/${post.slug}`,
             author: {
               "@type": "Person",
@@ -80,7 +82,7 @@ export default async function Post({ params }: PageProps) {
       </h1>
 
       <div className="mb-8 flex items-center justify-between text-sm text-gray-400">
-        <span>{formatDate(post.metadata.date)}</span>
+        <span>{formatDateLong(post.metadata.date)}</span>
       </div>
 
       <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
@@ -88,12 +90,4 @@ export default async function Post({ params }: PageProps) {
       </article>
     </section>
   )
-}
-
-function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  })
 }

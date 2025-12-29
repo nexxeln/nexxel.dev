@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "@upstash/redis": "^1.34.3",
     "babel-plugin-react-compiler": "^19.0.0-beta-a7bf2bd-20241110",
     "lucide-react": "^0.456.0",
     "next": "16.0.7",
@@ -18,7 +17,8 @@
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "shiki": "^1.22.2",
-    "use-scramble": "^2.2.15"
+    "use-scramble": "^2.2.15",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
