@@ -76,6 +76,12 @@ export default async function Post({ params }: PageProps) {
         }}
       />
 
+      {post.metadata.draft && (
+        <div className="mb-6 px-4 py-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-500 text-sm">
+          This post is a draft and is not listed publicly.
+        </div>
+      )}
+
       <h1 className="text-4xl font-bold mb-4 text-white">
         <span className="text-accent mr-2">*</span>
         {post.metadata.title}
