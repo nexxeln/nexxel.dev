@@ -33,7 +33,7 @@ The fundamental issue: **text splitters don't understand code structure**.
 
 ## Enter cAST
 
-I found [this paper](https://arxiv.org/html/2506.15655v2) from CMU called "cAST: Enhancing Code Retrieval-Augmented Generation with Structural Chunking via Abstract Syntax Tree". The core idea is elegant:
+I found [this paper](https://arxiv.org/abs/2506.15655v2) from CMU called "cAST: Enhancing Code Retrieval-Augmented Generation with Structural Chunking via Abstract Syntax Tree". The core idea is elegant:
 
 1. Parse code into an AST (Abstract Syntax Tree)
 2. Use the tree structure to find natural split points (functions, classes, methods)
@@ -123,11 +123,7 @@ This scope tree lets us answer questions like "where does this code live?" with 
 
 ### Step 4: The Chunking Algorithm
 
-Here's the core algorithm. The paper calls it "recursive split-then-merge", but I'll explain what it actually does.
-
-**The goal:** Pack as many complete syntactic units as possible into each chunk, without exceeding a size limit.
-
-**The approach:** Greedy window assignment.
+The paper calls it "recursive split-then-merge". The idea is to pack as many complete syntactic units as possible into each chunk without exceeding a size limit. We do this with greedy window assignment:
 
 ```typescript
 function* greedyAssignWindows(nodes: SyntaxNode[], code: string, maxSize: number) {
@@ -158,7 +154,9 @@ function* greedyAssignWindows(nodes: SyntaxNode[], code: string, maxSize: number
 }
 ```
 
-Key insight from the paper: **use non-whitespace character count, not lines**. Two chunks with the same line count can have wildly different amounts of actual code. A file full of blank lines and comments shouldn't count the same as dense logic.
+We iterate through AST nodes and keep adding them to the current window until we hit the size limit. If a node is too big to fit anywhere, we recurse into its children and chunk those instead. If a node just doesn't fit in the current window but isn't oversized, we start a new window.
+
+The paper uses non-whitespace character count instead of lines, and we do the same. Two chunks with the same line count can have wildly different amounts of actual code. A file full of blank lines and comments shouldn't count the same as dense logic.
 
 We precompute a cumulative sum array for O(1) range queries:
 
@@ -310,9 +308,7 @@ const chunker = await createChunkerFromWasm({
 
 ## Evaluating It
 
-Building a good chunker is one thing. Knowing if it's actually good is another.
-
-We built an eval harness using RepoEval data. First run: 100% recall across all chunkers. That's not a good result. That's a broken benchmark.
+We built an eval harness using RepoEval data to measure how well this actually works. First run: 100% recall across all chunkers. That's not a good result. That's a broken benchmark.
 
 ### The Benchmark Was Too Easy
 
@@ -353,7 +349,17 @@ After fixing the benchmark:
 
 The AST-based chunker creates chunks that align better with semantic boundaries. Higher IoU means the retrieved chunks actually contain the relevant code, not just code from the same file.
 
-We also ran an agent-based eval on SWE-bench Lite comparing ops-only (Read/Grep/Glob) vs ops+semantic-search. The semantic search agent finds relevant files faster, especially for queries that need code understanding rather than just text matching.
+We also ran an agent-based eval on SWE-bench Lite comparing ops-only (Read/Grep/Glob) vs ops+semantic-search:
+
+<Table ascii data={{
+  headers: ["", "Duration", "Tokens", "Cost", "Tool Calls"],
+  rows: [
+    ["Without search", "2.0m", "4.3k", "$0.25", "19"],
+    ["With semantic search", "1.2m", "2.4k", "$0.20", "12"]
+  ]
+}} />
+
+The semantic search agent finds relevant files faster, especially for queries that need code understanding rather than just text matching.
 
 ## Using code-chunk
 
@@ -396,7 +402,7 @@ Supported languages: TypeScript, JavaScript, Python, Rust, Go, Java.
 
 ## Wrapping Up
 
-code-chunk started from a research paper and became a production-ready library. The key insight: chunking code isn't just about respecting size limits. It's about preserving and enriching semantic context.
+Chunking code well means more than respecting size limits. You need to preserve and enrich semantic context, and that's what code-chunk does.
 
 If you're building code RAG and using naive text splitters, you're leaving performance on the table. Give code-chunk a try.
 
