@@ -27,9 +27,7 @@ def calculate_total(items):
         subtotal += item.price * item.qu
 ```
 
-Congratulations, you just cut a function in half. The embedding for this chunk has no idea what `qu` is. It doesn't know the function returns anything. If someone searches for "calculate total with tax", they might get this useless fragment.
-
-The fundamental issue: **text splitters don't understand code structure**.
+Congratulations, you just cut a function in half. The embedding for this chunk has no idea what `qu` is. It doesn't know the function returns anything. If someone searches for "calculate total with tax", they might get this useless fragment. Text splitters don't understand code structure.
 
 ## Enter cAST
 
