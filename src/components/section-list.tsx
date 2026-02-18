@@ -14,6 +14,7 @@ type SectionListProps = {
   items: Item[]
   viewAllHref?: string
   viewAllText?: string
+  showTitle?: boolean
 }
 
 export function SectionList({
@@ -21,12 +22,15 @@ export function SectionList({
   items,
   viewAllHref,
   viewAllText,
+  showTitle = true,
 }: SectionListProps) {
   return (
     <section className="mb-16 animate-fade-in-up">
-      <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
-        <span className="text-accent mr-2">*</span> {title}
-      </h2>
+      {showTitle && (
+        <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
+          <span className="text-accent mr-2">*</span> {title}
+        </h2>
+      )}
       <div className="space-y-8">
         {items.map((item) => (
           <div key={item.title} className="group">

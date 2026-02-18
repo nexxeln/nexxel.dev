@@ -16,7 +16,7 @@ export function Header() {
         </div>
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4" />
-          founding engineer @ supermemory
+          working on open source
         </div>
       </div>
       <p className="leading-relaxed animate-fade-in-up">

@@ -2,47 +2,9 @@ import { Header } from "@/components/header"
 import { Item, SectionList } from "@/components/section-list"
 import { BlogSection } from "@/components/blog-section"
 import { LinksSection } from "@/components/links-section"
+import { workItems } from "@/lib/work-items"
 
-const workItems: Item[] = [
-  {
-    title: "supermemory",
-    role: "founding engineer",
-    period: "nov 2025 - present",
-    description: "building the best memory engine for ai agents",
-    href: "https://supermemory.ai",
-  },
-  {
-    title: "mocha",
-    role: "co-founder and cto",
-    period: "jul 2025 - oct 2025",
-    description: "built an ai native email client designed for speed and ease of use",
-    href: "https://mocha.email",
-  },
-  {
-    title: "ENS labs",
-    role: "software engineer",
-    period: "feb 2025 - jul 2025",
-    description:
-      "helped migrate ensjs to namechain and optimized ci for the manager app",
-    href: "https://ens.domains",
-  },
-  {
-    title: "leapflow",
-    role: "co-founder and cto",
-    period: "may 2024 - jun 2025",
-    description:
-      "headed engineering to develop ai agents that automate repetitive workflows in existing software",
-    href: "https://leapflow.tech",
-  },
-  {
-    title: "dimension",
-    role: "full-stack engineer",
-    period: "nov 2023 - jan 2024",
-    description:
-      "contributed to a large-scale t3 stack app. worked on real-time presence and chat features",
-    href: "https://dimension.dev",
-  },
-]
+const featuredWorkItems: Item[] = workItems.slice(0, 3)
 
 const projectItems = [
   {
@@ -64,8 +26,13 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <SectionList title="work" items={workItems} />
       <BlogSection />
+      <SectionList
+        title="work"
+        items={featuredWorkItems}
+        viewAllHref="/work"
+        viewAllText="all work"
+      />
       <SectionList
         title="projects"
         items={projectItems}
