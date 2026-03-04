@@ -340,8 +340,8 @@ After fixing the benchmark:
   rows: [
     ["code-chunk (AST)", "70.1%", "0.43"],
     ["chonkie-code", "49.0%", "0.38"],
-    ["Fixed-size baseline", "42.4%", "0.34"]
-  ]
+    ["Fixed-size baseline", "42.4%", "0.34"],
+  ],
 }} />
 
 The AST-based chunker creates chunks that align better with semantic boundaries. Higher IoU means the retrieved chunks actually contain the relevant code, not just code from the same file.
@@ -352,8 +352,8 @@ We also ran an agent-based eval on SWE-bench Lite comparing ops-only (Read/Grep/
   headers: ["", "Duration", "Tokens", "Cost", "Tool Calls"],
   rows: [
     ["Without search", "2.0m", "4.3k", "$0.25", "19"],
-    ["With semantic search", "1.2m", "2.4k", "$0.20", "12"]
-  ]
+    ["With semantic search", "1.2m", "2.4k", "$0.20", "12"],
+  ],
 }} />
 
 The semantic search agent finds relevant files faster, especially for queries that need code understanding rather than just text matching.

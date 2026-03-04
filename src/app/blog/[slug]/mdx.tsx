@@ -3,13 +3,22 @@ import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
 
+type TableData = {
+  headers: string[]
+  rows: string[][]
+}
+
 function Table({
   data,
   ascii = false,
 }: {
-  data: { headers: string[]; rows: string[][] }
+  data: TableData
   ascii?: boolean
 }) {
+  if (!data.headers.length || !data.rows.length) {
+    return null
+  }
+
   if (ascii) {
     const allRows = [data.headers, ...data.rows]
     const colWidths = data.headers.map((_, colIndex) =>
@@ -39,27 +48,28 @@ function Table({
     )
   }
 
-  const headers = data.headers.map((header, index) => (
-    <th key={index} className="p-2 text-left">
-      {header}
-    </th>
-  ))
-  const rows = data.rows.map((row, index) => (
-    <tr key={index}>
-      {row.map((cell, cellIndex) => (
-        <td key={cellIndex} className="p-2 text-left">
-          {cell}
-        </td>
-      ))}
-    </tr>
-  ))
-
   return (
     <table className="w-full border-collapse">
       <thead>
-        <tr>{headers}</tr>
+        <tr>
+          {data.headers.map((header, index) => (
+            <th key={index} className="p-2 text-left">
+              {header}
+            </th>
+          ))}
+        </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <tbody>
+        {data.rows.map((row, index) => (
+          <tr key={index}>
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex} className="p-2 text-left">
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
     </table>
   )
 }
@@ -172,6 +182,11 @@ export function MDX(props: React.ComponentProps<typeof MDXRemote>) {
     <MDXRemote
       {...props}
       components={{ ...components, ...(props.components ?? {}) }}
+      options={{
+        ...props.options,
+        blockJS: props.options?.blockJS ?? false,
+        blockDangerousJS: props.options?.blockDangerousJS ?? true,
+      }}
     />
   )
 }
