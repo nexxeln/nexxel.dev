@@ -3,7 +3,7 @@ import type { Item } from "@/components/section-list"
 export const workItems: Item[] = [
   {
     title: "opencode",
-    role: "founding engineer",
+    role: "software engineer",
     period: "feb 2026 - present",
     description: "building the future of coding agents",
     href: "https://opencode.ai",
