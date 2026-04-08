@@ -36,7 +36,7 @@ export function SectionList({
       <div className="space-y-6">
         {items.map((item, index) => (
           <Link key={item.title} href={item.href} target="_blank" className="group block">
-            <div className={index > 0 || !showSectionBorder ? "border-t border-neutral-800 pt-6" : ""}>
+            <div className={!showSectionBorder ? "border-t border-neutral-800 pt-6" : ""}>
               <div className="flex items-start justify-between mb-2">
                 <div>
                   <h3 className="text-xl font-semibold text-white group-hover:text-accent transition-colors duration-200">
