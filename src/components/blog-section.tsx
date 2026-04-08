@@ -19,14 +19,14 @@ export function BlogSection() {
       </h2>
       <div className="space-y-4">
         {posts.map((post) => (
-          <div key={post.slug} className="flex justify-between items-center group">
+          <div key={post.slug} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 group">
             <Link
               href={`/blog/${post.slug}`}
               className="text-gray-200 hover:text-accent transition-colors duration-200"
             >
               {post.metadata.title.toLowerCase()}
             </Link>
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-400 shrink-0">
               {formatDate(post.metadata.date)}
             </span>
           </div>
