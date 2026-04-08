@@ -83,7 +83,7 @@ export default async function Post({ params }: PageProps) {
       )}
 
       <h1 className="text-4xl font-bold mb-4 text-white">
-        <span className="text-accent mr-2">*</span>
+        <span className="text-accent accent-glow mr-2">*</span>
         {post.metadata.title}
       </h1>
 

@@ -14,7 +14,7 @@ export function BlogSection() {
   return (
     <section className="mb-16 animate-fade-in-up">
       <h2 className="text-2xl font-bold mb-6 flex items-center text-white">
-        <span className="text-accent mr-2">*</span>
+        <span className="text-accent accent-glow mr-2">*</span>
         blog
       </h2>
       <div className="space-y-4">

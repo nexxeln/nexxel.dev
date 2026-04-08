@@ -59,3 +59,8 @@ body {
 .prose code span {
   @apply font-medium text-gray-200;
 }
+
+/* accent glow for * markers and accent links */
+.accent-glow {
+  text-shadow: 0 0 10px rgba(255, 107, 53, 0.2);
+}
