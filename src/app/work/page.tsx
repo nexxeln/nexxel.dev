@@ -11,11 +11,11 @@ export default function WorkPage() {
         <ScrambleText text="work" />
       </h1>
 
-      <p className="text-gray-400 mb-12 leading-relaxed">
+      <p className="text-gray-400 mb-6 leading-relaxed">
         here&apos;s where i&apos;ve worked and the kind of products i helped ship.
       </p>
 
-      <SectionList title="work" items={workItems} showTitle={false} />
+      <SectionList title="work" items={workItems} showTitle={false} showSectionBorder={false} />
     </main>
   )
 }

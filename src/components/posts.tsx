@@ -101,7 +101,7 @@ export function Posts({ posts }: PostsProps) {
         </div>
       )}
 
-      <div className="space-y-8 sm:space-y-4">
+      <div className="space-y-6 sm:space-y-4">
         {filteredPosts.map((item, index) => (
           <div
             key={item.slug}
