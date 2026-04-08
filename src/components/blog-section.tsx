@@ -19,17 +19,18 @@ export function BlogSection() {
       </h2>
       <div className="space-y-4">
         {posts.map((post) => (
-          <div key={post.slug} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-4 group">
-            <Link
-              href={`/blog/${post.slug}`}
-              className="text-gray-200 hover:text-accent transition-colors duration-200"
-            >
-              {post.metadata.title.toLowerCase()}
-            </Link>
-            <span className="text-sm text-gray-400 shrink-0">
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4"
+          >
+            <span className="text-sm text-gray-500 sm:w-28 shrink-0 tabular-nums">
               {formatDate(post.metadata.date)}
             </span>
-          </div>
+            <span className="text-gray-200 group-hover:text-accent transition-colors duration-200">
+              {post.metadata.title.toLowerCase()}
+            </span>
+          </Link>
         ))}
       </div>
       <Link

@@ -9,23 +9,21 @@ type PostItemProps = {
 
 export function PostItem({ post, isSelected }: PostItemProps) {
   return (
-    <div
-      className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-4 group ${
+    <Link
+      href={`/blog/${post.slug}`}
+      prefetch={true}
+      className={`group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 transition-colors duration-200 ${
         isSelected
-          ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2 border-l-2 border-l-accent/50"
+          ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2"
           : ""
       }`}
     >
-      <Link
-        href={`/blog/${post.slug}`}
-        prefetch={true}
-        className="text-gray-200 hover:text-accent transition-colors duration-200"
-      >
+      <span className="text-sm text-gray-500 sm:w-28 shrink-0 tabular-nums">
+        {formatDate(post.metadata.date)}
+      </span>
+      <span className="text-gray-200 group-hover:text-accent transition-colors duration-200">
         {post.metadata.title.toLowerCase()}
-      </Link>
-      <div className="flex items-center text-sm text-gray-400 shrink-0">
-        <span>{formatDate(post.metadata.date)}</span>
-      </div>
-    </div>
+      </span>
+    </Link>
   )
 }
