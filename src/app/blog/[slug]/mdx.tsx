@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import Link from "next/link"
 import { Children, createElement, isValidElement } from "react"
 import { codeToHtml } from "shiki"
+import { CopyButton } from "@/components/copy-button"
 
 type TableData = {
   headers: string[]
@@ -118,7 +119,8 @@ async function Pre({
       return <code {...props}>{children}</code>
     }
 
-    const html = await codeToHtml(String(codeElement?.props.children), {
+    const code = String(codeElement?.props.children)
+    const html = await codeToHtml(code, {
       lang,
       themes: {
         dark: "vesper",
@@ -126,7 +128,12 @@ async function Pre({
       },
     })
 
-    return <div dangerouslySetInnerHTML={{ __html: html }} />
+    return (
+      <div className="group relative">
+        <CopyButton text={code.trimEnd()} />
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </div>
+    )
   }
 
   // If not, return the component as is
