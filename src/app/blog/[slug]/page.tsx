@@ -91,7 +91,7 @@ export default async function Post({ params }: PageProps) {
         <span>{formatDateLong(post.metadata.date)}</span>
       </div>
 
-      <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline">
+      <article className="prose prose-invert max-w-none prose-headings:text-white prose-a:text-white hover:prose-a:underline prose-tuned-mono">
         <MDX source={post.content} />
       </article>
     </section>

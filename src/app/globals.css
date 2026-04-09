@@ -60,6 +60,39 @@ body {
   @apply font-medium text-gray-200;
 }
 
+/* Prose typography — tuned mono for long-form reading */
+.prose-tuned-mono {
+  font-size: 0.9375rem; /* 15px — slightly smaller mono reads better */
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.prose-tuned-mono :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+.prose-tuned-mono :where(h2):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 2.5em;
+  letter-spacing: -0.02em;
+}
+
+.prose-tuned-mono :where(h3):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 2em;
+  letter-spacing: -0.01em;
+}
+
+.prose-tuned-mono :where(li):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose-tuned-mono :where(blockquote):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  font-style: normal;
+  border-left-color: #ff6b35;
+  padding-left: 1.5em;
+}
+
 /* accent glow for * markers and accent links */
 .accent-glow {
   text-shadow: 0 0 10px rgba(255, 107, 53, 0.2);
