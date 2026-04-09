@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
-import { Geist_Mono } from "next/font/google"
+import { JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 import { Navbar } from "../components/navbar"
 
-const geistMono = Geist_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist-mono",
+  variable: "--font-jetbrains-mono",
 })
 
 export const metadata: Metadata = {
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistMono.variable} antialiased min-h-screen font-mono`}
+        className={`${jetbrainsMono.variable} antialiased min-h-screen font-mono`}
       >
         <div className="max-w-4xl mx-auto px-5 sm:px-4 py-8">
           <Navbar />
