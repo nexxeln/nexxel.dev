@@ -36,15 +36,20 @@ body {
 }
 
 .prose a.anchor::before {
-  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'];
+  @apply absolute -left-4 opacity-0 transition-opacity duration-200 content-['#'] text-accent;
 }
 
-.prose a.anchor:hover::before {
+.prose a.anchor:hover::before,
+.prose a.anchor:focus-visible::before {
   @apply opacity-100;
 }
 
+.prose a.anchor:focus-visible {
+  @apply outline-none;
+}
+
 .prose pre {
-  @apply overflow-x-auto border border-neutral-800 bg-[#111] my-4 rounded-none;
+  @apply overflow-x-auto border border-neutral-800 bg-[#111] my-4 rounded-sm;
 }
 
 .prose code:not(pre code) {
