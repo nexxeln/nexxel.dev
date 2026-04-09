@@ -12,16 +12,16 @@ export function PostItem({ post, isSelected }: PostItemProps) {
     <Link
       href={`/blog/${post.slug}`}
       prefetch={true}
-      className={`group flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 transition-colors duration-200 ${
+      className={`group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 rounded-lg p-3 -mx-3 transition-colors duration-200 ${
         isSelected
-          ? "bg-gradient-to-r from-accent/10 to-transparent -mx-2 px-2"
-          : ""
+          ? "bg-accent/10 ring-1 ring-accent/20"
+          : "hover:bg-neutral-900/50"
       }`}
     >
       <span className="text-sm text-gray-500 sm:w-28 shrink-0 tabular-nums">
         {formatDate(post.metadata.date)}
       </span>
-      <span className="text-gray-200 group-hover:text-accent transition-colors duration-200">
+      <span className={`text-gray-200 ${isSelected ? "text-accent" : "group-hover:text-accent"} transition-colors duration-200`}>
         {post.metadata.title.toLowerCase()}
       </span>
     </Link>
