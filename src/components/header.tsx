@@ -12,7 +12,7 @@ export function Header() {
         software engineer at opencode · chennai, india
       </p>
       <p className="text-pretty max-w-[52ch] animate-fade-in-up">
-        i&apos;m a 20 y/o cs undergrad student. i love building things and
+        i&apos;m a 21 y/o cs undergrad student. i love building things and
         solving problems. i enjoy language design, theoretical computer science
         and i live on the terminal. if i&apos;m not coding, i&apos;m probably
         doing cardistry, watching movies or obsessing over mechanical keyboards.
