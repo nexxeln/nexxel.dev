@@ -1,0 +1,50 @@
+{
+  "characters": "U+00A0 to U+017F",
+  "font_sizes": [
+    12,
+    15,
+    16,
+    24
+  ],
+  "weights": [
+    400,
+    500,
+    600,
+    700
+  ],
+  "styles": [
+    "normal",
+    "italic"
+  ],
+  "changed_pixels": 0,
+  "total_pixels": 8700160,
+  "bounds": null,
+  "ij_probe": [
+    {
+      "label": "before",
+      "fonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "ArialMT",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    },
+    {
+      "label": "after",
+      "fonts": [
+        {
+          "familyName": "Arial",
+          "postScriptName": "ArialMT",
+          "isCustomFont": false,
+          "glyphCount": 2
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    "/private/var/folders/fm/46zkyn094pn2cmkjq62skpxr0000gn/T/opencode/font-matrix-before.png",
+    "/private/var/folders/fm/46zkyn094pn2cmkjq62skpxr0000gn/T/opencode/font-matrix-after.png"
+  ]
+}

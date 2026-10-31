@@ -1,0 +1,64 @@
+{
+  "physical_axis_400_700": {
+    "extended": {
+      "before_bytes": 8536,
+      "clipped_bytes": 8148,
+      "saved_bytes": 388,
+      "outline_checks": {
+        "400": {
+          "changed_glyphs": 0,
+          "max_coordinate_drift_font_units": 0
+        },
+        "500": {
+          "changed_glyphs": 188,
+          "max_coordinate_drift_font_units": 0.4907315462924089
+        },
+        "600": {
+          "changed_glyphs": 188,
+          "max_coordinate_drift_font_units": 0.7239064125544701
+        },
+        "700": {
+          "changed_glyphs": 188,
+          "max_coordinate_drift_font_units": 0.9570812788165881
+        }
+      }
+    },
+    "core": {
+      "before_bytes": 31248,
+      "clipped_bytes": 30160,
+      "saved_bytes": 1088,
+      "outline_checks": {
+        "400": {
+          "changed_glyphs": 0,
+          "max_coordinate_drift_font_units": 0
+        },
+        "500": {
+          "changed_glyphs": 383,
+          "max_coordinate_drift_font_units": 0.46394153271228333
+        },
+        "600": {
+          "changed_glyphs": 383,
+          "max_coordinate_drift_font_units": 0.6843938620592667
+        },
+        "700": {
+          "changed_glyphs": 383,
+          "max_coordinate_drift_font_units": 0.90484619140625
+        }
+      }
+    }
+  },
+  "ascii_core": {
+    "core_bytes": 24772,
+    "extended_bytes": 13744,
+    "core_saved_bytes": 6476,
+    "changed_pixels": 4,
+    "fixture_width": 1280,
+    "difference_bounds": [
+      576,
+      685,
+      581,
+      687
+    ],
+    "evidence": "/private/var/folders/fm/46zkyn094pn2cmkjq62skpxr0000gn/T/opencode/fixture-empty-instructions.png"
+  }
+}

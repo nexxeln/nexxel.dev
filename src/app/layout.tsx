@@ -1,13 +1,8 @@
 import type { Metadata } from "next"
-import { JetBrains_Mono } from "next/font/google"
+import fonts from "./fonts.json"
+import "./fonts.css"
 import "./globals.css"
 import { Navbar } from "../components/navbar"
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jetbrains-mono",
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.nexxel.dev"),
@@ -46,9 +41,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${jetbrainsMono.variable} antialiased min-h-screen font-mono`}
-      >
+      <head>
+        <link
+          rel="preload"
+          href={fonts.core.url}
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="antialiased min-h-screen font-mono">
         <div className="max-w-4xl mx-auto px-5 sm:px-4 py-8">
           <Navbar />
           {children}

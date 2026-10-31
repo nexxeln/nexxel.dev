@@ -1,0 +1,388 @@
+[
+  {
+    "case": "ascii",
+    "tag": "p",
+    "text": "Plain ASCII text",
+    "runs": [
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "Nexxel Mono",
+        "postScriptName": "NexxelMono",
+        "isCustomFont": true,
+        "glyphCount": 16
+      }
+    ]
+  },
+  {
+    "case": "latin-1",
+    "tag": "p",
+    "text": "café naïve voilà",
+    "runs": [
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "Nexxel Mono",
+        "postScriptName": "NexxelMono",
+        "isCustomFont": true,
+        "glyphCount": 16
+      }
+    ]
+  },
+  {
+    "case": "extended-a",
+    "tag": "p",
+    "text": "Łódź Āā Ğğ",
+    "runs": [
+      {
+        "bytes": 39784,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          },
+          "/fonts/nexxel-mono-extended-ff2598954e4c.woff2": {
+            "bytes": 8536,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 39784,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          },
+          "/fonts/nexxel-mono-extended-ff2598954e4c.woff2": {
+            "bytes": 8536,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 39784,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          },
+          "/fonts/nexxel-mono-extended-ff2598954e4c.woff2": {
+            "bytes": 8536,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 39784,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          },
+          "/fonts/nexxel-mono-extended-ff2598954e4c.woff2": {
+            "bytes": 8536,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 39784,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          },
+          "/fonts/nexxel-mono-extended-ff2598954e4c.woff2": {
+            "bytes": 8536,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "Nexxel Mono",
+        "postScriptName": "NexxelMono",
+        "isCustomFont": true,
+        "glyphCount": 12
+      }
+    ]
+  },
+  {
+    "case": "cjk",
+    "tag": "p",
+    "text": "中文日本語한국어",
+    "runs": [
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "蘋方-簡",
+        "postScriptName": "PingFangSC-Regular",
+        "isCustomFont": false,
+        "glyphCount": 5
+      },
+      {
+        "familyName": "Apple SD Gothic Neo",
+        "postScriptName": "AppleSDGothicNeo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 3
+      }
+    ]
+  },
+  {
+    "case": "hyphens",
+    "tag": "p",
+    "text": "hyphen ‐ nonbreaking ‑",
+    "runs": [
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "Nexxel Mono",
+        "postScriptName": "NexxelMono",
+        "isCustomFont": true,
+        "glyphCount": 22
+      }
+    ]
+  },
+  {
+    "case": "system-code",
+    "tag": "code",
+    "text": "Łódź Āā Ğğ",
+    "runs": [
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      },
+      {
+        "bytes": 31248,
+        "requests": {
+          "/fonts/nexxel-mono-core-59d8520253f1.woff2": {
+            "bytes": 31248,
+            "status": 200
+          }
+        }
+      }
+    ],
+    "platform_fonts": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 10
+      }
+    ]
+  }
+]
