@@ -4,8 +4,8 @@ export const workItems: Item[] = [
   {
     title: "opencode",
     role: "software engineer",
-    period: "feb 2026 - present",
-    description: "building the future of coding agents",
+    period: "feb 2026 - oct 2026",
+    description: "worked on coding agents",
     href: "https://opencode.ai",
   },
   {

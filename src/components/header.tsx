@@ -9,7 +9,7 @@ export function Header() {
         </span>
       </h1>
       <p className="text-gray-500 animate-fade-in">
-        software engineer at opencode · chennai, india
+        software engineer · chennai, india
       </p>
       <p className="text-pretty max-w-[52ch] animate-fade-in-up">
         i&apos;m a 21 y/o cs undergrad student. i love building things and
